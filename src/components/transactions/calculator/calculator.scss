@@ -1,0 +1,25 @@
+@import '../../../styles/zeroing/zeroing';
+
+.calculator {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(4, 60px);
+}
+
+.calculator-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 18px;
+
+    transition: .3s;
+
+    svg {
+        color: $main-opacity-color;;
+    }
+
+    &:active {
+        background-color: $main-gray-active-color;
+    }
+}

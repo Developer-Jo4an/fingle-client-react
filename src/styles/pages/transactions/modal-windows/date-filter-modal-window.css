@@ -1,0 +1,266 @@
+*, *:before, *:after {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  list-style: none;
+  box-sizing: border-box;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+  position: relative;
+  font-family: custom-regular, Manrope, sans-serif;
+}
+
+.fingle-application {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 0 15px #e3e1e1;
+  background-color: #fff;
+  padding: 10px 15px;
+  z-index: 90;
+  position: sticky;
+  top: 0;
+  left: 0;
+}
+
+.header-user-main-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #24e597;
+}
+
+.header-user-nickname {
+  color: #a6a6a6;
+}
+
+.header-buttons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.header-button {
+  display: flex;
+  align-items: center;
+}
+.header-button svg {
+  width: 20px;
+  height: 20px;
+}
+
+main {
+  flex-grow: 1;
+}
+
+.appearance {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+.hide {
+  opacity: 0;
+}
+
+footer {
+  width: 100%;
+  box-shadow: 0 0 15px #e3e1e1;
+  background-color: #fff;
+  padding: 10px 15px;
+  z-index: 90;
+  position: sticky;
+  bottom: 0;
+  left: 0;
+}
+
+.footer-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.footer-nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 15px;
+  border-radius: 30px;
+  transition: 0.3s;
+}
+.footer-nav-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+.footer-nav-btn-active {
+  background-color: rgba(36, 229, 151, 0.4);
+  color: #24e597;
+}
+
+.footer-btn-label {
+  transition: 0.3s;
+  font-family: custom-bold, Manrope, sans-serif;
+  overflow-x: hidden;
+  color: #24e597;
+}
+
+.loader {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(194, 188, 188, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+}
+
+.loader-sign {
+  width: 48px;
+  height: 48px;
+  border: 3px solid #24e597;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+.loader-sign:after {
+  content: "";
+  width: 56px;
+  height: 56px;
+  box-sizing: border-box;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 3px solid;
+  border-color: #05bc19 transparent;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.add-transaction-btn {
+  width: 50px;
+  height: 50px;
+  background-color: #24e597;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  position: fixed;
+  right: 25px;
+  bottom: 95px;
+  z-index: 91;
+  transition: 2s;
+}
+.add-transaction-btn svg {
+  width: 20px;
+  height: 20px;
+  color: #fff;
+  z-index: 1;
+}
+
+.pulse-animation {
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #24e597;
+  animation: btn-pulse 2s infinite;
+}
+
+@keyframes btn-pulse {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+}
+@media (max-width: 320px) {
+  body {
+    min-width: 320px;
+  }
+}
+.date-filter-modal-window {
+  display: flex;
+  flex-direction: column;
+}
+
+.date-filter-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  font-family: custom-bold, Manrope, sans-serif;
+  position: relative;
+}
+
+.date-filter-btn-active-checker {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 2px solid #000;
+}
+
+.date-checker-active:after {
+  content: "";
+  width: 80%;
+  height: 80%;
+  background-color: #24e597;
+  border-radius: 50%;
+}
+
+/*# sourceMappingURL=date-filter-modal-window.css.map */

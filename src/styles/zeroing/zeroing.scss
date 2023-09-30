@@ -1,0 +1,322 @@
+@import './global';
+// fonts
+
+//@font-face {
+//    font-family: custom-regular;
+//    src: url(../fonts/Montserrat-Regular.ttf);
+//}
+//
+//@font-face {
+//    font-family: custom-bold;
+//    src: url(../fonts/Montserrat-SemiBold.ttf);
+//}
+//
+//@font-face {
+//    font-family: custom-italic;
+//    src: url(../fonts/Montserrat-Italic.ttf);
+//}
+//
+//@font-face {
+//    font-family: custom-super-bold;
+//    src: url(../fonts/Montserrat-Italic.ttf);
+//}
+
+// elements
+*, *:before, *:after {
+    margin: 0;
+    padding: 0;
+
+    border: 0;
+    outline: 0;
+
+    list-style: none;
+
+    box-sizing: border-box;
+
+    text-decoration: none;
+
+    background-color: transparent;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+}
+
+
+#root {
+    height: 100%;
+
+    position: relative;
+
+    font-family: custom-regular, Manrope, sans-serif;
+}
+
+.fingle-application {
+    min-height: 100%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+// head
+
+header {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    box-shadow: $main-shadow;
+
+    background-color: #fff;
+
+    padding: 10px 15px;
+
+    z-index: 90;
+
+    position: sticky;
+    top: 0;
+    left: 0;
+}
+
+.header-user-main-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-avatar {
+    width: 50px;
+    height: 50px;
+
+    border-radius: 50%;
+
+    border: 2px solid $main-green-color;
+}
+
+.header-user-nickname {
+    color: $main-gray-color;
+}
+
+.header-buttons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.header-button {
+    display: flex;
+    align-items: center;
+    svg {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+// main
+
+main {
+    flex-grow: 1;
+}
+
+.appearance {
+    opacity: 1;
+    transition: .2s;
+}
+
+.hide {
+    opacity: 0;
+}
+
+// footer
+
+footer {
+    width: 100%;
+
+    box-shadow: $main-shadow;
+
+    background-color: #fff;
+
+    padding: 10px 15px;
+
+    z-index: 90;
+
+    position: sticky;
+    bottom: 0;
+    left: 0;
+}
+
+.footer-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    overflow: hidden;
+}
+
+.footer-nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    padding: 15px;
+
+    border-radius: 30px;
+
+    transition: .3s;
+
+    svg {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+.footer-nav-btn-active {
+    background-color: rgb($main-green-color, 0.4);
+
+    color: $main-green-color;
+}
+
+.footer-btn-label {
+    transition: .3s;
+
+    font-family: custom-bold, Manrope, sans-serif;
+
+    overflow-x: hidden;
+
+    color: $main-green-color;
+}
+.loader {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: $modal-window-background;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    z-index: 99;
+}
+
+.loader-sign {
+    width: 48px;
+    height: 48px;
+
+    border: 3px solid $main-green-color;
+    border-radius: 50%;
+
+    display: inline-block;
+
+    box-sizing: border-box;
+
+    animation: rotation 1s linear infinite;
+
+    &:after {
+        content: '';
+
+        width: 56px;
+        height: 56px;
+
+        box-sizing: border-box;
+
+        position: absolute;
+        left: 50%;
+        top: 50%;
+
+        transform: translate(-50%, -50%);
+
+        border-radius: 50%;
+        border: 3px solid;
+        border-color: $main-green-dark-color transparent;
+    }
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes rotation {
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
+}
+
+// btn pulse
+
+.add-transaction-btn {
+    width: 50px;
+    height: 50px;
+
+    background-color: $main-green-color;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    position: fixed;
+    right: 25px;
+    bottom: 95px;
+    z-index: 91;
+
+    transition: 2s;
+
+    svg {
+        width: 20px;
+        height: 20px;
+
+        color: #fff;
+
+        z-index: 1;
+    }
+}
+
+.pulse-animation {
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none;
+
+    border-radius: 50%;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    background-color: $main-green-color;
+
+    animation: btn-pulse 2s infinite;
+}
+
+@keyframes btn-pulse {
+    from {
+        transform: scale(1);
+        opacity: 1;
+    }
+    to {
+        transform: scale(1.2);
+        opacity: 0;
+    }
+}
+
+// media
+@media (max-width: 320px) {
+    body {
+        min-width: 320px;
+    }
+}
