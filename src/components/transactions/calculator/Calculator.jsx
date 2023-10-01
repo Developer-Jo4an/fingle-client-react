@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
 
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
     faCheck,
     faDeleteLeft,
@@ -11,7 +11,7 @@ import {
     faMultiply,
     faPlus,
     faXmark
-} from "@fortawesome/free-solid-svg-icons"
+} from '@fortawesome/free-solid-svg-icons'
 
 import './calculator.css'
 
@@ -29,7 +29,7 @@ const Calculator = ({Ref, state, setState}) => {
             } catch (e) {
                 Ref.current.classList.add('error-animation')
                 setTimeout(() => Ref.current.classList.remove('error-animation'), 700)
-                return
+                return null
             }
         }
         const {type} = item
@@ -106,4 +106,4 @@ const Calculator = ({Ref, state, setState}) => {
     )
 }
 
-export default Calculator;
+export default Calculator

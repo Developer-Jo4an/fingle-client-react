@@ -1,0 +1,29 @@
+@import '../../../styles/zeroing/global';
+
+.date-interval-arrows {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    align-self: stretch;
+
+    svg {
+        width: 14px;
+        height: 14px;
+    }
+}
+
+.date-interval-arrow {
+    width: 30px;
+    height: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    transition: .3s;
+
+    &:active {background-color: $main-gray-active-color;}
+}

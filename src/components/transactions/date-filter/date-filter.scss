@@ -1,0 +1,35 @@
+@import '../../../styles/zeroing/global';
+
+.date-interval {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    padding: 10px;
+
+    border-radius: 20px;
+
+    transition: .3s;
+
+    &:active {
+        background-color: $main-gray-active-color;
+    }
+}
+
+.date-interval-label {
+    min-width: 60px;
+    max-width: 120px;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    font-size: 14px;
+
+    font-family: custom-bold, Manropw, sans-serif;
+}

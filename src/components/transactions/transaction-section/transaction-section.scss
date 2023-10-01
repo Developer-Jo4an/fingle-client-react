@@ -1,0 +1,14 @@
+.transaction-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex-grow: 1;
+
+    position: relative;
+}
+
+.no-transactions {
+    font-family: custom-bold, Manrope, sans-serif;
+
+    margin: auto;
+}

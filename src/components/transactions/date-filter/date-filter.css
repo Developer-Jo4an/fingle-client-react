@@ -1,0 +1,27 @@
+.date-interval {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 20px;
+  transition: 0.3s;
+}
+.date-interval svg {
+  width: 20px;
+  height: 20px;
+}
+.date-interval:active {
+  background-color: #e0e0e0;
+}
+
+.date-interval-label {
+  min-width: 60px;
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 14px;
+  font-family: custom-bold, Manropw, sans-serif;
+}
+
+/*# sourceMappingURL=date-filter.css.map */

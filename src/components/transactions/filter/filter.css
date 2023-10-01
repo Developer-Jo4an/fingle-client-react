@@ -1,0 +1,13 @@
+.transactions-filter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+
+.date-filter-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+/*# sourceMappingURL=filter.css.map */

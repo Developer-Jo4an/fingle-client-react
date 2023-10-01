@@ -1,13 +1,13 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react'
+
 import './datepicker.css'
+
 const Datepicker = ({datepicker, Ref, datepickerClasses, ...props}) => {
 
     useEffect(() => {
         const newDatepicker = datepicker()
         return () => newDatepicker.destroy()
     }, [])
-
-
 
     return (
         <label

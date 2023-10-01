@@ -5,7 +5,7 @@ const MyHead = (props) => {
         <h1 className={classes.myHead}>
             {props.children}
         </h1>
-    );
-};
+    )
+}
 
 export default MyHead;

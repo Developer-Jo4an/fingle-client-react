@@ -1,0 +1,45 @@
+.add-transaction-btn {
+  width: 50px;
+  height: 50px;
+  background-color: #24e597;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  position: fixed;
+  right: 25px;
+  bottom: 95px;
+  z-index: 91;
+  transition: 2s;
+}
+.add-transaction-btn svg {
+  width: 20px;
+  height: 20px;
+  color: #fff;
+  z-index: 1;
+}
+
+.pulse-animation {
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #24e597;
+  animation: btn-pulse 2s infinite;
+}
+
+@keyframes btn-pulse {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+}
+
+/*# sourceMappingURL=add-transaction.css.map */

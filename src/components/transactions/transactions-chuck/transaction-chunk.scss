@@ -1,0 +1,50 @@
+@import '../../../styles/zeroing/global';
+
+.transaction-chunk {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    padding: 0 20px;
+}
+
+.transaction-chunk-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.transaction-chunk-date {
+    font-size: 18px;
+    font-family: custom-bold, Manrope, sans-serif;
+}
+
+.transaction-chunk-count-info {
+    display: flex;
+    gap: 5px;
+
+    overflow: hidden;
+}
+
+.transaction-chunk-i {
+    height: 12px;
+    width: 6px;
+
+    padding: 6px 9px;
+
+    border-radius: 50%;
+
+    background-color: $main-blue-color;
+
+    color: #fff;
+}
+
+.transaction-chunk-count-total {
+    transition: .3s;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    font-size: 14px;
+}

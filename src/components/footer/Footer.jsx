@@ -1,6 +1,9 @@
-import React, {useEffect, useRef, useState} from 'react';
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faHouse, faChartSimple, faBarsStaggered} from "@fortawesome/free-solid-svg-icons";
+import React, {useEffect, useRef, useState} from 'react'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHouse, faChartSimple, faBarsStaggered } from '@fortawesome/free-solid-svg-icons'
+
+import './footer.css'
 
 const Footer = ({pageNav, activePage}) => {
     const [home, setHome] = useState({id: 'home', label: 'Home', icon: faHouse, width: 'auto', ref: useRef()})
@@ -50,4 +53,4 @@ const Footer = ({pageNav, activePage}) => {
     )
 }
 
-export default Footer;
+export default Footer

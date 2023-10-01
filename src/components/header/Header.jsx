@@ -1,7 +1,9 @@
-import React from 'react';
-import {Buffer} from "buffer";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faBell, faGear} from "@fortawesome/free-solid-svg-icons";
+import React from 'react'
+import { Buffer } from 'buffer'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBell, faGear } from '@fortawesome/free-solid-svg-icons'
+
+import './header.css'
 
 const Header = ({...props}) => {
     const {avatar, nickname} = props
@@ -20,4 +22,4 @@ const Header = ({...props}) => {
     );
 };
 
-export default Header;
+export default Header

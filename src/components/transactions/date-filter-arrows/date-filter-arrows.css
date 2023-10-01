@@ -1,0 +1,25 @@
+.date-interval-arrows {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  align-self: stretch;
+}
+.date-interval-arrows svg {
+  width: 14px;
+  height: 14px;
+}
+
+.date-interval-arrow {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+.date-interval-arrow:active {
+  background-color: #e0e0e0;
+}
+
+/*# sourceMappingURL=date-filter-arrows.css.map */

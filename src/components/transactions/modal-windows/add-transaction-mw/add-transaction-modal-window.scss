@@ -1,0 +1,262 @@
+@import '../../../../styles/zeroing/global';
+// functions
+
+%card-settings {
+    width: auto !important;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 6px 12px;
+
+    font-family: custom-bold, Manrope, sans-serif;
+
+    border: 2px solid $main-green-color;
+    border-radius: 12px;
+
+    color: $main-green-color;
+
+    transition: .3s;
+}
+
+%category-settings {
+    width: auto !important;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 6px 12px;
+
+    font-family: custom-bold, Manrope, sans-serif;
+
+    border: 2px solid var(--category-color);
+    border-radius: 12px;
+
+    color: var(--category-color);
+
+    transition: .3s;
+
+}
+
+// functions
+
+.add-transaction-modal-window {
+    display: flex;
+    flex-direction: column;
+}
+
+// type
+
+.add-transaction-type {
+    display: flex;
+    align-items: center;
+
+    padding: 20px 20px 10px 10px;
+}
+
+.transaction-type {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+
+    font-family: custom-bold, Manrope, sans-serif;
+
+    transition: .3s;
+
+    position: relative;
+
+    padding: 10px 0;
+
+    &:after {
+        content: '';
+
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%);
+
+        width: 0;
+        height: 2px;
+
+        background-color: $main-green-color;
+
+        border-radius: 1px;
+
+        transition: .3s;
+    }
+}
+
+.transaction-type-active {
+    color: $main-green-color;
+    &:after {width: 70%}
+}
+
+// time
+.add-transaction-date-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.add-transaction-date-arrow {
+    width: 15px;
+    height: 15px;
+
+    padding: 5px;
+
+    transition: .3s;
+
+    border-radius: 50%;
+
+    &:active {
+        background-color: $main-gray-active-color;
+    }
+}
+
+.add-transaction-date-wrapper {
+    position: relative;
+}
+
+.add-transaction-date-input {
+    width: 0;
+    height: 0;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    opacity: 0;
+}
+
+.add-transaction-date {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+
+    svg {
+        width: 20px;
+        height: 20px;
+
+        color: $main-opacity-color;
+    }
+
+    font-family: custom-bold, Manrope, sans-serif;
+
+    padding: 10px 0 10px;
+}
+
+.add-transaction-date-info {
+    display: flex;
+    gap: 10px;
+}
+
+
+// card
+
+.slider-wrapper {
+    .swiper {
+        overflow: visible !important;
+    }
+    padding: 10px 20px;
+    overflow: visible;
+}
+
+.add-transaction-card {
+    @extend %card-settings;
+}
+
+.add-transaction-card-active {
+    background-color: $main-green-color;
+    color: #fff;
+}
+
+
+// count
+
+.add-transaction-count {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 10px 0;
+}
+
+.add-transaction-count-value {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    color: $main-red-color;
+
+    font-size: 32px;
+}
+
+// more info
+
+// main-section
+.add-transaction-more-info {
+    position: relative;
+}
+// main-wrapper
+.add-transaction-more-info-wrapper {
+    width: 300%;
+
+    display: flex;
+
+    transition: .3s;
+}
+
+// part wrapper
+
+.add-transaction-category-wrapper,
+.add-transaction-transfer-card-wrapper,
+.add-transaction-income-category-wrapper {
+    width: 33.3333%;
+
+    overflow: hidden;
+
+    padding: 10px 20px;
+}
+// slides
+.add-transaction-transfer-card {
+    @extend %card-settings;
+}
+
+.add-transaction-category {
+    @extend %category-settings;
+}
+
+.add-transaction-income-category {
+    @extend %category-settings;
+}
+
+// animation
+
+.error-animation {
+    animation: error-animation;
+    animation-duration: 0.7s;
+}
+@keyframes error-animation {
+    0% {
+        transform: translateX(10px);
+    }
+    20% {
+        transform: translateX(-10px)
+    }
+    40% {
+        transform: translateX(10px)
+    }
+    60% {
+        transform: translateX(-10px)
+    }
+    80% {
+        transform: translateX(10px)
+    }
+    100% {
+        transform: translateX(0)
+    }
+}
+

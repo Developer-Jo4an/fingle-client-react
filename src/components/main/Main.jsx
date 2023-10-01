@@ -1,10 +1,10 @@
-import React, {useEffect, useRef, useState} from 'react';
-import Transactions from "../transactions/Transactions";
+import React, {useEffect, useRef, useState} from 'react'
+import Transactions from '../transactions/transactions/Transactions'
+
+import './main.css'
 
 const Main = ({activePage, ...props}) => {
     const {transactions, allCards, transactionCategories} = props
-
-
 
     return (
         <main>
@@ -15,4 +15,4 @@ const Main = ({activePage, ...props}) => {
     );
 };
 
-export default Main;
+export default Main

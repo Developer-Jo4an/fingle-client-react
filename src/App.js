@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from "react"
-import './styles/zeroing/zeroing.css'
-import axios from "axios"
-import {userId, errorUser} from "./my-functions/my-functions"
 import Header from "./components/header/Header"
 import Main from "./components/main/Main"
 import Footer from "./components/footer/Footer"
 
+import axios from "axios"
+import {userId, errorUser} from "./my-functions/my-functions"
+
+import './styles/zeroing/zeroing.css'
 function App() {
 
     const [userData, setUserData] = useState(null)

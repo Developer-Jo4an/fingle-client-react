@@ -1,0 +1,58 @@
+@import '../../styles/zeroing/global';
+
+footer {
+    align-self: stretch;
+
+    box-shadow: $main-shadow;
+
+    background-color: #fff;
+
+    padding: 10px 15px;
+
+    z-index: 90;
+
+    position: sticky;
+    bottom: 0;
+    left: 0;
+}
+
+.footer-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    overflow: hidden;
+}
+
+.footer-nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    padding: 15px;
+
+    border-radius: 30px;
+
+    transition: .3s;
+
+    svg {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+.footer-nav-btn-active {
+    background-color: rgb($main-green-color, 0.4);
+
+    color: $main-green-color;
+}
+
+.footer-btn-label {
+    transition: .3s;
+
+    font-family: custom-bold, Manrope, sans-serif;
+
+    overflow-x: hidden;
+
+    color: $main-green-color;
+}

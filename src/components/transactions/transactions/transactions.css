@@ -1,0 +1,9 @@
+.transactions-page {
+  flex-grow: 1;
+  flex-direction: column;
+  padding: 20px 0;
+  gap: 10px;
+  position: relative;
+}
+
+/*# sourceMappingURL=transactions.css.map */
