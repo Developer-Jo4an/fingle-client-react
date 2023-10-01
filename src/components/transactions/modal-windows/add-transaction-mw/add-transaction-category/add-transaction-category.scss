@@ -1,0 +1,34 @@
+@import '../../../../../styles/zeroing/global';
+
+.add-transaction-category-wrapper {
+    width: 33.3333%;
+
+    overflow: hidden;
+
+    padding: 10px 20px;
+}
+
+.add-transaction-category {
+    width: auto !important;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 6px 12px;
+
+    font-family: custom-bold, Manrope, sans-serif;
+
+    border: 2px solid var(--category-color);
+    border-radius: 12px;
+
+    color: var(--category-color);
+
+    transition: .3s;
+}
+
+.add-transaction-category-active {
+    background-color: var(--category-color);
+
+    color: #fff;
+}

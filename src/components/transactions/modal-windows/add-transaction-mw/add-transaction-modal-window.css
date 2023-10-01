@@ -1,67 +1,6 @@
-.add-transaction-transfer-card, .add-transaction-card {
-  width: auto !important;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 6px 12px;
-  font-family: custom-bold, Manrope, sans-serif;
-  border: 2px solid #24e597;
-  border-radius: 12px;
-  color: #24e597;
-  transition: 0.3s;
-}
-
-.add-transaction-income-category, .add-transaction-category {
-  width: auto !important;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 6px 12px;
-  font-family: custom-bold, Manrope, sans-serif;
-  border: 2px solid var(--category-color);
-  border-radius: 12px;
-  color: var(--category-color);
-  transition: 0.3s;
-}
-
 .add-transaction-modal-window {
   display: flex;
   flex-direction: column;
-}
-
-.add-transaction-type {
-  display: flex;
-  align-items: center;
-  padding: 20px 20px 10px 10px;
-}
-
-.transaction-type {
-  flex-grow: 1;
-  display: flex;
-  justify-content: center;
-  font-family: custom-bold, Manrope, sans-serif;
-  transition: 0.3s;
-  position: relative;
-  padding: 10px 0;
-}
-.transaction-type:after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translate(-50%);
-  width: 0;
-  height: 2px;
-  background-color: #24e597;
-  border-radius: 1px;
-  transition: 0.3s;
-}
-
-.transaction-type-active {
-  color: #24e597;
-}
-.transaction-type-active:after {
-  width: 70%;
 }
 
 .add-transaction-date-section {
@@ -113,19 +52,6 @@
   gap: 10px;
 }
 
-.slider-wrapper {
-  padding: 10px 20px;
-  overflow: visible;
-}
-.slider-wrapper .swiper {
-  overflow: visible !important;
-}
-
-.add-transaction-card-active {
-  background-color: #24e597;
-  color: #fff;
-}
-
 .add-transaction-count {
   display: flex;
   align-items: center;
@@ -151,12 +77,16 @@
   transition: 0.3s;
 }
 
-.add-transaction-category-wrapper,
-.add-transaction-transfer-card-wrapper,
-.add-transaction-income-category-wrapper {
-  width: 33.3333%;
-  overflow: hidden;
-  padding: 10px 20px;
+.start {
+  transform: translateX(0);
+}
+
+.middle {
+  transform: translateX(-33.33%);
+}
+
+.end {
+  transform: translateX(-66.66%);
 }
 
 .error-animation {

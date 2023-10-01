@@ -1,16 +1,24 @@
 import React, {useCallback, useEffect, useRef, useState} from 'react'
 import Datepicker from '../../../datepicker/Datepicker'
 import Calculator from '../../calculator/Calculator'
+import AddTransactionType from './add-transaction-type/add-transaction-type'
+import AddTransactionCard from './add-transaction-card/add-transaction-card'
+import AddTransactionCategory from './add-transaction-category/AddTransactionCategory'
+import AddTransactionIncomeCategory from './add-transaction-income/AddTransactionIncomeCategory'
+import AddTransactionTransferCard from './add-transaction-transfer-card/AddTransactionTransferCard'
 
-import { Swiper, SwiperSlide } from 'swiper/react'
 import { faClock, faCalendar, faAngleLeft, faAngleRight} from '@fortawesome/free-solid-svg-icons'
-import AirDatepicker from "air-datepicker"
-import moment from "moment"
+import AirDatepicker from 'air-datepicker'
+import moment from 'moment'
 import { dateRefactor, timeRefactor } from '../../../../my-functions/my-functions'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
+
 import 'swiper/css'
 import './add-transaction-modal-window.css'
+
+import { register } from 'swiper/element/bundle'
+register()
 
 const AddTransactionModalWindow = ({allCards, categories}) => {
     const [transactionObj, setTransactionObj] = useState({
@@ -24,19 +32,8 @@ const AddTransactionModalWindow = ({allCards, categories}) => {
         count: '0'
     })
 
-    // types
-    const transactionTypes = [
-        {id: 'expense', label: 'Expense'},
-        {id: 'income', label: 'Income'},
-        {id: 'transfer', label: 'Transfer'},
-    ]
     // date
     const inputRef = useRef()
-
-    const datepickerClasses = {
-        label: 'add-transaction-date-wrapper',
-        input: 'add-transaction-date-input'
-    }
 
     const dateToggle = action => {
         setTransactionObj(prev => {
@@ -46,7 +43,6 @@ const AddTransactionModalWindow = ({allCards, categories}) => {
         })
     }
 
-
     const datepicker = useCallback(() => {
         return new AirDatepicker(inputRef.current, {
             isMobile: true,
@@ -54,45 +50,40 @@ const AddTransactionModalWindow = ({allCards, categories}) => {
             toggleSelected: false,
             onSelect: ({date}) => {
                 if (!Array.isArray(date)) setTransactionObj(prev => ({...prev, date: date}))
-
             }
         })
     }, [setTransactionObj, inputRef])
 
     // count
-
     const countRef = useRef()
 
     // more info
+    const categoriesSelectRef = useRef()
+    const incomeCategoriesSelect = useRef()
+    const transferCardSelect = useRef()
+    // more info
 
-
+    // listener
     useEffect(() => {
         console.log(transactionObj)
     }, [transactionObj])
+    // listener
+
 
     return (
         <div
             className={'add-transaction-modal-window'}
             onClick={e => e.stopPropagation()}
         >
-            <div className='add-transaction-type'>
-                {transactionTypes.map(type => (
-                    <div
-                        key={type.id}
-                        className={`transaction-type ${type.id === transactionObj.type ? 'transaction-type-active' : ''}`}
-                        onClick={() => setTransactionObj(prev => {
-                            const futureObject = {...prev, type: type.id}
-                            type.id === 'expense' && type.id === 'income' ?
-                                futureObject.category = {} : futureObject.transferCard = {}
-                            return futureObject
-                        })}
-                    >{type.label}</div>
-                ))}
-            </div>
-
+            {/*type*/}
+            <AddTransactionType transactionObj={transactionObj} setTransactionObj={setTransactionObj}/>
+            {/*date*/}
             <div className={'add-transaction-date-section'}>
                 <FontAwesomeIcon onClick={() => dateToggle('subtract')} className={'add-transaction-date-arrow'} icon={faAngleLeft} />
-                <Datepicker datepicker={datepicker} Ref={inputRef} datepickerClasses={datepickerClasses}>
+                <Datepicker datepicker={datepicker} Ref={inputRef} datepickerClasses={{
+                    label: 'add-transaction-date-wrapper',
+                    input: 'add-transaction-date-input'
+                }}>
                     <div className={'add-transaction-date'}>
                         <div className={'add-transaction-date-info'}><FontAwesomeIcon icon={faCalendar}/>{dateRefactor(transactionObj.date)}</div>
                         <div className={'add-transaction-date-info'}><FontAwesomeIcon icon={faClock}/>{timeRefactor(transactionObj.date)}</div>
@@ -101,82 +92,22 @@ const AddTransactionModalWindow = ({allCards, categories}) => {
                 <FontAwesomeIcon onClick={() => dateToggle('add')} className={'add-transaction-date-arrow'} icon={faAngleRight} />
             </div>
 
-
-            <div className={'slider-wrapper'}>
-                <Swiper
-                    spaceBetween={10}
-                    slidesPerView={'auto'}
-                    freeMode={true}
-                >{allCards.map(card => (
-                    <SwiperSlide
-                        key={card._id}
-                        className={`add-transaction-card ${transactionObj.card._id === card._id ? 'add-transaction-card-active': ''}`}
-                        onClick={() => setTransactionObj(prev => ({...prev, card: {_id: card._id, cardName: card.cardName, bankName: card.bankName}}))}
-                    >{card.cardName}
-                    </SwiperSlide>
-                ))}
-                </Swiper>
-            </div>
-
+            {/*card*/}
+            <AddTransactionCard Ref={categoriesSelectRef} allCards={allCards} state={transactionObj} setState={setTransactionObj}/>
+            {/*count*/}
             <div className={'add-transaction-count'} ref={countRef}>
                 <div className={'add-transaction-count-value'}><div className={'add-transaction-count-currency'}>USD</div> {transactionObj.count}</div>
             </div>
-
-            <div
-                className={`add-transaction-more-info`}
-            >
-                <div
-                    style={{transform: `${transactionObj.type === 'expense' ? 'translateX(0)' : transactionObj.type === 'income' ? 'translateX(-33.33%)' : 'translateX(-66.66%)'}`}}
-                    className={'add-transaction-more-info-wrapper'}
-                >
-                    <div className={'slider-wrapper add-transaction-category-wrapper'}>
-                        <Swiper
-                            spaceBetween={10}
-                            slidesPerView={'auto'}
-                            freeMode={true}
-                        >{Object.values(categories.expense).map(category => (
-                            <SwiperSlide
-                                key={category._id}
-                                style={{'--category-color': category.color}}
-                                className={`add-transaction-category`}
-                            >{category.name}
-                            </SwiperSlide>
-                        ))}
-                        </Swiper>
-                    </div>
-                    <div className={'slider-wrapper add-transaction-income-category-wrapper'}>
-                        <Swiper
-                            spaceBetween={10}
-                            slidesPerView={'auto'}
-                            freeMode={true}
-                        >{Object.values(categories.income).map(category => (
-                            <SwiperSlide
-                                key={category._id}
-                                style={{'--category-color': category.color}}
-                                className={`add-transaction-income-category`}
-                            >{category.name}
-                            </SwiperSlide>
-                        ))}
-                        </Swiper>
-                    </div>
-                    <div className={'slider-wrapper add-transaction-transfer-card-wrapper'}>
-                        <Swiper
-                            spaceBetween={10}
-                            slidesPerView={'auto'}
-                            freeMode={true}
-                        >{allCards.map(card => (
-                            <SwiperSlide
-                                key={card._id}
-                                className={'add-transaction-transfer-card'}
-                                onClick={() => setTransactionObj(prev => ({...prev, card: {_id: card._id, cardName: card.cardName, bankName: card.bankName}}))}
-                            >{card.cardName}
-                            </SwiperSlide>
-                        ))}
-                        </Swiper>
-                    </div>
+            {/*moore info*/}
+            <div className={`add-transaction-more-info`}>
+                <div className={`add-transaction-more-info-wrapper ${transactionObj.type === 'expense' ? 
+                    'start' : transactionObj.type === 'income' ? 'middle' : 'end'}`}>
+                    <AddTransactionCategory Ref={categoriesSelectRef} categories={categories} state={transactionObj} setState={setTransactionObj}/>
+                    <AddTransactionIncomeCategory Ref={incomeCategoriesSelect} categories={categories} state={transactionObj} setState={setTransactionObj}/>
+                    <AddTransactionTransferCard Ref={transferCardSelect} allCards={allCards} state={transactionObj} setState={setTransactionObj}/>
                 </div>
             </div>
-
+            {/*calculator*/}
             <Calculator Ref={countRef} state={transactionObj} setState={setTransactionObj}/>
         </div>
     )

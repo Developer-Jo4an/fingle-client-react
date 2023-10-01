@@ -1,0 +1,36 @@
+.add-transaction-type {
+  display: flex;
+  align-items: center;
+  padding: 20px 20px 10px 10px;
+}
+
+.transaction-type {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  font-family: custom-bold, Manrope, sans-serif;
+  transition: 0.3s;
+  position: relative;
+  padding: 10px 0;
+}
+.transaction-type:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%);
+  width: 0;
+  height: 2px;
+  background-color: #24e597;
+  border-radius: 1px;
+  transition: 0.3s;
+}
+
+.transaction-type-active {
+  color: #24e597;
+}
+.transaction-type-active:after {
+  width: 70%;
+}
+
+/*# sourceMappingURL=add-transaction-type.css.map */

@@ -1,0 +1,34 @@
+@import '../../../../../styles/zeroing/global';
+
+.add-transaction-transfer-card-wrapper {
+    width: 33.3333%;
+
+    overflow: hidden;
+
+    padding: 10px 20px;
+}
+
+.add-transaction-transfer-card {
+    width: auto !important;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 6px 12px;
+
+    font-family: custom-bold, Manrope, sans-serif;
+
+    border: 2px solid $main-green-color;
+    border-radius: 12px;
+
+    color: $main-green-color;
+
+    transition: .3s;
+}
+
+.add-transaction-transfer-card-active {
+    background-color: $main-green-color;
+
+    color: #fff;
+}

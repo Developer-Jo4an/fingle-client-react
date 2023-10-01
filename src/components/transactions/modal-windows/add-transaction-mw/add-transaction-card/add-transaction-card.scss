@@ -1,0 +1,32 @@
+@import '../../../../../styles/zeroing/global';
+
+.slider-wrapper {
+    padding: 10px 20px;
+
+    overflow: visible;
+}
+
+.add-transaction-card {
+    width: auto !important;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 6px 12px;
+
+    font-family: custom-bold, Manrope, sans-serif;
+
+    border: 2px solid $main-green-color;
+    border-radius: 12px;
+
+    color: $main-green-color;
+
+    transition: .3s;
+}
+
+.add-transaction-card-active {
+    background-color: $main-green-color;
+
+    color: #fff;
+}

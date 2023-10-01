@@ -1,96 +1,8 @@
 @import '../../../../styles/zeroing/global';
-// functions
-
-%card-settings {
-    width: auto !important;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    padding: 6px 12px;
-
-    font-family: custom-bold, Manrope, sans-serif;
-
-    border: 2px solid $main-green-color;
-    border-radius: 12px;
-
-    color: $main-green-color;
-
-    transition: .3s;
-}
-
-%category-settings {
-    width: auto !important;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    padding: 6px 12px;
-
-    font-family: custom-bold, Manrope, sans-serif;
-
-    border: 2px solid var(--category-color);
-    border-radius: 12px;
-
-    color: var(--category-color);
-
-    transition: .3s;
-
-}
-
-// functions
 
 .add-transaction-modal-window {
     display: flex;
     flex-direction: column;
-}
-
-// type
-
-.add-transaction-type {
-    display: flex;
-    align-items: center;
-
-    padding: 20px 20px 10px 10px;
-}
-
-.transaction-type {
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
-
-    font-family: custom-bold, Manrope, sans-serif;
-
-    transition: .3s;
-
-    position: relative;
-
-    padding: 10px 0;
-
-    &:after {
-        content: '';
-
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translate(-50%);
-
-        width: 0;
-        height: 2px;
-
-        background-color: $main-green-color;
-
-        border-radius: 1px;
-
-        transition: .3s;
-    }
-}
-
-.transaction-type-active {
-    color: $main-green-color;
-    &:after {width: 70%}
 }
 
 // time
@@ -153,27 +65,6 @@
     gap: 10px;
 }
 
-
-// card
-
-.slider-wrapper {
-    .swiper {
-        overflow: visible !important;
-    }
-    padding: 10px 20px;
-    overflow: visible;
-}
-
-.add-transaction-card {
-    @extend %card-settings;
-}
-
-.add-transaction-card-active {
-    background-color: $main-green-color;
-    color: #fff;
-}
-
-
 // count
 
 .add-transaction-count {
@@ -194,13 +85,10 @@
     font-size: 32px;
 }
 
-// more info
-
-// main-section
 .add-transaction-more-info {
     position: relative;
 }
-// main-wrapper
+
 .add-transaction-more-info-wrapper {
     width: 300%;
 
@@ -209,29 +97,9 @@
     transition: .3s;
 }
 
-// part wrapper
-
-.add-transaction-category-wrapper,
-.add-transaction-transfer-card-wrapper,
-.add-transaction-income-category-wrapper {
-    width: 33.3333%;
-
-    overflow: hidden;
-
-    padding: 10px 20px;
-}
-// slides
-.add-transaction-transfer-card {
-    @extend %card-settings;
-}
-
-.add-transaction-category {
-    @extend %category-settings;
-}
-
-.add-transaction-income-category {
-    @extend %category-settings;
-}
+.start {transform: translateX(0)}
+.middle {transform: translateX(-33.33%)}
+.end {transform: translateX(-66.66%)}
 
 // animation
 
@@ -239,6 +107,7 @@
     animation: error-animation;
     animation-duration: 0.7s;
 }
+
 @keyframes error-animation {
     0% {
         transform: translateX(10px);

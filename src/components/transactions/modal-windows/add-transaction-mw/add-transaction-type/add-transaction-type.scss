@@ -1,0 +1,45 @@
+@import '../../../../../styles/zeroing/global';
+
+.add-transaction-type {
+    display: flex;
+    align-items: center;
+
+    padding: 20px 20px 10px 10px;
+}
+
+.transaction-type {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+
+    font-family: custom-bold, Manrope, sans-serif;
+
+    transition: .3s;
+
+    position: relative;
+
+    padding: 10px 0;
+
+    &:after {
+        content: '';
+
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%);
+
+        width: 0;
+        height: 2px;
+
+        background-color: $main-green-color;
+
+        border-radius: 1px;
+
+        transition: .3s;
+    }
+}
+
+.transaction-type-active {
+    color: $main-green-color;
+    &:after {width: 70%}
+}
