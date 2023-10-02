@@ -44,7 +44,7 @@
 .add-transaction-date svg {
   width: 20px;
   height: 20px;
-  color: #7a7878;
+  color: #2d2d2d;
 }
 
 .add-transaction-date-info {
@@ -69,6 +69,8 @@
 
 .add-transaction-more-info {
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .add-transaction-more-info-wrapper {

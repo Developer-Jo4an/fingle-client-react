@@ -87,6 +87,9 @@
 
 .add-transaction-more-info {
     position: relative;
+
+    display: flex;
+    flex-direction: column;
 }
 
 .add-transaction-more-info-wrapper {

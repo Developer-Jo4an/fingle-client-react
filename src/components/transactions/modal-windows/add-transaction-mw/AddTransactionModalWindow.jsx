@@ -1,18 +1,21 @@
 import React, {useCallback, useEffect, useRef, useState} from 'react'
 import Datepicker from '../../../datepicker/Datepicker'
-import Calculator from '../../calculator/Calculator'
+import Calculator from './calculator/Calculator'
 import AddTransactionType from './add-transaction-type/add-transaction-type'
 import AddTransactionCard from './add-transaction-card/add-transaction-card'
 import AddTransactionCategory from './add-transaction-category/AddTransactionCategory'
 import AddTransactionIncomeCategory from './add-transaction-income/AddTransactionIncomeCategory'
 import AddTransactionTransferCard from './add-transaction-transfer-card/AddTransactionTransferCard'
+import AddTransactionSubMoreInfo from './add-transaction-more-sub-more-info/AddTransactionSubMoreInfo'
+import MessageModalWindow from '../message-modal-window/MessageModalWindow'
+import ModalWindowContentCenter from '../mw-content-center/ModalWindowContentCenter'
+import AddTransactionMessage from '../add-transaction-message/AddTransactionMessage'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClock, faCalendar, faAngleLeft, faAngleRight} from '@fortawesome/free-solid-svg-icons'
 import AirDatepicker from 'air-datepicker'
 import moment from 'moment'
 import { dateRefactor, timeRefactor } from '../../../../my-functions/my-functions'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
 
 import 'swiper/css'
 import './add-transaction-modal-window.css'
@@ -20,7 +23,10 @@ import './add-transaction-modal-window.css'
 import { register } from 'swiper/element/bundle'
 register()
 
-const AddTransactionModalWindow = ({allCards, categories}) => {
+const AddTransactionModalWindow = ({allCards, categories, setMWVisible}) => {
+
+    const [message, setMessage] = useState(false)
+
     const [transactionObj, setTransactionObj] = useState({
         type: 'expense',
         date: new Date(),
@@ -61,6 +67,7 @@ const AddTransactionModalWindow = ({allCards, categories}) => {
     const categoriesSelectRef = useRef()
     const incomeCategoriesSelect = useRef()
     const transferCardSelect = useRef()
+    const subMoreInfo = useRef()
     // more info
 
     // listener
@@ -92,6 +99,8 @@ const AddTransactionModalWindow = ({allCards, categories}) => {
                 <FontAwesomeIcon onClick={() => dateToggle('add')} className={'add-transaction-date-arrow'} icon={faAngleRight} />
             </div>
 
+            <AddTransactionMessage state={transactionObj}/>
+
             {/*card*/}
             <AddTransactionCard Ref={categoriesSelectRef} allCards={allCards} state={transactionObj} setState={setTransactionObj}/>
             {/*count*/}
@@ -106,9 +115,19 @@ const AddTransactionModalWindow = ({allCards, categories}) => {
                     <AddTransactionIncomeCategory Ref={incomeCategoriesSelect} categories={categories} state={transactionObj} setState={setTransactionObj}/>
                     <AddTransactionTransferCard Ref={transferCardSelect} allCards={allCards} state={transactionObj} setState={setTransactionObj}/>
                 </div>
+                <AddTransactionSubMoreInfo Ref={subMoreInfo} state={transactionObj} setState={setTransactionObj}/>
             </div>
             {/*calculator*/}
-            <Calculator Ref={countRef} state={transactionObj} setState={setTransactionObj}/>
+            <Calculator
+                Ref={countRef}
+                state={transactionObj}
+                setState={setTransactionObj}
+                setMWVisible={setMWVisible}
+                messageVisible={setMessage}
+            />
+            <ModalWindowContentCenter visible={message} setVisible={setMessage}>
+                <MessageModalWindow setVisible={setMessage} setState={setTransactionObj}/>
+            </ModalWindowContentCenter>
         </div>
     )
 }

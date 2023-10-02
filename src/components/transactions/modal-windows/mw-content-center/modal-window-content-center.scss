@@ -1,0 +1,41 @@
+@import '../../../../styles/zeroing/global';
+
+.modal-window-center {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    background-color: $modal-window-background;
+    opacity: 0;
+
+    transition: .3s;
+
+    pointer-events: none;
+
+    z-index: 91;
+}
+
+.modal-window-center-appearance {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.modal-window-content-center {
+    display: flex;
+    flex-direction: column;
+
+    background-color: #fff;
+
+    transition: .3s;
+
+    border-radius: 20px;
+
+    padding: 20px;
+}

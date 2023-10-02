@@ -4,16 +4,18 @@ import Filter from '../filter/Filter'
 import ModalWindow from '../modal-windows/mw/ModalWindow'
 import DateFilterModalWindow from '../modal-windows/date-filter-mw/DateFilterModalWindow'
 import AddTransactionModalWindow from '../modal-windows/add-transaction-mw/AddTransactionModalWindow'
+import TransactionSection from '../transaction-section/TransactionSection'
 
 import moment from 'moment'
 import axios from 'axios'
 import { dateObj, dateRefactor, userId } from '../../../my-functions/my-functions'
 
 import './transactions.css'
-import TransactionSection from '../transaction-section/TransactionSection';
+
 const Transactions = ({activePage, allCards, transactionCategories}) => {
     const [interval, setInterval] = useState('Week')
     const [transactions, setTransactions] = useState([])
+
     const [dateFilterVisible, setDateFilterVisible] = useState(false)
     const [addTransactionVisible, setAddTransactionVisible] = useState(false)
 
@@ -87,6 +89,7 @@ const Transactions = ({activePage, allCards, transactionCategories}) => {
                 <AddTransactionModalWindow
                     allCards={allCards}
                     categories={transactionCategories}
+                    setMWVisible={setAddTransactionVisible}
                 />
             </ModalWindow>
         </section>

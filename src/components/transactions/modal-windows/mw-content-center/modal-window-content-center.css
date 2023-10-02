@@ -1,0 +1,31 @@
+.modal-window-center {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(194, 188, 188, 0.5);
+  opacity: 0;
+  transition: 0.3s;
+  pointer-events: none;
+  z-index: 91;
+}
+
+.modal-window-center-appearance {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal-window-content-center {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  transition: 0.3s;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+/*# sourceMappingURL=modal-window-content-center.css.map */

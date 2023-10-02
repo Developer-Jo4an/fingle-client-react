@@ -1,0 +1,30 @@
+.add-transaction-message {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 30px;
+}
+
+.add-transaction-message-active {
+  display: flex;
+}
+
+.add-transaction-message-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  overflow: hidden;
+}
+.add-transaction-message-wrapper svg {
+  width: 18px;
+  height: 18px;
+  color: #2d2d2d;
+}
+
+.add-transaction-message-value {
+  font-size: 18px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/*# sourceMappingURL=add-transaction-message.css.map */

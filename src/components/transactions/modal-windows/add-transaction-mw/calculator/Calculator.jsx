@@ -15,7 +15,7 @@ import {
 
 import './calculator.css'
 
-const Calculator = ({Ref, state, setState}) => {
+const Calculator = ({Ref, state, setState, setMWVisible, messageVisible}) => {
 
     const calculatorChange = item => {
 
@@ -65,7 +65,15 @@ const Calculator = ({Ref, state, setState}) => {
             case 'apply': {
                 const result = counter(state.count)
                 setState(prev => result ? {...prev, count: result} : prev)
-
+                break
+            }
+            case 'close': {
+                setMWVisible(false)
+                break
+            }
+            case 'message': {
+                messageVisible(true)
+                break
             }
         }
     }

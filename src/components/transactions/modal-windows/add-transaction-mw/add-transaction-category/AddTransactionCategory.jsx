@@ -4,15 +4,22 @@ import './add-transaction-category.css'
 const AddTransactionCategory = ({Ref, categories, state, setState}) => {
 
     const selectCategory = category => {
+
         setState(prev => {
+            const futureObject = {}
             if (prev.category) {
-                const futureObject = {}
                 if (prev.category._id === category._id) {
-                    for (const key in prev) if (key !== 'category') futureObject[key] = prev[key]
+                    for (const key in prev) if (key !== 'category' && key !=='subCategory') futureObject[key] = prev[key]
                 }
-                else return {...prev, category: category}
-                return futureObject
-            } else return {...prev, category: category}
+                else {
+                    for (const key in prev) if (key !== 'subCategory') futureObject[key] = prev[key]
+                    return {...futureObject, category: category}
+                }
+            } else {
+                for (const key in prev) if (key !== 'subCategory') futureObject[key] = prev[key]
+                return {...futureObject, category: category}
+            }
+            return futureObject
         })
     }
 
