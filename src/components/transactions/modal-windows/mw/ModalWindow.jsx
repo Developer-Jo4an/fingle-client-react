@@ -9,7 +9,10 @@ const ModalWindow = ({visible, setVisible, ...props}) => {
         <div
             className={`modal-window ${visible ? 'modal-window-appearance' : ''}`}
             onClick={hideModalWindow}
-        ><div className={`modal-window-content ${visible ? 'modal-window-content-appearance' : ''}`}>{props.children}</div>
+        ><div
+            className={`modal-window-content ${visible ? 'modal-window-content-appearance' : ''}`}
+            onClick={e => e.stopPropagation()}
+        >{props.children}</div>
         </div>
     )
 }

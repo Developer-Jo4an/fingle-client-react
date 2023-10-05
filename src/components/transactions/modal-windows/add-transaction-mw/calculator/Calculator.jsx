@@ -1,5 +1,6 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 
+import axios from 'axios'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
     faCheck,
@@ -12,10 +13,37 @@ import {
     faPlus,
     faXmark
 } from '@fortawesome/free-solid-svg-icons'
+import { formattedInterval, formattedTransactions, userId } from '../../../../../my-functions/my-functions'
 
 import './calculator.css'
 
-const Calculator = ({Ref, state, setState, setMWVisible, messageVisible}) => {
+const Calculator = ({Ref, state, setState, setMWVisible, messageVisible, interval, setTransactions, allCards}) => {
+    const saveTransaction = async () => {
+        try {
+            const transactionRequest = async (interval) => {
+                try {
+                    const transaction = {}
+                    for (const key in state) key === 'type' ? transaction.transactionType = state[key] : transaction[key] = state[key]
+                    let transactionsData = await axios.post(`${userId}/add-transaction`, {interval, transaction})
+                    const filteredTransactions = formattedTransactions(transactionsData)
+                    setTransactions(filteredTransactions)
+                    setState({
+                        type: 'expense',
+                        date: new Date(),
+                        card: {
+                            _id: allCards[0]._id,
+                            cardName: allCards[0].cardName,
+                            bankName: allCards[0].bankName
+                        },
+                        count: '0'
+                    })
+                } catch (e) {setTransactions([])}
+            }
+            setMWVisible(false)
+            setTransactions(['loader'])
+            transactionRequest(formattedInterval(interval))
+        } catch (e) {setTransactions([])}
+    }
 
     const calculatorChange = item => {
 
@@ -65,6 +93,20 @@ const Calculator = ({Ref, state, setState, setMWVisible, messageVisible}) => {
             case 'apply': {
                 const result = counter(state.count)
                 setState(prev => result ? {...prev, count: result} : prev)
+                const {count, card, date} = state
+                if (state.type === 'expense' || state.type === 'income') {
+                    if (count && card && date) {
+                        if (state.category) {
+                            saveTransaction()
+                        }
+                    }
+                } else {
+                    if (count && card && date) {
+                        if (state.transferCard) {
+                            saveTransaction()
+                        }
+                    }
+                }
                 break
             }
             case 'close': {

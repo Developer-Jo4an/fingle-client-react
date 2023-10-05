@@ -1,4 +1,4 @@
-import moment from "moment";
+import moment from 'moment'
 export const userId = new URL(window.location.href).pathname
 export const errorUser = {
     allCards:[{}, {}],
@@ -40,4 +40,41 @@ export function timeRefactor(date) {
     const hours = date.getHours().toString().padStart(2, '0');
     const minutes = date.getMinutes().toString().padStart(2, '0');
     return `${hours}:${minutes}`
+}
+
+export function formattedTransactions(transactionsData) {
+    transactionsData = transactionsData.data.map(item =>
+        new Object({...item, date: new Date(item.date)}))
+        .sort((a, b) => b.date - a.date)
+
+    const transactionsObj = {}
+    transactionsData.forEach(item => {
+        const date = dateRefactor(item.date)
+        date in transactionsObj ?
+            transactionsObj[date] = [...transactionsObj[date], item]
+            : transactionsObj[date] = [item]
+    })
+
+    const lastTransactions = []
+    for (const key in transactionsObj) lastTransactions.push([key, transactionsObj[key]])
+    return lastTransactions
+}
+
+export function formattedInterval(interval) {
+    const nowInterval = dateObj(interval)
+    let formattedInterval = null
+    if (nowInterval) return nowInterval
+    else {
+        if (interval.includes(' - ')) {
+            formattedInterval = interval.split(' - ').map((date, i) => {
+                const newDate = moment(date, 'DD.MM.YYYY')._d
+                return i === 0 ? newDate : new Date(newDate.setHours(23, 59, 59, 999))
+            })
+        } else {
+            const startDate = moment(interval, 'DD.MM.YYYY')._d
+            const lastDate = new Date(moment(interval, 'DD.MM.YYYY')._d.setHours(23, 59, 59, 999))
+            formattedInterval = [startDate, lastDate]
+        }
+        return formattedInterval
+    }
 }

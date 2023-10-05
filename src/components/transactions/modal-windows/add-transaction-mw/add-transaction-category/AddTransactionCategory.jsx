@@ -1,6 +1,7 @@
 import React from 'react'
 
 import './add-transaction-category.css'
+
 const AddTransactionCategory = ({Ref, categories, state, setState}) => {
 
     const selectCategory = category => {

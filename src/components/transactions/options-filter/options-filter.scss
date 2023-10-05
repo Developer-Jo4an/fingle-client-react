@@ -1,0 +1,28 @@
+@import '../../../styles/zeroing/global';
+
+.options-filter {
+    flex-grow: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    padding-right: 10px;
+}
+
+.options-filer-wrapper {
+    padding: 8px;
+
+    transition: .3s;
+
+    border-radius: 20px;
+
+    &:active {
+        background-color: $main-gray-active-color;
+    }
+
+    svg {
+        width: 20px;
+        height: 20px;
+    }
+}

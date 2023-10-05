@@ -23,7 +23,7 @@ import './add-transaction-modal-window.css'
 import { register } from 'swiper/element/bundle'
 register()
 
-const AddTransactionModalWindow = ({allCards, categories, setMWVisible}) => {
+const AddTransactionModalWindow = ({allCards, categories, setMWVisible, interval, setTransactions}) => {
 
     const [message, setMessage] = useState(false)
 
@@ -70,18 +70,10 @@ const AddTransactionModalWindow = ({allCards, categories, setMWVisible}) => {
     const subMoreInfo = useRef()
     // more info
 
-    // listener
-    useEffect(() => {
-        console.log(transactionObj)
-    }, [transactionObj])
-    // listener
-
+    // modal window
 
     return (
-        <div
-            className={'add-transaction-modal-window'}
-            onClick={e => e.stopPropagation()}
-        >
+        <div className={'add-transaction-modal-window'}>
             {/*type*/}
             <AddTransactionType transactionObj={transactionObj} setTransactionObj={setTransactionObj}/>
             {/*date*/}
@@ -124,6 +116,9 @@ const AddTransactionModalWindow = ({allCards, categories, setMWVisible}) => {
                 setState={setTransactionObj}
                 setMWVisible={setMWVisible}
                 messageVisible={setMessage}
+                interval={interval}
+                setTransactions={setTransactions}
+                allCards={allCards}
             />
             <ModalWindowContentCenter visible={message} setVisible={setMessage}>
                 <MessageModalWindow setVisible={setMessage} setState={setTransactionObj}/>

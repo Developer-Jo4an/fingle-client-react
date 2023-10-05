@@ -13,7 +13,7 @@ const Transaction = ({transaction}) => {
     const getInfo = () => {
         if (transactionType === 'expense' || transactionType === 'income')
             return `${transaction.category.name}${transaction.subCategory ? ` | ${transaction.subCategory.name}` : ''}`
-        else return card.name
+        else return card.cardName
     }
 
     const getAddInfo = () => transactionType === 'expense' ||
@@ -30,7 +30,7 @@ const Transaction = ({transaction}) => {
         >
             <div className={'transaction-sign'}>
                 <div
-                    style={{'--background': transaction.category.color}}
+                    style={{'--background': transaction.type === 'expense' || transaction.type === 'income' ? transaction.category.color : '#f5d544'}}
                     className={'transaction-sign-wrapper'}
                 >{<FontAwesomeIcon icon={faCookieBite}/>}</div>
             </div>

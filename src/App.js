@@ -31,7 +31,11 @@ function App() {
         userData ?
         <section className={'fingle-application'}>
             {activePage === 'home' && <Header activePage={activePage} avatar={userData.avatar} nickname={userData.nickname}/>}
-            <Main activePage={activePage} transactions={userData.transactions} allCards={userData.allCards} transactionCategories={userData.transactionCategories}/>
+            <Main
+                activePage={activePage}
+                transactions={userData.transactions}
+                allCards={userData.allCards}
+                transactionCategories={userData.transactionCategories}/>
             <Footer pageNav={pageNav} activePage={activePage}/>
         </section>
         : <div className={'fingle-loader'}></div>

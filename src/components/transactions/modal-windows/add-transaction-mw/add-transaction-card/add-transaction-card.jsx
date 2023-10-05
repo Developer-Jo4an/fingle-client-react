@@ -20,7 +20,6 @@ const AddTransactionCard = ({Ref, allCards, state, setState}) => {
                 space-between="10"
                 free-mode-momentum="true"
                 freeModeMomentumRatio="0"
-                class={'a'}
             >{allCards.map(card => (
                 <swiper-slide
                     key={card._id}
