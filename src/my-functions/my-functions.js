@@ -1,4 +1,5 @@
 import moment from 'moment'
+
 export const userId = new URL(window.location.href).pathname
 export const errorUser = {
     allCards:[{}, {}],

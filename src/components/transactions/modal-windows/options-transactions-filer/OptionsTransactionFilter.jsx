@@ -9,10 +9,6 @@ const OptionsTransactionFilter = ({filtered, setFiltered, allCards, categories})
 
     const {expense, income} = categories
 
-    // refs
-    const typeRef = useRef()
-    // refs
-
     const typeArray = [
         {_id: 'expense', label: 'Expense', icon: faArrowUp, color: '#ee3a3a'},
         {_id: 'income', label: 'Income', icon: faArrowDown, color: '#24e597'},
@@ -35,7 +31,6 @@ const OptionsTransactionFilter = ({filtered, setFiltered, allCards, categories})
                 <div className={'filter-chunk-header'}>Type</div>
                 <div className={'filter-chunk-options'}>
                     <swiper-container
-                        ref={typeRef}
                         slides-per-view="auto"
                         free-mode="true"
                         space-between="10"
@@ -57,7 +52,6 @@ const OptionsTransactionFilter = ({filtered, setFiltered, allCards, categories})
                 <div className={'filter-chunk-header'}>Cards</div>
                 <div className={'filter-chunk-options'}>
                     <swiper-container
-                        ref={typeRef}
                         slides-per-view="auto"
                         free-mode="true"
                         space-between="10"
@@ -79,7 +73,6 @@ const OptionsTransactionFilter = ({filtered, setFiltered, allCards, categories})
                 <div className={'filter-chunk-header'}>Expense</div>
                 <div className={'filter-chunk-options'}>
                     <swiper-container
-                        ref={typeRef}
                         slides-per-view="auto"
                         free-mode="true"
                         space-between="10"
@@ -101,7 +94,6 @@ const OptionsTransactionFilter = ({filtered, setFiltered, allCards, categories})
                 <div className={'filter-chunk-header'}>Income</div>
                 <div className={'filter-chunk-options'}>
                     <swiper-container
-                        ref={typeRef}
                         slides-per-view="auto"
                         free-mode="true"
                         space-between="10"

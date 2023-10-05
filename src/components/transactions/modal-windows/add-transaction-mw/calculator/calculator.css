@@ -12,7 +12,7 @@
   transition: 0.3s;
 }
 .calculator-btn svg {
-  color: #2d2d2d;
+  color: #a1a0a0;
 }
 .calculator-btn:active {
   background-color: #e0e0e0;

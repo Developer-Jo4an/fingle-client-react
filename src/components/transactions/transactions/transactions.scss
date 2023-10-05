@@ -1,8 +1,9 @@
 @import '../../../styles/zeroing/global';
 // main section
 .transactions-page {
-    flex-grow: 1;
+    max-width: 100%;
 
+    flex-grow: 1;
     flex-direction: column;
     padding: 20px 0;
     gap: 10px;

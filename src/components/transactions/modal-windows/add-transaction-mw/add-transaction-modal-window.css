@@ -44,7 +44,7 @@
 .add-transaction-date svg {
   width: 20px;
   height: 20px;
-  color: #2d2d2d;
+  color: #a1a0a0;
 }
 
 .add-transaction-date-info {
@@ -117,4 +117,4 @@
   }
 }
 
-/*# sourceMappingURL=add-transaction-modal-window.css.map */
+/*# sourceMappingURL=add-TransactionModalWindow.module.css.map */

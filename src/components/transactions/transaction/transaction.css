@@ -1,7 +1,7 @@
 .transaction {
   display: grid;
   grid-template-rows: repeat(2, 25px);
-  grid-template-columns: 45px 1fr 70px;
+  grid-template-columns: 45px 1fr 60px;
   column-gap: 15px;
   border-radius: 15px;
   background-color: #f6f5f5;
@@ -17,8 +17,8 @@
 }
 .transaction-sign svg {
   color: #fff;
-  width: 25px;
-  height: 25px;
+  width: 20px;
+  height: 20px;
 }
 .transaction-sign div {
   width: 45px;
@@ -52,13 +52,15 @@
   justify-content: flex-start;
   overflow: hidden;
   white-space: nowrap;
-  color: #2d2d2d;
+  color: #a1a0a0;
 }
 
 .transaction-additional-info {
   display: flex;
   align-items: center;
-  color: #2d2d2d;
+  overflow: hidden;
+  white-space: nowrap;
+  color: #a1a0a0;
 }
 
 /*# sourceMappingURL=transaction.css.map */

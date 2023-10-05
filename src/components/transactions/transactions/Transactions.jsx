@@ -11,6 +11,7 @@ import axios from 'axios'
 import {formattedInterval, formattedTransactions, userId} from '../../../my-functions/my-functions'
 
 import './transactions.css'
+import TransactionModalWindow from '../modal-windows/transaction-mw/TransactionModalWindow';
 
 const Transactions = ({activePage, allCards, transactionCategories}) => {
     const [interval, setInterval] = useState('Week')
@@ -21,11 +22,11 @@ const Transactions = ({activePage, allCards, transactionCategories}) => {
         expense: [],
         income: []
     })
-
     const [dateFilterVisible, setDateFilterVisible] = useState(false)
     const [addTransactionVisible, setAddTransactionVisible] = useState(false)
     const [optionsTransactionsVisible, setOptionsTransactionsVisible] = useState(false)
-
+    const [transactionMW, setTransactionMW] = useState(false)
+    const [transactionObject, setTransactionObject] = useState({})
     const sectionRef = useRef()
 
     useEffect(() => {
@@ -58,7 +59,8 @@ const Transactions = ({activePage, allCards, transactionCategories}) => {
                 transactions={transactions}
                 setAddTransactionVisible={setAddTransactionVisible}
                 filtered={filteredTransactions}
-                setFiltered={setFilteredTransactions}
+                setTransactionMW={setTransactionMW}
+                setTransactionObject={setTransactionObject}
             />
             <ModalWindow
                 visible={dateFilterVisible}
@@ -83,7 +85,20 @@ const Transactions = ({activePage, allCards, transactionCategories}) => {
             <ModalWindow
                 visible={optionsTransactionsVisible}
                 setVisible={setOptionsTransactionsVisible}>
-                <OptionsTransactionFilter filtered={filteredTransactions} setFiltered={setFilteredTransactions} allCards={allCards} categories={transactionCategories}/>
+                <OptionsTransactionFilter
+                    filtered={filteredTransactions}
+                    setFiltered={setFilteredTransactions}
+                    allCards={allCards}
+                    categories={transactionCategories}
+                />
+            </ModalWindow>
+            <ModalWindow
+                visible={transactionMW}
+                setVisible={setTransactionMW}>
+                <TransactionModalWindow
+                    transactionObject={transactionObject}
+                    setTransactionObject={setTransactionObject}
+                />
             </ModalWindow>
         </section>
     )

@@ -41,7 +41,10 @@ const DateFilterModalWindow = ({interval, setInterval, setDateFilterVisible}) =>
                 <div
                     key={btn.id}
                     className={'date-filter-btn'}
-                    onClick={() => setInterval(btn.id)}
+                    onClick={() => {
+                        setInterval(btn.id)
+                        setDateFilterVisible(false)
+                    }}
                 >{btn.id}<div className={`date-filter-btn-active-checker ${interval === btn.id ? 'date-checker-active' : ''}`}></div></div>
             ))}
             <Datepicker datepicker={datepicker} Ref={inputRef} datepickerClasses={datepickerClasses}>Custom</Datepicker>

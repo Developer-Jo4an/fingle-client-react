@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useRef, useState} from 'react'
+import React, {useCallback, useRef, useState} from 'react'
 import Datepicker from '../../../datepicker/Datepicker'
 import Calculator from './calculator/Calculator'
 import AddTransactionType from './add-transaction-type/add-transaction-type'

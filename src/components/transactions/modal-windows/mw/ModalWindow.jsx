@@ -1,6 +1,7 @@
 import React from 'react'
 
 import './modal-window.css'
+
 const ModalWindow = ({visible, setVisible, ...props}) => {
 
     const hideModalWindow = () => setVisible(false)

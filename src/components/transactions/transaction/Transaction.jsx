@@ -2,12 +2,10 @@ import React from 'react'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { timeRefactor } from '../../../my-functions/my-functions'
-import { faCookieBite } from '@fortawesome/free-solid-svg-icons'
 
 import './transaction.css'
 
-const Transaction = ({transaction}) => {
-
+const Transaction = ({transaction, setTransactionObject, setTransactionMW}) => {
     const {transactionType, count, date, card} = transaction
 
     const getInfo = () => {
@@ -24,15 +22,25 @@ const Transaction = ({transaction}) => {
 
     const getCountSum = () => transactionType === 'expense' ? -count : count
 
+    const getSign = () => {
+        return transactionType === 'transfer' ? 'fa-solid fa-repeat' : transaction.category.sign
+    }
+
+
+
     return (
         <div
             className={'transaction'}
+            onClick={() => {
+                setTransactionObject(transaction)
+                setTransactionMW(true)
+            }}
         >
             <div className={'transaction-sign'}>
                 <div
-                    style={{'--background': transaction.type === 'expense' || transaction.type === 'income' ? transaction.category.color : '#f5d544'}}
+                    style={{'--background': transactionType === 'expense' || transactionType === 'income' ? transaction.category.color : '#f5d544'}}
                     className={'transaction-sign-wrapper'}
-                >{<FontAwesomeIcon icon={faCookieBite}/>}</div>
+                >{<FontAwesomeIcon icon={getSign()}/>}</div>
             </div>
             <div className={'transaction-info'}>{getInfo()}</div>
             <div

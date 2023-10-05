@@ -12,11 +12,16 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 10px;
 }
 
 .transaction-chunk-date {
     font-size: 18px;
     font-family: custom-bold, Manrope, sans-serif;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .transaction-chunk-count-info {
