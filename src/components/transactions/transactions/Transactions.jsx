@@ -26,7 +26,7 @@ const Transactions = ({activePage, allCards, transactionCategories}) => {
     const [addTransactionVisible, setAddTransactionVisible] = useState(false)
     const [optionsTransactionsVisible, setOptionsTransactionsVisible] = useState(false)
     const [transactionMW, setTransactionMW] = useState(false)
-    const [transactionObject, setTransactionObject] = useState({})
+    const [transactionObject, setTransactionObject] = useState(null)
     const sectionRef = useRef()
 
     useEffect(() => {

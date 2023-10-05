@@ -1,0 +1,54 @@
+.modified-datepicker-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.modified-datepicker-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.modified-datepicker-input {
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+.modified-date-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  border-radius: 22px;
+  border: 2px solid #24e597;
+  font-family: custom-bold, Manrope, sans-serif;
+  font-size: 16px;
+  color: #24e597;
+  transition: 0.3s;
+}
+.modified-date-btn:active {
+  background-color: #24e597;
+  color: #fff;
+}
+
+.modified-datepicker-arrow {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: #24e597;
+  transition: 0.3s;
+}
+.modified-datepicker-arrow:active {
+  background-color: #e0e0e0;
+}
+
+/*# sourceMappingURL=modified-date-block.css.map */

@@ -58,7 +58,7 @@ const AddTransactionModalWindow = ({allCards, categories, setMWVisible, interval
                 if (!Array.isArray(date)) setTransactionObj(prev => ({...prev, date: date}))
             }
         })
-    }, [setTransactionObj, inputRef])
+    }, [inputRef])
 
     // count
     const countRef = useRef()
@@ -82,8 +82,7 @@ const AddTransactionModalWindow = ({allCards, categories, setMWVisible, interval
                 <Datepicker datepicker={datepicker} Ref={inputRef} datepickerClasses={{
                     label: 'add-transaction-date-wrapper',
                     input: 'add-transaction-date-input'
-                }}>
-                    <div className={'add-transaction-date'}>
+                }}><div className={'add-transaction-date'}>
                         <div className={'add-transaction-date-info'}><FontAwesomeIcon icon={faCalendar}/>{dateRefactor(transactionObj.date)}</div>
                         <div className={'add-transaction-date-info'}><FontAwesomeIcon icon={faClock}/>{timeRefactor(transactionObj.date)}</div>
                     </div>

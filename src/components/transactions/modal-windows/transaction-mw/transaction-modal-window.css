@@ -1,0 +1,90 @@
+.transaction-modal-window {
+  max-height: 80vh;
+}
+
+.transaction-info-section {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.transaction-info-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  overflow-y: scroll;
+  height: 2000px;
+}
+
+.transaction-info-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  padding: 10px;
+  background-color: #eaeaea;
+}
+
+.transaction-info-btn {
+  width: 90px;
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  border-radius: 30px;
+  background-color: #fff;
+  font-family: custom-bold, Manrope, sans-serif;
+  transition: 0.3s;
+}
+.transaction-info-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.modified-mode-on {
+  background-color: #24e597;
+  color: #fff;
+}
+.modified-mode-on svg {
+  color: #fff;
+}
+
+.transaction-info-chunk {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  transition: 0.3s;
+}
+
+.get-gap {
+  gap: 10px;
+}
+
+.transaction-info-chunk-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.transaction-info-chunk-header {
+  font-family: custom-bold, Manrope, sans-serif;
+  font-size: 18px;
+}
+
+.modified-transaction-block {
+  height: 0;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.modified-block-on {
+  height: var(--modified-height);
+}
+
+/*# sourceMappingURL=transaction-modal-window.css.map */
