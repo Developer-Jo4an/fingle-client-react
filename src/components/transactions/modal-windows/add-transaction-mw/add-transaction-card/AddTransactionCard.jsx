@@ -1,6 +1,7 @@
 import React from 'react'
 
 import './add-transaction-card.css'
+
 const AddTransactionCard = ({Ref, allCards, state, setState}) => {
 
     const selectCard = card => {

@@ -2,7 +2,7 @@ import React, {useCallback, useRef, useState} from 'react'
 import Datepicker from '../../../datepicker/Datepicker'
 import Calculator from './calculator/Calculator'
 import AddTransactionType from './add-transaction-type/add-transaction-type'
-import AddTransactionCard from './add-transaction-card/add-transaction-card'
+import AddTransactionCard from './add-transaction-card/AddTransactionCard'
 import AddTransactionCategory from './add-transaction-category/AddTransactionCategory'
 import AddTransactionIncomeCategory from './add-transaction-income/AddTransactionIncomeCategory'
 import AddTransactionTransferCard from './add-transaction-transfer-card/AddTransactionTransferCard'
@@ -96,7 +96,10 @@ const AddTransactionModalWindow = ({allCards, categories, setMWVisible, interval
             <AddTransactionCard Ref={categoriesSelectRef} allCards={allCards} state={transactionObj} setState={setTransactionObj}/>
             {/*count*/}
             <div className={'add-transaction-count'} ref={countRef}>
-                <div className={'add-transaction-count-value'}><div className={'add-transaction-count-currency'}>USD</div> {transactionObj.count}</div>
+                <div className={'add-transaction-count-value'}>
+                    <div className={'add-transaction-count-currency'}>USD</div>
+                    <div className={'add-transaction-count-now-value'}>{transactionObj.count}</div>
+                </div>
             </div>
             {/*moore info*/}
             <div className={`add-transaction-more-info`}>

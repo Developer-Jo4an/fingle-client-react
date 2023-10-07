@@ -6,6 +6,8 @@
   display: flex;
   flex-direction: column;
   position: relative;
+  background-color: #fff;
+  border-radius: 20px 20px 0 0;
 }
 
 .transaction-info-wrapper {
@@ -14,6 +16,7 @@
   gap: 10px;
   padding: 20px;
   overflow-y: scroll;
+  overflow-x: hidden;
   height: 2000px;
 }
 
@@ -70,6 +73,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 10px;
 }
 
 .transaction-info-chunk-header {

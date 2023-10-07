@@ -1,0 +1,19 @@
+.modified-card {
+  width: auto !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  font-family: custom-bold, Manrope, sans-serif;
+  border: 2px solid #24e597;
+  border-radius: 12px;
+  color: #24e597;
+  transition: 0.3s;
+}
+
+.modified-card-active {
+  background-color: #24e597;
+  color: #fff;
+}
+
+/*# sourceMappingURL=modified-card-block.css.map */

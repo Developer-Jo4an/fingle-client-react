@@ -98,6 +98,8 @@ const Transactions = ({activePage, allCards, transactionCategories}) => {
                 <TransactionModalWindow
                     transactionObject={transactionObject}
                     setTransactionObject={setTransactionObject}
+                    allCards={allCards}
+                    categories={transactionCategories}
                 />
             </ModalWindow>
         </section>

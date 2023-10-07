@@ -20,7 +20,7 @@ import './calculator.css'
 const Calculator = ({Ref, state, setState, setMWVisible, messageVisible, interval, setTransactions, allCards}) => {
     const saveTransaction = async () => {
         try {
-            const transactionRequest = async (interval) => {
+            const transactionRequest = async interval => {
                 try {
                     const transaction = {}
                     for (const key in state) key === 'type' ? transaction.transactionType = state[key] : transaction[key] = state[key]
@@ -53,7 +53,11 @@ const Calculator = ({Ref, state, setState, setMWVisible, messageVisible, interva
                 if (result < 0) {
                     Ref.current.classList.add('error-animation')
                     setTimeout(() => Ref.current.classList.remove('error-animation'), 700)
-                } else return result.toString()
+                } else {
+                    let strRes = result.toFixed(1).toString()
+                    return strRes.at(-1) === '0' ? strRes.slice(0, -2) : strRes
+                }
+
             } catch (e) {
                 Ref.current.classList.add('error-animation')
                 setTimeout(() => Ref.current.classList.remove('error-animation'), 700)
@@ -121,7 +125,7 @@ const Calculator = ({Ref, state, setState, setMWVisible, messageVisible, interva
     }
 
     const calculatorArr = [
-        {value: 'divide', label: <FontAwesomeIcon icon={faDivide}/>, sign: ' ÷ ', type: 'action'},
+        {value: 'divide', label: <FontAwesomeIcon icon={faDivide}/>, sign: ' / ', type: 'action'},
         {value: '7', label: '7', type: 'number'},
         {value: '8', label: '8', type: 'number'},
         {value: '9', label: '9', type: 'number'},

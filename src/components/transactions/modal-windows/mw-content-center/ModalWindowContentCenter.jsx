@@ -9,7 +9,10 @@ const ModalWindowContentCenter = ({visible, setVisible, ...props}) => {
         <div
             className={`modal-window-center ${visible ? 'modal-window-center-appearance' : ''}`}
             onClick={() => hideModalWindow()}
-        ><div className={'modal-window-content-center'}>{props.children}</div>
+        ><div
+            className={'modal-window-content-center'}
+            onClick={e => e.stopPropagation()}
+        >{props.children}</div>
         </div>
     )
 }

@@ -1,8 +1,12 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 
 import './modal-window.css'
 
 const ModalWindow = ({visible, setVisible, ...props}) => {
+
+    useEffect(() => {
+        visible ? document.body.style.overflow = 'hidden' : document.body.style.overflow = 'visible'
+    }, [visible])
 
     const hideModalWindow = () => setVisible(false)
 

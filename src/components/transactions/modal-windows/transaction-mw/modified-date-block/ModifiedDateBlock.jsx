@@ -40,8 +40,7 @@ const ModifiedDateBlock = ({modifiedMode, transactionObject, setTransactionObjec
                 className={`modified-transaction-block ${modifiedMode ? 'modified-block-on' : ''}`}
                 style={{'--modified-height': `${modifiedMode ? getHeight(dateRef) : '0px'} `}}
                 ref={dateRef}
-            >
-                <div className={'modified-datepicker-wrapper'}>
+            ><div className={'modified-datepicker-wrapper'}>
                     <div
                         className={'modified-datepicker-arrow'}
                         onClick={() => modifiedArrowClick('subtract')}
@@ -58,7 +57,6 @@ const ModifiedDateBlock = ({modifiedMode, transactionObject, setTransactionObjec
                 </div>
             </div>
         </div>
-
     )
 }
 
