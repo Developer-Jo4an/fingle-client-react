@@ -1,0 +1,20 @@
+.modified-income-sub-category, .modified-income-category {
+  width: auto !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 6px 12px;
+  font-family: custom-bold, Manrope, sans-serif;
+  border: 2px solid var(--modified-category-color);
+  border-radius: 12px;
+  color: var(--modified-category-color);
+  transition: 0.3s;
+}
+
+.modified-income-sub-category-active, .modified-income-category-active {
+  background-color: var(--modified-category-color);
+  color: #fff;
+}
+
+/*# sourceMappingURL=modified-income-categories.css.map */

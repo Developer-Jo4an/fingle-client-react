@@ -1,6 +1,8 @@
 import React from 'react'
+import SwiperEl from '../../../../swiper/SwiperEl'
 
 import './add-transaction-card.css'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
 const AddTransactionCard = ({Ref, allCards, state, setState}) => {
 
@@ -14,20 +16,14 @@ const AddTransactionCard = ({Ref, allCards, state, setState}) => {
 
     return (
         <div className={'slider-wrapper'}>
-            <swiper-container
-                ref={Ref}
-                slides-per-view="auto"
-                free-mode="true"
-                space-between="10"
-                free-mode-momentum="true"
-                freeModeMomentumRatio="0"
-            >{allCards.map(card => (
+            <SwiperEl Ref={Ref}>
+            {allCards.map(card => (
                 <swiper-slide
                     key={card._id}
                     class={`add-transaction-card ${state.card._id === card._id ? 'add-transaction-card-active' : ''}`}
                     onClick={() => selectCard(card)}
-                >{card.cardName}</swiper-slide>))}
-            </swiper-container>
+                ><FontAwesomeIcon icon="fa-solid fa-credit-card"/>{card.cardName}</swiper-slide>))}
+            </SwiperEl>
         </div>
     )
 }

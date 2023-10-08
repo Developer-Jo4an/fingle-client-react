@@ -1,6 +1,10 @@
 import React, {useEffect} from 'react'
 
+import {reloadSlider} from '../../../../../my-functions/my-functions'
+
 import './add-transaction-sub-more-info.css'
+import SwiperEl from '../../../../swiper/SwiperEl';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
 const AddTransactionSubMoreInfo = ({Ref, state, setState}) => {
 
@@ -16,28 +20,13 @@ const AddTransactionSubMoreInfo = ({Ref, state, setState}) => {
         })
     }
 
-    useEffect(() => {
-        if (Ref.current) {
-            Ref.current.setAttribute('ref', Ref)
-            Ref.current.setAttribute('slides-per-view', 'auto')
-            Ref.current.setAttribute('free-mode', 'true')
-            Ref.current.setAttribute('space-between', '10')
-            Ref.current.setAttribute('freeModeMomentumRatio', '0')
-        }
-    }, [state])
+    useEffect(() => {if (Ref.current) reloadSlider(Ref)}, [state])
 
     return (
         <div
             className={'add-transaction-sub-more-info'}
         >{state.category && state.category.subCategories && (
-            <swiper-container
-                ref={Ref}
-                slides-per-view="auto"
-                free-mode="true"
-                space-between="10"
-                free-mode-momentum="true"
-                freeModeMomentumRatio="0"
-            >
+            <SwiperEl Ref={Ref}>
                 {Object.values(state.category.subCategories).map(category => (
                     <swiper-slide
                         key={category._id}
@@ -45,10 +34,10 @@ const AddTransactionSubMoreInfo = ({Ref, state, setState}) => {
                             'add-transaction-sub-more-info-slide-active' : '' : ''}`}
                         style={{'--category-color': category.color}}
                         onClick={() => selectCategory(category)}
-                    >{category.name}
+                    ><FontAwesomeIcon icon={category.sign}/>{category.name}
                     </swiper-slide>
                 ))}
-            </swiper-container>
+            </SwiperEl>
         )}
         </div>
     )

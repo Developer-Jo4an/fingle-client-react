@@ -79,3 +79,11 @@ export function formattedInterval(interval) {
         return formattedInterval
     }
 }
+
+export function reloadSlider(ref) {
+    ref.current.setAttribute('ref', ref)
+    ref.current.setAttribute('slides-per-view', 'auto')
+    ref.current.setAttribute('free-mode', 'true')
+    ref.current.setAttribute('space-between', '10')
+    ref.current.setAttribute('freeModeMomentumRatio', '0')
+}

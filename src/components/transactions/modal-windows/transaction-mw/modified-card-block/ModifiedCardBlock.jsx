@@ -1,6 +1,8 @@
 import React, {useRef} from 'react'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 
 import './modified-card-block.css'
+import SwiperEl from '../../../../swiper/SwiperEl';
 
 const ModifiedCardBlock = ({modifiedMode, transactionObject, setTransactionObject, getHeight, allCards}) => {
 
@@ -10,7 +12,13 @@ const ModifiedCardBlock = ({modifiedMode, transactionObject, setTransactionObjec
     const setNewCard = card => {
         setTransactionObject(prev => {
             const newCard = {_id: card._id, cardName: card.cardName, bankName: card.bankName}
-            return {...prev, card: newCard}
+            if (transactionObject.transactionType !== 'transfer') return {...prev, card: newCard}
+            else {
+                const futureObject = {}
+                for (const key in prev) if (key !== 'transferCard') key === 'card' ?
+                    futureObject[key] = newCard : futureObject[key] = prev[key]
+                return futureObject
+            }
         })
     }
 
@@ -23,23 +31,17 @@ const ModifiedCardBlock = ({modifiedMode, transactionObject, setTransactionObjec
 
             <div
                 className={`modified-transaction-block ${modifiedMode ? 'modified-block-on' : ''}`}
-                style={{'--modified-height': `${modifiedMode ? getHeight(cardRef) : '0px'} `}}
                 ref={cardRef}
-            ><swiper-container
-                    ref={swiperRef}
-                    slides-per-view="auto"
-                    free-mode="true"
-                    space-between="10"
-                    free-mode-momentum="true"
-                    freeModeMomentumRatio="0"
-                >{allCards.map(card => (
-                    <swiper-slide
-                        key={card._id}
-                        class={`modified-card ${transactionObject.card._id === card._id ? 'modified-card-active' : ''}`}
-                        onClick={() => setNewCard(card)}
-                    >{card.cardName}</swiper-slide>
-                ))}
-                </swiper-container>
+                style={{'--modified-height': `${modifiedMode ? getHeight(cardRef) : '0px'} `}}>
+                <SwiperEl Ref={swiperRef}>
+                    {allCards.map(card => (
+                        <swiper-slide
+                            key={card._id}
+                            class={`modified-card ${transactionObject.card._id === card._id ? 'modified-card-active' : ''}`}
+                            onClick={() => setNewCard(card)}
+                        ><FontAwesomeIcon icon="fa-solid fa-credit-card"/>{card.cardName}</swiper-slide>
+                    ))}
+                </SwiperEl>
             </div>
         </div>
     )

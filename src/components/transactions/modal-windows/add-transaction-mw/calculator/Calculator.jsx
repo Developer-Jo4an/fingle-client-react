@@ -18,26 +18,24 @@ import { formattedInterval, formattedTransactions, userId } from '../../../../..
 import './calculator.css'
 
 const Calculator = ({Ref, state, setState, setMWVisible, messageVisible, interval, setTransactions, allCards}) => {
-    const saveTransaction = async () => {
+    const saveTransaction = () => {
         try {
             const transactionRequest = async interval => {
-                try {
-                    const transaction = {}
-                    for (const key in state) key === 'type' ? transaction.transactionType = state[key] : transaction[key] = state[key]
-                    let transactionsData = await axios.post(`${userId}/add-transaction`, {interval, transaction})
-                    const filteredTransactions = formattedTransactions(transactionsData)
-                    setTransactions(filteredTransactions)
-                    setState({
-                        type: 'expense',
-                        date: new Date(),
-                        card: {
-                            _id: allCards[0]._id,
-                            cardName: allCards[0].cardName,
-                            bankName: allCards[0].bankName
-                        },
-                        count: '0'
-                    })
-                } catch (e) {setTransactions([])}
+                const transaction = {}
+                for (const key in state) key === 'type' ? transaction.transactionType = state[key] : transaction[key] = state[key]
+                let transactionsData = await axios.post(`${userId}/add-transaction`, {interval, transaction})
+                const filteredTransactions = formattedTransactions(transactionsData)
+                setTransactions(filteredTransactions)
+                setState({
+                    type: 'expense',
+                    date: new Date(),
+                    card: {
+                        _id: allCards[0]._id,
+                        cardName: allCards[0].cardName,
+                        bankName: allCards[0].bankName
+                    },
+                    count: '0'
+                })
             }
             setMWVisible(false)
             setTransactions(['loader'])
@@ -97,20 +95,7 @@ const Calculator = ({Ref, state, setState, setMWVisible, messageVisible, interva
             case 'apply': {
                 const result = counter(state.count)
                 setState(prev => result ? {...prev, count: result} : prev)
-                const {count, card, date} = state
-                if (state.type === 'expense' || state.type === 'income') {
-                    if (count && card && date) {
-                        if (state.category) {
-                            saveTransaction()
-                        }
-                    }
-                } else {
-                    if (count && card && date) {
-                        if (state.transferCard) {
-                            saveTransaction()
-                        }
-                    }
-                }
+                saveTransaction()
                 break
             }
             case 'close': {

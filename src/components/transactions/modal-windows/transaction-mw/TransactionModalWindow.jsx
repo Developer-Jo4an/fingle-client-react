@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useRef, useState} from 'react'
 import ModifiedDateBlock from './modified-date-block/ModifiedDateBlock'
 import ModifiedTypeBlock from './modified-type-block/ModifiedTypeBlock'
 import ModifiedCardBlock from './modified-card-block/ModifiedCardBlock'
@@ -7,23 +7,58 @@ import ModifiedTransactionCalc from './modified-count-block/ModifiedTransactionC
 import ModalWindow from '../mw/ModalWindow'
 import ModifiedMessageBlock from './modified-message-block/ModifiedMessageBlock'
 import ModifiedMessage from './modified-message-block/ModifiedMessage'
+import ModalWindowContentCenter from '../mw-content-center/ModalWindowContentCenter'
+import ModifiedTransferCard from './modified-transfer-card/ModifiedTransferCard'
+import ModifiedIncomeCategories from './modified-income-categories/ModifiedIncomeCategories'
+import ModifiedExpenseCategories from './modified-expense-categories/ModifiedExpenseCategories'
 
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import './transaction-modal-window.css'
-import ModalWindowContentCenter from '../mw-content-center/ModalWindowContentCenter';
+import TransactionInfoButtons from './transaction-info-buttons/TransactionInfoButtons';
 
-const TransactionModalWindow = ({transactionObject, setTransactionObject, allCards, categories}) => {
+
+const TransactionModalWindow = ({transactionObject, setTransactionObject, allCards, categories, transactionMW, setCopy, copy, setTransactions, interval, setTransactionMW}) => {
     const [modifiedMode, setModifiedMode] = useState(false)
-    const getHeight = ref => `${ref.current.scrollHeight}px`
-
     const [calcVisible, setCalcVisible] = useState(false)
     const [messageVisible, setMessageVisible] = useState(false)
+
+    const sectionRef = useRef()
+
+    const getHeight = ref => `${ref.current.scrollHeight}px`
+
+    useEffect(() => {
+        if (!transactionMW) setTimeout(() => setModifiedMode(false), 300)
+    }, [transactionMW])
+
+    const moreInfoEls = {
+        transfer: () => <ModifiedTransferCard
+            allCards={allCards}
+            transactionObject={transactionObject}
+            setTransactionObject={setTransactionObject}
+            getHeight={getHeight}
+            modifiedMode={modifiedMode}
+        />,
+        expense: () => <ModifiedExpenseCategories
+            transactionObject={transactionObject}
+            setTransactionObject={setTransactionObject}
+            getHeight={getHeight}
+            modifiedMode={modifiedMode}
+            expense={categories.expense}
+        />,
+        income: () => <ModifiedIncomeCategories
+            transactionObject={transactionObject}
+            setTransactionObject={setTransactionObject}
+            getHeight={getHeight}
+            modifiedMode={modifiedMode}
+            income={categories.income}
+        />
+    }
 
     return (
         <div className={'transaction-modal-window'}>
             {transactionObject ?
-            <div className={'transaction-info-section'}>
+            <div ref={sectionRef} className={'transaction-info-section'}>
                 <div className={'transaction-info-wrapper'}>
                     <ModifiedTypeBlock transactionObject={transactionObject}/>
                     <ModifiedDateBlock
@@ -51,15 +86,19 @@ const TransactionModalWindow = ({transactionObject, setTransactionObject, allCar
                         getHeight={getHeight}
                         setMessageVisible={setMessageVisible}
                     />
+                    {moreInfoEls[transactionObject.transactionType]()}
                 </div>
-                <div className={'transaction-info-button'}>
-                    <button
-                        className={`transaction-info-btn ${modifiedMode ? 'modified-mode-on' : ''}`}
-                        onClick={() => setModifiedMode(prev => !prev)}
-                    ><FontAwesomeIcon icon={"fa-solid fa-pen"}/>Change</button>
-                    <button className={'transaction-info-btn'}><FontAwesomeIcon icon={"fa-solid fa-repeat"}/>Repeat</button>
-                    <button className={'transaction-info-btn'}><FontAwesomeIcon icon={"fa-solid fa-trash"}/>Delete</button>
-                </div>
+                <TransactionInfoButtons
+                    modifiedMode={modifiedMode}
+                    setModifiedMode={setModifiedMode}
+                    transactionObject={transactionObject}
+                    setTransactionObject={setTransactionObject}
+                    setCopy={setCopy}
+                    copy={copy}
+                    setTransactions={setTransactions}
+                    interval={interval}
+                    setTransactionMW={setTransactionMW}
+                />
                 <ModalWindow
                     visible={calcVisible}
                     setVisible={setCalcVisible}

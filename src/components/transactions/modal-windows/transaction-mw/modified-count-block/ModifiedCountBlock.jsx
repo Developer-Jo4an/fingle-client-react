@@ -27,8 +27,8 @@ const ModifiedCountBlock = ({modifiedMode, transactionObject, getHeight, setCalc
 
             <div
                 className={`modified-transaction-block ${modifiedMode ? 'modified-block-on' : ''}`}
-                style={{'--modified-height': `${modifiedMode ? getHeight(countRef) : '0px'} `}}
                 ref={countRef}
+                style={{'--modified-height': `${modifiedMode ? getHeight(countRef) : '0px'} `}}
             ><div className={'modified-count'}>
                 <div
                     className={'modified-count-wrapper'}

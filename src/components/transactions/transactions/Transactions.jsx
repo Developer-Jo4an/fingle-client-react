@@ -6,12 +6,12 @@ import DateFilterModalWindow from '../modal-windows/date-filter-mw/DateFilterMod
 import AddTransactionModalWindow from '../modal-windows/add-transaction-mw/AddTransactionModalWindow'
 import TransactionSection from '../transaction-section/TransactionSection'
 import OptionsTransactionFilter from '../modal-windows/options-transactions-filer/OptionsTransactionFilter'
+import TransactionModalWindow from '../modal-windows/transaction-mw/TransactionModalWindow'
 
 import axios from 'axios'
 import {formattedInterval, formattedTransactions, userId} from '../../../my-functions/my-functions'
 
 import './transactions.css'
-import TransactionModalWindow from '../modal-windows/transaction-mw/TransactionModalWindow';
 
 const Transactions = ({activePage, allCards, transactionCategories}) => {
     const [interval, setInterval] = useState('Week')
@@ -27,6 +27,7 @@ const Transactions = ({activePage, allCards, transactionCategories}) => {
     const [optionsTransactionsVisible, setOptionsTransactionsVisible] = useState(false)
     const [transactionMW, setTransactionMW] = useState(false)
     const [transactionObject, setTransactionObject] = useState(null)
+    const [copy, setCopy] = useState()
     const sectionRef = useRef()
 
     useEffect(() => {
@@ -61,6 +62,7 @@ const Transactions = ({activePage, allCards, transactionCategories}) => {
                 filtered={filteredTransactions}
                 setTransactionMW={setTransactionMW}
                 setTransactionObject={setTransactionObject}
+                setCopy={setCopy}
             />
             <ModalWindow
                 visible={dateFilterVisible}
@@ -100,6 +102,12 @@ const Transactions = ({activePage, allCards, transactionCategories}) => {
                     setTransactionObject={setTransactionObject}
                     allCards={allCards}
                     categories={transactionCategories}
+                    transactionMW={transactionMW}
+                    setCopy={setCopy}
+                    copy={copy}
+                    setTransactions={setTransactions}
+                    setTransactionMW={setTransactionMW}
+                    interval={interval}
                 />
             </ModalWindow>
         </section>

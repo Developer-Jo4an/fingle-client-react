@@ -1,6 +1,8 @@
 import React from 'react'
 
 import './add-transaction-category.css'
+import SwiperEl from '../../../../swiper/SwiperEl';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
 const AddTransactionCategory = ({Ref, categories, state, setState}) => {
 
@@ -26,21 +28,15 @@ const AddTransactionCategory = ({Ref, categories, state, setState}) => {
 
     return (
         <div className={'slider-wrapper add-transaction-category-wrapper'}>
-            <swiper-container
-                ref={Ref}
-                slides-per-view="auto"
-                free-mode="true"
-                space-between="10"
-                free-mode-momentum="true"
-                freeModeMomentumRatio="0"
-            >{Object.values(categories.expense).map(category => (
+            <SwiperEl Ref={Ref}>
+                {Object.values(categories.expense).map(category => (
                 <swiper-slide
                     key={category._id}
                     class={`add-transaction-category ${state.category && state.category._id === category._id ? 'add-transaction-category-active' : ''}`}
                     style={{'--category-color': category.color}}
                     onClick={() => selectCategory(category)}
-                >{category.name}</swiper-slide>))}
-            </swiper-container>
+                ><FontAwesomeIcon icon={category.sign}/>{category.name}</swiper-slide>))}
+            </SwiperEl>
         </div>
     )
 }

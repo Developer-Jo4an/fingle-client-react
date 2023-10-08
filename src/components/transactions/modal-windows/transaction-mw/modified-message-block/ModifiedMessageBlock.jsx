@@ -15,8 +15,8 @@ const ModifiedMessageBlock = ({modifiedMode, transactionObject, getHeight, setMe
 
             <div
                 className={`modified-transaction-block ${modifiedMode ? 'modified-block-on' : ''}`}
-                style={{'--modified-height': `${modifiedMode ? getHeight(messageRef) : '0px'} `}}
                 ref={messageRef}
+                style={{'--modified-height': `${modifiedMode ? getHeight(messageRef) : '0px'} `}}
             ><div className={'new-message-btn-wrapper'}>
                 <div
                     className={'new-message-btn'}

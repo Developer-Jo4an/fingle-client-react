@@ -1,6 +1,8 @@
 import React, {useEffect} from 'react'
 
 import './add-transaction-income-category.css'
+import SwiperEl from '../../../../swiper/SwiperEl';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 const AddTransactionIncomeCategory = ({Ref, categories, state, setState}) => {
 
     const selectCategory = category => {
@@ -24,21 +26,15 @@ const AddTransactionIncomeCategory = ({Ref, categories, state, setState}) => {
 
     return (
         <div className={'slider-wrapper add-transaction-income-category-wrapper'}>
-            <swiper-container
-                ref={Ref}
-                slides-per-view="auto"
-                free-mode="true"
-                space-between="10"
-                free-mode-momentum="true"
-                freeModeMomentumRatio="0"
-            >{Object.values(categories.income).map(category => (
-                <swiper-slide
-                    key={category._id}
-                    style={{'--category-color': category.color}}
-                    class={`add-transaction-income-category ${state.category && state.category._id === category._id ? 'add-transaction-category-income-active' : ''}`}
-                    onClick={() => selectCategory(category)}
-                >{category.name}</swiper-slide>))}
-            </swiper-container>
+            <SwiperEl Ref={Ref}>
+                {Object.values(categories.income).map(category => (
+                    <swiper-slide
+                        key={category._id}
+                        style={{'--category-color': category.color}}
+                        class={`add-transaction-income-category ${state.category && state.category._id === category._id ? 'add-transaction-category-income-active' : ''}`}
+                        onClick={() => selectCategory(category)}
+                    ><FontAwesomeIcon icon={category.sign}/>{category.name}</swiper-slide>))}
+            </SwiperEl>
         </div>
     )
 }

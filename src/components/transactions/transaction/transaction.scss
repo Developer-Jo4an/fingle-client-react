@@ -3,15 +3,12 @@
 .transaction {
     display: grid;
     grid-template-rows: repeat(2, 25px);
-    grid-template-columns: 45px 1fr 60px;
+    grid-template-columns: 45px 1fr auto;
 
     column-gap: 15px;
 
     border-radius: 15px;
-
-    background-color: $transaction-background;
-
-    padding: 10px;
+    padding: 10px 0;
 }
 
 .transaction-sign {
@@ -54,7 +51,7 @@
 .transaction-count, {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: flex-end;
 
     overflow: hidden;
     white-space: nowrap;
@@ -71,6 +68,8 @@
     white-space: nowrap;
 
     color: $main-opacity-color;
+
+    font-size: 14px;
 }
 
 .transaction-additional-info {

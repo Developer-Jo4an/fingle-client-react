@@ -5,7 +5,7 @@ import { timeRefactor } from '../../../my-functions/my-functions'
 
 import './transaction.css'
 
-const Transaction = ({transaction, setTransactionObject, setTransactionMW}) => {
+const Transaction = ({transaction, setTransactionObject, setTransactionMW, setCopy}) => {
     const {transactionType, count, date, card} = transaction
 
     const getInfo = () => {
@@ -32,6 +32,7 @@ const Transaction = ({transaction, setTransactionObject, setTransactionMW}) => {
         <div
             className={'transaction'}
             onClick={() => {
+                setCopy(transaction)
                 setTransactionObject(transaction)
                 setTransactionMW(true)
             }}

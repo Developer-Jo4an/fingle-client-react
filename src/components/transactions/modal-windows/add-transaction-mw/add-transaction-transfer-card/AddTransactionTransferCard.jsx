@@ -1,6 +1,8 @@
 import React, {useRef} from 'react'
 
 import './add-transaction-transfer-card.css'
+import SwiperEl from '../../../../swiper/SwiperEl';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 const AddTransactionTransferCard = ({Ref, allCards, state, setState}) => {
 
     const transferCardsRefs = useRef([])
@@ -31,21 +33,15 @@ const AddTransactionTransferCard = ({Ref, allCards, state, setState}) => {
 
     return (
         <div className={'slider-wrapper add-transaction-transfer-card-wrapper'}>
-            <swiper-container
-                ref={Ref}
-                slides-per-view="auto"
-                free-mode="true"
-                space-between="10"
-                free-mode-momentum="true"
-                freeModeMomentumRatio="0"
-            >{allCards.map((card, i) => (
-                <swiper-slide
-                    key={card._id}
-                    class={`add-transaction-transfer-card ${state.transferCard && state.transferCard._id === card._id ? 'add-transaction-transfer-card-active' : ''}`}
-                    ref={el => transferCardsRefs.current[i] = el}
-                    onClick={() => selectTransferCard(card, i)}
-                >{card.cardName}</swiper-slide>))}
-            </swiper-container>
+            <SwiperEl Ref={Ref}>
+                {allCards.map((card, i) => (
+                    <swiper-slide
+                        key={card._id}
+                        class={`add-transaction-transfer-card ${state.transferCard && state.transferCard._id === card._id ? 'add-transaction-transfer-card-active' : ''}`}
+                        ref={el => transferCardsRefs.current[i] = el}
+                        onClick={() => selectTransferCard(card, i)}
+                    ><FontAwesomeIcon icon="fa-solid fa-credit-card"/>{card.cardName}</swiper-slide>))}
+            </SwiperEl>
         </div>
     )
 }

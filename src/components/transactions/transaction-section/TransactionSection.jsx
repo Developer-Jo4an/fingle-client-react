@@ -5,7 +5,7 @@ import Loader from '../../loader/Loader'
 
 import './transaction-section.css'
 
-const TransactionSection = ({transactions, setAddTransactionVisible, filtered, setTransactionMW, setTransactionObject}) => {
+const TransactionSection = ({transactions, setAddTransactionVisible, filtered, setTransactionMW, setTransactionObject, setCopy}) => {
 
     const [filteredTransactions, setFilteredTransactions] = useState([])
 
@@ -47,6 +47,7 @@ const TransactionSection = ({transactions, setAddTransactionVisible, filtered, s
                     index={i}
                     setTransactionObject={setTransactionObject}
                     setTransactionMW={setTransactionMW}
+                    setCopy={setCopy}
                 />)
                 : filteredTransactions[0] === 'loader' ? <Loader/>
                 : <div className={'no-transactions'}>Transactions not found</div>

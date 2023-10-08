@@ -6,7 +6,7 @@ import { faInfo } from '@fortawesome/free-solid-svg-icons'
 
 import './transaction-chunk.css'
 
-const TransactionsChunk = ({chunk, index, setTransactionObject, setTransactionMW}) => {
+const TransactionsChunk = ({chunk, index, setTransactionObject, setTransactionMW, setCopy}) => {
 
     const [date, array] = chunk
 
@@ -61,6 +61,7 @@ const TransactionsChunk = ({chunk, index, setTransactionObject, setTransactionMW
                 transaction={transaction}
                 setTransactionObject={setTransactionObject}
                 setTransactionMW={setTransactionMW}
+                setCopy={setCopy}
             />)}
         </div>
     )

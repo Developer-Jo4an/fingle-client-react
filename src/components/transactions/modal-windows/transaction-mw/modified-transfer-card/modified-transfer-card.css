@@ -1,9 +1,4 @@
-.slider-wrapper {
-  padding: 10px 20px;
-  overflow: visible;
-}
-
-.add-transaction-card {
+.modified-transfer-card {
   width: auto !important;
   display: flex;
   align-items: center;
@@ -17,9 +12,9 @@
   transition: 0.3s;
 }
 
-.add-transaction-card-active {
+.modified-transfer-card-active {
   background-color: #24e597;
   color: #fff;
 }
 
-/*# sourceMappingURL=add-transaction-card.css.map */
+/*# sourceMappingURL=modified-transfer-card.css.map */

@@ -2,9 +2,13 @@
 // section
 .transaction-modal-window {
     max-height: 80vh;
+
+    display: flex;
 }
 
 .transaction-info-section {
+    max-height: 100%;
+
     display: flex;
     flex-direction: column;
 
@@ -13,70 +17,21 @@
     background-color: #fff;
 
     border-radius: 20px 20px 0 0;
+
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
 }
 
 // wrapper
 .transaction-info-wrapper {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 20px;
 
     padding: 20px;
-
-    overflow-y: scroll;
-    overflow-x: hidden;
-
-    height: 2000px;
-}
-
-// buttons
-.transaction-info-button {
-    width: 100%;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-
-    position: sticky;
-    bottom: 0;
-    left: 0;
-
-    padding: 10px;
-
-    background-color: $main-gray-background;
-}
-
-.transaction-info-btn {
-    width: 90px;
-    height: 60px;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-
-    border-radius: 30px;
-
-    background-color: #fff;
-
-    font-family: custom-bold, Manrope, sans-serif;
-
-    transition: .3s;
-
-    svg {
-        width: 18px;
-        height: 18px;
-    }
-}
-
-.modified-mode-on {
-    background-color: $main-green-color;
-
-    color: #fff;
-    svg {
-        color: #fff;
-    }
 }
 
 // chunk
@@ -87,6 +42,12 @@
     gap: 0;
 
     transition: .3s;
+}
+
+.transaction-info-chunk-value {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .get-gap {
@@ -110,9 +71,17 @@
 .modified-transaction-block {
     height: 0;
 
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+
     overflow: hidden;
 
     transition: .3s;
+}
+
+.modified-transaction-block-active {
+    gap: 10px;
 }
 
 .modified-block-on {

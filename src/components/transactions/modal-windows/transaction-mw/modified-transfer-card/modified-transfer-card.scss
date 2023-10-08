@@ -1,14 +1,6 @@
 @import '../../../../../styles/zeroing/global';
 
-.add-transaction-transfer-card-wrapper {
-    width: 33.3333%;
-
-    overflow: hidden;
-
-    padding: 10px 20px;
-}
-
-.add-transaction-transfer-card {
+.modified-transfer-card {
     width: auto !important;
 
     display: flex;
@@ -20,16 +12,17 @@
 
     font-family: custom-bold, Manrope, sans-serif;
 
-    border: 2px solid $main-green-color;
+    border: 2px solid #24e597;
     border-radius: 12px;
 
-    color: $main-green-color;
+    color: #24e597;
 
-    transition: .3s;
+    transition: 0.3s;
 }
 
-.add-transaction-transfer-card-active {
+.modified-transfer-card-active {
     background-color: $main-green-color;
 
     color: #fff;
 }
+
