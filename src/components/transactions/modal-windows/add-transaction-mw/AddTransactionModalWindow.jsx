@@ -113,7 +113,10 @@ const AddTransactionModalWindow = ({allCards, categories, setMWVisible, interval
             </div>
             {/*calculator*/}
             <Calculator
-                Ref={countRef}
+                countRef={countRef}
+                expenseRef={categoriesSelectRef}
+                incomeRef={incomeCategoriesSelect}
+                transferRef={transferCardSelect}
                 state={transactionObj}
                 setState={setTransactionObj}
                 setMWVisible={setMWVisible}

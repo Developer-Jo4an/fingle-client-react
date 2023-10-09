@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 
 import axios from 'axios'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -17,31 +17,80 @@ import { formattedInterval, formattedTransactions, userId } from '../../../../..
 
 import './calculator.css'
 
-const Calculator = ({Ref, state, setState, setMWVisible, messageVisible, interval, setTransactions, allCards}) => {
-    const saveTransaction = () => {
-        try {
-            const transactionRequest = async interval => {
-                const transaction = {}
-                for (const key in state) key === 'type' ? transaction.transactionType = state[key] : transaction[key] = state[key]
-                let transactionsData = await axios.post(`${userId}/add-transaction`, {interval, transaction})
-                const filteredTransactions = formattedTransactions(transactionsData)
-                setTransactions(filteredTransactions)
-                setState({
-                    type: 'expense',
-                    date: new Date(),
-                    card: {
-                        _id: allCards[0]._id,
-                        cardName: allCards[0].cardName,
-                        bankName: allCards[0].bankName
-                    },
-                    count: '0'
-                })
-            }
-            setMWVisible(false)
-            setTransactions(['loader'])
-            transactionRequest(formattedInterval(interval))
-        } catch (e) {setTransactions([])}
-    }
+const Calculator = ({countRef,
+                        expenseRef,
+                        incomeRef,
+                        transferRef,
+                        state,
+                        setState,
+                        setMWVisible,
+                        messageVisible,
+                        interval,
+                        setTransactions,
+                        allCards}) => {
+
+    const [trigger, setTrigger] = useState(false)
+
+    useEffect(() => {
+        if (trigger) {
+            try {
+                const transactionRequest = interval => {
+
+                    const transaction = {}
+                    for (const key in state)
+                        key === 'type' ?
+                            transaction.transactionType = state[key]
+                            : transaction[key] = state[key]
+
+                    const readyForRequest = async (interval, transaction) => {
+                        let transactionsData = await axios.post(`${userId}/add-transaction`, {interval, transaction})
+                        const filteredTransactions = formattedTransactions(transactionsData)
+                        setTransactions(filteredTransactions)
+                        setState({
+                            type: 'expense',
+                            date: new Date(),
+                            card: {
+                                _id: allCards[0]._id,
+                                cardName: allCards[0].cardName,
+                                bankName: allCards[0].bankName
+                            },
+                            count: '0'
+                        })
+                        setTrigger(false)
+                    }
+
+                    const handleError = ref => {
+                        setTrigger(false)
+                        ref.current.classList.add('error-animation')
+                        setTimeout(() => ref.current.classList.remove('error-animation'), 700)
+                    }
+
+                    const check = () => {
+                        setMWVisible(false)
+                        setTransactions(['loader'])
+                        readyForRequest(interval, transaction)
+                    }
+
+                    const logicObj = {
+                        expense: transaction => {
+                            if (transaction.category) check()
+                            else handleError(expenseRef)
+                        },
+                        income: transaction => {
+                            if (transaction.category) check()
+                            else handleError(incomeRef)
+                        },
+                        transfer: transaction => {
+                            if (transaction.transferCard) check()
+                            else handleError(transferRef)
+                        }
+                    }
+                    logicObj[transaction.transactionType](transaction)
+                }
+                transactionRequest(formattedInterval(interval))
+            } catch (e) {setTransactions([])}
+        }
+    }, [state, trigger])
 
     const calculatorChange = item => {
 
@@ -49,16 +98,16 @@ const Calculator = ({Ref, state, setState, setMWVisible, messageVisible, interva
             try {
                 const result = eval(count)
                 if (result < 0) {
-                    Ref.current.classList.add('error-animation')
-                    setTimeout(() => Ref.current.classList.remove('error-animation'), 700)
+                    countRef.current.classList.add('error-animation')
+                    setTimeout(() => countRef.current.classList.remove('error-animation'), 700)
                 } else {
                     let strRes = result.toFixed(1).toString()
                     return strRes.at(-1) === '0' ? strRes.slice(0, -2) : strRes
                 }
 
             } catch (e) {
-                Ref.current.classList.add('error-animation')
-                setTimeout(() => Ref.current.classList.remove('error-animation'), 700)
+                countRef.current.classList.add('error-animation')
+                setTimeout(() => countRef.current.classList.remove('error-animation'), 700)
                 return null
             }
         }
@@ -95,7 +144,7 @@ const Calculator = ({Ref, state, setState, setMWVisible, messageVisible, interva
             case 'apply': {
                 const result = counter(state.count)
                 setState(prev => result ? {...prev, count: result} : prev)
-                saveTransaction()
+                setTrigger(true)
                 break
             }
             case 'close': {

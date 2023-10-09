@@ -5,6 +5,7 @@ import axios from 'axios'
 
 import './transaction-info-bottons.css'
 import {formattedInterval, formattedTransactions, userId} from '../../../../../my-functions/my-functions';
+import transaction from '../../../transaction/Transaction';
 
 const TransactionInfoButtons = ({modifiedMode, setModifiedMode, transactionObject, setTransactionObject, setCopy, copy, setTransactions, interval, setTransactionMW}) => {
 
@@ -52,15 +53,19 @@ const TransactionInfoButtons = ({modifiedMode, setModifiedMode, transactionObjec
 
     const changeTransaction = () => {
         try {
+
             const request = async interval => {
 
             }
 
-            setTransactionMW(false)
-            setTransactions(['loader'])
+            // setTransactionMW(false)
+            // setTransactions(['loader'])
             request(formattedInterval(interval))
         } catch (e) {setTransactions([])}
     }
+
+    const cancelChange = () => setTransactionObject(copy)
+
 
     return (
         <div className={'transaction-info-buttons'}>
@@ -90,12 +95,13 @@ const TransactionInfoButtons = ({modifiedMode, setModifiedMode, transactionObjec
                 style={{display: modifiedMode ? 'flex' : 'none'}}
                 ref={cancel}
                 className={'transaction-info-btn cancel-btn'}
-                onClick={changeTransaction}
+                onClick={cancelChange}
             ><FontAwesomeIcon icon={"fa-solid fa-xmark"}/></button>
             <button
                 style={{display: modifiedMode ? 'flex' : 'none'}}
                 ref={apply}
                 className={'transaction-info-btn apply-btn'}
+                onClick={changeTransaction}
             ><FontAwesomeIcon icon={"fa-solid fa-check"}/></button>
         </div>
     )

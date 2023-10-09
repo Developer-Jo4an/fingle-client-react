@@ -11,12 +11,9 @@ import ModalWindowContentCenter from '../mw-content-center/ModalWindowContentCen
 import ModifiedTransferCard from './modified-transfer-card/ModifiedTransferCard'
 import ModifiedIncomeCategories from './modified-income-categories/ModifiedIncomeCategories'
 import ModifiedExpenseCategories from './modified-expense-categories/ModifiedExpenseCategories'
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import TransactionInfoButtons from './transaction-info-buttons/TransactionInfoButtons'
 
 import './transaction-modal-window.css'
-import TransactionInfoButtons from './transaction-info-buttons/TransactionInfoButtons';
-
 
 const TransactionModalWindow = ({transactionObject, setTransactionObject, allCards, categories, transactionMW, setCopy, copy, setTransactions, interval, setTransactionMW}) => {
     const [modifiedMode, setModifiedMode] = useState(false)
