@@ -2,12 +2,21 @@ import React, {useEffect, useRef} from 'react'
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import axios from 'axios'
+import {formattedInterval, formattedTransactions, userId} from '../../../../../my-functions/my-functions'
 
 import './transaction-info-bottons.css'
-import {formattedInterval, formattedTransactions, userId} from '../../../../../my-functions/my-functions';
-import transaction from '../../../transaction/Transaction';
 
-const TransactionInfoButtons = ({modifiedMode, setModifiedMode, transactionObject, setTransactionObject, setCopy, copy, setTransactions, interval, setTransactionMW}) => {
+const TransactionInfoButtons = ({
+    modifiedMode,
+    setModifiedMode,
+    transactionObject,
+    setTransactionObject,
+    setCopy,
+    copy,
+    setTransactions,
+    interval,
+    setTransactionMW,
+    transferCardRef}) => {
 
     const repeat = useRef()
     const del = useRef()
@@ -51,21 +60,26 @@ const TransactionInfoButtons = ({modifiedMode, setModifiedMode, transactionObjec
         } catch (e) {setTransactions([])}
     }
 
-    const changeTransaction = () => {
-        try {
-
-            const request = async interval => {
-
+    const changeTransaction = async () => {
+        const request = async interval => {
+            if (transactionObject.transactionType === 'transfer' && !transactionObject.transferCard) {
+                transferCardRef.current.classList.add('error-animation')
+                setTimeout(() => transferCardRef.current.classList.remove('error-animation'), 700)
+            } else if (JSON.stringify(copy) === JSON.stringify(transactionObject)) alert('Изменения не внесены')
+            else {
+                try {
+                    setTransactionMW(false)
+                    setTransactions(['loader'])
+                    const request = await axios.put(`${userId}/modified-transaction`, {interval, transaction: transactionObject})
+                    const formattedTr = formattedTransactions(request)
+                    setTransactions(formattedTr)
+                } catch (e) {setTransactions([])}
             }
-
-            // setTransactionMW(false)
-            // setTransactions(['loader'])
-            request(formattedInterval(interval))
-        } catch (e) {setTransactions([])}
+        }
+        request(formattedInterval(interval))
     }
 
     const cancelChange = () => setTransactionObject(copy)
-
 
     return (
         <div className={'transaction-info-buttons'}>
@@ -73,9 +87,6 @@ const TransactionInfoButtons = ({modifiedMode, setModifiedMode, transactionObjec
                 className={`transaction-info-btn ${modifiedMode ? 'modified-mode-on' : ''}`}
                 onClick={() => setModifiedMode(prev => !prev)}
             ><FontAwesomeIcon icon={"fa-solid fa-pen"}/>Change</button>
-
-
-
             <button
                 style={{display: modifiedMode ? 'none' : 'flex'}}
                 ref={repeat}

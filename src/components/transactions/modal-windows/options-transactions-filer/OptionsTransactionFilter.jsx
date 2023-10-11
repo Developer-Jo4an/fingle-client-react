@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react'
+import React, {useRef} from 'react'
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faArrowDown, faArrowUp, faCreditCard, faRepeat} from '@fortawesome/free-solid-svg-icons'
@@ -6,7 +6,7 @@ import {faArrowDown, faArrowUp, faCreditCard, faRepeat} from '@fortawesome/free-
 import './options-transaction-filter.css'
 import SwiperEl from '../../../swiper/SwiperEl';
 
-const OptionsTransactionFilter = ({filtered, setFiltered, allCards, categories}) => {
+const OptionsTransactionFilter = ({filtered, setFiltered, allCards, categories, setFilterElements}) => {
 
     const {expense, income} = categories
 
@@ -27,8 +27,8 @@ const OptionsTransactionFilter = ({filtered, setFiltered, allCards, categories})
         setFiltered(prev => {
             let previousArr = prev[key]
             let futureArr = []
-            if (previousArr.includes(el[option])) futureArr = previousArr.filter(item => item !== el[option])
-            else futureArr = [...previousArr, el[option]]
+            if (previousArr.find(item => el[option] === item.label)) futureArr = previousArr.filter(item => item.label !== el[option])
+            else futureArr = [...previousArr, {label: el[option], obj: el}]
             return {...prev, [key]: futureArr}
         })
     }

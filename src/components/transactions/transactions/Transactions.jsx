@@ -22,6 +22,7 @@ const Transactions = ({activePage, allCards, transactionCategories}) => {
         expense: [],
         income: []
     })
+    const [filterElements, setFilterElements] = useState([])
     const [dateFilterVisible, setDateFilterVisible] = useState(false)
     const [addTransactionVisible, setAddTransactionVisible] = useState(false)
     const [optionsTransactionsVisible, setOptionsTransactionsVisible] = useState(false)
@@ -63,6 +64,8 @@ const Transactions = ({activePage, allCards, transactionCategories}) => {
                 setTransactionMW={setTransactionMW}
                 setTransactionObject={setTransactionObject}
                 setCopy={setCopy}
+                filterElements={filterElements}
+                setFilterElements={setFilterElements}
             />
             <ModalWindow
                 visible={dateFilterVisible}
@@ -92,6 +95,7 @@ const Transactions = ({activePage, allCards, transactionCategories}) => {
                     setFiltered={setFilteredTransactions}
                     allCards={allCards}
                     categories={transactionCategories}
+                    setFilterElements={setFilterElements}
                 />
             </ModalWindow>
             <ModalWindow

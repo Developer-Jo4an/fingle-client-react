@@ -3,9 +3,11 @@ import TransactionsChunk from '../transactions-chuck/TransactionsChunk'
 import AddTransaction from '../add-transaction/AddTransaction'
 import Loader from '../../loader/Loader'
 
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+
 import './transaction-section.css'
 
-const TransactionSection = ({transactions, setAddTransactionVisible, filtered, setTransactionMW, setTransactionObject, setCopy}) => {
+const TransactionSection = ({setFilterElements, filterElements, transactions, setAddTransactionVisible, filtered, setTransactionMW, setTransactionObject, setCopy}) => {
 
     const [filteredTransactions, setFilteredTransactions] = useState([])
 
@@ -28,7 +30,9 @@ const TransactionSection = ({transactions, setAddTransactionVisible, filtered, s
                                 }
                             }
                         }
-                        if (!result.includes(false)) acc.push(transaction)
+                        if (!result.includes(false)) {
+                            acc.push(transaction)
+                        }
                         return acc
                     }, [])
                     if (newArray[0]) acc.push([date, newArray])
@@ -38,8 +42,57 @@ const TransactionSection = ({transactions, setAddTransactionVisible, filtered, s
         })
     }, [transactions, filtered])
 
+
+    useEffect(() => {
+        setFilterElements(prev => {
+            const checker = (type, obj) => {
+                const logic = {
+                    transactionType: obj => {
+                        if (prev.find(item => ))
+                        return [...prev, {id: obj._id, label: obj.label, icon: `fa-solid fa-${obj.icon.iconName}`}]
+                    },
+                    card: obj => {
+                        console.log(obj)
+                    },
+                    expense: obj => {
+                        console.log(obj)
+                    },
+                    income: obj => {
+                        console.log(obj)
+                    },
+                }
+                return logic[type](obj)
+            }
+
+            for (const key in filtered) {
+                const value = filtered[key]
+                if (value.length) return value.forEach(item => checker(key, item.obj))
+            }
+            return []
+        })
+    }, [filtered])
+
     return (
         <section className={'transaction-section'}>
+            <div className={'transaction-filters-section'}>
+                {filterElements.length ?
+                    <div className={'filter-elements-wrapper'}>
+                        {filterElements.map(element => (
+                            <div
+                                key={element.label}
+                                className={'filter-element'}
+                                style={{'--filter-element-color': element.color}}
+                            >
+                                <FontAwesomeIcon icon={element.icon}/>
+                                {element.label}
+                                <FontAwesomeIcon icon={'fa-solid fa-xmark'}/>
+                            </div>
+                        ))}
+                    </div>
+                    :
+                    <div></div>
+                }
+            </div>
             {filteredTransactions[0] && filteredTransactions[0] !== 'loader' ? filteredTransactions.map((chunk, i) =>
                 <TransactionsChunk
                     key={`${chunk[1][0]._id}${Math.random()}`}

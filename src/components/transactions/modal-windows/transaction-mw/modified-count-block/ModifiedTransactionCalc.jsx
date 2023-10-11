@@ -1,4 +1,4 @@
-import React, {useRef} from 'react'
+import React, {useEffect, useRef} from 'react'
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {
@@ -13,7 +13,7 @@ import {
 
 import './modified-transaction-calc.css'
 
-const ModifiedTransactionCalc = ({transactionObject, setTransactionObject, setCalcVisible}) => {
+const ModifiedTransactionCalc = ({transactionObject, setTransactionObject, setCalcVisible, calcVisible}) => {
 
     const inputWr = useRef()
 
@@ -40,24 +40,31 @@ const ModifiedTransactionCalc = ({transactionObject, setTransactionObject, setCa
         {value: 'apply', label: <FontAwesomeIcon style={{color: '#24e597'}} icon={faCheck}/>, type: 'apply'},
     ]
 
-    const calculatorChange = item => {
-
-        const counter = count => {
-            try {
-                const result = eval(count)
-                if (result < 0) {
-                    inputWr.current.classList.add('error-animation')
-                    setTimeout(() => inputWr.current.classList.remove('error-animation'), 700)
-                } else {
-                    let strRes = result.toFixed(1).toString()
-                    return strRes.at(-1) === '0' ? strRes.slice(0, -2) : strRes
-                }
-            } catch (e) {
+    const counter = count => {
+        try {
+            const result = eval(count)
+            if (result < 0) {
                 inputWr.current.classList.add('error-animation')
                 setTimeout(() => inputWr.current.classList.remove('error-animation'), 700)
-                return null
+            } else {
+                let strRes = result.toFixed(1).toString()
+                return strRes.at(-1) === '0' ? strRes.slice(0, -2) : strRes
             }
+        } catch (e) {
+            inputWr.current.classList.add('error-animation')
+            setTimeout(() => inputWr.current.classList.remove('error-animation'), 700)
+            return null
         }
+    }
+
+    useEffect(() => {
+        if (!calcVisible) {
+            const result = counter(transactionObject.count)
+            setTransactionObject(prev => result ? {...prev, count: result} : {...prev, count: '0'})
+        }
+    }, [calcVisible])
+
+    const calculatorChange = item => {
 
         const {type} = item
 
@@ -72,7 +79,7 @@ const ModifiedTransactionCalc = ({transactionObject, setTransactionObject, setCa
             }
             case 'equals': {
                 const result = counter(transactionObject.count)
-                setTransactionObject(prev => result ? {...prev, count: result} : prev)
+                setTransactionObject(prev => result ? {...prev, count: result} : {...prev, count: '0'})
                 break
             }
             case 'delete': {
@@ -92,7 +99,7 @@ const ModifiedTransactionCalc = ({transactionObject, setTransactionObject, setCa
             }
             case 'apply': {
                 const result = counter(transactionObject.count)
-                setTransactionObject(prev => result ? {...prev, count: result} : prev)
+                setTransactionObject(prev => result ? {...prev, count: result} : {...prev, count: '0'})
                 setCalcVisible(false)
                 break
             }

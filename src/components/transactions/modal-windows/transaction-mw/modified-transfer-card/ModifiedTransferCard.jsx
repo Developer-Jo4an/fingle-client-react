@@ -3,9 +3,8 @@ import React, {useRef} from 'react'
 import './modified-transfer-card.css'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
-const ModifiedTransferCard = ({modifiedMode, transactionObject, setTransactionObject, getHeight, allCards}) => {
+const ModifiedTransferCard = ({transferCardRef, modifiedMode, transactionObject, setTransactionObject, getHeight, allCards}) => {
 
-    const transferCardRef = useRef()
     const swiperRef = useRef()
 
     const setNewTransferCard = (card, i, e) => {

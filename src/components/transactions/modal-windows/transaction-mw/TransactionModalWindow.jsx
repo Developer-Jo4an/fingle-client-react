@@ -21,6 +21,7 @@ const TransactionModalWindow = ({transactionObject, setTransactionObject, allCar
     const [messageVisible, setMessageVisible] = useState(false)
 
     const sectionRef = useRef()
+    const transferCardRef = useRef()
 
     const getHeight = ref => `${ref.current.scrollHeight}px`
 
@@ -35,6 +36,7 @@ const TransactionModalWindow = ({transactionObject, setTransactionObject, allCar
             setTransactionObject={setTransactionObject}
             getHeight={getHeight}
             modifiedMode={modifiedMode}
+            transferCardRef={transferCardRef}
         />,
         expense: () => <ModifiedExpenseCategories
             transactionObject={transactionObject}
@@ -95,6 +97,7 @@ const TransactionModalWindow = ({transactionObject, setTransactionObject, allCar
                     setTransactions={setTransactions}
                     interval={interval}
                     setTransactionMW={setTransactionMW}
+                    transferCardRef={transferCardRef}
                 />
                 <ModalWindow
                     visible={calcVisible}
@@ -103,6 +106,7 @@ const TransactionModalWindow = ({transactionObject, setTransactionObject, allCar
                     transactionObject={transactionObject}
                     setTransactionObject={setTransactionObject}
                     setCalcVisible={setCalcVisible}
+                    calcVisible={calcVisible}
                 />
                 </ModalWindow>
                 <ModalWindowContentCenter
