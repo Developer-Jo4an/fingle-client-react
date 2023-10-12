@@ -42,7 +42,7 @@ const OptionsTransactionFilter = ({filtered, setFiltered, allCards, categories, 
                         {typeArray.map(type => (
                             <swiper-slide
                                 key={type._id}
-                                class={`transaction-chunk-element ${filtered.transactionType.includes(type._id) ? 'transaction-chunk-element-active' : ''}`}
+                                class={`transaction-chunk-element ${filtered.transactionType.find(i => i.label === type._id) ? 'transaction-chunk-element-active' : ''}`}
                                 style={{'--filter-color': type.color}}
                                 onClick={() => elementActive(type, 'transactionType', '_id')}
                             ><FontAwesomeIcon icon={type.icon}/>{type.label}
@@ -58,7 +58,7 @@ const OptionsTransactionFilter = ({filtered, setFiltered, allCards, categories, 
                         {allCards.map(card => (
                             <swiper-slide
                                 key={card._id}
-                                class={`transaction-chunk-element ${filtered.card.includes(card._id) ? 'transaction-chunk-element-active' : ''}`}
+                                class={`transaction-chunk-element ${filtered.card.find(i => i.label === card._id) ? 'transaction-chunk-element-active' : ''}`}
                                 style={{'--filter-color': '#24e597'}}
                                 onClick={() => elementActive(card, 'card', '_id')}
                             ><FontAwesomeIcon icon={faCreditCard}/>{card.cardName}
@@ -74,7 +74,7 @@ const OptionsTransactionFilter = ({filtered, setFiltered, allCards, categories, 
                         {Object.values(expense).map(category => (
                             <swiper-slide
                                 key={category.name}
-                                class={`transaction-chunk-element ${filtered.expense.includes(category.name) ? 'transaction-chunk-element-active' : ''}`}
+                                class={`transaction-chunk-element ${filtered.expense.find(i => i.label === category.name) ? 'transaction-chunk-element-active' : ''}`}
                                 style={{'--filter-color': category.color}}
                                 onClick={() => elementActive(category, 'expense', 'name')}
                             ><FontAwesomeIcon icon={category.sign}/>{category.name}
@@ -90,7 +90,7 @@ const OptionsTransactionFilter = ({filtered, setFiltered, allCards, categories, 
                         {Object.values(income).map(category => (
                             <swiper-slide
                                 key={category.name}
-                                class={`transaction-chunk-element ${filtered.income.includes(category.name) ? 'transaction-chunk-element-active' : ''}`}
+                                class={`transaction-chunk-element ${filtered.income.find(i => i.label === category.name) ? 'transaction-chunk-element-active' : ''}`}
                                 style={{'--filter-color': category.color}}
                                 onClick={() => elementActive(category, 'income', 'name')}
                             ><FontAwesomeIcon icon={category.sign}/>{category.name}

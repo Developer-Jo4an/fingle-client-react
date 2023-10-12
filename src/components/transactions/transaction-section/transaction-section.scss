@@ -1,3 +1,5 @@
+@import '../../../styles/zeroing/global';
+
 .transaction-section {
     display: flex;
     flex-direction: column;
@@ -42,4 +44,65 @@
         width: 16px;
         height: 16px;
     }
+}
+
+.period-total-section {
+    display: flex;
+    flex-direction: column;
+
+    padding: 0 20px;
+}
+
+.period-total-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-self: stretch;
+
+    gap: 10px;
+
+    border-radius: 20px;
+
+    padding: 20px;
+
+    background-color: rgb(#24e597, 0.1);
+}
+
+.period-total-header {
+    svg {
+        opacity: 0.8;
+    }
+}
+
+.period-total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.between-line {
+    height: 2px;
+
+    background-color: $main-gray-active-color;
+}
+
+.total-for-the-period {
+    font-family: custom-bold, Manrope, sans-serif;
+}
+
+.total-period-value-expense {
+    color: $main-red-color;
+
+    font-family: custom-bold, Manrope, sans-serif;
+}
+
+.total-period-value-income {
+    color: $main-green-color;
+
+    font-family: custom-bold, Manrope, sans-serif;
+}
+
+.total-period-value {
+    display: flex;
+    gap: 5px;
+    align-items: center;
 }

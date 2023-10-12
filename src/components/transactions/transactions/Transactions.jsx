@@ -61,6 +61,7 @@ const Transactions = ({activePage, allCards, transactionCategories}) => {
                 transactions={transactions}
                 setAddTransactionVisible={setAddTransactionVisible}
                 filtered={filteredTransactions}
+                setFiltered={setFilteredTransactions}
                 setTransactionMW={setTransactionMW}
                 setTransactionObject={setTransactionObject}
                 setCopy={setCopy}
