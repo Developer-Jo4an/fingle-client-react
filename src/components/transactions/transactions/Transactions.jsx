@@ -14,23 +14,23 @@ import {formattedInterval, formattedTransactions, userId} from '../../../my-func
 import './transactions.css'
 
 const Transactions = ({activePage, allCards, transactionCategories}) => {
+    // ui states
     const [interval, setInterval] = useState('Week')
     const [transactions, setTransactions] = useState([])
-    const [filteredTransactions, setFilteredTransactions] = useState({
-        transactionType: [],
-        card: [],
-        expense: [],
-        income: []
-    })
+    const [filteredTransactions, setFilteredTransactions] = useState({transactionType: [], card: [], expense: [], income: []})
     const [filterElements, setFilterElements] = useState([])
+    // modal window states
     const [dateFilterVisible, setDateFilterVisible] = useState(false)
     const [addTransactionVisible, setAddTransactionVisible] = useState(false)
     const [optionsTransactionsVisible, setOptionsTransactionsVisible] = useState(false)
     const [transactionMW, setTransactionMW] = useState(false)
     const [transactionObject, setTransactionObject] = useState(null)
     const [copy, setCopy] = useState()
+    // section ref
     const sectionRef = useRef()
 
+
+    // get transactions from server
     useEffect(() => {
         const transactionRequest = async (interval) => {
             try {

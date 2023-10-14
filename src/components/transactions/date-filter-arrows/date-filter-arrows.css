@@ -16,7 +16,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  transition: 0.3s;
+  transition: 0.1s;
 }
 .date-interval-arrow:active {
   background-color: #e0e0e0;

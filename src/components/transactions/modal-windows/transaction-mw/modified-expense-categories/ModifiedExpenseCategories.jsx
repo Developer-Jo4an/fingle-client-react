@@ -73,7 +73,8 @@ const ModifiedExpenseCategories = ({transactionObject, setTransactionObject, get
                     {Object.values(expense).map(category => (
                         <swiper-slide
                             key={category._id}
-                            class={`modified-expense-category ${transactionObject.category.name === category.name ? 'modified-expense-category-active' : ''}`}
+                            class={`modified-expense-category ${transactionObject.category.name === category.name ? 
+                                'modified-expense-category-active' : ''}`}
                             style={{'--modified-category-color': category.color}}
                             onClick={() => setNewExpenseCategory(category)}
                         ><FontAwesomeIcon icon={category.sign}/>{category.name}</swiper-slide>

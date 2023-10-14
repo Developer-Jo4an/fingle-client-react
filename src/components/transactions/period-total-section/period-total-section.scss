@@ -1,0 +1,57 @@
+@import '../../../styles/zeroing/global';
+
+.period-total-section {
+    display: flex;
+    flex-direction: column;
+
+    padding: 0 20px;
+}
+
+.period-total-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-self: stretch;
+    gap: 10px;
+
+    border-radius: 20px;
+
+    padding: 20px;
+
+    background-color: rgb($main-green-color, 0.2);
+}
+
+.period-total-header {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    svg {
+        width: 12px;
+        height: 12px;
+
+        opacity: 0.8;
+    }
+}
+
+.period-total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.between-line {
+    height: 2px;
+
+    background-color: $main-gray-active-color;
+}
+
+.total-for-the-period {font-family: custom-bold, Manrope, sans-serif}
+
+.total-period-value-expense {color: $main-red-color}
+.total-period-value-income {color: $main-green-color}
+
+.total-period-value {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}

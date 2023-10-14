@@ -20,8 +20,6 @@ const Transaction = ({transaction, setTransactionObject, setTransactionMW, setCo
     const getCountColor = () => transactionType === 'expense' ? '#ee3a3a' :
         transactionType === 'income' ? '#24e597' : '#f5d544'
 
-    const getCountSum = () => transactionType === 'expense' ? -count : count
-
     const getSign = () => {
         return transactionType === 'transfer' ? 'fa-solid fa-repeat' : transaction.category.sign
     }
@@ -47,7 +45,7 @@ const Transaction = ({transaction, setTransactionObject, setTransactionMW, setCo
             <div
                 style={{'--count-color': getCountColor()}}
                 className={'transaction-count'}
-            >{getCountSum()} $</div>
+            >{count} $</div>
 
             <div className={'transaction-additional-info'}>{getAddInfo()}</div>
             <div className={'transaction-time'}>{timeRefactor(date)}</div>

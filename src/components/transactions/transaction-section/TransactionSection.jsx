@@ -2,12 +2,21 @@ import React, {useEffect, useState} from 'react'
 import TransactionsChunk from '../transactions-chuck/TransactionsChunk'
 import AddTransaction from '../add-transaction/AddTransaction'
 import Loader from '../../loader/Loader'
-
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import PeriodTotalSection from '../period-total-section/PeriodTotalSection'
+import TransactionFilterSection from '../transaction-filter-section/TransactionFilterSection'
 
 import './transaction-section.css'
 
-const TransactionSection = ({setFilterElements, filterElements, transactions, setAddTransactionVisible, filtered, setFiltered, setTransactionMW, setTransactionObject, setCopy}) => {
+const TransactionSection = ({
+    setFilterElements,
+    filterElements,
+    transactions,
+    setAddTransactionVisible,
+    filtered,
+    setFiltered,
+    setTransactionMW,
+    setTransactionObject,
+    setCopy}) => {
 
     const [filteredTransactions, setFilteredTransactions] = useState([])
 
@@ -19,8 +28,12 @@ const TransactionSection = ({setFilterElements, filterElements, transactions, se
 
     useEffect(() => {
         setFilteredTransactions(() => {
-            if (!transactions[0]) return transactions
-            else if (transactions[0] === 'loader') return transactions
+            let resultTotal = {
+                expense: 0,
+                income: 0,
+                total: 0
+            }
+            if (!transactions[0] || transactions[0] === 'loader') return transactions
             else {
                 const checker = {
                     transactionType: ['transactionType'],
@@ -28,13 +41,8 @@ const TransactionSection = ({setFilterElements, filterElements, transactions, se
                     expense: ['category', 'name'],
                     income: ['category', 'name']
                 }
-                let resultTotal = {
-                    expense: 0,
-                    income: 0,
-                    total: 0
-                }
-                return transactions.reduce((acc, chunk) => {
 
+                const filteredTr =  transactions.reduce((acc, chunk) => {
                     const [date, arr] = chunk
                     const newArray = arr.reduce((acc, transaction) => {
                         const result = []
@@ -74,6 +82,8 @@ const TransactionSection = ({setFilterElements, filterElements, transactions, se
                     if (newArray[0]) acc.push([date, newArray])
                     return acc
                 }, [])
+                if (!filteredTr[0]) setTotal(resultTotal)
+                return filteredTr
             }
         })
     }, [transactions, filtered])
@@ -85,9 +95,34 @@ const TransactionSection = ({setFilterElements, filterElements, transactions, se
             const value = filtered[key]
             if (value.length) {
                 value.forEach(item => {
-                    if (key === 'card') filterElmsArr.push({id: item.obj._id, obj: {label: item.obj.cardName, color: '#24e597', icon: 'fa-solid fa-credit-card'}})
-                    if (key === 'transactionType') filterElmsArr.push({id: item.label, obj: {label: item.obj.label, color: item.obj.color, icon: `fa-solid fa-${item.obj.icon.iconName}`}})
-                    if (key === 'expense' || key === 'income') filterElmsArr.push({id: item.label, obj: {label: item.obj.name, color: item.obj.color, icon: item.obj.sign}})
+                    if (key === 'card') {
+                        filterElmsArr.push({
+                            id: item.obj._id,
+                            obj: {
+                                label: item.obj.cardName,
+                                color: '#24e597',
+                                icon: 'fa-solid fa-credit-card'
+                            }
+                        })
+                    if (key === 'transactionType')
+                        filterElmsArr.push({
+                            id: item.label,
+                            obj: {
+                                label: item.obj.label,
+                                color: item.obj.color,
+                                icon: `fa-solid fa-${item.obj.icon.iconName}`
+                            }
+                        })
+                    if (key === 'expense' || key === 'income')
+                        filterElmsArr.push({
+                            id: item.label,
+                            obj: {
+                                label: item.obj.name,
+                                color: item.obj.color,
+                                icon: item.obj.sign
+                            }
+                        })
+                    }
                 })
             }
         }
@@ -102,42 +137,8 @@ const TransactionSection = ({setFilterElements, filterElements, transactions, se
 
     return (
         <section className={'transaction-section'}>
-            <div className={'period-total-section'}>
-                <div className={'period-total-wrapper'}>
-                    <div className={'period-total'}>
-                        <div className={'period-total-header'}>Expense <FontAwesomeIcon icon={'fa-solid fa-arrow-down'}/></div>
-                        <div className={'total-period-value total-period-value-expense'}>{total.expense}</div>
-                    </div>
-                    <div className={'period-total'}>
-                        <div className={'period-total-header'}>Income <FontAwesomeIcon icon={'fa-solid fa-arrow-up'}/></div>
-                        <div className={'total-period-value total-period-value-income'}>{total.income}</div></div>
-                    <div className={'between-line'}></div>
-                    <div className={'period-total'}>
-                        <div className={'period-header total-for-the-period'}>Total</div>
-                        <div className={'total-period-value total-for-the-period'}>{total.total}</div>
-                    </div>
-                </div>
-            </div>
-            {filterElements.length ?
-                <div className={'transaction-filters-section'}>
-                    <div className={'filter-elements-wrapper'}>
-                        {filterElements.map(({id, obj}) => (
-                            <div
-                                key={id}
-                                className={'filter-element'}
-                                style={{'--filter-element-color': obj.color}}
-                                onClick={() => deleteFilterEl(id)}
-                            >
-                                <FontAwesomeIcon icon={obj.icon}/>
-                                {obj.label}
-                                <FontAwesomeIcon icon={'fa-solid fa-xmark'}/>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-                : null
-            }
-
+            <PeriodTotalSection total={total}/>
+            {filterElements.length ? <TransactionFilterSection filterElements={filterElements} deleteFilterEl={deleteFilterEl}/> : null}
             {filteredTransactions[0] && filteredTransactions[0] !== 'loader' ? filteredTransactions.map((chunk, i) =>
                 <TransactionsChunk
                     key={`${chunk[1][0]._id}${Math.random()}`}

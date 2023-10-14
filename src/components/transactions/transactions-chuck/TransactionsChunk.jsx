@@ -22,8 +22,8 @@ const TransactionsChunk = ({chunk, index, setTransactionObject, setTransactionMW
     const total = array.reduce((acc, item) => {
         const {transactionType, count} = item
         switch (transactionType) {
-            case 'expense': { acc.expense += count; acc.total -= count} break
-            case 'income': {acc.income += count; acc.total -= count} break
+            case 'expense': {acc.expense += count; acc.total -= count} break
+            case 'income': {acc.income += count; acc.total += count} break
         }
         return acc
     }, {expense: 0, income: 0, total: 0})
@@ -47,7 +47,7 @@ const TransactionsChunk = ({chunk, index, setTransactionObject, setTransactionMW
                         className={'transaction-chunk-count-total'}
                         style={{width: 0}}
                     >
-                        <div style={{color: '#ee3a3a'}}>-{total.expense}$</div>
+                        <div style={{color: '#ee3a3a'}}>{total.expense}$</div>
                         <div style={{color: '#24e597'}}>{total.income}$</div>
                         <div
                             style={getTotal()}

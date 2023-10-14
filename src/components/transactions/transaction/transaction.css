@@ -5,6 +5,10 @@
   column-gap: 15px;
   border-radius: 15px;
   padding: 10px 0;
+  transition: 0.1s;
+}
+.transaction:active {
+  background-color: #e0e0e0;
 }
 
 .transaction-sign {

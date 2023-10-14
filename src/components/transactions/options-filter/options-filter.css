@@ -8,7 +8,7 @@
 
 .options-filer-wrapper {
   padding: 8px;
-  transition: 0.3s;
+  transition: 0.1s;
   border-radius: 20px;
 }
 .options-filer-wrapper:active {

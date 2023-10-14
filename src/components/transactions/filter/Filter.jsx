@@ -11,7 +11,7 @@ const Filter = ({interval, setInterval, setDateFilterVisible, setOptionsFilter})
         <div className={'transactions-filter'}>
             <div className={'date-filter-wrapper'}>
                 <DateFilter interval={interval} setDateFilterVisible={setDateFilterVisible}/>
-                <DateFilterArrows interval={interval} setInterval={setInterval} setDateFilterVisible={setDateFilterVisible}/>
+                <DateFilterArrows interval={interval} setInterval={setInterval}/>
                 <OptionsFilter setOptionsFilter={setOptionsFilter}/>
             </div>
         </div>

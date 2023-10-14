@@ -1,13 +1,13 @@
 import React from 'react'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { dateObj } from '../../../my-functions/my-functions'
 import { faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons'
+import { dateObj } from '../../../my-functions/my-functions'
 import moment from 'moment'
 
-
 import './date-filter-arrows.css'
-const DateFilterArrows = ({interval, setInterval, setDateFilterVisible}) => {
+
+const DateFilterArrows = ({interval, setInterval}) => {
 
 
     const arrowClick = dir => {

@@ -9,6 +9,10 @@
 
     border-radius: 15px;
     padding: 10px 0;
+
+    transition: 0.1s;
+
+    &:active {background-color: $main-gray-active-color;}
 }
 
 .transaction-sign {

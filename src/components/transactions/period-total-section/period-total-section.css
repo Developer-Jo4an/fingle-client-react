@@ -1,0 +1,57 @@
+.period-total-section {
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
+}
+
+.period-total-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  gap: 10px;
+  border-radius: 20px;
+  padding: 20px;
+  background-color: rgba(36, 229, 151, 0.2);
+}
+
+.period-total-header {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.period-total-header svg {
+  width: 12px;
+  height: 12px;
+  opacity: 0.8;
+}
+
+.period-total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.between-line {
+  height: 2px;
+  background-color: #e0e0e0;
+}
+
+.total-for-the-period {
+  font-family: custom-bold, Manrope, sans-serif;
+}
+
+.total-period-value-expense {
+  color: #ee3a3a;
+}
+
+.total-period-value-income {
+  color: #24e597;
+}
+
+.total-period-value {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+/*# sourceMappingURL=period-total-section.css.map */
