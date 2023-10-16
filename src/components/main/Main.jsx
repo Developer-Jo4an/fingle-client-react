@@ -1,23 +1,25 @@
 import React from 'react'
 import Transactions from '../transactions/transactions/Transactions'
+import { useContextApp } from '../../AppProvider'
 
 import './main.css'
 
-const Main = ({activePage, ...props}) => {
-    const {transactions, allCards, transactionCategories} = props
+const Main = () => {
+    const {page} = useContextApp()
+
+    const pageLogic = {
+        home: () => 'main-home',
+        analytics: () => 'main-analytics',
+        transactions: () => 'main-transaction'
+    }
 
     return (
-        <main>
-            <div style={{display: activePage === 'home' ? 'flex' : 'none'}} className={'home'}>Home</div>
-            <div style={{display: activePage === 'analytics' ? 'flex' : 'none'}} className={'analytics'}>Analytics</div>
-            <Transactions
-                activePage={activePage}
-                transactions={transactions}
-                allCards={allCards}
-                transactionCategories={transactionCategories}
-            />
+        <main className={pageLogic[page[0]]()}>
+            <div style={{width: '33.3333%'}}>Home</div>
+            <div style={{width: '33.3333%'}}>Analytics</div>
+            <Transactions/>
         </main>
-    );
-};
+    )
+}
 
 export default Main

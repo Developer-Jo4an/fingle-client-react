@@ -9,6 +9,10 @@ header {
   z-index: 90;
   position: sticky;
   top: 0;
+  left: -100%;
+}
+
+.header-active {
   left: 0;
 }
 

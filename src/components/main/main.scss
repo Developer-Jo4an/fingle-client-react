@@ -1,4 +1,22 @@
 main {
+    width: 300%;
+
     flex-grow: 1;
     display: flex;
+
+    overflow: hidden;
+
+    transition: .3s;
+}
+
+.main-home {
+    transform: translateX(0%);
+}
+
+.main-analytics {
+    transform: translateX(-33.3333%);
+}
+
+.main-transaction {
+    transform: translateX(-66.6666%);
 }

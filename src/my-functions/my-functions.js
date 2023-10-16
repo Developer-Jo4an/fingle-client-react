@@ -16,7 +16,7 @@ export const errorUser = {
     _id: "23423423423423423"
 }
 
-export const dateObj = (date) => {
+export const dateObj = date => {
     return {
         'Today': [new Date().setHours(0, 0, 0, 0), new Date().setHours(23, 59, 59, 999)].map(date => new Date(date)),
         'Week': [moment(new Date().setHours(0, 0, 0, 0)).subtract(6, 'days')._d, new Date(new Date().setHours(23, 59, 59, 999))],

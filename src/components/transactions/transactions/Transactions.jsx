@@ -7,115 +7,60 @@ import AddTransactionModalWindow from '../modal-windows/add-transaction-mw/AddTr
 import TransactionSection from '../transaction-section/TransactionSection'
 import OptionsTransactionFilter from '../modal-windows/options-transactions-filer/OptionsTransactionFilter'
 import TransactionModalWindow from '../modal-windows/transaction-mw/TransactionModalWindow'
-
-import axios from 'axios'
-import {formattedInterval, formattedTransactions, userId} from '../../../my-functions/my-functions'
+import { useContextApp } from '../../../AppProvider'
 
 import './transactions.css'
+import {dateObj} from '../../../my-functions/my-functions'
 
-const Transactions = ({activePage, allCards, transactionCategories}) => {
-    // ui states
-    const [interval, setInterval] = useState('Week')
+const Transactions = () => {
+    const {user} = useContextApp()
+
     const [transactions, setTransactions] = useState([])
-    const [filteredTransactions, setFilteredTransactions] = useState({transactionType: [], card: [], expense: [], income: []})
-    const [filterElements, setFilterElements] = useState([])
-    // modal window states
-    const [dateFilterVisible, setDateFilterVisible] = useState(false)
-    const [addTransactionVisible, setAddTransactionVisible] = useState(false)
-    const [optionsTransactionsVisible, setOptionsTransactionsVisible] = useState(false)
-    const [transactionMW, setTransactionMW] = useState(false)
-    const [transactionObject, setTransactionObject] = useState(null)
-    const [copy, setCopy] = useState()
-    // section ref
-    const sectionRef = useRef()
+    const [period, setPeriod] = useState('All time')
+    const [transactionFilter, setTransactionFilter] = useState({
+        transactionType: ['expense'],
+        card: [],
+        category: [],
+    })
 
-
-    // get transactions from server
     useEffect(() => {
-        const transactionRequest = async (interval) => {
-            try {
-                let transactionsData = await axios.post(`${userId}/get-transactions`, {interval})
-                const filteredTransactions = formattedTransactions(transactionsData)
-                setTransactions(filteredTransactions)
-            } catch (e) {setTransactions([])}
-        }
-        setTransactions(['loader'])
-        transactionRequest(formattedInterval(interval))
-    }, [interval])
+        let periodJson = dateObj(period)
+        periodJson = periodJson ? periodJson : period // formatted Period
+
+        const formattedTransactions = user[0].transactions.reduce((acc, transaction) => {
+            const checkObject = {
+                date: transaction => {
+                    const date = new Date(transaction.date)
+                    return periodJson[0] <= date && date <= periodJson[1]
+                },
+                filter: transaction => {
+                    const result = []
+                    for (const key in transactionFilter) {
+                        const value = transactionFilter[key]
+                        if (value.length) {
+                            const {transactionType, card, category} = transaction
+
+                            const filterLogic = {
+                                transactionType: () => result.push(value.includes(transactionType)),
+                                card: () => result.push(value.includes(card._id)),
+                                category: () => {
+                                    if (transactionType === 'transfer') result.push(false)
+                                    else result.push(value.includes(category.name))
+                                }
+                            }; filterLogic[key]()
+                        }
+                    }
+                    return !result.includes(false)
+                },
+            }
+            if (checkObject.date(transaction) && checkObject.filter(transaction)) acc.push(transaction)
+            return acc
+        }, [])
+        setTransactions(formattedTransactions)
+    }, [period, setPeriod, user[0].transactions])
 
     return (
-        <section
-            ref={sectionRef}
-            style={{display: activePage === 'transactions' ? 'flex' : 'none'}}
-            className={'transactions-page'}
-        >
-            <MyHead>Transactions</MyHead>
-            <Filter
-                interval={interval}
-                setInterval={setInterval}
-                setDateFilterVisible={setDateFilterVisible}
-                optionsFilter={optionsTransactionsVisible}
-                setOptionsFilter={setOptionsTransactionsVisible}
-            />
-            <TransactionSection
-                transactions={transactions}
-                setAddTransactionVisible={setAddTransactionVisible}
-                filtered={filteredTransactions}
-                setFiltered={setFilteredTransactions}
-                setTransactionMW={setTransactionMW}
-                setTransactionObject={setTransactionObject}
-                setCopy={setCopy}
-                filterElements={filterElements}
-                setFilterElements={setFilterElements}
-            />
-            <ModalWindow
-                visible={dateFilterVisible}
-                setVisible={setDateFilterVisible}>
-                <DateFilterModalWindow
-                    interval={interval}
-                    setInterval={setInterval}
-                    setDateFilterVisible={setDateFilterVisible}
-                />
-            </ModalWindow>
-            <ModalWindow
-                visible={addTransactionVisible}
-                setVisible={setAddTransactionVisible}>
-                <AddTransactionModalWindow
-                    allCards={allCards}
-                    categories={transactionCategories}
-                    setMWVisible={setAddTransactionVisible}
-                    interval={interval}
-                    setTransactions={setTransactions}
-                />
-            </ModalWindow>
-            <ModalWindow
-                visible={optionsTransactionsVisible}
-                setVisible={setOptionsTransactionsVisible}>
-                <OptionsTransactionFilter
-                    filtered={filteredTransactions}
-                    setFiltered={setFilteredTransactions}
-                    allCards={allCards}
-                    categories={transactionCategories}
-                    setFilterElements={setFilterElements}
-                />
-            </ModalWindow>
-            <ModalWindow
-                visible={transactionMW}
-                setVisible={setTransactionMW}>
-                <TransactionModalWindow
-                    transactionObject={transactionObject}
-                    setTransactionObject={setTransactionObject}
-                    allCards={allCards}
-                    categories={transactionCategories}
-                    transactionMW={transactionMW}
-                    setCopy={setCopy}
-                    copy={copy}
-                    setTransactions={setTransactions}
-                    setTransactionMW={setTransactionMW}
-                    interval={interval}
-                />
-            </ModalWindow>
-        </section>
+        <div style={{width: '33.3333%'}}>Transactions</div>
     )
 }
 

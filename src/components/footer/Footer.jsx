@@ -1,53 +1,69 @@
 import React, {useEffect, useRef, useState} from 'react'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHouse, faChartSimple, faBarsStaggered } from '@fortawesome/free-solid-svg-icons'
+import { useContextApp } from '../../AppProvider'
 
 import './footer.css'
 
-const Footer = ({pageNav, activePage}) => {
-    const [home, setHome] = useState({id: 'home', label: 'Home', icon: faHouse, width: 'auto', ref: useRef()})
-    const [analytics, setAnalytics] = useState({id: 'analytics', label: 'Analytics', icon: faChartSimple, width: '0', ref: useRef()})
-    const [transactions, setTransactions] = useState({id: 'transactions', label: 'Transactions', icon: faBarsStaggered, width: '0', ref: useRef()})
+const Footer = () => {
+    const {page} = useContextApp()
 
-    const footerBtns = [home, analytics, transactions]
-    const footerBtnsSetters = {home: setHome, analytics: setAnalytics, transactions: setTransactions}
-    const checkActivePage = id => id === activePage
+    const homeRef = useRef()
+    const analyticsRef = useRef()
+    const transactionsRef = useRef()
 
-    const click = btn => {
-        const {id, ref} = btn
+    const [width, setWidth] = useState({
+        home: 'auto',
+        analytics: '0px',
+        transactions: '0px'
+    })
 
-        const previousBtn = footerBtns.find(obj => obj.width !== '0')
-
-        if (previousBtn.id === id) return
-
-        const previousSetter = footerBtnsSetters[previousBtn.id]
-        previousSetter({...previousBtn, width: '0'})
-
-        const width = `${ref.current.scrollWidth}px`
-        const setter = footerBtnsSetters[id]
-        setter({...btn, width})
-
-        pageNav(id)
-    }
+    useEffect(() => {
+        const footerBtnsLogic = {
+            home: () => setWidth({home: `${homeRef.current.scrollWidth}px`, analytics: '0px', transactions: '0px'}),
+            analytics: () => setWidth({analytics: `${analyticsRef.current.scrollWidth}px`, home: '0px', transactions: '0px'}),
+            transactions: () => setWidth({transactions: `${transactionsRef.current.scrollWidth}px`, home: '0px', analytics: '0px'}),
+        }
+        footerBtnsLogic[page[0]]()
+    }, [page[0]])
 
     return (
         <footer>
+            {/* I could have created an array of buttons, but decided to make them separate elements, since there are only three of them */}
+            {/* page[0] - state; page[1] - setState */}
             <nav className={'footer-nav'}>
-                {footerBtns.map(btn => (
+                <div // home btn
+                    className={`footer-nav-btn ${page[0] === 'home' ? 'footer-nav-btn-active' : ''}`}
+                    onClick={() => page[1]('home')}
+                ><FontAwesomeIcon icon='fa-solid fa-home'/>
                     <div
-                        key={btn.id}
-                        className={`footer-nav-btn ${checkActivePage(btn.id) ? 'footer-nav-btn-active' : ''}`}
-                        onClick={() => click(btn)}
-                    ><FontAwesomeIcon icon={btn.icon}/>
-                    <div
-                        ref={btn.ref}
+                        ref={homeRef}
+                        style={{width: width.home}}
                         className={'footer-btn-label'}
-                        style={{width: btn.width}}
-                    >{btn.label}
-                    </div>
-                    </div>
-                ))}
+                    >Home</div>
+                </div>
+
+                <div // analytics btn
+                    className={`footer-nav-btn ${page[0] === 'analytics' ? 'footer-nav-btn-active' : ''}`}
+                    onClick={() => page[1]('analytics')}
+                ><FontAwesomeIcon icon='fa-solid fa-chart-simple'/>
+                    <div
+                        ref={analyticsRef}
+                        style={{width: width.analytics}}
+                        className={'footer-btn-label'}
+                    >Analytics</div>
+                </div>
+
+                <div // transactions btn
+                    className={`footer-nav-btn ${page[0] === 'transactions' ? 'footer-nav-btn-active' : ''}`}
+                    onClick={() => page[1]('transactions')}
+                ><FontAwesomeIcon icon='fa-solid fa-bars-staggered'/>
+                    <div
+                        ref={transactionsRef}
+                        style={{width: width.transactions}}
+                        className={'footer-btn-label'}
+                    >Transactions</div>
+                </div>
             </nav>
         </footer>
     )
