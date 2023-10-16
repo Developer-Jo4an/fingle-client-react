@@ -1,22 +1,23 @@
-import React, {useCallback, useRef, useState} from 'react'
+import React, {useCallback, useRef} from 'react'
 import Datepicker from '../../../datepicker/Datepicker'
 
 import AirDatepicker from 'air-datepicker'
+import {useTransactionsContext} from '../../transactions/TransactionsProvider'
 
 import 'air-datepicker/air-datepicker.css'
 import './date-filter-modal-window.css'
 
-const DateFilterModalWindow = ({interval, setInterval, setDateFilterVisible}) => {
+const DateFilterModalWindow = () => {
 
     const dateFilterBtns = [{id: 'Today'}, {id: 'Week'}, {id: 'Month'}, {id: 'Year'}, {id: 'All time'}]
 
-    const inputRef = useRef()
+    const {period, periodMWS} = useTransactionsContext()
 
+    const inputRef = useRef()
     const datepickerClasses = {
         label: 'date-filter-btn',
         input: 'transactions-datepicker-input'
     }
-
     const datepicker = useCallback(() => {
         return new AirDatepicker(inputRef.current, {
             isMobile: true,
@@ -28,12 +29,12 @@ const DateFilterModalWindow = ({interval, setInterval, setDateFilterVisible}) =>
                 if (formattedDate.length === 2) {
                     const checker = formattedDate[0] === formattedDate[1]
                     const label = checker ? formattedDate[0] : formattedDate.join(' - ')
-                    setInterval(label)
-                    setDateFilterVisible(false)
+                    period[1](label)
+                    periodMWS[1](false)
                 }
             }
         })
-    }, [setInterval, setDateFilterVisible])
+    }, [])
 
     return (
         <div className={'date-filter-modal-window'}>
@@ -41,13 +42,14 @@ const DateFilterModalWindow = ({interval, setInterval, setDateFilterVisible}) =>
                 <div
                     key={btn.id}
                     className={'date-filter-btn'}
-                    onClick={() => {
-                        setInterval(btn.id)
-                        setDateFilterVisible(false)
-                    }}
-                >{btn.id}<div className={`date-filter-btn-active-checker ${interval === btn.id ? 'date-checker-active' : ''}`}></div></div>
+                    onClick={() => {period[1](btn.id); periodMWS[1](false)}}
+                >{btn.id}<div className={`date-filter-btn-active-checker ${period[0] === btn.id ? 'date-checker-active' : ''}`}></div></div>
             ))}
-            <Datepicker datepicker={datepicker} Ref={inputRef} datepickerClasses={datepickerClasses}>Custom</Datepicker>
+            <Datepicker
+                datepicker={datepicker}
+                Ref={inputRef}
+                datepickerClasses={datepickerClasses}
+            >Custom</Datepicker>
         </div>
     )
 }

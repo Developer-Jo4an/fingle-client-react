@@ -1,14 +1,30 @@
 @import '../../../styles/zeroing/global';
 
+.transaction-chunk {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    padding: 0 10px;
+}
+
+.transaction-chunk-header {
+    font-family: custom-bold, Manrope, sans-serif;
+    font-size: 20px;
+
+    padding-left: 10px;
+}
+
 .transaction {
     display: grid;
     grid-template-rows: repeat(2, 25px);
     grid-template-columns: 45px 1fr auto;
 
+
     column-gap: 15px;
 
     border-radius: 15px;
-    padding: 10px 0;
+    padding: 10px;
 
     transition: 0.1s;
 

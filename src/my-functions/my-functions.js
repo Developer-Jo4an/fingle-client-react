@@ -38,27 +38,10 @@ export function dateRefactor(date) {
 }
 
 export function timeRefactor(date) {
+    date = new Date(date)
     const hours = date.getHours().toString().padStart(2, '0');
     const minutes = date.getMinutes().toString().padStart(2, '0');
     return `${hours}:${minutes}`
-}
-
-export function formattedTransactions(transactionsData) {
-    transactionsData = transactionsData.data.map(item =>
-        new Object({...item, date: new Date(item.date)}))
-        .sort((a, b) => b.date - a.date)
-
-    const transactionsObj = {}
-    transactionsData.forEach(item => {
-        const date = dateRefactor(item.date)
-        date in transactionsObj ?
-            transactionsObj[date] = [...transactionsObj[date], item]
-            : transactionsObj[date] = [item]
-    })
-
-    const lastTransactions = []
-    for (const key in transactionsObj) lastTransactions.push([key, transactionsObj[key]])
-    return lastTransactions
 }
 
 export function formattedInterval(interval) {
@@ -78,6 +61,16 @@ export function formattedInterval(interval) {
         }
         return formattedInterval
     }
+}
+
+export function chunkTransactions (arr) {
+    const transactionChunks = {}
+    arr.toReversed().forEach(tr => {
+        const date = dateRefactor(tr.date)
+        if (transactionChunks.hasOwnProperty(date)) transactionChunks[date] = [...transactionChunks[date], tr]
+        else transactionChunks[date] = [tr]
+    })
+    return transactionChunks
 }
 
 export function reloadSlider(ref) {

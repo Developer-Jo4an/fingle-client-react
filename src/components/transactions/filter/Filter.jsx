@@ -5,14 +5,13 @@ import OptionsFilter from '../options-filter/OptionsFilter'
 
 import './filter.css'
 
-const Filter = ({interval, setInterval, setDateFilterVisible, setOptionsFilter}) => {
-
+const Filter = () => {
     return (
         <div className={'transactions-filter'}>
             <div className={'date-filter-wrapper'}>
-                <DateFilter interval={interval} setDateFilterVisible={setDateFilterVisible}/>
-                <DateFilterArrows interval={interval} setInterval={setInterval}/>
-                <OptionsFilter setOptionsFilter={setOptionsFilter}/>
+                <DateFilter/>
+                <DateFilterArrows/>
+                <OptionsFilter/>
             </div>
         </div>
     )

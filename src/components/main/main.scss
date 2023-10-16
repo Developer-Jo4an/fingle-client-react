@@ -1,22 +1,10 @@
-main {
-    width: 300%;
+@import '../../styles/zeroing/global';
 
+main {
     flex-grow: 1;
     display: flex;
 
-    overflow: hidden;
+    overflow-x: hidden;
 
     transition: .3s;
-}
-
-.main-home {
-    transform: translateX(0%);
-}
-
-.main-analytics {
-    transform: translateX(-33.3333%);
-}
-
-.main-transaction {
-    transform: translateX(-66.6666%);
 }

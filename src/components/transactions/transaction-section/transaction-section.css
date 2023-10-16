@@ -3,6 +3,7 @@
   flex-direction: column;
   gap: 20px;
   flex-grow: 1;
+  padding-bottom: 10px;
   position: relative;
 }
 

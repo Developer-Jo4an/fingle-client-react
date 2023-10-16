@@ -5,7 +5,7 @@ import { timeRefactor } from '../../../my-functions/my-functions'
 
 import './transaction.css'
 
-const Transaction = ({transaction, setTransactionObject, setTransactionMW, setCopy}) => {
+const Transaction = ({ transaction }) => {
     const {transactionType, count, date, card} = transaction
 
     const getInfo = () => {
@@ -15,29 +15,22 @@ const Transaction = ({transaction, setTransactionObject, setTransactionMW, setCo
     }
 
     const getAddInfo = () => transactionType === 'expense' ||
-    transactionType === 'income' ? card.cardName : transaction.transferCard.cardName
+        transactionType === 'income' ? card.cardName : transaction.transferCard.cardName
 
     const getCountColor = () => transactionType === 'expense' ? '#ee3a3a' :
         transactionType === 'income' ? '#24e597' : '#f5d544'
 
-    const getSign = () => {
-        return transactionType === 'transfer' ? 'fa-solid fa-repeat' : transaction.category.sign
-    }
+    const getSign = () => transactionType === 'transfer' ?
+        'fa-solid fa-repeat' : transaction.category.sign
 
-
+    const getBackground = () => ({backgroundColor: transactionType === 'expense' ||
+        transactionType === 'income' ? transaction.category.color : '#f5d544'})
 
     return (
-        <div
-            className={'transaction'}
-            onClick={() => {
-                setCopy(transaction)
-                setTransactionObject(transaction)
-                setTransactionMW(true)
-            }}
-        >
+        <div className={'transaction'}>
             <div className={'transaction-sign'}>
                 <div
-                    style={{'--background': transactionType === 'expense' || transactionType === 'income' ? transaction.category.color : '#f5d544'}}
+                    style={getBackground()}
                     className={'transaction-sign-wrapper'}
                 >{<FontAwesomeIcon icon={getSign()}/>}</div>
             </div>
@@ -50,7 +43,7 @@ const Transaction = ({transaction, setTransactionObject, setTransactionMW, setCo
             <div className={'transaction-additional-info'}>{getAddInfo()}</div>
             <div className={'transaction-time'}>{timeRefactor(date)}</div>
         </div>
-    );
-};
+    )
+}
 
 export default Transaction

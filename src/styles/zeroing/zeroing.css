@@ -1,0 +1,57 @@
+@font-face {
+  font-family: custom-bold;
+  src: url(http://localhost:3000/fonts/Montserrat-SemiBold.ttf);
+}
+@font-face {
+  font-family: custom-regular;
+  src: url(http://localhost:3000/fonts/Montserrat-Regular.ttf);
+}
+@font-face {
+  font-family: custom-italic;
+  src: url(http://localhost:3000/fonts/Montserrat-Italic.ttf);
+}
+@font-face {
+  font-family: custom-super-bold;
+  src: url(http://localhost:3000/fonts/Montserrat-Italic.ttf);
+}
+*, *:before, *:after {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  list-style: none;
+  box-sizing: border-box;
+  text-decoration: none;
+  background-color: transparent;
+  font-family: custom-regular, Manrope, sans-serif;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+.fingle-application {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 320px) {
+  body {
+    min-width: 320px;
+  }
+}
+
+/*# sourceMappingURL=zeroing.css.map */

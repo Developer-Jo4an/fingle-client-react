@@ -1,11 +1,8 @@
-import React from 'react';
-import classes from './MyHead.module.css'
-const MyHead = (props) => {
-    return (
-        <h1 className={classes.myHead}>
-            {props.children}
-        </h1>
-    )
-}
+import React from 'react'
 
-export default MyHead;
+import classes from './MyHead.module.css'
+
+const MyHead = (props) => (<h1 className={classes.myHead}>{props.children}</h1>)
+
+
+export default MyHead

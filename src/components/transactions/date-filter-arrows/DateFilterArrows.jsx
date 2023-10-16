@@ -4,26 +4,29 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons'
 import { dateObj } from '../../../my-functions/my-functions'
 import moment from 'moment'
+import {useTransactionsContext} from '../transactions/TransactionsProvider'
 
 import './date-filter-arrows.css'
 
-const DateFilterArrows = ({interval, setInterval}) => {
+const DateFilterArrows = () => {
 
+    const {period} = useTransactionsContext()
 
     const arrowClick = dir => {
-        let period = dateObj(interval)
 
-        const modifiedDate = (period) => {
-            const diff = moment(period[1]).diff(period[0], 'days') + 1
-            period = period.map(date => moment(date)[dir](diff, 'days')._d.toLocaleDateString())
-            period = period[0] === period[1] ? period[0] : period.join(' - ')
-            setInterval(period)
+        let interval = dateObj(period[0])
+
+        const modifiedDate = interval => {
+            const diff = moment(interval[1]).diff(interval[0], 'days') + 1
+            interval = interval.map(date => moment(date)[dir](diff, 'days')._d.toLocaleDateString())
+            interval = interval[0] === interval[1] ? interval[0] : interval.join(' - ')
+            period[1](interval)
         }
 
-        if (period) modifiedDate(period)
+        if (interval) modifiedDate(interval)
         else {
-            if (interval.includes(' - ')) modifiedDate(interval.split(' - ').map(date => moment(date, 'DD.MM.YYYY')._d))
-            else modifiedDate([moment(interval, 'DD.MM.YYYY')._d, moment(interval, 'DD.MM.YYYY')._d])
+            if (period[0].includes(' - ')) modifiedDate(period[0].split(' - ').map(date => moment(date, 'DD.MM.YYYY')._d))
+            else modifiedDate([moment(period[0], 'DD.MM.YYYY')._d, moment(period[0], 'DD.MM.YYYY')._d])
         }
     }
 

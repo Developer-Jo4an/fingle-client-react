@@ -7,17 +7,11 @@ import './main.css'
 const Main = () => {
     const {page} = useContextApp()
 
-    const pageLogic = {
-        home: () => 'main-home',
-        analytics: () => 'main-analytics',
-        transactions: () => 'main-transaction'
-    }
-
     return (
-        <main className={pageLogic[page[0]]()}>
-            <div style={{width: '33.3333%'}}>Home</div>
-            <div style={{width: '33.3333%'}}>Analytics</div>
-            <Transactions/>
+        <main>
+            {page[0] === 'home' && <div>Home</div>}
+            {page[0] === 'analytics' && <div>Analytics</div>}
+            {page[0] === 'transactions' && <Transactions/>}
         </main>
     )
 }

@@ -1,8 +1,12 @@
 import React, {useEffect} from 'react'
 
+import {useTransactionsContext} from '../../transactions/TransactionsProvider'
+
 import './modal-window.css'
 
-const ModalWindow = ({visible, setVisible, ...props}) => {
+const ModalWindow = ({ nav, children }) => {
+
+    const [visible, setVisible] = useTransactionsContext()[nav]
 
     useEffect(() => {
         visible ? document.body.style.overflow = 'hidden' : document.body.style.overflow = 'visible'
@@ -17,7 +21,7 @@ const ModalWindow = ({visible, setVisible, ...props}) => {
         ><div
             className={`modal-window-content ${visible ? 'modal-window-content-appearance' : ''}`}
             onClick={e => e.stopPropagation()}
-        >{props.children}</div>
+        >{children}</div>
         </div>
     )
 }
