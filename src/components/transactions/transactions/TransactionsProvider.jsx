@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react'
 
-import {dateObj, dateRefactor} from '../../../my-functions/my-functions'
+import {dateObj} from '../../../my-functions/my-functions'
 import {useContextApp} from '../../../AppProvider'
 import moment from 'moment'
 
@@ -26,6 +26,9 @@ const TransactionsProvider = ({ children}) => {
     // modal windows
     const [periodMWS, setPeriodMWS] = useState(false)
     const [filterMWS, setFilterMWS] = useState(false)
+    const [addMWS, setAddMWS] = useState(false)
+
+    // transactions filter
 
     useEffect(() => {
         setTotal({
@@ -102,7 +105,8 @@ const TransactionsProvider = ({ children}) => {
             filterEls: [filterEls, setFilterEls],
             total: [total, setTotal],
             periodMWS: [periodMWS, setPeriodMWS],
-            filterMWS: [filterMWS, setFilterMWS]
+            filterMWS: [filterMWS, setFilterMWS],
+            addMWS: [addMWS, setAddMWS]
         }}>{ children }
         </TransactionsContext.Provider>
     )

@@ -1,129 +1,98 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect} from 'react'
+import Loader from '../../../../loader/Loader'
 
 import axios from 'axios'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {
-    faCheck,
-    faDeleteLeft,
-    faDivide,
-    faEquals,
-    faMessage,
-    faMinus,
-    faMultiply,
-    faPlus,
-    faXmark
-} from '@fortawesome/free-solid-svg-icons'
-import { formattedInterval, formattedTransactions, userId } from '../../../../../my-functions/my-functions'
+import { userId } from '../../../../../my-functions/my-functions'
+import {useAddTransactionContext} from '../AddTransactionProvider'
+import {useContextApp} from '../../../../../AppProvider'
+import {useTransactionsContext} from '../../../transactions/TransactionsProvider'
 
 import './calculator.css'
 
-const Calculator = ({countRef,
-                        expenseRef,
-                        incomeRef,
-                        transferRef,
-                        state,
-                        setState,
-                        setMWVisible,
-                        messageVisible,
-                        interval,
-                        setTransactions,
-                        allCards}) => {
+const Calculator = () => {
 
-    const [trigger, setTrigger] = useState(false)
+    const {user} = useContextApp()
+    const {addMWS} = useTransactionsContext()
+    const {newTransaction, refs, messageMWS, loader} = useAddTransactionContext()
 
     useEffect(() => {
-        if (trigger) {
-            try {
-                const transactionRequest = interval => {
+        const checkCard = () => {
+            if (newTransaction[0].card) return true
+            else {
+                refs.card.current.classList.add('error-animation')
+                setTimeout(() => refs.card.current.classList.remove('error-animation'), 700)
+                return false
+            }
+        }
 
-                    const transaction = {}
-                    for (const key in state)
-                        key === 'type' ?
-                            transaction.transactionType = state[key]
-                            : transaction[key] = state[key]
+        const checkProperty = (nav, key) => {
+            if (checkCard()) {
+                if (newTransaction[0][key]) return true
+                else {
+                    refs[nav].current.classList.add('error-animation')
+                    setTimeout(() => refs[nav].current.classList.remove('error-animation'), 700)
+                    return false
+                }
+            } else return false
+        }
 
-                    const readyForRequest = async (interval, transaction) => {
-                        let transactionsData = await axios.post(`${userId}/add-transaction`, {interval, transaction})
-                        const filteredTransactions = formattedTransactions(transactionsData)
-                        setTransactions(filteredTransactions)
-                        setState({
-                            type: 'expense',
+        const checkLogic = {
+            expense: () => checkProperty('expense', 'category'),
+            income: () => checkProperty('income', 'category'),
+            transfer: () => checkProperty('transfer', 'transferCard'),
+        }
+        if (loader[0]) {
+            if (checkLogic[newTransaction[0].transactionType]()) {
+                addMWS[1](false)
+                const addTransactionRequest = async () => {
+                    try {
+                        const updatedTransactions = await axios.post(`${userId}/add-transaction`, {transaction: newTransaction[0]})
+                        user[1](prev => ({...prev, transactions: updatedTransactions.data}))
+                        newTransaction[1]({
+                            transactionType: 'expense',
                             date: new Date(),
-                            card: {
-                                _id: allCards[0]._id,
-                                cardName: allCards[0].cardName,
-                                bankName: allCards[0].bankName
-                            },
                             count: '0'
                         })
-                        setTrigger(false)
-                    }
-
-                    const handleError = ref => {
-                        setTrigger(false)
-                        ref.current.classList.add('error-animation')
-                        setTimeout(() => ref.current.classList.remove('error-animation'), 700)
-                    }
-
-                    const check = () => {
-                        setMWVisible(false)
-                        setTransactions(['loader'])
-                        readyForRequest(interval, transaction)
-                    }
-
-                    const logicObj = {
-                        expense: transaction => {
-                            if (transaction.category) check()
-                            else handleError(expenseRef)
-                        },
-                        income: transaction => {
-                            if (transaction.category) check()
-                            else handleError(incomeRef)
-                        },
-                        transfer: transaction => {
-                            if (transaction.transferCard) check()
-                            else handleError(transferRef)
-                        }
-                    }
-                    logicObj[transaction.transactionType](transaction)
+                        loader[1](false)
+                    } catch (e) {user[1](prev => {console.log(e); return prev})}
                 }
-                transactionRequest(formattedInterval(interval))
-            } catch (e) {setTransactions([])}
+                addTransactionRequest()
+            }
         }
-    }, [state, trigger])
+    }, [loader[0]])
 
     const calculatorChange = item => {
-
         const counter = count => {
             try {
                 const result = eval(count)
                 if (result < 0) {
-                    countRef.current.classList.add('error-animation')
-                    setTimeout(() => countRef.current.classList.remove('error-animation'), 700)
+                    refs.count.current.classList.add('error-animation')
+                    setTimeout(() => refs.count.current.classList.remove('error-animation'), 700)
                 } else {
                     let strRes = result.toFixed(1).toString()
                     return strRes.at(-1) === '0' ? strRes.slice(0, -2) : strRes
                 }
 
             } catch (e) {
-                countRef.current.classList.add('error-animation')
-                setTimeout(() => countRef.current.classList.remove('error-animation'), 700)
+                refs.count.current.classList.add('error-animation')
+                setTimeout(() => refs.count.current.classList.remove('error-animation'), 700)
                 return null
             }
         }
         const {type} = item
         switch (type) {
             case 'number': {
-                setState(prev => ({...prev, count: prev.count === '0' ? item.value : prev.count + item.value}))
+                newTransaction[1](prev => ({...prev, count: prev.count === '0' ? item.value : prev.count + item.value}))
                 break
             }
             case 'action': {
-                setState(prev => ({...prev, count: prev.count + item.sign}))
+                newTransaction[1](prev => ({...prev, count: prev.count + item.sign}))
                 break
             }
             case 'delete': {
                 const checker = count => count === '' ? '0' : count
-                setState(prev => {
+                newTransaction[1](prev => {
                     const {count} = prev
                     if (count.at(-1) === ' ') {
                         const newCount = count.slice(0, count.length - 3)
@@ -137,48 +106,51 @@ const Calculator = ({countRef,
                 break
             }
             case 'equals': {
-                const result = counter(state.count)
-                setState(prev => result ? {...prev, count: result} : prev)
+                const result = counter(newTransaction[0].count)
+                newTransaction[1](prev => result ? {...prev, count: result} : prev)
                 break
             }
             case 'apply': {
-                const result = counter(state.count)
-                setState(prev => result ? {...prev, count: result} : prev)
-                setTrigger(true)
+                const result = counter(newTransaction[0].count)
+                newTransaction[1](prev => {
+                    if (result) return {...prev, count: result}
+                    else return prev
+                })
+                if (result) loader[1](true)
                 break
             }
             case 'close': {
-                setMWVisible(false)
+                addMWS[1](false)
                 break
             }
             case 'message': {
-                messageVisible(true)
+                messageMWS[1](true)
                 break
             }
         }
     }
 
     const calculatorArr = [
-        {value: 'divide', label: <FontAwesomeIcon icon={faDivide}/>, sign: ' / ', type: 'action'},
+        {value: 'divide', label: <FontAwesomeIcon icon='fa-solid fa-divide'/>, sign: ' / ', type: 'action'},
         {value: '7', label: '7', type: 'number'},
         {value: '8', label: '8', type: 'number'},
         {value: '9', label: '9', type: 'number'},
-        {value: 'delete', label: <FontAwesomeIcon icon={faDeleteLeft}/>, type: 'delete'},
-        {value: 'multiply', label: <FontAwesomeIcon icon={faMultiply}/>, sign: ' * ', type: 'action'},
+        {value: 'delete', label: <FontAwesomeIcon icon='fa-solid fa-delete-left'/>, type: 'delete'},
+        {value: 'multiply', label: <FontAwesomeIcon icon='fa-solid fa-multiply'/>, sign: ' * ', type: 'action'},
         {value: '4', label: '4', type: 'number'},
         {value: '5', label: '5', type: 'number'},
         {value: '6', label: '6', type: 'number'},
-        {value: 'message', label: <FontAwesomeIcon icon={faMessage}/>, type: 'message'},
-        {value: 'minus', label: <FontAwesomeIcon icon={faMinus}/>, sign: ' - ', type: 'action'},
+        {value: 'message', label: <FontAwesomeIcon icon='fa-solid fa-message'/>, type: 'message'},
+        {value: 'minus', label: <FontAwesomeIcon icon='fa-solid fa-minus'/>, sign: ' - ', type: 'action'},
         {value: '1', label: '1', type: 'number'},
         {value: '2', label: '2', type: 'number'},
         {value: '3', label: '3', type: 'number'},
-        {value: 'equals', label: <FontAwesomeIcon icon={faEquals}/>, type: 'equals'},
-        {value: 'plus', label: <FontAwesomeIcon icon={faPlus}/>, sign: ' + ', type: 'action'},
-        {value: 'close', label: <FontAwesomeIcon style={{color: '#ee3a3a'}} icon={faXmark}/>, type: 'close'},
+        {value: 'equals', label: <FontAwesomeIcon icon='fa-solid fa-equals'/>, type: 'equals'},
+        {value: 'plus', label: <FontAwesomeIcon icon='fa-solid fa-plus'/>, sign: ' + ', type: 'action'},
+        {value: 'close', label: <FontAwesomeIcon style={{color: '#ee3a3a'}} icon='fa-solid fa-xmark'/>, type: 'close'},
         {value: '0', label: '0', type: 'number'},
         {value: '.', label: '.', type: 'number'},
-        {value: 'apply', label: <FontAwesomeIcon style={{color: '#24e597'}} icon={faCheck}/>, type: 'apply'},
+        {value: 'apply', label: <FontAwesomeIcon style={{color: '#24e597'}} icon='fa-solid fa-check'/>, type: 'apply'}
     ]
 
     return (
@@ -190,6 +162,7 @@ const Calculator = ({countRef,
                     onClick={() => calculatorChange(item)}
                 >{item.label}</div>
             ))}
+            <Loader visible={loader}/>
         </div>
     )
 }

@@ -2,13 +2,25 @@ import React, {useRef} from 'react'
 
 import './add-transaction-transfer-card.css'
 import SwiperEl from '../../../../swiper/SwiperEl';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-const AddTransactionTransferCard = ({Ref, allCards, state, setState}) => {
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {useContextApp} from '../../../../../AppProvider'
+import {useAddTransactionContext} from '../AddTransactionProvider'
 
+const AddTransactionTransferCard = ({Ref}) => {
+
+    const {user} = useContextApp()
+    const {allCards} = user[0]
+    const {newTransaction} = useAddTransactionContext()
+    const {refs} = useAddTransactionContext()
     const transferCardsRefs = useRef([])
 
     const selectTransferCard = (transferCard, i) => {
-        setState(prev => {
+        newTransaction[1](prev => {
+            if (!prev.card) {
+                refs.card.current.classList.add('error-animation')
+                setTimeout(() => refs.card.current.classList.remove('error-animation'), 700)
+                return prev
+            }
             if (prev.transferCard) {
                 if (prev.transferCard._id === transferCard._id) {
                     const futureObject = {}
@@ -37,7 +49,7 @@ const AddTransactionTransferCard = ({Ref, allCards, state, setState}) => {
                 {allCards.map((card, i) => (
                     <swiper-slide
                         key={card._id}
-                        class={`add-transaction-transfer-card ${state.transferCard && state.transferCard._id === card._id ? 'add-transaction-transfer-card-active' : ''}`}
+                        class={`add-transaction-transfer-card ${newTransaction[0].transferCard && newTransaction[0].transferCard._id === card._id ? 'add-transaction-transfer-card-active' : ''}`}
                         ref={el => transferCardsRefs.current[i] = el}
                         onClick={() => selectTransferCard(card, i)}
                     ><FontAwesomeIcon icon="fa-solid fa-credit-card"/>{card.cardName}</swiper-slide>))}

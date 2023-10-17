@@ -1,0 +1,48 @@
+@import '../../../../../styles/zeroing/global';
+
+.add-transaction-count {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+}
+
+.add-transaction-count-value {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    color: $main-red-color;
+
+    font-size: 32px;
+
+    overflow: hidden;
+}
+
+.add-transaction-count-now-value {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.add-transaction-more-info {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.add-transaction-more-info-wrapper {
+    width: 300%;
+
+    display: flex;
+
+    transition: .3s;
+}
+
+.start {transform: translateX(0)}
+.middle {transform: translateX(-33.33%)}
+.end {transform: translateX(-66.66%)}

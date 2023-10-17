@@ -1,8 +1,12 @@
 import React from 'react'
 
+import {useAddTransactionContext} from '../AddTransactionProvider'
+
 import './add-transaction-type.css'
 
-const AddTransactionType = ({transactionObj, setTransactionObj}) => {
+const AddTransactionType = () => {
+
+    const {newTransaction} = useAddTransactionContext()
 
     const transactionTypes = [
         {id: 'expense', label: 'Expense'},
@@ -11,10 +15,10 @@ const AddTransactionType = ({transactionObj, setTransactionObj}) => {
     ]
 
     const selectType = type => {
-        setTransactionObj(prev => {
+        newTransaction[1](prev => {
             const futureObject = {}
-            for (const key in prev) if (key !== 'category' && key !== 'transferCard') futureObject[key] = transactionObj[key]
-            futureObject.type = type.id
+            for (const key in prev) if (key !== 'category' && key !== 'subCategory' && key !== 'transferCard') futureObject[key] = prev[key]
+            futureObject.transactionType = type.id
             return futureObject
         })
     }
@@ -24,7 +28,7 @@ const AddTransactionType = ({transactionObj, setTransactionObj}) => {
             {transactionTypes.map(type => (
                 <div
                     key={type.id}
-                    className={`transaction-type ${type.id === transactionObj.type ? 'transaction-type-active' : ''}`}
+                    className={`transaction-type ${type.id === newTransaction[0].transactionType ? 'transaction-type-active' : ''}`}
                     onClick={() => selectType(type)}
                 >{type.label}</div>
             ))}

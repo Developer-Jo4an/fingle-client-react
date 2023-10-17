@@ -1,14 +1,15 @@
 @import '../../styles/zeroing/global';
 
 .loader {
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
     background-color: $modal-window-background;
+    pointer-events: none;
 
     position: fixed;
     top: 0;
@@ -52,4 +53,9 @@
 
 @keyframes rotation {
     0% {transform: rotate(0deg);} 100% {transform: rotate(360deg);}
+}
+
+.loader-display-none {
+    display: none;
+    pointer-events: all;
 }

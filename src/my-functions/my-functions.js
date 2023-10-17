@@ -44,25 +44,6 @@ export function timeRefactor(date) {
     return `${hours}:${minutes}`
 }
 
-export function formattedInterval(interval) {
-    const nowInterval = dateObj(interval)
-    let formattedInterval = null
-    if (nowInterval) return nowInterval
-    else {
-        if (interval.includes(' - ')) {
-            formattedInterval = interval.split(' - ').map((date, i) => {
-                const newDate = moment(date, 'DD.MM.YYYY')._d
-                return i === 0 ? newDate : new Date(newDate.setHours(23, 59, 59, 999))
-            })
-        } else {
-            const startDate = moment(interval, 'DD.MM.YYYY')._d
-            const lastDate = new Date(moment(interval, 'DD.MM.YYYY')._d.setHours(23, 59, 59, 999))
-            formattedInterval = [startDate, lastDate]
-        }
-        return formattedInterval
-    }
-}
-
 export function chunkTransactions (arr) {
     const transactionChunks = {}
     arr.toReversed().forEach(tr => {

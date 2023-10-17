@@ -1,9 +1,13 @@
 import React from 'react'
+import {useAddTransactionContext} from '../add-transaction-mw/AddTransactionProvider'
 
 import './modal-window-content-center.css'
-const ModalWindowContentCenter = ({visible, setVisible, ...props}) => {
+
+const ModalWindowContentCenter = ({nav, children}) => {
 
     const hideModalWindow = () => setVisible(false)
+
+    const [visible, setVisible] = useAddTransactionContext()[nav]
 
     return (
         <div
@@ -12,7 +16,7 @@ const ModalWindowContentCenter = ({visible, setVisible, ...props}) => {
         ><div
             className={'modal-window-content-center'}
             onClick={e => e.stopPropagation()}
-        >{props.children}</div>
+        >{ children }</div>
         </div>
     )
 }

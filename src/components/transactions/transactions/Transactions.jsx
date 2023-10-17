@@ -8,6 +8,8 @@ import OptionsTransactionFilter from '../modal-windows/options-transactions-file
 import PeriodTotalSection from '../period-total-section/PeriodTotalSection'
 import TransactionSection from '../transaction-section/TransactionSection'
 import TransactionFilterSection from '../transaction-filter-section/TransactionFilterSection'
+import AddTransaction from '../add-transaction/AddTransaction'
+import AddTransactionModalWindow from '../modal-windows/add-transaction-mw/AddTransactionModalWindow'
 
 import './transactions.css'
 
@@ -20,8 +22,10 @@ const Transactions = () => {
                 <PeriodTotalSection/>
                 <TransactionFilterSection/>
                 <TransactionSection/>
+                <AddTransaction/>
                 <ModalWindow nav={'periodMWS'}><DateFilterModalWindow/></ModalWindow>
                 <ModalWindow nav={'filterMWS'}><OptionsTransactionFilter/></ModalWindow>
+                <ModalWindow nav={'addMWS'}><AddTransactionModalWindow/></ModalWindow>
             </section>
         </TransactionsProvider>
     )

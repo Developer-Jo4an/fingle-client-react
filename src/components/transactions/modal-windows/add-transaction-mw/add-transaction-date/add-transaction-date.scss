@@ -1,0 +1,63 @@
+@import '../../../../../styles/zeroing/global';
+
+.add-transaction-date-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.add-transaction-date-arrow {
+    width: 15px;
+    height: 15px;
+
+    padding: 5px;
+
+    transition: .3s;
+
+    border-radius: 50%;
+
+    &:active {
+        background-color: $main-gray-active-color;
+    }
+}
+
+.add-transaction-date-wrapper {
+    position: relative;
+}
+
+.add-transaction-date-input {
+    width: 0;
+    height: 0;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    opacity: 0;
+}
+
+.add-transaction-date {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+
+    svg {
+        width: 20px;
+        height: 20px;
+
+        color: $main-opacity-color;
+    }
+
+    font-family: custom-bold, Manrope, sans-serif;
+
+    padding: 10px 0 10px;
+}
+
+.add-transaction-date-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    svg {color: #333}
+}

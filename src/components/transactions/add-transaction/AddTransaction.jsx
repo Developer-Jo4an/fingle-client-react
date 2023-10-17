@@ -1,17 +1,21 @@
 import React from 'react'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlus } from '@fortawesome/free-solid-svg-icons'
+import {useTransactionsContext} from '../transactions/TransactionsProvider'
 
 import './add-transaction.css'
-const AddTransaction = ({setVisible}) => {
+
+const AddTransaction = () => {
+
+    const {addMWS} = useTransactionsContext()
+
     return (
         <div
             className={'add-transaction-btn'}
-            onClick={() => setVisible(true)}
+            onClick={() => addMWS[1](true)}
         >
             <div className={'pulse-animation'}></div>
-            <FontAwesomeIcon icon={faPlus}/>
+            <FontAwesomeIcon icon='fa-solid fa-plus'/>
         </div>
     )
 }

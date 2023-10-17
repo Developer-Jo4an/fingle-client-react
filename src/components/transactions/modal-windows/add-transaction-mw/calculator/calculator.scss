@@ -15,11 +15,6 @@
 
     transition: .3s;
 
-    svg {
-        color: $main-opacity-color;;
-    }
-
-    &:active {
-        background-color: $main-gray-active-color;
-    }
+    svg {color: #333;}
+    &:active {background-color: $main-gray-active-color}
 }

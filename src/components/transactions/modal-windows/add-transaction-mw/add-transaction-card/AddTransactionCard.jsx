@@ -1,13 +1,19 @@
 import React from 'react'
 import SwiperEl from '../../../../swiper/SwiperEl'
 
-import './add-transaction-card.css'
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {useContextApp} from '../../../../../AppProvider'
+import {useAddTransactionContext} from '../AddTransactionProvider'
 
-const AddTransactionCard = ({Ref, allCards, state, setState}) => {
+import './add-transaction-card.css'
+
+const AddTransactionCard = () => {
+    const {user} = useContextApp()
+    const {allCards} = user[0]
+    const {newTransaction, refs} = useAddTransactionContext()
 
     const selectCard = card => {
-        setState(prev => {
+        newTransaction[1](prev => {
             const futureObj = {}
             for (const key in prev) if (key !== 'transferCard') futureObj[key] = prev[key]
             return {...futureObj, card: {_id: card._id, cardName: card.cardName, bankName: card.bankName}}
@@ -16,11 +22,11 @@ const AddTransactionCard = ({Ref, allCards, state, setState}) => {
 
     return (
         <div className={'slider-wrapper'}>
-            <SwiperEl Ref={Ref}>
+            <SwiperEl Ref={refs.card}>
             {allCards.map(card => (
                 <swiper-slide
                     key={card._id}
-                    class={`add-transaction-card ${state.card._id === card._id ? 'add-transaction-card-active' : ''}`}
+                    class={`add-transaction-card ${newTransaction[0].card && newTransaction[0].card._id === card._id ? 'add-transaction-card-active' : ''}`}
                     onClick={() => selectCard(card)}
                 ><FontAwesomeIcon icon="fa-solid fa-credit-card"/>{card.cardName}</swiper-slide>))}
             </SwiperEl>
