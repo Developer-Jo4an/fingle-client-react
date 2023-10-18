@@ -11,6 +11,7 @@ const TransactionsProvider = ({ children}) => {
     const {user} = useContextApp()
 
     const [transactions, setTransactions] = useState([])
+    const [modifiedTransaction, setModifiedTransaction] = useState({})
     const [period, setPeriod] = useState('Week')
     const [filter, setFilter] = useState({
         transactionType: [],
@@ -27,7 +28,7 @@ const TransactionsProvider = ({ children}) => {
     const [periodMWS, setPeriodMWS] = useState(false)
     const [filterMWS, setFilterMWS] = useState(false)
     const [addMWS, setAddMWS] = useState(false)
-
+    const [transactionMWS, setTransactionMWS] = useState(false)
     // transactions filter
 
     useEffect(() => {
@@ -106,7 +107,9 @@ const TransactionsProvider = ({ children}) => {
             total: [total, setTotal],
             periodMWS: [periodMWS, setPeriodMWS],
             filterMWS: [filterMWS, setFilterMWS],
-            addMWS: [addMWS, setAddMWS]
+            addMWS: [addMWS, setAddMWS],
+            transactionMWS: [transactionMWS, setTransactionMWS],
+            modifiedTransaction: [modifiedTransaction, setModifiedTransaction]
         }}>{ children }
         </TransactionsContext.Provider>
     )

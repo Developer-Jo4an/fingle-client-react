@@ -2,11 +2,14 @@ import React from 'react'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { timeRefactor } from '../../../my-functions/my-functions'
+import {useTransactionsContext} from '../transactions/TransactionsProvider'
 
 import './transaction.css'
 
 const Transaction = ({ transaction }) => {
     const {transactionType, count, date, card} = transaction
+
+    const {transactionMWS, modifiedTransaction} = useTransactionsContext()
 
     const getInfo = () => {
         if (transactionType === 'expense' || transactionType === 'income')
@@ -26,8 +29,13 @@ const Transaction = ({ transaction }) => {
     const getBackground = () => ({backgroundColor: transactionType === 'expense' ||
         transactionType === 'income' ? transaction.category.color : '#f5d544'})
 
+    const setModifiedTransaction = () => {
+        modifiedTransaction[1](transaction)
+        transactionMWS[1](true)
+    }
+
     return (
-        <div className={'transaction'}>
+        <div className={'transaction'} onClick={setModifiedTransaction}>
             <div className={'transaction-sign'}>
                 <div
                     style={getBackground()}

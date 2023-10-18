@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useRef, useState} from 'react'
+import React, {useContext, useRef, useState} from 'react'
 
 const AddTransactionContext = React.createContext()
 export const useAddTransactionContext = () => useContext(AddTransactionContext)
@@ -19,10 +19,6 @@ const AddTransactionProvider = ({ children }) => {
         card: useRef(),
         count: useRef()
     }
-
-    useEffect(() => {
-        console.log(newTransaction)
-    }, [newTransaction])
 
     return (
         <AddTransactionContext.Provider value={{

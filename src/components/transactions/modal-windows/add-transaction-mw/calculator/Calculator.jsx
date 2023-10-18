@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import Loader from '../../../../loader/Loader'
 
 import axios from 'axios'
@@ -15,6 +15,8 @@ const Calculator = () => {
     const {user} = useContextApp()
     const {addMWS} = useTransactionsContext()
     const {newTransaction, refs, messageMWS, loader} = useAddTransactionContext()
+
+    const [apply, setApply] = useState(false)
 
     useEffect(() => {
         const checkCard = () => {
@@ -42,25 +44,23 @@ const Calculator = () => {
             income: () => checkProperty('income', 'category'),
             transfer: () => checkProperty('transfer', 'transferCard'),
         }
-        if (loader[0]) {
+        if (apply) {
             if (checkLogic[newTransaction[0].transactionType]()) {
-                addMWS[1](false)
+                loader[1](true); addMWS[1](false)
                 const addTransactionRequest = async () => {
                     try {
                         const updatedTransactions = await axios.post(`${userId}/add-transaction`, {transaction: newTransaction[0]})
+
                         user[1](prev => ({...prev, transactions: updatedTransactions.data}))
-                        newTransaction[1]({
-                            transactionType: 'expense',
-                            date: new Date(),
-                            count: '0'
-                        })
-                        loader[1](false)
-                    } catch (e) {user[1](prev => {console.log(e); return prev})}
+                        newTransaction[1]({transactionType: 'expense', date: new Date(), count: '0'})
+                        loader[1](false); setApply(false)
+
+                    } catch (e) {console.error(e); loader[1](false); setApply(false)}
                 }
                 addTransactionRequest()
-            }
+            } else setApply(false)
         }
-    }, [loader[0]])
+    }, [apply])
 
     const calculatorChange = item => {
         const counter = count => {
@@ -116,7 +116,7 @@ const Calculator = () => {
                     if (result) return {...prev, count: result}
                     else return prev
                 })
-                if (result) loader[1](true)
+                if (result) setApply(true)
                 break
             }
             case 'close': {
