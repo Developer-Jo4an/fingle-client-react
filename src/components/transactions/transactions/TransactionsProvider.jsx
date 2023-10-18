@@ -11,7 +11,7 @@ const TransactionsProvider = ({ children}) => {
     const {user} = useContextApp()
 
     const [transactions, setTransactions] = useState([])
-    const [modifiedTransaction, setModifiedTransaction] = useState({})
+    const [modifiedTransaction, setModifiedTransaction] = useState(false)
     const [period, setPeriod] = useState('Week')
     const [filter, setFilter] = useState({
         transactionType: [],

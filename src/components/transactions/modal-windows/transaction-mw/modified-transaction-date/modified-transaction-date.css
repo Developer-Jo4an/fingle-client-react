@@ -1,0 +1,39 @@
+.modified-transaction-date {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  transition: 0.3s;
+}
+
+.always-visible-date-section {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modified-option-date-name {
+  font-size: 18px;
+  font-family: custom-bold, Manrope, sans-serif;
+}
+
+.modified-option-date-value {
+  display: flex;
+  align-self: center;
+  gap: 10px;
+}
+
+.modified-option-date-date,
+.modified-option-date-time {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.invisible-date-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+/*# sourceMappingURL=modified-transaction-date.css.map */

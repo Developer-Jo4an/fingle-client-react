@@ -1,0 +1,11 @@
+.modified-transaction-type {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modified-option-type-name {
+  font-size: 18px;
+  font-family: custom-bold, Manrope, sans-serif;
+}
+
+/*# sourceMappingURL=modified-transaction-type.css.map */

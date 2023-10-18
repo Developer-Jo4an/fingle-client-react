@@ -1,0 +1,42 @@
+.modified-transaction-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 10px;
+  background-color: #eaeaea;
+}
+
+.modified-transaction-button {
+  width: 90px;
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-family: custom-bold, Manrope, sans-serif;
+  border-radius: 30px;
+  background-color: #fff;
+  transition: 0.3s;
+}
+.modified-transaction-button svg {
+  width: 18px;
+  height: 18px;
+}
+
+.modified-btn-active {
+  background-color: #24e597;
+  color: #fff;
+}
+
+.modified-repeat-btn:active {
+  background-color: #f5d544;
+  color: #fff;
+}
+
+.modified-delete-btn:active {
+  background-color: #ee3a3a;
+  color: #fff;
+}
+
+/*# sourceMappingURL=modified-transaction-buttons.css.map */

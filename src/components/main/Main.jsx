@@ -10,8 +10,8 @@ const Main = () => {
 
     return (
         <main>
-            {page[0] === 'home' && <div>Home</div>}
-            {page[0] === 'analytics' && <div>Analytics</div>}
+            {page[0] === 'home' && <div>Home !USE MOBILE VERSION!</div>}
+            {page[0] === 'analytics' && <div>Analytics !USE MOBILE VERSION!</div>}
             {page[0] === 'transactions' && <Transactions/>}
         </main>
     )

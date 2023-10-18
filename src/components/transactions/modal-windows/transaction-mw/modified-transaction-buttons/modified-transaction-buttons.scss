@@ -1,0 +1,54 @@
+@import '../../../../../styles/zeroing/global';
+
+.modified-transaction-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    padding: 10px;
+
+    background-color: $main-gray-background;
+}
+
+.modified-transaction-button {
+    width: 90px;
+    height: 60px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+
+    svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    font-family: custom-bold, Manrope, sans-serif;
+
+    border-radius: 30px;
+
+    background-color: #fff;
+
+    transition: .3s;
+}
+
+.modified-btn-active {
+    background-color: $main-green-color;
+    color: #fff;
+}
+
+.modified-repeat-btn {
+    &:active {
+        background-color: $main-orange-color;
+        color: #fff;
+    }
+}
+
+.modified-delete-btn {
+    &:active {
+        background-color: $main-red-color;
+        color: #fff;
+    }
+}

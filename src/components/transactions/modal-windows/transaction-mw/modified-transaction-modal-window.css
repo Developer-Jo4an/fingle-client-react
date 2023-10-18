@@ -1,0 +1,20 @@
+.modified-transaction-modal-window {
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.modified-transaction-section {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 20px 20px 0 0;
+  padding: 20px;
+  gap: 10px;
+}
+
+.get-gap {
+  gap: 10px;
+}
+
+/*# sourceMappingURL=modified-transaction-modal-window.css.map */
