@@ -3,12 +3,12 @@ import React from 'react'
 import './add-transaction-income-category.css'
 import SwiperEl from '../../../../swiper/SwiperEl'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {useContextApp} from '../../../../../AppProvider'
+import {useAppContext} from '../../../../../AppProvider'
 import {useAddTransactionContext} from '../AddTransactionProvider'
 
 const AddTransactionIncomeCategory = ({Ref}) => {
 
-    const {user} = useContextApp()
+    const {user} = useAppContext()
     const {transactionCategories} = user[0]
     const {newTransaction} = useAddTransactionContext()
 

@@ -7,14 +7,9 @@ const ModifiedTransactionProvider = ({ children }) => {
 
     const [modifiedMode, setModifiedMode] = useState(false)
 
-    const refs = {
-        date: useRef()
-    }
-
     return (
         <ModifiedTransactionContext.Provider value ={{
-            modifiedMode: [modifiedMode, setModifiedMode],
-            refs
+            modifiedMode: [modifiedMode, setModifiedMode]
         }}
         >{ children }
         </ModifiedTransactionContext.Provider>

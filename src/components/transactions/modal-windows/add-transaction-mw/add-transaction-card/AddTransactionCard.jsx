@@ -2,13 +2,13 @@ import React from 'react'
 import SwiperEl from '../../../../swiper/SwiperEl'
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {useContextApp} from '../../../../../AppProvider'
+import {useAppContext} from '../../../../../AppProvider'
 import {useAddTransactionContext} from '../AddTransactionProvider'
 
 import './add-transaction-card.css'
 
 const AddTransactionCard = () => {
-    const {user} = useContextApp()
+    const {user} = useAppContext()
     const {allCards} = user[0]
     const {newTransaction, refs} = useAddTransactionContext()
 

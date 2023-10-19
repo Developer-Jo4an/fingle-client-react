@@ -4,7 +4,7 @@ import axios from 'axios'
 import {errorUser, userId} from './my-functions/my-functions'
 
 const AppContext = React.createContext()
-export const useContextApp = () => useContext(AppContext)
+export const useAppContext = () => useContext(AppContext)
 
 const AppProvider = ({ children }) => {
     const [user, setUser] = useState(null) // userInfoState

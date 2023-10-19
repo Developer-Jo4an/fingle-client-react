@@ -14,7 +14,7 @@ const ModifiedTransactionButtons = () => {
     return (
         <div className={'modified-transaction-buttons'}>
             <button
-                className={`modified-transaction-button ${modifiedMode[0] && 'modified-btn-active'}`}
+                className={`modified-transaction-button ${modifiedMode[0] ? 'modified-btn-active' : ''}`}
                 onClick={() => modifiedMode[1](prev => !prev)}
             ><FontAwesomeIcon icon='fa-solid fa-pen'/>Change</button>
             <button className={'modified-transaction-button modified-repeat-btn'}><FontAwesomeIcon icon='fa-solid fa-repeat'/>Repeat</button>

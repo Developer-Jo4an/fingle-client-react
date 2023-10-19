@@ -1,14 +1,14 @@
 import React, {useContext, useEffect, useState} from 'react'
 
 import {dateObj} from '../../../my-functions/my-functions'
-import {useContextApp} from '../../../AppProvider'
+import {useAppContext} from '../../../AppProvider'
 import moment from 'moment'
 
 const TransactionsContext = React.createContext()
 export const useTransactionsContext = () => useContext(TransactionsContext)
 
 const TransactionsProvider = ({ children}) => {
-    const {user} = useContextApp()
+    const {user} = useAppContext()
 
     const [transactions, setTransactions] = useState([])
     const [modifiedTransaction, setModifiedTransaction] = useState(false)

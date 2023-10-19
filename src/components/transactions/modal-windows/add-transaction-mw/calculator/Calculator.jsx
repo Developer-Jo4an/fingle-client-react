@@ -5,14 +5,14 @@ import axios from 'axios'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { userId } from '../../../../../my-functions/my-functions'
 import {useAddTransactionContext} from '../AddTransactionProvider'
-import {useContextApp} from '../../../../../AppProvider'
+import {useAppContext} from '../../../../../AppProvider'
 import {useTransactionsContext} from '../../../transactions/TransactionsProvider'
 
 import './calculator.css'
 
 const Calculator = () => {
 
-    const {user} = useContextApp()
+    const {user} = useAppContext()
     const {addMWS} = useTransactionsContext()
     const {newTransaction, refs, messageMWS, loader} = useAddTransactionContext()
 

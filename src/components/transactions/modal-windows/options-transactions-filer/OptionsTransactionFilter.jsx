@@ -2,13 +2,13 @@ import React, {useRef} from 'react'
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import SwiperEl from '../../../swiper/SwiperEl'
-import {useContextApp} from '../../../../AppProvider'
+import {useAppContext} from '../../../../AppProvider'
 import {useTransactionsContext} from '../../transactions/TransactionsProvider'
 
 import './options-transaction-filter.css'
 
 const OptionsTransactionFilter = () => {
-    const {user} = useContextApp()
+    const {user} = useAppContext()
     const {allCards, transactionCategories} = user[0]
     const {filter, filterEls} = useTransactionsContext()
 

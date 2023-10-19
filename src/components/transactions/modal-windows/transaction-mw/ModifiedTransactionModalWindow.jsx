@@ -3,6 +3,7 @@ import ModifiedTransactionButtons from './modified-transaction-buttons/ModifiedT
 import ModifiedTransactionProvider from './ModifiedTransactionProvider'
 import ModifiedTransactionType from './modified-transaction-type/ModifiedTransactionType'
 import ModifiedTransactionDate from './modified-transaction-date/ModifiedTransactionDate'
+import ModifiedTransactionCard from './modified-transaction-card/ModifiedTransactionCard'
 
 import './modified-transaction-modal-window.css'
 
@@ -13,6 +14,7 @@ const ModifiedTransactionModalWindow = () => {
             <div className={'modified-transaction-section'}>
                 <ModifiedTransactionType/>
                 <ModifiedTransactionDate/>
+                <ModifiedTransactionCard/>
                 <div>Coming soon</div>
             </div>
             <ModifiedTransactionButtons/>

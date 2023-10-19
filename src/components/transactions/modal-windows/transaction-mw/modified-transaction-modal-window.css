@@ -14,7 +14,7 @@
 }
 
 .get-gap {
-  gap: 10px;
+  gap: 10px !important;
 }
 
 /*# sourceMappingURL=modified-transaction-modal-window.css.map */

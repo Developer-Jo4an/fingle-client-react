@@ -3,12 +3,12 @@ import React, {useRef} from 'react'
 import './add-transaction-transfer-card.css'
 import SwiperEl from '../../../../swiper/SwiperEl';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {useContextApp} from '../../../../../AppProvider'
+import {useAppContext} from '../../../../../AppProvider'
 import {useAddTransactionContext} from '../AddTransactionProvider'
 
 const AddTransactionTransferCard = ({Ref}) => {
 
-    const {user} = useContextApp()
+    const {user} = useAppContext()
     const {allCards} = user[0]
     const {newTransaction} = useAddTransactionContext()
     const {refs} = useAddTransactionContext()

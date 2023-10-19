@@ -1,12 +1,12 @@
 import React, {useEffect, useRef, useState} from 'react'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useContextApp } from '../../AppProvider'
+import { useAppContext } from '../../AppProvider'
 
 import './footer.css'
 
 const Footer = () => {
-    const {page} = useContextApp()
+    const {page} = useAppContext()
 
     const homeRef = useRef()
     const analyticsRef = useRef()

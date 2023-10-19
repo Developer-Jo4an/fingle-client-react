@@ -31,13 +31,7 @@ const AddTransactionDate = () => {
         })
     }, [datePickerRef])
 
-    const dateToggle =action => {
-        newTransaction[1](prev => {
-            const previousDate = prev.date
-            const newDate = moment(previousDate)[action](1, 'days')._d
-            return {...prev, date: newDate}
-        })
-    }
+    const dateToggle = action => newTransaction[1](prev => ({...prev, date: moment(prev.date)[action](1, 'days')._d}))
 
     return (
         <div className={'add-transaction-date-section'}>

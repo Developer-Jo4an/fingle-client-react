@@ -2,12 +2,12 @@ import React from 'react'
 
 import { Buffer } from 'buffer'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useContextApp } from '../../AppProvider'
+import { useAppContext } from '../../AppProvider'
 
 import './header.css'
 
 const Header = () => {
-    const {user, page} = useContextApp()
+    const {user, page} = useAppContext()
 
     const {avatar, nickname} = user[0]
 
