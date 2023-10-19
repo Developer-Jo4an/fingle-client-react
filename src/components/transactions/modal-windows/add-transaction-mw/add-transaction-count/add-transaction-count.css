@@ -11,9 +11,13 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  color: #ee3a3a;
   font-size: 32px;
   overflow: hidden;
+}
+
+.add-transaction-count-now-value,
+.add-transaction-count-now-value {
+  transition: 0.3s;
 }
 
 .add-transaction-count-now-value {

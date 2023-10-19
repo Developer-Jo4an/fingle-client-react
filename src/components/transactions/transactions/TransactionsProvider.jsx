@@ -109,7 +109,7 @@ const TransactionsProvider = ({ children}) => {
             filterMWS: [filterMWS, setFilterMWS],
             addMWS: [addMWS, setAddMWS],
             transactionMWS: [transactionMWS, setTransactionMWS],
-            modifiedTransaction: [modifiedTransaction, setModifiedTransaction]
+            modifiedTransaction: [modifiedTransaction, setModifiedTransaction],
         }}>{ children }
         </TransactionsContext.Provider>
     )

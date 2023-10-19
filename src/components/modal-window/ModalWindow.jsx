@@ -1,12 +1,10 @@
 import React, {useEffect} from 'react'
 
-import {useTransactionsContext} from '../../transactions/TransactionsProvider'
-
 import './modal-window.css'
 
-const ModalWindow = ({ nav, children }) => {
+const ModalWindow = ({ nav, context, children }) => {
 
-    const [visible, setVisible] = useTransactionsContext()[nav]
+    const [visible, setVisible] = context()[nav]
 
     useEffect(() => {
         visible ? document.body.style.overflow = 'hidden' : document.body.style.overflow = 'visible'

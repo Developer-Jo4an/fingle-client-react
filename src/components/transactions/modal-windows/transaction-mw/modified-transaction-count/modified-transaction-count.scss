@@ -1,0 +1,40 @@
+@import '../../../../../styles/zeroing/global';
+
+.modified-transaction-count {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+
+    transition: .3s;
+}
+
+.always-visible-count-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.modified-option-count-name {
+    font-size: 18px;
+
+    font-family: custom-bold, Manrope, sans-serif;
+}
+
+.invisible-count-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+}
+
+.invisible-count-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.modified-current-currency,
+.modified-count {
+    font-size: 32px;
+}

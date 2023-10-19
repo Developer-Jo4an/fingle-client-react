@@ -77,9 +77,9 @@
 
     color: $main-green-color;
 
-    font-family: $main-green-color;
-
     transition: .1s;
+
+    font-family: custom-bold, Manropw, sans-serif;
 
     &:active {
         background-color: $main-green-color;

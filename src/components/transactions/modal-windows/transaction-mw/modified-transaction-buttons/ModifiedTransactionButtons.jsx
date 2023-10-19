@@ -1,14 +1,12 @@
 import React from 'react'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 
-import {useTransactionsContext} from '../../../transactions/TransactionsProvider'
 import {useModifiedTransactionContext} from '../ModifiedTransactionProvider'
 
 import './modified-transaction-buttons.css'
 
 const ModifiedTransactionButtons = () => {
 
-    const {transactionMWS, modifiedTransaction} = useTransactionsContext()
     const {modifiedMode} = useModifiedTransactionContext()
 
     return (

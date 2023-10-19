@@ -15,11 +15,14 @@
     justify-content: center;
     gap: 10px;
 
-    color: $main-red-color;
-
     font-size: 32px;
 
     overflow: hidden;
+}
+
+.add-transaction-count-now-value,
+.add-transaction-count-now-value {
+    transition: .3s;
 }
 
 .add-transaction-count-now-value {

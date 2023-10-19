@@ -1,9 +1,9 @@
 import React from 'react'
-import TransactionsProvider from './TransactionsProvider'
+import TransactionsProvider, {useTransactionsContext} from './TransactionsProvider'
 import MyHead from '../../UI/head/MyHead'
 import Filter from '../filter/Filter'
 import DateFilterModalWindow from '../modal-windows/date-filter-mw/DateFilterModalWindow'
-import ModalWindow from '../modal-windows/mw/ModalWindow'
+import ModalWindow from '../../modal-window/ModalWindow'
 import OptionsTransactionFilter from '../modal-windows/options-transactions-filer/OptionsTransactionFilter'
 import PeriodTotalSection from '../period-total-section/PeriodTotalSection'
 import TransactionSection from '../transaction-section/TransactionSection'
@@ -15,6 +15,7 @@ import ModifiedTransactionModalWindow from '../modal-windows/transaction-mw/Modi
 import './transactions.css'
 
 const Transactions = () => {
+
     return (
         <TransactionsProvider>
             <section className={'transactions-page'}>
@@ -24,10 +25,10 @@ const Transactions = () => {
                 <TransactionFilterSection/>
                 <TransactionSection/>
                 <AddTransaction/>
-                <ModalWindow nav={'periodMWS'}><DateFilterModalWindow/></ModalWindow>
-                <ModalWindow nav={'filterMWS'}><OptionsTransactionFilter/></ModalWindow>
-                <ModalWindow nav={'addMWS'}><AddTransactionModalWindow/></ModalWindow>
-                <ModalWindow nav={'transactionMWS'}><ModifiedTransactionModalWindow/></ModalWindow>
+                <ModalWindow nav={'periodMWS'} context={useTransactionsContext}><DateFilterModalWindow/></ModalWindow>
+                <ModalWindow nav={'filterMWS'} context={useTransactionsContext}><OptionsTransactionFilter/></ModalWindow>
+                <ModalWindow nav={'addMWS'} context={useTransactionsContext}><AddTransactionModalWindow/></ModalWindow>
+                <ModalWindow nav={'transactionMWS'} context={useTransactionsContext}><ModifiedTransactionModalWindow/></ModalWindow>
             </section>
         </TransactionsProvider>
     )
