@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react'
+import React, {useContext, useEffect, useReducer, useState} from 'react'
 
 import {dateObj} from '../../../my-functions/my-functions'
 import {useAppContext} from '../../../AppProvider'
@@ -7,38 +7,59 @@ import moment from 'moment'
 const TransactionsContext = React.createContext()
 export const useTransactionsContext = () => useContext(TransactionsContext)
 
+export const modifiedTransactionReducer = (state, action) => {
+    switch (action.type) {
+        case 'set' : return action.transaction
+        case 'date' : return {...state, date: action.date}
+        case 'date-arrow': return {...state, date: action.callback(state)}
+        case 'card' : {
+            const futureObject = {}
+            for (const key in state) if (key !== 'transferCard') futureObject[key] = state[key]
+            return {...futureObject, card: action.card}
+        }
+        case 'count' : return {...state, count: action.count}
+        case 'add-message' : return {...state, message: action.message}
+        case 'remove-message' : {
+            const futureObject = {}
+            for (const key in state) if (key !== 'message') futureObject[key] = state[key]
+            return futureObject
+        }
+        default: return state
+    }
+}
+
 const TransactionsProvider = ({ children}) => {
     const {user} = useAppContext()
 
-    const [transactions, setTransactions] = useState([])
-    const [modifiedTransaction, setModifiedTransaction] = useState(false)
-    const [period, setPeriod] = useState('Week')
-    const [filter, setFilter] = useState({
+    const [transactions, setTransactions] = useState([]) // all transactions from server
+    const [period, setPeriod] = useState('Week') // transactions period
+    const [filter, setFilter] = useState({ // transactions filter
         transactionType: [],
         card: [],
         category: [],
     })
-    const [filterEls, setFilterEls] = useState([])
-    const [total, setTotal] = useState({
+    const [filterEls, setFilterEls] = useState([]) // filtered transactions
+    const [total, setTotal] = useState({ // total count about transactions
         expense: 0,
         income: 0,
         total: 0
     })
+    const [prevTransaction, setPrevTransaction] = useState(false) // prev modified transaction
     // modal windows
-    const [periodMWS, setPeriodMWS] = useState(false)
-    const [filterMWS, setFilterMWS] = useState(false)
-    const [addMWS, setAddMWS] = useState(false)
-    const [transactionMWS, setTransactionMWS] = useState(false)
+    const [periodMWS, setPeriodMWS] = useState(false) // period modal window
+    const [filterMWS, setFilterMWS] = useState(false) // filter modal window
+    const [addMWS, setAddMWS] = useState(false) // add transaction modal window
+    const [transactionMWS, setTransactionMWS] = useState(false) // modified transaction modal window
     // transactions filter
 
-    useEffect(() => {
+    useEffect(() => { // filtered transactions logic
         setTotal({
             expense: 0,
             income: 0,
             total: 0
         })
 
-        let periodJson = dateObj(period) // formatted Period
+        let periodJson = dateObj(period)
 
         if (!periodJson) {
             if (period.includes(' - ')) {
@@ -109,7 +130,8 @@ const TransactionsProvider = ({ children}) => {
             filterMWS: [filterMWS, setFilterMWS],
             addMWS: [addMWS, setAddMWS],
             transactionMWS: [transactionMWS, setTransactionMWS],
-            modifiedTransaction: [modifiedTransaction, setModifiedTransaction],
+            modifiedTransaction: useReducer(modifiedTransactionReducer, {}),
+            prevTransaction: [prevTransaction, setPrevTransaction]
         }}>{ children }
         </TransactionsContext.Provider>
     )

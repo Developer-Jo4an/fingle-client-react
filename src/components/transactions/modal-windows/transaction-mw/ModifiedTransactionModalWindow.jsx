@@ -7,22 +7,47 @@ import ModifiedTransactionCard from './modified-transaction-card/ModifiedTransac
 import ModalWindow from '../../../modal-window/ModalWindow'
 import ModifiedCountModalWindow from './modal-windows/modified-count-modal-window/ModifiedCountModalWindow'
 import ModifiedTransactionCount from './modified-transaction-count/ModifiedTransactionCount'
+import ModifiedTransactionCategories from './modified-transaction-categories/ModifiedTransactionCategories'
+import ModifiedTransactionTransferCard from './modified-transaction-transfer-card/ModifiedTransactionTransferCard'
+import ModifiedTransactionMessage from './modified-transaction-message/ModifiedTransactionMessage'
+import ModalWindowContentCenter from '../../../modal-window-content-center/ModalWindowContentCenter'
+import ModifiedMessageModalWindow from './modal-windows/modified-message-modal-window/ModifiedMessageModalWindow'
+
+import {useTransactionsContext} from '../../transactions/TransactionsProvider'
 
 import './modified-transaction-modal-window.css'
 
 const ModifiedTransactionModalWindow = () => {
+
+    const {modifiedTransaction} = useTransactionsContext()
+    const [modified] = modifiedTransaction
+
+    const additionally = type => {
+        const additionallyLogic = {
+            expense: () => <ModifiedTransactionCategories/>,
+            income: () => <ModifiedTransactionCategories/>,
+            transfer: () => <ModifiedTransactionTransferCard/>,
+        }
+        return additionallyLogic[type]()
+    }
+
     return (
         <ModifiedTransactionProvider>
-        <div className={'modified-transaction-modal-window'}>
-            <div className={'modified-transaction-section'}>
-                <ModifiedTransactionType/>
-                <ModifiedTransactionDate/>
-                <ModifiedTransactionCard/>
-                <ModifiedTransactionCount/>
-            </div>
-            <ModifiedTransactionButtons/>
-            <ModalWindow nav={'modifiedCountMWS'} context={useModifiedTransactionContext}><ModifiedCountModalWindow/></ModalWindow>
-        </div>
+            {modified.transactionType && (
+                <div className={'modified-transaction-modal-window'}>
+                    <div className={'modified-transaction-section'}>
+                        <ModifiedTransactionType/>
+                        <ModifiedTransactionDate/>
+                        <ModifiedTransactionCard/>
+                        <ModifiedTransactionCount/>
+                        <ModifiedTransactionMessage/>
+                        {additionally(modified.transactionType)}
+                    </div>
+                    <ModifiedTransactionButtons/>
+                    <ModalWindow nav={'modifiedCountMWS'} context={useModifiedTransactionContext}><ModifiedCountModalWindow/></ModalWindow>
+                    <ModalWindowContentCenter nav={'modifiedMessageMWS'} context={useModifiedTransactionContext}><ModifiedMessageModalWindow/></ModalWindowContentCenter>
+                </div>
+            )}
         </ModifiedTransactionProvider>
     )
 }

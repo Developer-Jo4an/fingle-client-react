@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useState} from 'react'
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {useTransactionsContext} from '../../../../transactions/TransactionsProvider'
@@ -8,18 +8,16 @@ import './modified-count-modal-window.css'
 
 const ModifiedCountModalWindow = () => {
 
-
-
     const {modifiedTransaction} = useTransactionsContext()
+    const [modified, dispatch] = modifiedTransaction
     const {modifiedCountMWS, refs} = useModifiedTransactionContext()
     const getColor = () => {
-        const {transactionType} = modifiedTransaction[0]
         const colorLogic = {
-            expense: () => '#ee3a3a',
-            income: () => '#24e597',
-            transfer: () => '#f5d544',
+            expense: '#ee3a3a',
+            income: '#24e597',
+            transfer: '#f5d544',
         }
-        return colorLogic[transactionType]()
+        return colorLogic[modified.transactionType]
     }
 
     const [result, setResult] = useState('0')
@@ -47,10 +45,6 @@ const ModifiedCountModalWindow = () => {
         {value: 'apply', label: <FontAwesomeIcon style={{color: '#24e597'}} icon='fa-solid fa-check'/>, type: 'apply'}
     ]
 
-    useEffect(() => {
-        console.log(modifiedTransaction[0])
-    }, [modifiedTransaction[0]])
-
     const calculatorChange = item => {
         const handleError = () => {
             setResult('0')
@@ -74,8 +68,8 @@ const ModifiedCountModalWindow = () => {
                 const result = eval(res)
                 if (result < 0) handleError()
                 else {
-                    if (result.toString().includes('.')) modifiedTransaction[1](prev => ({...prev, count: result.toFixed(2)}))
-                    else modifiedTransaction[1](prev => ({...prev, count: result}))
+                    if (result.toString().includes('.')) dispatch({type: 'count', count: result.toFixed(2)})
+                    else dispatch({type: 'count', count: result})
                     setResult('0')
                     modifiedCountMWS[1](false)
                 }
@@ -99,8 +93,6 @@ const ModifiedCountModalWindow = () => {
             case 'apply' : apply(result); break
         }
     }
-
-    if (!modifiedTransaction[0]) return null
 
     return (
         <div className={'modified-count-modal-window'}>

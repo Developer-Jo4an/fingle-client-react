@@ -9,7 +9,8 @@ import './transaction.css'
 const Transaction = ({ transaction }) => {
     const {transactionType, count, date, card} = transaction
 
-    const {transactionMWS, modifiedTransaction} = useTransactionsContext()
+    const {transactionMWS, modifiedTransaction, prevTransaction} = useTransactionsContext()
+    const [, dispatch] = modifiedTransaction
 
     const getInfo = () => {
         if (transactionType === 'expense' || transactionType === 'income')
@@ -30,7 +31,8 @@ const Transaction = ({ transaction }) => {
         transactionType === 'income' ? transaction.category.color : '#f5d544'})
 
     const setModifiedTransaction = () => {
-        modifiedTransaction[1](transaction)
+        dispatch({type: 'set', transaction: transaction})
+        prevTransaction[1](transaction)
         transactionMWS[1](true)
     }
 

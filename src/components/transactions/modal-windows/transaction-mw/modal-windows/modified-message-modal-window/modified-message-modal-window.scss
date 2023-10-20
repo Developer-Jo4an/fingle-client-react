@@ -1,13 +1,13 @@
-@import 'global.css';
+@import '../../../../../../styles/zeroing/global';
 
-.message-modal-window {
+.modified-message-modal-window {
     display: flex;
     flex-direction: column;
 
     gap: 10px;
 }
 
-.message-input {
+.modified-message-input {
     width: 280px;
     height: 40px;
 
@@ -17,13 +17,13 @@
     border-radius: 10px;
 }
 
-.message-action-buttons {
+.modified-message-action-buttons {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.message-action-btn {
+.modified-message-action-btn {
     display: flex;
     align-items: center;
     justify-content: center;

@@ -17,6 +17,7 @@ const ModifiedTransactionProvider = ({ children }) => {
 
     // modal window
     const [modifiedCountMWS, setModifiedCountMWS] = useState(false)
+    const [modifiedMessageMWS, setModifiedMessageMWS] = useState(false)
     // modal window
 
     useEffect(() => {
@@ -27,6 +28,7 @@ const ModifiedTransactionProvider = ({ children }) => {
         <ModifiedTransactionContext.Provider value ={{
             modifiedMode: [modifiedMode, setModifiedMode],
             modifiedCountMWS: [modifiedCountMWS, setModifiedCountMWS],
+            modifiedMessageMWS: [modifiedMessageMWS, setModifiedMessageMWS],
             refs
         }}
         >{ children }

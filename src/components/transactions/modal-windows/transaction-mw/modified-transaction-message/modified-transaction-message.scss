@@ -1,0 +1,58 @@
+@import '../../../../../styles/zeroing/global';
+
+.modified-transaction-message {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+
+    transition: .3s;
+}
+
+.always-visible-message-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.modified-option-message-name {
+    font-size: 18px;
+
+    font-family: custom-bold, Manrope, sans-serif;
+}
+
+.modified-option-message-value {
+    display: flex;
+    align-self: center;
+    gap: 10px;
+}
+
+.invisible-message-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+}
+
+.modified-message-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 6px 12px;
+
+    border-radius: 20px;
+    border: 2px solid #24e597;
+
+    color: #24e597;
+
+    transition: 0.1s;
+
+    font-family: custom-bold, Manropw, sans-serif;
+
+    &:active {
+        background-color: #24e597;
+
+        color: #fff;
+    }
+}

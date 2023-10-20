@@ -1,26 +1,29 @@
 import React, {useCallback, useEffect, useRef, useState} from 'react'
+import Datepicker from '../../../../datepicker/Datepicker'
 
 import {useTransactionsContext} from '../../../transactions/TransactionsProvider'
 import {useModifiedTransactionContext} from '../ModifiedTransactionProvider'
 import {dateRefactor, timeRefactor} from '../../../../../my-functions/my-functions'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import AirDatepicker from 'air-datepicker'
+import moment from 'moment'
 
 import './modified-transaction-date.css'
-import Datepicker from '../../../../datepicker/Datepicker'
-import moment from 'moment';
 
 const ModifiedTransactionDate = () => {
 
     const {modifiedTransaction} = useTransactionsContext()
+    const [modified, dispatch] = modifiedTransaction
     const {modifiedMode} = useModifiedTransactionContext()
 
     const getValue = () => ({
-        date: dateRefactor(modifiedTransaction[0].date),
-        time: timeRefactor(modifiedTransaction[0].date)
+        date: dateRefactor(modified.date),
+        time: timeRefactor(modified.date)
     })
 
-    const modifiedDate = action => modifiedTransaction[1](prev => ({...prev, date: moment(prev.date)[action]('1', 'days')._d}))
+    const modifiedDate = action => {
+        dispatch({type: 'date-arrow', callback: state => moment(state.date)[action]('1', 'days')._d})
+    }
 
     const datepickerRef = useRef()
     const datepickerClasses = {label: 'modified-date-label', input: 'modified-date-input'}
@@ -29,11 +32,9 @@ const ModifiedTransactionDate = () => {
             isMobile: true,
             timepicker: true,
             toggleSelected: false,
-            onSelect: ({date}) => modifiedTransaction[1](prev => ({...prev, date: date}))
+            onSelect: ({date}) => dispatch({type: 'date', date})
         })
     }, [datepickerRef])
-
-    if (!modifiedTransaction[0]) return null
 
     return (
         <div className={`modified-transaction-date ${modifiedMode[0] ? 'get-gap' : ''}`}>

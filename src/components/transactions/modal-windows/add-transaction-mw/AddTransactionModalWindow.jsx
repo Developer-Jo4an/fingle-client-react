@@ -8,7 +8,7 @@ import AddTransactionProvider, {useAddTransactionContext} from './AddTransaction
 import AddTransactionMessage from './add-transaction-message/AddTransactionMessage'
 import Calculator from './calculator/Calculator'
 import ModalWindowContentCenter from '../../../modal-window-content-center/ModalWindowContentCenter'
-import MessageModalWindow from '../message-modal-window/MessageModalWindow'
+import MessageModalWindow from './modal-windows/add-transaction-message-modal-window/MessageModalWindow'
 
 import 'swiper/css'
 import './add-transaction-modal-window.css'

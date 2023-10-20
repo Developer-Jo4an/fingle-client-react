@@ -1,0 +1,45 @@
+@import '../../../../../../styles/zeroing/global';
+
+.message-modal-window {
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+.message-input {
+    width: 280px;
+    height: 40px;
+
+    padding: 5px 10px;
+
+    border: 2px solid $main-green-color;
+    border-radius: 10px;
+}
+
+.message-action-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.message-action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 6px 12px;
+
+    border: 2px solid #333;
+    border-radius: 12px;
+
+    font-family: custom-bold, Manrope, sans-serif;
+
+    transition: .3s;
+
+    &:active {
+        background-color: #333333;
+
+        color: #fff
+    }
+}
