@@ -1,0 +1,22 @@
+.options-filter {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 10px;
+}
+
+.options-filer-wrapper {
+  padding: 8px;
+  transition: 0.1s;
+  border-radius: 20px;
+}
+.options-filer-wrapper:active {
+  background-color: #e0e0e0;
+}
+.options-filer-wrapper svg {
+  width: 20px;
+  height: 20px;
+}
+
+/*# sourceMappingURL=options-filter-mw-btn.css.map */

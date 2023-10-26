@@ -16,7 +16,7 @@
   grid-template-rows: repeat(2, 25px);
   grid-template-columns: 45px 1fr auto;
   column-gap: 15px;
-  border-radius: 15px;
+  border-radius: 16px;
   padding: 10px;
   transition: 0.1s;
 }
@@ -29,7 +29,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 15px;
 }
 .transaction-sign svg {
   color: #fff;
@@ -50,6 +49,10 @@
   display: flex;
   align-items: center;
   overflow: hidden;
+}
+.transaction-info div {
+  overflow: hidden;
+  text-overflow: ellipsis;
   white-space: nowrap;
 }
 

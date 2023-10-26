@@ -1,0 +1,31 @@
+@import '../../../../../styles/zeroing/global';
+
+.active-category-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.active-category-btn {
+    width: 35px;
+    height: 35px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background-color: $main-green-color;
+    color: #fff;
+
+    transition: .3s;
+
+    &:active {transform: scale(1.2); svg {width: 18px; height: 18px}}
+
+    svg {
+        width: 16px;
+        height: 16px;
+    }
+}

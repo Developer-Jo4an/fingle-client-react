@@ -12,7 +12,7 @@ import './add-transaction-date.css'
 const AddTransactionDate = () => {
 
     const {newTransaction} = useAddTransactionContext()
-
+    const [futureTransaction, dispatch] = newTransaction
     const datePickerRef = useRef()
 
     const datepickerClasses = {
@@ -25,13 +25,11 @@ const AddTransactionDate = () => {
             isMobile: true,
             timepicker: true,
             toggleSelected: false,
-            onSelect: ({date}) => {
-                if (!Array.isArray(date)) newTransaction[1](prev => ({...prev, date: date}))
-            }
+            onSelect: ({date}) => {if (!Array.isArray(date)) dispatch({type: 'date', date: date})}
         })
     }, [datePickerRef])
 
-    const dateToggle = action => newTransaction[1](prev => ({...prev, date: moment(prev.date)[action](1, 'days')._d}))
+    const dateToggle = action => dispatch({type: 'date-arrow', callback: date => moment(date)[action](1, 'days')._d})
 
     return (
         <div className={'add-transaction-date-section'}>
@@ -43,11 +41,11 @@ const AddTransactionDate = () => {
                 <div className={'add-transaction-date'}>
                     <div className={'add-transaction-date-info'}>
                         <FontAwesomeIcon icon='fa-solid fa-calendar'/>
-                        {dateRefactor(newTransaction[0].date)}
+                        {dateRefactor(futureTransaction.date)}
                     </div>
                     <div className={'add-transaction-date-info'}>
                         <FontAwesomeIcon icon='fa-solid fa-clock'/>
-                        {timeRefactor(newTransaction[0].date)}
+                        {timeRefactor(futureTransaction.date)}
                     </div>
                 </div>
             </Datepicker>

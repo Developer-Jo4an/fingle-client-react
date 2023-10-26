@@ -11,25 +11,9 @@ const AddTransactionIncomeCategory = ({Ref}) => {
     const {user} = useAppContext()
     const {transactionCategories} = user[0]
     const {newTransaction} = useAddTransactionContext()
+    const [futureTransaction, dispatch] = newTransaction
 
-    const selectCategory = category => {
-        newTransaction[1](prev => {
-            const futureObject = {}
-            if (prev.category) {
-                if (prev.category._id === category._id) {
-                    for (const key in prev) if (key !== 'category' && key !=='subCategory') futureObject[key] = prev[key]
-                }
-                else {
-                    for (const key in prev) if (key !== 'subCategory') futureObject[key] = prev[key]
-                    return {...futureObject, category: category}
-                }
-            } else {
-                for (const key in prev) if (key !== 'subCategory') futureObject[key] = prev[key]
-                return {...futureObject, category: category}
-            }
-            return futureObject
-        })
-    }
+    const selectCategory = category => dispatch({type: 'category', category})
 
     return (
         <div className={'slider-wrapper add-transaction-income-category-wrapper'}>
@@ -38,7 +22,7 @@ const AddTransactionIncomeCategory = ({Ref}) => {
                     <swiper-slide
                         key={category._id}
                         style={{'--category-color': category.color}}
-                        class={`add-transaction-income-category ${newTransaction[0].category && newTransaction[0].category._id === category._id ? 'add-transaction-category-income-active' : ''}`}
+                        class={`add-transaction-income-category ${futureTransaction.category && futureTransaction.category._id === category._id ? 'add-transaction-category-income-active' : ''}`}
                         onClick={() => selectCategory(category)}
                     ><FontAwesomeIcon icon={category.sign}/>{category.name}</swiper-slide>))}
             </SwiperEl>

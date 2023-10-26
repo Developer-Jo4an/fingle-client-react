@@ -1,0 +1,87 @@
+.category-statistic {
+  display: grid;
+  grid-template-columns: 45px 1fr auto;
+  grid-template-rows: repeat(2, 25px);
+  column-gap: 15px;
+  padding: 10px;
+  transition: 0.1s;
+  border-radius: 16px;
+}
+.category-statistic:active {
+  background-color: #e0e0e0;
+}
+
+.category-statistic__sign {
+  grid-row: span 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.category-statistic__sign div {
+  width: 45px;
+  height: 45px;
+  background-color: var(--sign-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+}
+.category-statistic__sign svg {
+  color: #fff;
+  width: 20px;
+  height: 20px;
+}
+
+.category-statistic__name {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.category-statistic__name div {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.category-statistic__count {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  overflow: hidden;
+  white-space: nowrap;
+  color: var(--count-color);
+}
+
+.category-statistic__bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.category-statistic__progress-bar {
+  height: 30%;
+  display: flex;
+  background-color: #eaeaea;
+  border-radius: 10px;
+}
+.category-statistic__progress-bar div {
+  border-radius: 10px;
+}
+
+.category-statistic__percent {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+  white-space: nowrap;
+  color: #a1a0a0;
+  font-size: 14px;
+}
+
+.analytics-statistic-no-transactions-message {
+  text-align: center;
+  margin: auto;
+  opacity: 0.5;
+}
+
+/*# sourceMappingURL=category-statistic.css.map */

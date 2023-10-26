@@ -1,0 +1,14 @@
+@import '../../styles/zeroing/global';
+.transactions-filter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 10px;
+}
+
+.date-filter-wrapper {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+}

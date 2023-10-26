@@ -7,8 +7,8 @@ import AddTransactionDate from './add-transaction-date/AddTransactionDate'
 import AddTransactionProvider, {useAddTransactionContext} from './AddTransactionProvider'
 import AddTransactionMessage from './add-transaction-message/AddTransactionMessage'
 import Calculator from './calculator/Calculator'
-import ModalWindowContentCenter from '../../../modal-window-content-center/ModalWindowContentCenter'
-import MessageModalWindow from './modal-windows/add-transaction-message-modal-window/MessageModalWindow'
+import ModalWindow from '../../../modal-window/ModalWindow'
+import MessageModalWindow from './modal-windows/add-transaction-message-mw/MessageModalWindow'
 
 import 'swiper/css'
 import './add-transaction-modal-window.css'
@@ -29,7 +29,7 @@ const AddTransactionModalWindow = () => {
                 <AddTransactionCount/>
                 <AddTransactionMoreInfo/>
                 <Calculator/>
-                <ModalWindowContentCenter nav={'messageMWS'} context={useAddTransactionContext}><MessageModalWindow/></ModalWindowContentCenter>
+                <ModalWindow position={'center'} nav={'messageMWS'} context={useAddTransactionContext}><MessageModalWindow/></ModalWindow>
             </div>
         </AddTransactionProvider>
     )

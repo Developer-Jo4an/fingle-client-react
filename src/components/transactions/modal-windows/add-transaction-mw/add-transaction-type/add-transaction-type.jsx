@@ -7,28 +7,21 @@ import './add-transaction-type.css'
 const AddTransactionType = () => {
 
     const {newTransaction} = useAddTransactionContext()
-
+    const [futureTransaction, dispatch] = newTransaction
     const transactionTypes = [
         {id: 'expense', label: 'Expense'},
         {id: 'income', label: 'Income'},
         {id: 'transfer', label: 'Transfer'},
     ]
 
-    const selectType = type => {
-        newTransaction[1](prev => {
-            const futureObject = {}
-            for (const key in prev) if (key !== 'category' && key !== 'subCategory' && key !== 'transferCard') futureObject[key] = prev[key]
-            futureObject.transactionType = type.id
-            return futureObject
-        })
-    }
+    const selectType = type => dispatch({type: 'type', trType: type.id})
 
     return (
         <div className='add-transaction-type'>
             {transactionTypes.map(type => (
                 <div
                     key={type.id}
-                    className={`transaction-type ${type.id === newTransaction[0].transactionType ? 'transaction-type-active' : ''}`}
+                    className={`transaction-type ${type.id === futureTransaction.transactionType ? 'transaction-type-active' : ''}`}
                     onClick={() => selectType(type)}
                 >{type.label}</div>
             ))}

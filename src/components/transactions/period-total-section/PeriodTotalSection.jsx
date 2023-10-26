@@ -1,13 +1,13 @@
 import React from 'react'
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {useTransactionsContext} from '../transactions/TransactionsProvider'
+import {useAppContext} from '../../../AppProvider'
 
 import './period-total-section.css'
 
 const PeriodTotalSection = () => {
 
-    const {total} = useTransactionsContext()
+    const {total} = useAppContext()
 
     return (
         <div className={'period-total-section'}>

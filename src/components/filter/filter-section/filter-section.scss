@@ -1,0 +1,33 @@
+@import '../../../styles/zeroing/global.css';
+
+.filter-elements-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+
+    padding: 0 20px;
+}
+
+.filter-element {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    font-size: 12px;
+
+    font-family: custom-bold, Manrope, sans-serif;
+
+    padding: 8px 8px;
+
+    border-radius: 20px;
+    background-color: var(--filter-element-color);
+
+    color: #fff;
+
+    svg {
+        width: 16px;
+        height: 16px;
+    }
+}
+

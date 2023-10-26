@@ -12,7 +12,7 @@
 }
 @font-face {
   font-family: custom-super-bold;
-  src: url(http://localhost:3000/fonts/Montserrat-Italic.ttf);
+  src: url(http://localhost:3000/fonts/Montserrat-Bold.ttf);
 }
 *, *:before, *:after {
   margin: 0;

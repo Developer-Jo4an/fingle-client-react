@@ -1,14 +1,14 @@
 import React from 'react'
 import Transaction from '../transaction/Transaction'
 
-import {useTransactionsContext} from '../transactions/TransactionsProvider'
+import {useAppContext} from '../../../AppProvider'
 import {chunkTransactions} from '../../../my-functions/my-functions'
 
 import './transaction-section.css'
 
 const TransactionSection = () => {
 
-    const {transactions} = useTransactionsContext()
+    const {transactions} = useAppContext()
 
     return (
         <section className={'transaction-section'}>

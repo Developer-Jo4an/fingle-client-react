@@ -23,12 +23,12 @@
 
     column-gap: 15px;
 
-    border-radius: 15px;
+    border-radius: 16px;
     padding: 10px;
 
     transition: 0.1s;
 
-    &:active {background-color: $main-gray-active-color;}
+    &:active {background-color: $main-gray-active-color}
 }
 
 .transaction-sign {
@@ -37,8 +37,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
-    border-radius: 15px;
 
     svg {
         color: #fff;
@@ -65,7 +63,12 @@
     align-items: center;
 
     overflow: hidden;
-    white-space: nowrap;
+
+    div {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
 }
 
 .transaction-count, {

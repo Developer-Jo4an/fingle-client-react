@@ -4,12 +4,16 @@
   justify-content: space-around;
   padding: 10px;
   background-color: #eaeaea;
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
 }
 
 .modified-transaction-button {
   width: 90px;
   height: 60px;
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -36,6 +40,30 @@
 
 .modified-delete-btn:active {
   background-color: #ee3a3a;
+  color: #fff;
+}
+
+.modified-btn-visible {
+  display: flex !important;
+}
+
+.modified-transaction-button-action {
+  width: 90px;
+  height: 60px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+  background-color: #fff;
+  color: var(--modified-btn-color);
+  transition: 0.3s;
+}
+.modified-transaction-button-action svg {
+  width: 18px;
+  height: 18px;
+}
+.modified-transaction-button-action:active {
+  background-color: var(--modified-btn-color);
   color: #fff;
 }
 

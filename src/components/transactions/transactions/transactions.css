@@ -5,6 +5,7 @@
   padding: 20px 0;
   gap: 10px;
   position: relative;
+  overflow-x: hidden;
 }
 
 /*# sourceMappingURL=transactions.css.map */

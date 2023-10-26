@@ -1,0 +1,31 @@
+.active-category-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.active-category-btn {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: #24e597;
+  color: #fff;
+  transition: 0.3s;
+}
+.active-category-btn:active {
+  transform: scale(1.2);
+}
+.active-category-btn:active svg {
+  width: 18px;
+  height: 18px;
+}
+.active-category-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+/*# sourceMappingURL=analytics-active-category-buttons.css.map */

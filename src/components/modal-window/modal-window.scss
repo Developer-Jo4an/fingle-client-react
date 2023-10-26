@@ -4,12 +4,15 @@
     height: 100vh;
 
     display: flex;
+    align-items: center;
+    justify-content: center;
 
     position: fixed;
     top: 0;
     left: 0;
 
     background-color: $modal-window-background;
+
     opacity: 0;
 
     transition: .3s;
@@ -24,18 +27,31 @@
     pointer-events: all;
 }
 
-.modal-window-content {
+.modal-window-content-bottom {
     width: 100%;
 
-    position: absolute;
+    display: flex;
+    flex-direction: column;
 
+    position: absolute;
     bottom: -100%;
 
     transition: .3s;
 
     border-radius: 20px 20px 0 0;
 }
+.modal-window-content-bottom-appearance {bottom: 0}
 
-.modal-window-content-appearance {
-    bottom: 0
+.modal-window-content-center {
+    display: flex;
+    flex-direction: column;
+
+    background-color: #fff;
+
+    transition: .3s;
+
+    border-radius: 20px;
+
+    padding: 20px;
 }
+

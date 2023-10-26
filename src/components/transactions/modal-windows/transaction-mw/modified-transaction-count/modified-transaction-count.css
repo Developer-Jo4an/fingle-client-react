@@ -9,11 +9,18 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 20px;
 }
 
 .modified-option-count-name {
   font-size: 18px;
   font-family: custom-bold, Manrope, sans-serif;
+}
+
+.modified-option-count-value {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .invisible-count-section {

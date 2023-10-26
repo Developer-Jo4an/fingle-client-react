@@ -1,5 +1,9 @@
 import React from 'react'
 import Transactions from '../transactions/transactions/Transactions'
+import Analytics from '../analytics/analytics/Analytics'
+import ModalWindow from '../modal-window/ModalWindow'
+import DateFilterModalWindow from '../filter/date-filter-mw/DateFilterModalWindow'
+import OptionsFilterModalWindow from '../filter/options-filter-mw/OptionsFilterModalWindow'
 
 import { useAppContext } from '../../AppProvider'
 
@@ -11,8 +15,10 @@ const Main = () => {
     return (
         <main>
             {page[0] === 'home' && <div>Home !USE MOBILE VERSION!</div>}
-            {page[0] === 'analytics' && <div>Analytics !USE MOBILE VERSION!</div>}
+            {page[0] === 'analytics' && <Analytics/>}
             {page[0] === 'transactions' && <Transactions/>}
+            <ModalWindow position={'bottom'} nav={'periodMWS'} context={useAppContext}><DateFilterModalWindow/></ModalWindow>
+            <ModalWindow position={'bottom'} nav={'filterMWS'} context={useAppContext}><OptionsFilterModalWindow/></ModalWindow>
         </main>
     )
 }

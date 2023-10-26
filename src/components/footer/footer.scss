@@ -25,7 +25,8 @@ footer {
 .footer-nav-btn {
     display: flex;
     align-items: center;
-    gap: 5px;
+    justify-content: center;
+    gap: 0;
 
     padding: 15px;
 
@@ -43,6 +44,8 @@ footer {
     background-color: rgb($main-green-color, 0.4);
 
     color: $main-green-color;
+
+    gap: 5px;
 }
 
 .footer-btn-label {

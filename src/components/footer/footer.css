@@ -18,7 +18,8 @@ footer {
 .footer-nav-btn {
   display: flex;
   align-items: center;
-  gap: 5px;
+  justify-content: center;
+  gap: 0;
   padding: 15px;
   border-radius: 30px;
   transition: 0.3s;
@@ -31,6 +32,7 @@ footer {
 .footer-nav-btn-active {
   background-color: rgba(36, 229, 151, 0.4);
   color: #24e597;
+  gap: 5px;
 }
 
 .footer-btn-label {

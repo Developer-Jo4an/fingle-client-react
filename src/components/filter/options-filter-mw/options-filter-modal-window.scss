@@ -1,0 +1,50 @@
+@import '../../../styles/zeroing/global';
+
+.options-transactions-filter-modal-window {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    padding: 20px;
+
+    background-color: #fff;
+
+    border-radius: 20px 20px 0 0;
+}
+
+.filter-chunk {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.filter-chunk-header {
+    font-family: custom-bold, Manrope, sans-serif;
+    font-size: 18px;
+}
+
+.transaction-chunk-element {
+    width: auto !important;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+
+    padding: 6px 12px;
+
+    font-family: custom-bold, Manrope, sans-serif;
+
+    border: 2px solid var(--filter-color);
+    border-radius: 12px;
+
+    color: var(--filter-color);
+
+    transition: 0.3s;
+}
+
+.transaction-chunk-element-active {
+    background-color: var(--filter-color);
+
+    color: #fff;
+}

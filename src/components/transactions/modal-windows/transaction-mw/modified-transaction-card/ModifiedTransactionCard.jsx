@@ -25,7 +25,7 @@ const ModifiedTransactionCard = () => {
                 <div className={'modified-option-card-value'}>{modified.card.cardName}</div>
             </div>
             <div
-                className={`invisible-card-section`}
+                className={'invisible-card-section'}
                 style={{height: modifiedMode[0] ? 'auto' : '0px'}}
             ><SwiperEl Ref={sliderRef}>
                 {user[0].allCards.map(card => (

@@ -9,13 +9,14 @@ import {useAddTransactionContext} from '../AddTransactionProvider'
 const AddTransactionMoreInfo = () => {
 
     const {newTransaction, refs} = useAddTransactionContext()
+    const [futureTransaction] = newTransaction
 
     return (
         <div className={`add-transaction-more-info`}>
             <div
                 className={`add-transaction-more-info-wrapper 
-                        ${newTransaction[0].transactionType === 'expense' ?
-                    'start' : newTransaction[0].transactionType === 'income' ? 'middle' : 'end'}`}>
+                        ${futureTransaction.transactionType === 'expense' ?
+                    'start' : futureTransaction.transactionType === 'income' ? 'middle' : 'end'}`}>
                 <AddTransactionCategory Ref={refs.expense}/>
                 <AddTransactionIncomeCategory Ref={refs.income}/>
                 <AddTransactionTransferCard Ref={refs.transfer}/>

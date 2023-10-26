@@ -1,0 +1,18 @@
+.analytics-sub-categories-info-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px 0;
+  border-top: 1px solid #a6a6a6;
+  border-bottom: 1px solid #a6a6a6;
+}
+
+.none-sub-categories {
+  display: none;
+}
+
+.category-no-click {
+  pointer-events: none;
+}
+
+/*# sourceMappingURL=active-sub-categories.css.map */

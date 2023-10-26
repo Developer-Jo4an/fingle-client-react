@@ -11,14 +11,9 @@ const AddTransactionCard = () => {
     const {user} = useAppContext()
     const {allCards} = user[0]
     const {newTransaction, refs} = useAddTransactionContext()
+    const [futureTransaction, dispatch] = newTransaction
 
-    const selectCard = card => {
-        newTransaction[1](prev => {
-            const futureObj = {}
-            for (const key in prev) if (key !== 'transferCard') futureObj[key] = prev[key]
-            return {...futureObj, card: {_id: card._id, cardName: card.cardName, bankName: card.bankName}}
-        })
-    }
+    const selectCard = card => dispatch({type: 'card', card: card})
 
     return (
         <div className={'slider-wrapper'}>
@@ -26,7 +21,7 @@ const AddTransactionCard = () => {
             {allCards.map(card => (
                 <swiper-slide
                     key={card._id}
-                    class={`add-transaction-card ${newTransaction[0].card && newTransaction[0].card._id === card._id ? 'add-transaction-card-active' : ''}`}
+                    class={`add-transaction-card ${futureTransaction.card && futureTransaction.card._id === card._id ? 'add-transaction-card-active' : ''}`}
                     onClick={() => selectCard(card)}
                 ><FontAwesomeIcon icon="fa-solid fa-credit-card"/>{card.cardName}</swiper-slide>))}
             </SwiperEl>

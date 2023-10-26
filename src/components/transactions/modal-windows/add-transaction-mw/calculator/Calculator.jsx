@@ -14,120 +14,102 @@ const Calculator = () => {
 
     const {user} = useAppContext()
     const {addMWS} = useTransactionsContext()
-    const {newTransaction, refs, messageMWS, loader} = useAddTransactionContext()
-
+    const {newTransaction, refs, messageMWS, loader, result} = useAddTransactionContext()
+    const [futureTransaction, dispatch] = newTransaction
     const [apply, setApply] = useState(false)
 
     useEffect(() => {
-        const checkCard = () => {
-            if (newTransaction[0].card) return true
-            else {
-                refs.card.current.classList.add('error-animation')
-                setTimeout(() => refs.card.current.classList.remove('error-animation'), 700)
-                return false
-            }
-        }
-
-        const checkProperty = (nav, key) => {
-            if (checkCard()) {
-                if (newTransaction[0][key]) return true
-                else {
-                    refs[nav].current.classList.add('error-animation')
-                    setTimeout(() => refs[nav].current.classList.remove('error-animation'), 700)
-                    return false
-                }
-            } else return false
-        }
-
-        const checkLogic = {
-            expense: () => checkProperty('expense', 'category'),
-            income: () => checkProperty('income', 'category'),
-            transfer: () => checkProperty('transfer', 'transferCard'),
-        }
         if (apply) {
-            if (checkLogic[newTransaction[0].transactionType]()) {
-                loader[1](true); addMWS[1](false)
-                const addTransactionRequest = async () => {
-                    try {
-                        const updatedTransactions = await axios.post(`${userId}/add-transaction`, {transaction: newTransaction[0]})
-
-                        user[1](prev => ({...prev, transactions: updatedTransactions.data}))
-                        newTransaction[1]({transactionType: 'expense', date: new Date(), count: '0'})
-                        loader[1](false); setApply(false)
-
-                    } catch (e) {console.error(e); loader[1](false); setApply(false)}
+            const addTransactionRequest = async () => {
+                try {
+                    loader[1](true)
+                    const transactions = await axios.post(`${userId}/add-transaction`, {transaction: futureTransaction})
+                    user[1](prev => ({...prev, transactions: transactions.data}))
+                } catch (e) {alert('Request Error')
+                } finally {
+                    loader[1](false)
+                    addMWS[1](false)
+                    setApply(false)
+                    dispatch({type: 'zeroing'})
+                    result[1]('0')
                 }
-                addTransactionRequest()
-            } else setApply(false)
+            }
+            addTransactionRequest()
         }
     }, [apply])
 
-    const calculatorChange = item => {
-        const counter = count => {
-            try {
-                const result = eval(count)
-                if (result < 0) {
-                    refs.count.current.classList.add('error-animation')
-                    setTimeout(() => refs.count.current.classList.remove('error-animation'), 700)
-                } else {
-                    let strRes = result.toFixed(1).toString()
-                    return strRes.at(-1) === '0' ? strRes.slice(0, -2) : strRes
-                }
 
-            } catch (e) {
-                refs.count.current.classList.add('error-animation')
-                setTimeout(() => refs.count.current.classList.remove('error-animation'), 700)
-                return null
-            }
+
+    const calculatorChange = item => {
+
+        const handleError = ref => {
+            ref.current.classList.add('error-animation')
+            setTimeout(() => ref.current.classList.remove('error-animation'), 700)
         }
-        const {type} = item
+
+        const checker = () => {
+            if (!futureTransaction.transactionType) {alert('No type'); return false}
+            if (!futureTransaction.date) {alert('No date'); return false}
+            if (!futureTransaction.card) {handleError(refs.card); return false}
+            if (!futureTransaction.count) {handleError(refs.count); return false}
+
+            const checkerLogic = {
+                expense: () => {if (!futureTransaction.category) {handleError(refs.expense); return false} else return true},
+                income: () => {if (!futureTransaction.category) {handleError(refs.income); return false} else return true},
+                transfer: () => {if (!futureTransaction.transferCard) {handleError(refs.transfer); return false} else return true},
+            }
+            return checkerLogic[futureTransaction.transactionType]()
+        }
+
+        const equals = res => {
+            try {
+                const result = eval(res)
+                if (result <= 0) handleError(refs.count)
+                else {
+                    if (result.toString().includes('.')) {result[1](result.toFixed(2).toString())}
+                    else result[1](result.toString())
+                }
+            } catch (e) {handleError(refs.count)}
+        }
+
+        const apply = res => {
+            try {
+                const count = eval(res)
+                if (count <= 0) handleError(refs.count)
+                else {
+                    if (checker()) {
+                        if (count.toString().includes('.')) {
+                            dispatch({type: 'count', count: count.toFixed(2)})
+                            result[1](count.toFixed(2).toString())
+                        }
+                        else {
+                            dispatch({type: 'count', count: count})
+                            result[1](count.toString())
+                            setApply(true)
+                        }
+                        setApply(true)
+                    }
+                }
+            } catch (e) {handleError(refs.count)}
+        }
+        const {type, value, sign} = item
         switch (type) {
-            case 'number': {
-                newTransaction[1](prev => ({...prev, count: prev.count === '0' ? item.value : prev.count + item.value}))
-                break
-            }
-            case 'action': {
-                newTransaction[1](prev => ({...prev, count: prev.count + item.sign}))
-                break
-            }
-            case 'delete': {
-                const checker = count => count === '' ? '0' : count
-                newTransaction[1](prev => {
-                    const {count} = prev
-                    if (count.at(-1) === ' ') {
-                        const newCount = count.slice(0, count.length - 3)
-                        return {...prev, count: checker(newCount)}
-                    }
-                    else {
-                        const newCount = count.slice(0, count.length - 1)
-                        return {...prev, count: checker(newCount)}
-                    }
-                })
-                break
-            }
-            case 'equals': {
-                const result = counter(newTransaction[0].count)
-                newTransaction[1](prev => result ? {...prev, count: result} : prev)
-                break
-            }
-            case 'apply': {
-                const result = counter(newTransaction[0].count)
-                newTransaction[1](prev => {
-                    if (result) return {...prev, count: result}
-                    else return prev
-                })
-                if (result) setApply(true)
-                break
-            }
-            case 'close': {
-                addMWS[1](false)
-                break
-            }
-            case 'message': {
-                messageMWS[1](true)
-                break
-            }
+            case 'number' : result[1](prev => {
+                if (prev === '0') return value === '.' ? prev + value : value
+                else return prev + value
+            }); break
+            case 'action' : result[1](prev => prev + sign); break
+            case 'delete' : result[1](prev => {
+                if (prev.length === 1) return '0'
+                if (prev.at(-1) === ' ') return prev.slice(0, prev.length - 3)
+                else return prev.slice(0, prev.length - 1)
+            }); break
+            case 'close' : addMWS[1](false); break
+            case 'equals' : equals(result[0]); break
+            case 'apply' : apply(result[0]); break
+            case 'message' : messageMWS[1](true); break
         }
+
     }
 
     const calculatorArr = [

@@ -2,6 +2,8 @@
   width: 100vw;
   height: 100vh;
   display: flex;
+  align-items: center;
+  justify-content: center;
   position: fixed;
   top: 0;
   left: 0;
@@ -17,16 +19,27 @@
   pointer-events: all;
 }
 
-.modal-window-content {
+.modal-window-content-bottom {
   width: 100%;
+  display: flex;
+  flex-direction: column;
   position: absolute;
   bottom: -100%;
   transition: 0.3s;
   border-radius: 20px 20px 0 0;
 }
 
-.modal-window-content-appearance {
+.modal-window-content-bottom-appearance {
   bottom: 0;
+}
+
+.modal-window-content-center {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  transition: 0.3s;
+  border-radius: 20px;
+  padding: 20px;
 }
 
 /*# sourceMappingURL=modal-window.css.map */

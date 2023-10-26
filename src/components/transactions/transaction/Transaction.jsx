@@ -44,7 +44,7 @@ const Transaction = ({ transaction }) => {
                     className={'transaction-sign-wrapper'}
                 >{<FontAwesomeIcon icon={getSign()}/>}</div>
             </div>
-            <div className={'transaction-info'}>{getInfo()}</div>
+            <div className={'transaction-info'}><div>{getInfo()}</div></div>
             <div
                 style={{'--count-color': getCountColor()}}
                 className={'transaction-count'}

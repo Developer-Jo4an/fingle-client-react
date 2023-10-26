@@ -2,22 +2,26 @@ import React, {useEffect} from 'react'
 
 import './modal-window.css'
 
-const ModalWindow = ({ nav, context, children }) => {
+const ModalWindow = ({ position, nav, context, children }) => {
 
     const [visible, setVisible] = context()[nav]
 
-    useEffect(() => {
-        visible ? document.body.style.overflow = 'hidden' : document.body.style.overflow = 'visible'
-    }, [visible])
+    const getPosition = () => {
+        const positionLogic = {
+            bottom: `modal-window-content-bottom ${visible ? 'modal-window-content-bottom-appearance' : ''}`,
+            center: 'modal-window-content-center',
+        }
+        return positionLogic[position]
+    }
 
-    const hideModalWindow = () => setVisible(false)
+    useEffect(() => {document.body.style.overflow = visible ? 'hidden' : 'visible'}, [visible])
 
     return (
         <div
             className={`modal-window ${visible ? 'modal-window-appearance' : ''}`}
-            onClick={hideModalWindow}
+            onClick={() => setVisible(false)}
         ><div
-            className={`modal-window-content ${visible ? 'modal-window-content-appearance' : ''}`}
+            className={getPosition()}
             onClick={e => e.stopPropagation()}
         >{children}</div>
         </div>
