@@ -1,6 +1,6 @@
 import React from 'react'
 
-import {useAnalyticsContext} from '../../../analytics/AnalyticsProvider'
+import {useAnalyticsContext} from '../../../AnalyticsProvider'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {useAppContext} from '../../../../../AppProvider'
 import {dateObj, dateRefactor} from '../../../../../my-functions/my-functions'
@@ -16,7 +16,7 @@ const AnalyticsActiveCategory = () => {
     if (!Object.keys(activeCategory[0]).length) return null
 
     const categoryPercent = () => obj.count.getPercent(total[0][activeTotal[0]])
-    const barSettings = () => ({width: `${categoryPercent()}px`, backgroundColor: obj.color})
+    const barSettings = () => ({width: `${categoryPercent()}%`, backgroundColor: obj.color})
     const categoryCountColor = () => ({color: activeTotal[0] === 'expense' ? '#ee3a3a' : '#24e597'})
     const categoryPeriod = () => {
         const [interval] = period

@@ -80,3 +80,4 @@ export function formattedPeriod(period) {
 // proto
 
 Number.prototype.getPercent = function (sum) { return ((this * 100) / sum).toFixed() }
+Date.prototype.getWeekDay = function () { return this.toLocaleDateString('en-US', { weekday:  'short' }) }

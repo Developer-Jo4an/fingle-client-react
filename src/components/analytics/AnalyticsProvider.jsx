@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react'
+import React, {useContext, useRef, useState} from 'react'
 
 const AnalyticsContext = React.createContext()
 export const useAnalyticsContext = () => useContext(AnalyticsContext)
@@ -12,12 +12,26 @@ const AnalyticsProvider = ({ children }) => {
     })
     const [categoryMWS, setCategoryMWS] = useState(false)
     const [activeCategory, setActiveCategory] = useState({})
+    // for report diagram
+    const [diagramType, setDiagramType] = useState('expense')
+    const [diagramInterval, setDiagramInterval] = useState('W')
+    const [histograms, setHistograms] = useState({obj: {}, arr: []})
+    // for report diagram
+
+    // refs
+    const refs = {histograms: useRef()}
+    // refs
+
     return (
         <AnalyticsContext.Provider value={{
             activeTotal: [activeTotal, setActiveTotal],
             statistic: [statistic, setStatistic],
             categoryMWS: [categoryMWS, setCategoryMWS],
-            activeCategory: [activeCategory, setActiveCategory]
+            activeCategory: [activeCategory, setActiveCategory],
+            diagramType: [diagramType, setDiagramType],
+            diagramInterval: [diagramInterval, setDiagramInterval],
+            histograms: [histograms, setHistograms],
+            refs
         }}>{ children }
         </AnalyticsContext.Provider>
     )

@@ -4,6 +4,7 @@ import { register } from 'swiper/element/bundle'
 register()
 
 const SwiperEl = ({Ref, ...props}) => {
+
     return (
         <swiper-container
             ref={Ref}

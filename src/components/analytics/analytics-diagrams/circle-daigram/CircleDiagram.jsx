@@ -3,7 +3,7 @@ import {ArcElement, Chart as ChartJS} from 'chart.js'
 
 import {Doughnut} from 'react-chartjs-2'
 import {useAppContext} from '../../../../AppProvider'
-import {useAnalyticsContext} from '../../analytics/AnalyticsProvider'
+import {useAnalyticsContext} from '../../AnalyticsProvider'
 
 import './circle-diagram.css'
 

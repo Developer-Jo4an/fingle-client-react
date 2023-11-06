@@ -1,6 +1,6 @@
 import React from 'react'
 import Transactions from '../transactions/transactions/Transactions'
-import Analytics from '../analytics/analytics/Analytics'
+import Analytics from '../analytics/Analytics'
 import ModalWindow from '../modal-window/ModalWindow'
 import DateFilterModalWindow from '../filter/date-filter-mw/DateFilterModalWindow'
 import OptionsFilterModalWindow from '../filter/options-filter-mw/OptionsFilterModalWindow'

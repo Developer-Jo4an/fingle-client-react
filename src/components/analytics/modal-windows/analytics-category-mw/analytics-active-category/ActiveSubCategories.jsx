@@ -1,6 +1,6 @@
 import React from 'react'
 
-import {useAnalyticsContext} from '../../../analytics/AnalyticsProvider'
+import {useAnalyticsContext} from '../../../AnalyticsProvider'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 
 import './active-sub-categories.css'
@@ -15,7 +15,7 @@ const ActiveSubCategories = () => {
 
     const categoryPercent = count => count.getPercent(obj.count)
     const categoryColor = () => ({color: activeTotal[0] === 'expense' ? '#ee3a3a' : '#24e597'})
-    const barSettings = ({color, count}) => ({backgroundColor: color, width: `${categoryPercent(count)}px`})
+    const barSettings = ({color, count}) => ({backgroundColor: color, width: `${categoryPercent(count)}%`})
 
     let subCategoriesArray = [];
 

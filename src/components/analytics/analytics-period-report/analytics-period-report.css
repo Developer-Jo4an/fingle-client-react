@@ -1,0 +1,73 @@
+.analytics-period-report-section {
+  padding: 20px;
+}
+
+.analytics-period-report-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 15px #e3e1e1;
+}
+
+.analytics-period-report-header {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.analytics-period-report-header__up-level {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.analytics-period-report-header-count {
+  font-size: 24px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  transition: 0.3s;
+}
+
+.analytics-period-report-header-intervals {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.analytics-period-report-header-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 15px;
+  border-radius: 12px;
+  background-color: rgba(51, 51, 51, 0.2);
+  transition: 0.3s;
+  font-family: custom-bold, Manrope, sans-serif;
+  color: #333;
+}
+
+.analytics-period-report-header-type-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.analytics-period-report-header-type-toggle-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.analytics-period-report-header-type {
+  color: #333;
+  font-family: custom-bold, Manrope, sans-serif;
+}
+
+.toggle-icon {
+  transition: 0.3s;
+}
+
+/*# sourceMappingURL=analytics-period-report.css.map */

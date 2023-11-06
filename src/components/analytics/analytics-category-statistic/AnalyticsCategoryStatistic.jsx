@@ -2,11 +2,11 @@ import React, {useEffect} from 'react'
 import CategoryStatistic from './CategoryStatistic'
 
 import {useAppContext} from '../../../AppProvider'
-import {useAnalyticsContext} from '../analytics/AnalyticsProvider'
+import {useAnalyticsContext} from '../AnalyticsProvider'
 
-import './analytics-statistic.css'
+import './analytics-category-statistic.css'
 
-const AnalyticsStatistic = () => {
+const AnalyticsCategoryStatistic = () => {
 
     const {transactions} = useAppContext()
     const {activeTotal, statistic} = useAnalyticsContext()
@@ -42,4 +42,4 @@ const AnalyticsStatistic = () => {
     )
 }
 
-export default AnalyticsStatistic
+export default AnalyticsCategoryStatistic

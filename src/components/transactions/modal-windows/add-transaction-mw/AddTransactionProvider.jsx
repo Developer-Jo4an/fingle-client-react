@@ -1,9 +1,7 @@
-import React, {useContext, useReducer, useRef, useState} from 'react'
+import React, {useContext, useEffect, useReducer, useRef, useState} from 'react'
 
 const AddTransactionContext = React.createContext()
 export const useAddTransactionContext = () => useContext(AddTransactionContext)
-
-
 
 const reducer = (state, action) => {
     switch (action.type) {
@@ -68,7 +66,7 @@ const reducer = (state, action) => {
         }
         case 'count' : return {...state, count: action.count}
         case 'zeroing' : return {transactionType: 'expense', date: new Date(), count: '0'}
-        default: return state
+        default : return state
     }
 }
 
@@ -82,23 +80,24 @@ const AddTransactionProvider = ({ children }) => {
         count: useRef(),
     }
 
+    const [newTransaction, dispatch] = useReducer(reducer,{
+        transactionType: 'expense',
+        date: new Date(),
+        count: '0',
+    })
+
     const [loader, setLoader] = useState(false)
     const [messageMWS, setMessageMWS] = useState(false)
     const [result, setResult] = useState('0')
     return (
         <AddTransactionContext.Provider value={{
-            newTransaction: useReducer(reducer,{
-                transactionType: 'expense',
-                date: new Date(),
-                count: '0',
-            }),
+            newTransaction: [newTransaction, dispatch],
             refs,
             result: [result, setResult],
             messageMWS: [messageMWS, setMessageMWS],
             loader: [loader, setLoader]
         }}>{ children }
         </AddTransactionContext.Provider>
-
     )
 }
 

@@ -20,6 +20,9 @@
   border-radius: 15px;
   background-color: var(--active-category-color);
 }
+.analytics-active-category-info__sign div svg {
+  color: #fff;
+}
 
 .analytics-active-category-info__name {
   grid-column: span 2;
