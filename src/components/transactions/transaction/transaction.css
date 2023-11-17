@@ -6,9 +6,73 @@
 }
 
 .transaction-chunk-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   font-family: custom-bold, Manrope, sans-serif;
   font-size: 20px;
-  padding-left: 10px;
+  padding: 0 10px 0;
+}
+
+.transaction-chunk-info-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.transaction-info-values-wrapper {
+  width: 0;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 14px;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.transaction-info-values-show {
+  width: var(--info-values-show);
+}
+
+.transaction-info-value {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.info-expense-value {
+  color: #ee3a3a;
+}
+
+.info-income-value {
+  color: #24e597;
+}
+
+.info-total-value {
+  color: var(--info-total-color);
+}
+
+.transaction-info-value-sigma-sign {
+  font-size: 16px;
+}
+
+.transaction-chunk-info-button {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: #429cfc;
+  transition: 0.1s;
+}
+.transaction-chunk-info-button svg {
+  width: 12px;
+  height: 12px;
+  color: #fff;
+}
+.transaction-chunk-info-button:active {
+  opacity: 0.7;
 }
 
 .transaction {

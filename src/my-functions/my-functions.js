@@ -28,9 +28,7 @@ export const dateObj = date => {
 }
 
 export function dateRefactor(date) {
-    date = new Date(date)
-    const options = {day: 'numeric', month: 'short', weekday: 'short'}
-    date = date.toLocaleDateString('en-US', options)
+    date = new Date(date);const options = {day: 'numeric', month: 'short', weekday: 'short'};date = date.toLocaleDateString('en-US', options)
 
     const [weekday, monthDay] = date.split(', ')
     const [month, day] = monthDay.split(' ')
