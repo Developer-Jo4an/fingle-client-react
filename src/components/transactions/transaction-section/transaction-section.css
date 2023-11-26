@@ -12,4 +12,11 @@
   margin: auto;
 }
 
+.transaction-chunk-date {
+  font-family: custom-bold, Manrope, sans-serif;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 /*# sourceMappingURL=transaction-section.css.map */

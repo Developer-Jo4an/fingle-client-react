@@ -17,12 +17,32 @@
     align-items: center;
     gap: 10px;
 
+    padding: 10px 20px;
+
+    border-radius: 20px;
+
+    background-color: $main-gray-background;
+
     overflow: hidden;
+}
+
+.add-transaction-message-sign-wrapper {
+    width: 30px;
+    height: 30px;
+
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background-color: $main-green-color;
 
     svg {
-        width: 18px;
-        height: 18px;
-        color: #333;
+        width: 14px;
+        height: 14px;
+        color: #fff;
     }
 }
 

@@ -53,7 +53,7 @@ const TransactionSection = () => {
             chunk.length &&
             <div key={chunk[0]} className={'transaction-chunk'}>
                 <div className={'transaction-chunk-header'}>
-                    {chunk[0]}
+                    <div className={'transaction-chunk-date'}>{chunk[0]}</div>
                     <div className={'transaction-chunk-info-wrapper'}>
                         <div
                             className={'transaction-chunk-info-button'}

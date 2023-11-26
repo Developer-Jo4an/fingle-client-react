@@ -28,7 +28,11 @@
 }
 
 .modal-window-content-bottom {
-    width: 100%;
+    width: 100vw;
+    max-height: 100vh;
+
+    overflow-y: scroll;
+    overflow-x: hidden;
 
     display: flex;
     flex-direction: column;
@@ -38,9 +42,10 @@
 
     transition: .3s;
 
-    border-radius: 20px 20px 0 0;
+    @extend %delete-scroll;
 }
-.modal-window-content-bottom-appearance {bottom: 0}
+
+.modal-window-content-bottom-appearance { bottom: 0 }
 
 .modal-window-content-center {
     display: flex;
@@ -53,5 +58,7 @@
     border-radius: 20px;
 
     padding: 20px;
+
+    @extend %delete-scroll;
 }
 

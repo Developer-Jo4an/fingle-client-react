@@ -23,9 +23,22 @@ const Calculator = () => {
             const addTransactionRequest = async () => {
                 try {
                     loader[1](true)
-                    const transactions = await axios.post(`${userId}/add-transaction`, {transaction: futureTransaction})
-                    user[1](prev => ({...prev, transactions: transactions.data}))
-                } catch (e) {alert('Request Error')
+                    const userData = await axios.post(`${userId}/add-transaction`, { transaction: futureTransaction })
+
+                    const { data } = userData
+
+                    const checker = () => {
+                        return data.status &&
+                            data.hasOwnProperty('transactions') &&
+                            data.hasOwnProperty('allCards') &&
+                            data.transactions.length &&
+                            data.allCards.length
+                    }
+
+                    if ( checker() ) user[1](prev => ({ ...prev, transactions: data.transactions, allCards: data.allCards }))
+                    else data.hasOwnProperty('message') ? alert(data.message) : alert('Checker was not passed (client)')
+
+                } catch (e) { alert('Request error(400)')
                 } finally {
                     loader[1](false)
                     addMWS[1](false)
@@ -129,7 +142,7 @@ const Calculator = () => {
         {value: '3', label: '3', type: 'number'},
         {value: 'equals', label: <FontAwesomeIcon icon='fa-solid fa-equals'/>, type: 'equals'},
         {value: 'plus', label: <FontAwesomeIcon icon='fa-solid fa-plus'/>, sign: ' + ', type: 'action'},
-        {value: 'close', label: <FontAwesomeIcon style={{color: '#ee3a3a'}} icon='fa-solid fa-xmark'/>, type: 'close'},
+        {value: 'close', label: <FontAwesomeIcon style={{color: '#ee3a3a'}}  icon='fa-solid fa-arrow-right-from-bracket' rotation={180}/>, type: 'close'},
         {value: '0', label: '0', type: 'number'},
         {value: '.', label: '.', type: 'number'},
         {value: 'apply', label: <FontAwesomeIcon style={{color: '#24e597'}} icon='fa-solid fa-check'/>, type: 'apply'}

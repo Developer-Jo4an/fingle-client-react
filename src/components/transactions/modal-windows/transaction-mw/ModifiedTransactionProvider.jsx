@@ -11,9 +11,7 @@ const ModifiedTransactionProvider = ({ children }) => {
     const [modifiedMode, setModifiedMode] = useState(false)
 
     // refs
-    const refs = {
-        modifiedCountRef: useRef()
-    }
+    const refs = { modifiedCountRef: useRef() }
 
     // modal window
     const [modifiedCountMWS, setModifiedCountMWS] = useState(false)

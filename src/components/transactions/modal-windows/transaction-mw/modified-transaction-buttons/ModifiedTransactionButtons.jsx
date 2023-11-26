@@ -28,7 +28,7 @@ const ModifiedTransactionButtons = () => {
             try {
                 setLoader(true)
                 const transactionsRequest = await axios.post(`${userId}/add-transaction`, {transaction: repeatedTransaction})
-                user[1](prev => ({...prev, transactions: transactionsRequest.data}))
+                user[1](prev => ({...prev, ...transactionsRequest.data}))
             } catch (e) { alert('Request error')
             } finally {
                 transactionMWS[1](false)
@@ -42,7 +42,7 @@ const ModifiedTransactionButtons = () => {
         const deleteTransactionRequest = async () => {
             try {
                 setLoader(true)
-                const transactionsRequest = await axios.delete(`${userId}/del-transaction/${prevTransaction[0]._id}`)
+                const transactionsRequest = await axios.delete(`${userId}/delete-transaction/${prevTransaction[0]._id}`)
                 user[1](prev => ({...prev, transactions: transactionsRequest.data}))
             } catch (e) { alert('Request error')
             } finally {
@@ -79,7 +79,7 @@ const ModifiedTransactionButtons = () => {
             modifiedTransactionRequest()
         } else {
             dispatch({type: 'set', transaction: prevTransaction[0]})
-            alert ('Произошла ошибка при изменении транзакции, состояние транзакции теперь первоначально!')
+            alert ('Произошла ошибка при изменении транзакции, состояние транзакции не изменилось!')
         }
     }
 

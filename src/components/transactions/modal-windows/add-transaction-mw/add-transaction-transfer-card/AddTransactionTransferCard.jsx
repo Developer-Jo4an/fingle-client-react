@@ -18,6 +18,8 @@ const AddTransactionTransferCard = ({Ref}) => {
 
     const selectTransferCard = (transferCard, i) => dispatch({type: 'transfer-card', transferCard, transferCardsRefs, i})
 
+    const roundUp = sum => sum.toString().includes('.') ? sum.toFixed(2) : sum
+
     return (
         <div className={'slider-wrapper add-transaction-transfer-card-wrapper'}>
             <SwiperEl Ref={Ref}>
@@ -27,7 +29,15 @@ const AddTransactionTransferCard = ({Ref}) => {
                         class={`add-transaction-transfer-card ${futureTransaction.transferCard && futureTransaction.transferCard._id === card._id ? 'add-transaction-transfer-card-active' : ''}`}
                         ref={el => transferCardsRefs.current[i] = el}
                         onClick={() => selectTransferCard(card, i)}
-                    ><FontAwesomeIcon icon="fa-solid fa-credit-card"/>{card.cardName}</swiper-slide>))}
+                    ><div className={'add-transaction-transfer-card-info'}>
+                        <div className={'add-transaction-transfer-card-info__sign'}>
+                            <div className={'add-transaction-transfer-card-info__sign-wrapper'}>
+                                <FontAwesomeIcon icon='fa-solid fa-credit-card'/>
+                            </div>
+                        </div>
+                        <div className={'add-transaction-transfer-card-info__name'}>{card.cardName}</div>
+                        <div className={'add-transaction-transfer-card-info__count'}>{roundUp(card.count)}</div>
+                    </div></swiper-slide>))}
             </SwiperEl>
         </div>
     )

@@ -1,13 +1,14 @@
 .add-transaction-date-section {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  padding: 10px 20px;
 }
 
 .add-transaction-date-arrow {
   width: 15px;
   height: 15px;
-  padding: 5px;
+  padding: 10px;
   transition: 0.3s;
   border-radius: 50%;
 }
@@ -28,27 +29,19 @@
   opacity: 0;
 }
 
-.add-transaction-date {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 30px;
-  font-family: custom-bold, Manrope, sans-serif;
-  padding: 10px 0 10px;
-}
-.add-transaction-date svg {
-  width: 20px;
-  height: 20px;
-  color: #a1a0a0;
-}
-
 .add-transaction-date-info {
+  max-width: 250px;
   display: flex;
   align-items: center;
   gap: 10px;
+  overflow: hidden;
+  padding: 10px 20px;
+  border-radius: 20px;
+  background-color: #eaeaea;
+  transition: 0.1s;
 }
-.add-transaction-date-info svg {
-  color: #333;
+.add-transaction-date-info:active {
+  background-color: rgba(234, 234, 234, 0.5);
 }
 
 /*# sourceMappingURL=add-transaction-date.css.map */

@@ -86,12 +86,11 @@ const AppProvider = ({ children }) => {
     useEffect(() => {
         const getUserData = async () => {
             try {
-                const userObj = await axios.get(`/get-user-info${userId}`)
-                setUser(userObj.data)
-            } catch (e) {
-                console.error('Error 500, not answer from server')
-                setUser(errorUser)
-            }
+                const userInfo = await axios.get(`/get-user-info${userId}`)
+                const { data } = userInfo
+                if (data.status) setUser( data.userInfo )
+                else { alert(data.message); setUser(errorUser) }
+            } catch (e) {alert('Request error(400)'); setUser(errorUser) }
         }
         getUserData()
     }, [])

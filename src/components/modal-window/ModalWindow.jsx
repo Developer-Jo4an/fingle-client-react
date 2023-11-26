@@ -6,6 +6,7 @@ const ModalWindow = ({ position, nav, context, children }) => {
 
     const [visible, setVisible] = context()[nav]
 
+
     const getPosition = () => {
         const positionLogic = {
             bottom: `modal-window-content-bottom ${visible ? 'modal-window-content-bottom-appearance' : ''}`,

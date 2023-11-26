@@ -9,6 +9,7 @@
   align-items: center;
   justify-content: center;
   font-size: 18px;
+  font-family: custom-bold, Manrope, sans-serif;
   transition: 0.3s;
 }
 .calculator-btn svg {

@@ -9,18 +9,45 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 5px;
-  padding: 6px 12px;
-  font-family: custom-bold, Manrope, sans-serif;
-  border: 2px solid var(--category-color);
+  gap: 10px;
+  padding: 7.5px 10px 7.5px 5px;
   border-radius: 20px;
-  color: var(--category-color);
+  background-color: #eaeaea;
   transition: 0.3s;
+}
+
+.add-transaction-income-category__sign {
+  width: 30px;
+  height: 30px;
+  grid-row: span 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 20px;
+  background-color: var(--category-color);
+  transition: 0.3s;
+}
+.add-transaction-income-category__sign svg {
+  width: 16px;
+  height: 16px;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.add-transaction-income-category__name {
+  font-size: 14px;
 }
 
 .add-transaction-category-income-active {
   background-color: var(--category-color);
   color: #fff;
+}
+.add-transaction-category-income-active .add-transaction-income-category__sign {
+  background-color: #fff;
+}
+.add-transaction-category-income-active .add-transaction-income-category__sign svg {
+  color: var(--category-color);
 }
 
 /*# sourceMappingURL=add-transaction-income-category.css.map */

@@ -1,3 +1,11 @@
+.modal-window-content-center, .modal-window-content-bottom {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.modal-window-content-center::-webkit-scrollbar, .modal-window-content-bottom::-webkit-scrollbar {
+  display: none;
+}
+
 .modal-window {
   width: 100vw;
   height: 100vh;
@@ -20,13 +28,15 @@
 }
 
 .modal-window-content-bottom {
-  width: 100%;
+  width: 100vw;
+  max-height: 100vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
   position: absolute;
   bottom: -100%;
   transition: 0.3s;
-  border-radius: 20px 20px 0 0;
 }
 
 .modal-window-content-bottom-appearance {

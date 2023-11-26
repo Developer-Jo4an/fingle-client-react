@@ -38,18 +38,16 @@ const AddTransactionDate = () => {
                 onClick={() => dateToggle('subtract')}
                 icon='fa-solid fa-angle-left' />
             <Datepicker datepicker={datepicker} Ref={datePickerRef} datepickerClasses={datepickerClasses}>
-                <div className={'add-transaction-date'}>
-                    <div className={'add-transaction-date-info'}>
-                        <FontAwesomeIcon icon='fa-solid fa-calendar'/>
-                        {dateRefactor(futureTransaction.date)}
-                    </div>
-                    <div className={'add-transaction-date-info'}>
-                        <FontAwesomeIcon icon='fa-solid fa-clock'/>
-                        {timeRefactor(futureTransaction.date)}
-                    </div>
+                <div className={'add-transaction-date-info'}>
+                    <div className={'add-transaction-date-info__date'}>{ dateRefactor(futureTransaction.date) }</div>
+                    <div className={'add-transaction-date-info__between-line'}>|</div>
+                    <div className={'add-transaction-date-info__time'}>{ timeRefactor(futureTransaction.date) }</div>
                 </div>
             </Datepicker>
-            <FontAwesomeIcon onClick={() => dateToggle('add')} className={'add-transaction-date-arrow'} icon='fa-solid fa-angle-right' />
+            <FontAwesomeIcon
+                className={'add-transaction-date-arrow'}
+                onClick={() => dateToggle('add')}
+                icon='fa-solid fa-angle-right' />
         </div>
     )
 }

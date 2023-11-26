@@ -1,6 +1,6 @@
 import moment from 'moment'
 
-export const userId = new URL(window.location.href).pathname !== '/' ? new URL(window.location.href).pathname : '/6511a3840f9e98d5baa854eb'
+export const userId = new URL(window.location.href).pathname !== '/' ? new URL(window.location.href).pathname : '/64df628be6b9b3d99d542be5'
 
 export const errorUser = {
     allCards:[{}, {}],

@@ -26,7 +26,11 @@ const reducer = (state, action) => {
         case 'transfer-card' : {
             const {transferCard, transferCardsRefs, i} = action
             // functions
-            const checker = () => state.card._id !== transferCard._id
+            const checker = () => {
+                if (state.card) return state.card._id !== transferCard._id
+                else {}
+            }
+
             const error = () => {
                 transferCardsRefs.current[i].classList.add('error-animation')
                 setTimeout(() => transferCardsRefs.current[i].classList.remove('error-animation'), 700)

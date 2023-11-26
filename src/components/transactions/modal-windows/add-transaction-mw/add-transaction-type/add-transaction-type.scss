@@ -3,43 +3,24 @@
 .add-transaction-type {
     display: flex;
     align-items: center;
+    justify-content: space-between;
 
-    padding: 20px 20px 10px 10px;
+    padding: 20px 20px 10px 20px;
 }
 
 .transaction-type {
-    flex-grow: 1;
     display: flex;
     justify-content: center;
 
     font-family: custom-bold, Manrope, sans-serif;
 
-    transition: .3s;
+    transition: .3s ;
 
     position: relative;
 
     padding: 10px 0;
 
-    &:after {
-        content: '';
-
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translate(-50%);
-
-        width: 0;
-        height: 2px;
-
-        background-color: $main-green-color;
-
-        border-radius: 1px;
-
-        transition: .3s;
-    }
+    border-radius: 20px;
 }
 
-.transaction-type-active {
-    color: $main-green-color;
-    &:after {width: 70%}
-}
+.transaction-type-active { padding: 10px 20px; background-color: $main-gray-background }

@@ -13,12 +13,26 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  padding: 10px 20px;
+  border-radius: 20px;
+  background-color: #eaeaea;
   overflow: hidden;
 }
-.add-transaction-message-wrapper svg {
-  width: 18px;
-  height: 18px;
-  color: #333;
+
+.add-transaction-message-sign-wrapper {
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: #24e597;
+}
+.add-transaction-message-sign-wrapper svg {
+  width: 14px;
+  height: 14px;
+  color: #fff;
 }
 
 .add-transaction-message-value {

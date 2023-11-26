@@ -25,7 +25,9 @@ const AddTransactionCategory = ({Ref}) => {
                     class={`add-transaction-category ${futureTransaction.category && futureTransaction.category._id === category._id ? 'add-transaction-category-active' : ''}`}
                     style={{'--category-color': category.color}}
                     onClick={() => selectCategory(category)}
-                ><FontAwesomeIcon icon={category.sign}/>{category.name}</swiper-slide>))}
+                ><div className={'add-transaction-category__sign'}><FontAwesomeIcon icon={category.sign}/></div>
+                    <div className={'add-transaction-category__name'}>{category.name}</div>
+                </swiper-slide>))}
             </SwiperEl>
         </div>
     )

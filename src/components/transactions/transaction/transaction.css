@@ -9,6 +9,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 5px;
   font-family: custom-bold, Manrope, sans-serif;
   font-size: 20px;
   padding: 0 10px 0;

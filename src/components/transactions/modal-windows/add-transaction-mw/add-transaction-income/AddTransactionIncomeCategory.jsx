@@ -24,7 +24,9 @@ const AddTransactionIncomeCategory = ({Ref}) => {
                         style={{'--category-color': category.color}}
                         class={`add-transaction-income-category ${futureTransaction.category && futureTransaction.category._id === category._id ? 'add-transaction-category-income-active' : ''}`}
                         onClick={() => selectCategory(category)}
-                    ><FontAwesomeIcon icon={category.sign}/>{category.name}</swiper-slide>))}
+                    ><div className={'add-transaction-income-category__sign'}><FontAwesomeIcon icon={category.sign}/></div>
+                    <div className={'add-transaction-income-category__name'}>{category.name}</div>
+                    </swiper-slide>))}
             </SwiperEl>
         </div>
     )

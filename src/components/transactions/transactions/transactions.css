@@ -1,4 +1,12 @@
 .transactions-page {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.transactions-page::-webkit-scrollbar {
+  display: none;
+}
+
+.transactions-page {
   display: flex;
   flex-direction: column;
   flex-grow: 1;

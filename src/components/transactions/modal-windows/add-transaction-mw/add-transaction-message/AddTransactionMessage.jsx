@@ -15,7 +15,7 @@ const AddTransactionMessage = () => {
     return (
         <div className={`add-transaction-message ${condition() ? 'add-transaction-message-active' : ''}`}>
             <div className={'add-transaction-message-wrapper'}>
-                <FontAwesomeIcon icon='fa-solid fa-message'/>
+                <div className={'add-transaction-message-sign-wrapper'}><FontAwesomeIcon icon='fa-solid fa-message'/></div>
                 <div className={'add-transaction-message-value'}>{condition() ? futureTransaction.message : ''}</div>
             </div>
         </div>

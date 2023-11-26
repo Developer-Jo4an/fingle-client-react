@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":["transactions.scss"],"names":[],"mappings":"AAEA;EACI;EACA;EACA;EAEA;EAEA;EAEA;EAEA","file":"transactions.css"}
+{"version":3,"sourceRoot":"","sources":["../../../styles/zeroing/global.scss","transactions.scss"],"names":[],"mappings":"AAiBA;EAEI;EACA;;AAFA;EAAuB;;;AChB3B;EACI;EACA;EACA;EAEA;EAEA;EAEA;EAEA","file":"transactions.css"}

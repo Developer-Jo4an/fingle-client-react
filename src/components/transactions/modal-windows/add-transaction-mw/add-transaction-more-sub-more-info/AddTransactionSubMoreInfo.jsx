@@ -31,7 +31,8 @@ const AddTransactionSubMoreInfo = () => {
                             'add-transaction-sub-more-info-slide-active' : '' : ''}`}
                         style={{'--category-color': category.color}}
                         onClick={() => selectCategory(category)}
-                    ><FontAwesomeIcon icon={category.sign}/>{category.name}
+                    ><div className={'add-transaction-sub-more-info__sign'}><FontAwesomeIcon icon={category.sign}/></div>
+                        <div className={'add-transaction-sub-more-info__name'}>{category.name}</div>
                     </swiper-slide>
                 ))}
             </SwiperEl>
