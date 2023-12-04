@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {useTransactionsContext} from '../../../../transactions/TransactionsProvider'
@@ -11,6 +11,10 @@ const ModifiedCountModalWindow = () => {
     const {modifiedTransaction} = useTransactionsContext()
     const [modified, dispatch] = modifiedTransaction
     const {modifiedCountMWS, refs} = useModifiedTransactionContext()
+
+    useEffect(() => {
+        console.log(modified);
+    }, [modified])
 
     const getColor = () => {
         const colorLogic = {
@@ -69,8 +73,8 @@ const ModifiedCountModalWindow = () => {
                 const result = eval(res)
                 if (result <= 0) handleError()
                 else {
-                    if (result.toString().includes('.')) dispatch({type: 'count', count: result.toFixed(2)})
-                    else dispatch({type: 'count', count: result})
+                    if (result.toString().includes('.')) dispatch({type: 'count', count: +result.toFixed(2)})
+                    else dispatch({type: 'count', count: +result})
                     setResult('0')
                     modifiedCountMWS[1](false)
                 }

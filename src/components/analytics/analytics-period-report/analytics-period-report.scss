@@ -1,17 +1,17 @@
 @import '../../../styles/zeroing/global';
 
-.analytics-period-report-section {padding: 20px}
-
-.analytics-period-report-wrapper {
+.analytics-period-report-section {
     display: flex;
     flex-direction: column;
     gap: 20px;
 
     padding: 20px;
+}
 
-    border-radius: 20px;
-
-    box-shadow: $main-shadow;
+.analytics-period-report-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .analytics-period-report-header {

@@ -29,6 +29,7 @@ const AnalyticsPeriodReport = () => {
 
     return (
         <div className={'analytics-period-report-section'}>
+            <h2>Money stream info</h2>
             <div className={'analytics-period-report-wrapper'}>
                 <div className={'analytics-period-report-header'}>
                     <div className={'analytics-period-report-header__up-level'}>

@@ -1,0 +1,28 @@
+.analytics-budget {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
+
+.analytics-budget-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.analytics-create-budget-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+  border-radius: 20px;
+  padding: 10px 20px;
+  background-color: #24e597;
+  transition: 0.1s;
+}
+.analytics-create-budget-btn:active {
+  opacity: 0.5;
+}
+
+/*# sourceMappingURL=analytics-budget-modal-window.css.map */

@@ -1,4 +1,7 @@
 .analytics-period-report-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   padding: 20px;
 }
 
@@ -6,9 +9,6 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding: 20px;
-  border-radius: 20px;
-  box-shadow: 0 0 15px #e3e1e1;
 }
 
 .analytics-period-report-header {

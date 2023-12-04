@@ -3,11 +3,17 @@
 // diagram
 .analytics-circle-diagram-section {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
     gap: 20px;
 
     padding: 0 20px;
+}
+
+.circle-diagram {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
 }
 
 .circle-diagram-wrapper {

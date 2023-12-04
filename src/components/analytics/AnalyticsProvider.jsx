@@ -10,7 +10,6 @@ const AnalyticsProvider = ({ children }) => {
         expense: {},
         income: {}
     })
-    const [categoryMWS, setCategoryMWS] = useState(false)
     const [activeCategory, setActiveCategory] = useState({})
     // for report diagram
     const [diagramType, setDiagramType] = useState('expense')
@@ -18,6 +17,10 @@ const AnalyticsProvider = ({ children }) => {
     const [histograms, setHistograms] = useState({obj: {}, arr: []})
     // for report diagram
 
+    // modal window
+    const [categoryMWS, setCategoryMWS] = useState(false)
+    // modal window
+    const [createBudgetMWS, setCreateBudgetMWS] = useState(false)
     // refs
     const refs = {histograms: useRef()}
     // refs
@@ -27,6 +30,7 @@ const AnalyticsProvider = ({ children }) => {
             activeTotal: [activeTotal, setActiveTotal],
             statistic: [statistic, setStatistic],
             categoryMWS: [categoryMWS, setCategoryMWS],
+            createBudgetMWS: [createBudgetMWS, setCreateBudgetMWS],
             activeCategory: [activeCategory, setActiveCategory],
             diagramType: [diagramType, setDiagramType],
             diagramInterval: [diagramInterval, setDiagramInterval],

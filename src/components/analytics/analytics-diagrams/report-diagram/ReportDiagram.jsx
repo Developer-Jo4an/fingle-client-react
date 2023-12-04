@@ -72,19 +72,22 @@ const ReportDiagram = () => {
 
     const maxCountFunc = factor => (maxCount * factor).toFixed(0)
     const getPercent = count => `${count.getPercent(maxCount)}%`
-    const histogramVisibleStyles = key => ({height: getPercent(histograms[0].obj[key]), backgroundColor: diagramType[0] === 'expense' ? '#ee3a3a' : '#24e597'})
+    const histogramVisibleStyles = key => ({
+        height: getPercent(histograms[0].obj[key]),
+        backgroundColor: diagramType[0] === 'expense' ? '#ee3a3a' : '#24e597'
+    })
 
     const histogramClick = key => {
-        period[1](_ => {
+        period[1](prev => {
             const arrDate = key.split('.')
             if (arrDate.length === 2) {
                 const [month, year] = arrDate
                 const start = new Date(`${month}.01.${year}`)
                 const end = moment(start).add(1, 'months')._d
-                console.log(start)
-                console.log(end)
+                return `${start.toLocaleDateString()} - ${end.toLocaleDateString()}`
             }
-            return _
+            else if (arrDate.length === 3) return key
+            return prev
         })
         filter[1]({
             transactionType: [diagramType[0]],
@@ -119,11 +122,17 @@ const ReportDiagram = () => {
                                 key={key}
                                 onClick={() => histogramClick(key)}
                             >
-                                <div style={histogramVisibleStyles(key)} className={'report-diagram-histogram__visible'}></div>
+                                <div
+                                    style={histogramVisibleStyles(key)}
+                                    className={'report-diagram-histogram__visible'}
+                                ></div>
                                 <div className={'report-diagram-histogram__date'}>{label}</div>
-                                   </swiper-slide>
+                            </swiper-slide>
                         } else {
-                            return <swiper-slide class={'report-diagram-histogram'} key={key}>
+                            return <swiper-slide
+                                class={'report-diagram-histogram'}
+                                key={key}
+                            >   <div className={'report-diagram-histogram__hidden'}></div>
                                 <div className={'report-diagram-histogram__date'}>{label}</div>
                             </swiper-slide>
                         }

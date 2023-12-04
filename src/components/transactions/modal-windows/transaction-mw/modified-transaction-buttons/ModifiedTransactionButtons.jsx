@@ -84,8 +84,9 @@ const ModifiedTransactionButtons = () => {
             catch (e) { alert(e.message) }
             finally { endOperation() }
         } else {
+            console.log(typeof modified.count)
             dispatch({type: 'set', transaction: prevTransaction[0]})
-            alert ('Transaction change error, please try this later!')
+            alert('Transaction change error, please try this later!')
         }
     }
 

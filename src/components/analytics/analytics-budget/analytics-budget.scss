@@ -1,0 +1,32 @@
+@import '../../../styles/zeroing/global';
+
+.analytics-budget {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    padding: 20px;
+}
+
+.analytics-budget-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.analytics-create-budget-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    color: #fff;
+
+    border-radius: 20px;
+    padding: 10px 20px;
+
+    background-color: $main-green-color;
+
+    transition: .1s;
+
+    &:active { opacity: 0.5 }
+}
