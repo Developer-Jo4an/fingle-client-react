@@ -14,7 +14,6 @@ import 'swiper/css'
 import './add-transaction-modal-window.css'
 
 import { register } from 'swiper/element/bundle'
-
 register()
 
 const AddTransactionModalWindow = () => {

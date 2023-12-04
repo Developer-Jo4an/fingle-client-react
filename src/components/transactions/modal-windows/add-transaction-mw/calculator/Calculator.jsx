@@ -18,25 +18,22 @@ const Calculator = () => {
     const [futureTransaction, dispatch] = newTransaction
     const [apply, setApply] = useState(false)
 
+    const successRequest = data => {
+        if (data.status) {
+            const { transactions, allCards } = data
+            user[1](prev => ({...prev, transactions, allCards}))
+        } else return new Error(data.message)
+    }
+
     useEffect(() => {
         if (apply) {
-            const addTransactionRequest = async () => {
+            const transactionRequestFunction = async () => {
                 try {
                     loader[1](true)
-                    const userData = await axios.post(`${userId}/add-transaction`, { transaction: futureTransaction })
+                    const transactionsRequest = await axios.post(`${userId}/add-transaction`, { transaction: futureTransaction })
 
-                    const { data } = userData
-
-                    const checker = () => {
-                        return data.status &&
-                            data.hasOwnProperty('transactions') &&
-                            data.hasOwnProperty('allCards') &&
-                            data.transactions.length &&
-                            data.allCards.length
-                    }
-
-                    if ( checker() ) user[1](prev => ({ ...prev, transactions: data.transactions, allCards: data.allCards }))
-                    else data.hasOwnProperty('message') ? alert(data.message) : alert('Checker was not passed (client)')
+                    const answer = successRequest(transactionsRequest.data)
+                    if (answer instanceof Error) throw answer
 
                 } catch (e) { alert('Request error(400)')
                 } finally {
@@ -47,14 +44,13 @@ const Calculator = () => {
                     result[1]('0')
                 }
             }
-            addTransactionRequest()
+            transactionRequestFunction()
         }
     }, [apply])
 
 
 
     const calculatorChange = item => {
-
         const handleError = ref => {
             ref.current.classList.add('error-animation')
             setTimeout(() => ref.current.classList.remove('error-animation'), 700)
@@ -103,7 +99,7 @@ const Calculator = () => {
                         setApply(true)
                     }
                 }
-            } catch (e) {handleError(refs.count)}
+            } catch (e) { handleError(refs.count) }
         }
         const {type, value, sign} = item
         switch (type) {

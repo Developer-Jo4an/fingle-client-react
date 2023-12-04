@@ -1,12 +1,9 @@
-@import '../../../../../styles/zeroing/global';
+@import '../../../../../styles/zeroing/global', '../modified-transaction-modal-window-settings';
 
 .modified-transaction-category {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-
-    transition: .3s;
+    @extend %visible-info;
 }
+
 
 .always-visible-category-section {
     display: flex;
@@ -45,6 +42,7 @@
     align-items: center;
     gap: 5px;
 
+
     padding: 6px 12px;
 
     border-radius: 20px;
@@ -53,6 +51,8 @@
     color: var(--slide-color);
 
     font-family: custom-bold, Manrope, sans-serif;
+
+    background-color: #fff;
 
     transition: .3s;
 }

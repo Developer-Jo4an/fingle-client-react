@@ -23,18 +23,45 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 5px;
-  padding: 6px 12px;
-  font-family: custom-bold, Manrope, sans-serif;
-  border: 2px solid var(--filter-color);
-  border-radius: 12px;
-  color: var(--filter-color);
+  gap: 10px;
+  padding: 7.5px 10px 7.5px 5px;
+  border-radius: 20px;
+  background-color: #eaeaea;
   transition: 0.3s;
+}
+
+.transaction-chunk-element__sign {
+  width: 30px;
+  height: 30px;
+  grid-row: span 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 20px;
+  background-color: var(--filter-color);
+  transition: 0.3s;
+}
+.transaction-chunk-element__sign svg {
+  width: 16px;
+  height: 16px;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.transaction-chunk-element__name {
+  font-size: 14px;
 }
 
 .transaction-chunk-element-active {
   background-color: var(--filter-color);
   color: #fff;
+}
+.transaction-chunk-element-active .transaction-chunk-element__sign {
+  background-color: #fff;
+}
+.transaction-chunk-element-active .transaction-chunk-element__sign svg {
+  color: var(--filter-color);
 }
 
 /*# sourceMappingURL=options-filter-modal-window.css.map */

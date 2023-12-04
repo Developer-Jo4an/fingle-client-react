@@ -1,0 +1,15 @@
+@import '../../../../styles/zeroing/global';
+
+%visible-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+
+    padding: 10px 20px;
+
+    border-radius: 20px;
+
+    background-color: $main-gray-background;
+
+    transition: .3s;
+}

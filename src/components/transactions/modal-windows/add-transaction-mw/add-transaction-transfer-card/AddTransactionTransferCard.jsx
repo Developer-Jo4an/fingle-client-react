@@ -4,6 +4,7 @@ import SwiperEl from '../../../../swiper/SwiperEl'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {useAppContext} from '../../../../../AppProvider'
 import {useAddTransactionContext} from '../AddTransactionProvider'
+import {roundUp} from '../../../../../my-functions/my-functions'
 
 import './add-transaction-transfer-card.css'
 
@@ -17,8 +18,6 @@ const AddTransactionTransferCard = ({Ref}) => {
     const transferCardsRefs = useRef([])
 
     const selectTransferCard = (transferCard, i) => dispatch({type: 'transfer-card', transferCard, transferCardsRefs, i})
-
-    const roundUp = sum => sum.toString().includes('.') ? sum.toFixed(2) : sum
 
     return (
         <div className={'slider-wrapper add-transaction-transfer-card-wrapper'}>

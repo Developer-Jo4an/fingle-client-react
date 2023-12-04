@@ -41,8 +41,9 @@ const ModifiedTransactionDate = () => {
             <div className={'always-visible-date-section'}>
                 <div className={'modified-option-date-name'}>Date</div>
                 <div className={'modified-option-date-value'}>
-                    <div className={'modified-option-date-date'}><FontAwesomeIcon icon='fa-solid fa-calendar'/>{getValue().date}</div>
-                    <div className={'modified-option-date-time'}><FontAwesomeIcon icon='fa-solid fa-clock'/>{getValue().time}</div>
+                    <div className={'modified-option-date-date'}>{getValue().date}</div>
+                    <div className={'modified-transaction-date-info__between-line'}>|</div>
+                    <div className={'modified-option-date-time'}>{getValue().time}</div>
                 </div>
             </div>
             <div

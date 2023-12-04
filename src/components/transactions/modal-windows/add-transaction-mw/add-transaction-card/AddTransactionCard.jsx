@@ -4,6 +4,7 @@ import SwiperEl from '../../../../swiper/SwiperEl'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {useAppContext} from '../../../../../AppProvider'
 import {useAddTransactionContext} from '../AddTransactionProvider'
+import {roundUp} from '../../../../../my-functions/my-functions'
 
 import './add-transaction-card.css'
 
@@ -14,8 +15,6 @@ const AddTransactionCard = () => {
     const [futureTransaction, dispatch] = newTransaction
 
     const selectCard = card => dispatch({type: 'card', card: card})
-
-    const roundUp = sum => sum.toString().includes('.') ? sum.toFixed(2) : sum
 
     return (
         <div className={'slider-wrapper'}>

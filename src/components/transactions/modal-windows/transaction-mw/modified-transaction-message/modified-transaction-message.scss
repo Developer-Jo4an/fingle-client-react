@@ -1,11 +1,7 @@
-@import '../../../../../styles/zeroing/global';
+@import '../../../../../styles/zeroing/global', '../modified-transaction-modal-window-settings';
 
 .modified-transaction-message {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-
-    transition: .3s;
+    @extend %visible-info;
 }
 
 .always-visible-message-section {
@@ -56,6 +52,8 @@
     transition: 0.1s;
 
     font-family: custom-bold, Manropw, sans-serif;
+
+    background-color: #fff;
 
     &:active {
         background-color: #24e597;

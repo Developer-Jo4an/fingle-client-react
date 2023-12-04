@@ -26,19 +26,22 @@ const reducer = (state, action) => {
         case 'transfer-card' : {
             const {transferCard, transferCardsRefs, i} = action
             // functions
-            const checker = () => {
-                if (state.card) return state.card._id !== transferCard._id
-                else {}
-            }
-
             const error = () => {
                 transferCardsRefs.current[i].classList.add('error-animation')
                 setTimeout(() => transferCardsRefs.current[i].classList.remove('error-animation'), 700)
             }
+
+            const equal = () => {
+                if (transferCard._id !== state.card._id) return { ...state, transferCard }
+                else { error(); return state }
+            }
             // logic
-            if (state.transferCard && state.transferCard._id === transferCard._id) return state
-            if (checker()) return {...state, transferCard}
-            else {error(); return state}
+            if (state.card) {
+                if (state.transferCard) {
+                    if (state.transferCard._id === transferCard._id) return state
+                    return equal()
+                } return equal()
+            } else { error(); return state}
         }
         case 'category' : {
             const {category} = action

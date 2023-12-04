@@ -56,7 +56,8 @@ const OptionsFilterModalWindow = () => {
                                 class={`transaction-chunk-element ${filter[0].transactionType.includes(type._id) && 'transaction-chunk-element-active'} `}
                                 style={{'--filter-color': type.color}}
                                 onClick={() => elementActive('transactionType', type._id, type)}
-                            ><FontAwesomeIcon icon={type.icon}/>{type.label}
+                            ><div className={'transaction-chunk-element__sign'}><FontAwesomeIcon icon={type.icon}/></div>
+                                <div className={'transaction-chunk-element__name'}>{type.label}</div>
                             </swiper-slide>
                         ))}
                     </SwiperEl>
@@ -72,7 +73,8 @@ const OptionsFilterModalWindow = () => {
                                 class={`transaction-chunk-element ${filter[0].card.includes(card._id) && 'transaction-chunk-element-active'}`}
                                 style={{'--filter-color': '#24e597'}}
                                 onClick={() => elementActive('card', card._id, card)}
-                            ><FontAwesomeIcon icon='fa-solid fa-credit-card'/>{card.cardName}
+                            ><div className={'transaction-chunk-element__sign'}><FontAwesomeIcon icon='fa-solid fa-credit-card'/></div>
+                                <div className={'transaction-chunk-element__name'}>{card.cardName}</div>
                             </swiper-slide>
                         ))}
                     </SwiperEl>
@@ -88,7 +90,8 @@ const OptionsFilterModalWindow = () => {
                                 class={`transaction-chunk-element ${filter[0].category.includes(category.name) && 'transaction-chunk-element-active'}`}
                                 style={{'--filter-color': category.color}}
                                 onClick={() => elementActive('category', category.name, category)}
-                            ><FontAwesomeIcon icon={category.sign}/>{category.name}
+                            ><div className={'transaction-chunk-element__sign'}><FontAwesomeIcon icon={category.sign}/></div>
+                                <div className={'transaction-chunk-element__name'}>{category.name}</div>
                             </swiper-slide>
                         ))}
                     </SwiperEl>
@@ -104,7 +107,9 @@ const OptionsFilterModalWindow = () => {
                                 class={`transaction-chunk-element ${filter[0].category.includes(category.name) && 'transaction-chunk-element-active'}`}
                                 style={{'--filter-color': category.color}}
                                 onClick={() => elementActive('category', category.name, category)}
-                            ><FontAwesomeIcon icon={category.sign}/>{category.name}
+                            >
+                                <div className={'transaction-chunk-element__sign'}><FontAwesomeIcon icon={category.sign}/></div>
+                                <div className={'transaction-chunk-element__name'}>{category.name}</div>
                             </swiper-slide>
                         ))}
                     </SwiperEl>

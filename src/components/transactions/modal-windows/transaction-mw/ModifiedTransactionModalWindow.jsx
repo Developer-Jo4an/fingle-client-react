@@ -15,6 +15,7 @@ import ModifiedMessageModalWindow from './modal-windows/modified-message-mw/Modi
 import {useTransactionsContext} from '../../transactions/TransactionsProvider'
 
 import './modified-transaction-modal-window.css'
+import ModifiedCloseBtn from './modified-close-btn/ModifiedCloseBtn';
 
 const ModifiedTransactionModalWindow = () => {
 
@@ -34,6 +35,7 @@ const ModifiedTransactionModalWindow = () => {
         <ModifiedTransactionProvider>
             {modified.transactionType && (
                 <div className={'modified-transaction-modal-window'}>
+                    <ModifiedCloseBtn/>
                     <div className={'modified-transaction-section'}>
                         <ModifiedTransactionType/>
                         <ModifiedTransactionDate/>
@@ -54,6 +56,7 @@ const ModifiedTransactionModalWindow = () => {
                         context={useModifiedTransactionContext}>
                         <ModifiedMessageModalWindow/></ModalWindow>
                 </div>
+
             )}
         </ModifiedTransactionProvider>
     )

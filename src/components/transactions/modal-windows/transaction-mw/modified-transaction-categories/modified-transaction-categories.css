@@ -2,6 +2,9 @@
   display: flex;
   flex-direction: column;
   gap: 0;
+  padding: 10px 20px;
+  border-radius: 20px;
+  background-color: #eaeaea;
   transition: 0.3s;
 }
 
@@ -42,6 +45,7 @@
   border: 2px solid var(--slide-color);
   color: var(--slide-color);
   font-family: custom-bold, Manrope, sans-serif;
+  background-color: #fff;
   transition: 0.3s;
 }
 

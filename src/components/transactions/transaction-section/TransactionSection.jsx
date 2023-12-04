@@ -19,7 +19,7 @@ const TransactionSection = () => {
         const counterObj = arr.reduce((acc, item) => {
             const logic = {
                 expense: sum => ({...acc, expense: acc.expense += sum, total: acc.total -= sum}),
-                income: sum => ({...acc, income: acc.income -= sum, total: acc.total += sum}),
+                income: sum => ({...acc, income: acc.income += sum, total: acc.total += sum}),
                 transfer: () => acc
             }
             return logic[item.transactionType](item.count)
@@ -47,9 +47,12 @@ const TransactionSection = () => {
         }
     }
 
+    const arrayChunks = Object.entries(chunkTransactions(transactions[0]))
+
     return (
         <section className={'transaction-section'}>
-            {Object.entries(chunkTransactions(transactions[0])).map((chunk, i) =>
+            { arrayChunks.length ?
+            arrayChunks.map((chunk, i) =>
             chunk.length &&
             <div key={chunk[0]} className={'transaction-chunk'}>
                 <div className={'transaction-chunk-header'}>
@@ -67,8 +70,10 @@ const TransactionSection = () => {
                     </div>
                 </div>
                 {chunk[1].map(transaction => (<Transaction key={transaction._id} transaction={transaction}/>))}
-            </div>
-            )}
+            </div>)
+            :
+            <div className={'no-transactions'}>No transactions found in this period</div>
+            }
         </section>
     )
 }

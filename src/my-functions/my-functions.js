@@ -75,6 +75,8 @@ export function formattedPeriod(period) {
     return periodJson
 }
 
+export const roundUp = sum => sum.toString().includes('.') ? sum.toFixed(2) : sum
+
 // proto
 
 Number.prototype.getPercent = function (sum) { return ((this * 100) / sum).toFixed() }

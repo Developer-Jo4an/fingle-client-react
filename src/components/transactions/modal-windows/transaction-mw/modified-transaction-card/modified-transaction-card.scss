@@ -1,11 +1,7 @@
-@import '../../../../../styles/zeroing/global';
+@import '../../../../../styles/zeroing/global', '../modified-transaction-modal-window-settings';
 
 .modified-transaction-card {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-
-    transition: .3s;
+    @extend %visible-info;
 }
 
 .always-visible-card-section {
@@ -49,6 +45,8 @@
     color: $main-green-color;
 
     font-family: custom-bold, Manrope, sans-serif;
+
+    background-color: #fff;
 
     transition: .3s;
 }

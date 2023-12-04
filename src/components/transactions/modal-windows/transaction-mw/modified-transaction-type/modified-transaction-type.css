@@ -1,8 +1,17 @@
 .modified-transaction-type {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  gap: 0;
+  padding: 10px 20px;
+  border-radius: 20px;
+  background-color: #eaeaea;
+  transition: 0.3s;
+}
+
+.modified-transaction-type {
+  flex-direction: row;
   justify-content: space-between;
-  gap: 20px;
+  align-items: center;
 }
 
 .modified-option-type-name {

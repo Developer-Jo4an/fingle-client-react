@@ -5,7 +5,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {useModifiedTransactionContext} from '../ModifiedTransactionProvider'
 import {useTransactionsContext} from '../../../transactions/TransactionsProvider'
 import {useAppContext} from '../../../../../AppProvider'
-import axios from 'axios';
+import axios from 'axios'
 import {userId} from '../../../../../my-functions/my-functions'
 
 import './modified-transaction-buttons.css'
@@ -19,41 +19,47 @@ const ModifiedTransactionButtons = () => {
 
     const [loader, setLoader] = useState(false)
 
-    const repeatTransaction = () => {
+    const endOperation = () => { transactionMWS[1](false); setLoader(false) }
+
+    const successRequest = data => {
+        if (data.status) {
+            const { transactions, allCards } = data
+            user[1](prev => ({...prev, transactions, allCards}))
+        } else return new Error(data.message)
+    }
+
+    const repeatTransaction = async () => {
         let repeatedTransaction = {}
         for (const key in prevTransaction[0]) if (key !== '_id') repeatedTransaction[key] = prevTransaction[0][key]
         repeatedTransaction = {...repeatedTransaction, date: new Date()}
 
-        const repeatTransactionRequest = async () => {
-            try {
-                setLoader(true)
-                const transactionsRequest = await axios.post(`${userId}/add-transaction`, {transaction: repeatedTransaction})
-                user[1](prev => ({...prev, ...transactionsRequest.data}))
-            } catch (e) { alert('Request error')
-            } finally {
-                transactionMWS[1](false)
-                setLoader(false)
-            }
+        try {
+            setLoader(true)
+
+            const transactionsRequest = await axios.post(`${userId}/add-transaction`, {transaction: repeatedTransaction})
+
+            const answer = successRequest(transactionsRequest.data)
+            if (answer instanceof Error) throw answer
         }
-        repeatTransactionRequest()
+        catch (e) { alert(e.message) }
+        finally { endOperation() }
     }
 
-    const deleteTransaction = () => {
-        const deleteTransactionRequest = async () => {
-            try {
-                setLoader(true)
-                const transactionsRequest = await axios.delete(`${userId}/delete-transaction/${prevTransaction[0]._id}`)
-                user[1](prev => ({...prev, transactions: transactionsRequest.data}))
-            } catch (e) { alert('Request error')
-            } finally {
-                transactionMWS[1](false)
-                setLoader(false)
-            }
+    const deleteTransaction = async () => {
+        try {
+            setLoader(true)
+
+            const transactionsRequest = await axios.delete(`${userId}/delete-transaction/${prevTransaction[0]._id}`)
+
+            const answer = successRequest(transactionsRequest.data)
+            if (answer instanceof Error) throw answer
         }
-        deleteTransactionRequest()
+        catch (e) { alert(e.message) }
+        finally { endOperation() }
     }
 
-    const saveChanges = () => {
+    const saveChanges = async () => {
+
         const checkerHelper = () => (
             typeof modified.transactionType === 'string' &&
             typeof modified.card === 'object' &&
@@ -65,21 +71,21 @@ const ModifiedTransactionButtons = () => {
             income: () => (typeof modified.category === 'object'),
             transfer: () => (modified.transferCard && typeof modified.transferCard === 'object' && modified.transferCard._id !== modified.card._id),
         }
+
         if (checkerHelper() && checkerLogic[modified.transactionType]()) {
-            const modifiedTransactionRequest = async () => {
-                try {
-                    setLoader(true)
-                    console.log(modified)
-                    const transactionsRequest = await axios.post(`${userId}/modified-transaction`, {transaction: modified})
-                    user[1](prev => ({...prev, transactions: transactionsRequest.data}))
-                    transactionMWS[1](false)
-                    setLoader(false)
-                } catch (e) {transactionMWS[1](false); setLoader(false); alert('Request error')}
+            try {
+                setLoader(true)
+
+                const transactionsRequest = await axios.put(`${userId}/modified-transaction`, { modified: modified })
+
+                const answer = successRequest(transactionsRequest.data)
+                if (answer instanceof Error) throw answer
             }
-            modifiedTransactionRequest()
+            catch (e) { alert(e.message) }
+            finally { endOperation() }
         } else {
             dispatch({type: 'set', transaction: prevTransaction[0]})
-            alert ('Произошла ошибка при изменении транзакции, состояние транзакции не изменилось!')
+            alert ('Transaction change error, please try this later!')
         }
     }
 

@@ -1,11 +1,7 @@
-@import '../../../../../styles/zeroing/global';
+@import '../../../../../styles/zeroing/global', '../modified-transaction-modal-window-settings';
 
 .modified-transaction-count {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-
-    transition: .3s;
+    @extend %visible-info;
 }
 
 .always-visible-count-section {

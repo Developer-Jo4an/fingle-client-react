@@ -1,10 +1,10 @@
-@import '../../../../../styles/zeroing/global';
+@import '../../../../../styles/zeroing/global', '../modified-transaction-modal-window-settings';
 
 .modified-transaction-type {
-    display: flex;
-    align-items: center;
+    @extend %visible-info;
+    flex-direction: row;
     justify-content: space-between;
-    gap: 20px;
+    align-items: center;
 }
 
 .modified-option-type-name {
