@@ -2,7 +2,7 @@ import React, {useRef} from 'react'
 import SwiperEl from '../../../../swiper/SwiperEl'
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {useAppContext} from '../../../../../AppProvider'
+import {useAppContext} from '../../../../../application/AppProvider'
 import {useAddTransactionContext} from '../AddTransactionProvider'
 import {roundUp} from '../../../../../my-functions/my-functions'
 

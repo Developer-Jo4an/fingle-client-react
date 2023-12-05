@@ -47,24 +47,10 @@
   display: flex !important;
 }
 
-.modified-transaction-button-action {
-  width: 90px;
-  height: 60px;
-  display: none;
+.modified-apply-cancel-buttons {
+  display: flex;
   align-items: center;
-  justify-content: center;
-  border-radius: 30px;
-  background-color: #fff;
-  color: var(--modified-btn-color);
-  transition: 0.3s;
-}
-.modified-transaction-button-action svg {
-  width: 18px;
-  height: 18px;
-}
-.modified-transaction-button-action:active {
-  background-color: var(--modified-btn-color);
-  color: #fff;
+  gap: 20px;
 }
 
 /*# sourceMappingURL=modified-transaction-buttons.css.map */

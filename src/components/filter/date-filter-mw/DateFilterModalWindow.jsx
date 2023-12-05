@@ -2,7 +2,7 @@ import React, {useCallback, useRef} from 'react'
 import Datepicker from '../../datepicker/Datepicker'
 
 import AirDatepicker from 'air-datepicker'
-import {useAppContext} from '../../../AppProvider'
+import {useAppContext} from '../../../application/AppProvider'
 
 import 'air-datepicker/air-datepicker.css'
 import './date-filter-modal-window.css'

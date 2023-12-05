@@ -1,7 +1,7 @@
 import React from 'react'
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {useAppContext} from '../../../../../AppProvider'
+import {useAppContext} from '../../../../../application/AppProvider'
 import {useAnalyticsContext} from '../../../AnalyticsProvider'
 
 import './analytics-active-category-buttons.css'

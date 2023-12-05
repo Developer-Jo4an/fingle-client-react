@@ -1,6 +1,6 @@
 import React from 'react'
 import TransactionsProvider, {useTransactionsContext} from './TransactionsProvider'
-import MyHead from '../../UI/head/MyHead'
+import MyHead from '../../../UI/head/MyHead'
 import Filter from '../../filter/Filter'
 import ModalWindow from '../../modal-window/ModalWindow'
 import PeriodTotalSection from '../period-total-section/PeriodTotalSection'

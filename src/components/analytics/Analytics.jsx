@@ -1,6 +1,6 @@
 import React from 'react'
 import AnalyticsProvider, {useAnalyticsContext} from './AnalyticsProvider'
-import MyHead from '../UI/head/MyHead'
+import MyHead from '../../UI/head/MyHead'
 import Filter from '../filter/Filter'
 import CircleDiagram from './analytics-diagrams/circle-daigram/CircleDiagram'
 import FilterSection from '../filter/filter-section/FilterSection'

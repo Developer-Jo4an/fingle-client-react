@@ -18,7 +18,7 @@ const Datepicker = ({datepicker, Ref, datepickerClasses, ...props}) => {
             <input
                 className={datepickerClasses.input}
                 id={datepickerClasses.input}
-                ref={Ref} />
+                ref={Ref}/>
         </label>
     )
 }

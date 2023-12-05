@@ -1,0 +1,24 @@
+.cancel-btn {
+  width: 90px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+  background-color: #fff;
+  transition: 0.3s;
+}
+.cancel-btn svg {
+  width: 18px;
+  height: 18px;
+  color: #ee3a3a;
+  transition: 0.3s;
+}
+.cancel-btn:active {
+  background-color: #ee3a3a;
+}
+.cancel-btn:active svg {
+  color: #fff;
+}
+
+/*# sourceMappingURL=cancek-btn.css.map */

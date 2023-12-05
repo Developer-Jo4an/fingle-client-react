@@ -5,7 +5,7 @@ import ModalWindow from '../modal-window/ModalWindow'
 import DateFilterModalWindow from '../filter/date-filter-mw/DateFilterModalWindow'
 import OptionsFilterModalWindow from '../filter/options-filter-mw/OptionsFilterModalWindow'
 
-import { useAppContext } from '../../AppProvider'
+import { useAppContext } from '../../application/AppProvider'
 
 import './main.css'
 

@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons'
 import { dateObj } from '../../../my-functions/my-functions'
 import moment from 'moment'
-import {useAppContext} from '../../../AppProvider'
+import {useAppContext} from '../../../application/AppProvider'
 
 import './date-filter-arrows.css'
 

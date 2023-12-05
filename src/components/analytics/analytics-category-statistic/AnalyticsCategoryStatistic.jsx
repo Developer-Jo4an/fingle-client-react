@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react'
 import CategoryStatistic from './CategoryStatistic'
 
-import {useAppContext} from '../../../AppProvider'
+import {useAppContext} from '../../../application/AppProvider'
 import {useAnalyticsContext} from '../AnalyticsProvider'
 
 import './analytics-category-statistic.css'

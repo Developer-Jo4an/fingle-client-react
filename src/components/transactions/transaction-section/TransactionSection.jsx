@@ -1,7 +1,7 @@
 import React, {useRef} from 'react'
 import Transaction from '../transaction/Transaction'
 
-import {useAppContext} from '../../../AppProvider'
+import {useAppContext} from '../../../application/AppProvider'
 import {chunkTransactions} from '../../../my-functions/my-functions'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 

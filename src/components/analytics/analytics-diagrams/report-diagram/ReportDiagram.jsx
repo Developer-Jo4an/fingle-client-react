@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import SwiperEl from '../../../swiper/SwiperEl'
 
-import {useAppContext} from '../../../../AppProvider'
+import {useAppContext} from '../../../../application/AppProvider'
 import {useAnalyticsContext} from '../../AnalyticsProvider'
 import {dateObj, reloadSlider} from '../../../../my-functions/my-functions'
 import moment from 'moment'

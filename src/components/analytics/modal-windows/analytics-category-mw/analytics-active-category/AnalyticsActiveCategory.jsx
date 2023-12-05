@@ -2,7 +2,7 @@ import React from 'react'
 
 import {useAnalyticsContext} from '../../../AnalyticsProvider'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {useAppContext} from '../../../../../AppProvider'
+import {useAppContext} from '../../../../../application/AppProvider'
 import {dateObj, dateRefactor} from '../../../../../my-functions/my-functions'
 
 import './analytics-active-category.css'

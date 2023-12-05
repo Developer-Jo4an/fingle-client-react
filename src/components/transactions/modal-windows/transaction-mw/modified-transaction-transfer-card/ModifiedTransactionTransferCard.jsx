@@ -3,7 +3,7 @@ import SwiperEl from '../../../../swiper/SwiperEl'
 
 import {useModifiedTransactionContext} from '../ModifiedTransactionProvider'
 import {useTransactionsContext} from '../../../transactions/TransactionsProvider'
-import {useAppContext} from '../../../../../AppProvider'
+import {useAppContext} from '../../../../../application/AppProvider'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 
 import './modified-transaction-transfer-card.css'

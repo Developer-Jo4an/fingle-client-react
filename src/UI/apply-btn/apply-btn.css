@@ -1,0 +1,24 @@
+.apply-btn {
+  width: 90px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+  background-color: #fff;
+  transition: 0.3s;
+}
+.apply-btn svg {
+  width: 18px;
+  height: 18px;
+  color: #24e597;
+  transition: 0.3s;
+}
+.apply-btn:active {
+  background-color: #24e597;
+}
+.apply-btn:active svg {
+  color: #fff;
+}
+
+/*# sourceMappingURL=apply-btn.css.map */

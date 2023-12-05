@@ -2,7 +2,7 @@ import React, {useRef} from 'react'
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import SwiperEl from '../../swiper/SwiperEl'
-import {useAppContext} from '../../../AppProvider'
+import {useAppContext} from '../../../application/AppProvider'
 
 import './options-filter-modal-window.css'
 

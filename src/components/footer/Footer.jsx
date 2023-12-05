@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useAppContext } from '../../AppProvider'
+import { useAppContext } from '../../application/AppProvider'
 
 import './footer.css'
 

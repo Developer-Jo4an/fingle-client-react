@@ -2,11 +2,11 @@ import React, {useEffect, useState} from 'react'
 import {ArcElement, Chart as ChartJS} from 'chart.js'
 
 import {Doughnut} from 'react-chartjs-2'
-import {useAppContext} from '../../../../AppProvider'
+import {useAppContext} from '../../../../application/AppProvider'
 import {useAnalyticsContext} from '../../AnalyticsProvider'
 
 import './circle-diagram.css'
-import MyHead from '../../../UI/head/MyHead';
+import MyHead from '../../../../UI/head/MyHead';
 
 ChartJS.register(ArcElement)
 

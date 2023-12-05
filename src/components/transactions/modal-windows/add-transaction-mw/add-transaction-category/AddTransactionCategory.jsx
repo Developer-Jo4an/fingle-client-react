@@ -4,7 +4,7 @@ import './add-transaction-category.css'
 
 import SwiperEl from '../../../../swiper/SwiperEl'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {useAppContext} from '../../../../../AppProvider'
+import {useAppContext} from '../../../../../application/AppProvider'
 import {useAddTransactionContext} from '../AddTransactionProvider'
 
 const AddTransactionCategory = ({Ref}) => {

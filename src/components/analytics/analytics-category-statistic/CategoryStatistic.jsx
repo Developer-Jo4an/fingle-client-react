@@ -1,6 +1,6 @@
 import React from 'react'
 
-import {useAppContext} from '../../../AppProvider'
+import {useAppContext} from '../../../application/AppProvider'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {useAnalyticsContext} from '../AnalyticsProvider'
 
