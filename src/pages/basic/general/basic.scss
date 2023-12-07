@@ -1,1 +1,8 @@
 @import '../../../styles/zeroing/global';
+
+.basic-page {
+    display: flex;
+    flex-direction: column;
+
+    position: relative;
+}

@@ -1,3 +1,7 @@
-
+.basic-page {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
 
 /*# sourceMappingURL=basic.css.map */

@@ -5,7 +5,9 @@ import BasicHeader from '../header/BasicHeader'
 const Basic = () => {
     return (
         <BasicProvider>
-            <BasicHeader/>
+            <section className={'basic-page'}>
+                <BasicHeader/>
+            </section>
         </BasicProvider>
     )
 }

@@ -1,38 +1,37 @@
 header {
   width: 100vw;
-  height: 95px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 20px;
+  padding: 10px;
   overflow: hidden;
   position: sticky;
   top: 0;
   left: 0;
   transition: 0.3s;
+  box-shadow: 0 0 15px lightgray;
 }
 
 .basic-header-info-fraction {
   display: grid;
-  grid-template-columns: 70px auto;
-  grid-template-rows: repeat(2, 35px);
+  grid-template-columns: 55px auto;
+  grid-template-rows: repeat(2, 25px);
   column-gap: 10px;
+  row-gap: 5px;
 }
 
 .basic-header-img-wrapper {
   grid-row: span 2;
-  width: 70px;
-  height: 70px;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  border-radius: 50%;
-  border: 2px solid #24e597;
   overflow: hidden;
 }
 .basic-header-img-wrapper img {
-  width: 100%;
-  height: 100%;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #24e597;
 }
 
 .basic-header-nickname-wrapper {
@@ -46,8 +45,8 @@ header {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  font-size: 20px;
-  font-family: custom-bold, Manrope, sans-serif;
+  font-size: 18px;
+  color: #333;
 }
 
 .basic-header-subscription-level-wrapper {
@@ -60,34 +59,21 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 6px 12px;
+  padding: 3px 6px;
   border-radius: 20px;
   background-image: linear-gradient(150deg, #24e597 60%, #05bc19);
   color: #fff;
+  font-size: 12px;
   font-family: custom-bold, Manrope, sans-serif;
   transition: 0.3s;
 }
 
 .subscription-pro-level {
-  background: linear-gradient(150deg, gold 60%, green);
-  background-size: 200% 100%;
-  animation: 4s subscription-pro-level-animation infinite;
+  box-sizing: initial;
+  background: linear-gradient(90deg, #e5dc1b 30%, #e5ee71);
+  border: 2px solid #f8de55;
 }
 
-@keyframes subscription-pro-level-animation {
-  0% {
-    background-position: 100% 0;
-  }
-  33% {
-    background-position: 0 0;
-  }
-  66% {
-    background-position: 100% 200%;
-  }
-  100% {
-    background-position: 100% 0;
-  }
-}
 .basic-header-info-buttons {
   align-self: stretch;
   display: flex;
@@ -105,23 +91,8 @@ header {
   justify-content: center;
 }
 .basic-header-info-button-wrapper svg {
-  width: 25px;
-  height: 25px;
-}
-
-@media (max-width: 374px) {
-  header {
-    padding: 10px;
-  }
-  .basic-header-info-fraction {
-    max-width: 200px;
-    grid-template-columns: 60px auto;
-    grid-template-rows: repeat(2, 30px);
-  }
-  .basic-header-img-wrapper {
-    width: 60px;
-    height: 60px;
-  }
+  width: 20px;
+  height: 20px;
 }
 
 /*# sourceMappingURL=basic-header.css.map */

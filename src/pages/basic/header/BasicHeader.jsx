@@ -11,6 +11,7 @@ const BasicHeader = () => {
     const { user } = useAppContext()
     let { avatar, nickname, subscriptionLevel } = user[0]
 
+
     return (
         <header>
             <div className={'basic-header-info-fraction'}>
@@ -21,7 +22,7 @@ const BasicHeader = () => {
                     <div className={'basic-header-nickname'}>@{ nickname }</div>
                 </div>
                 <div className={'basic-header-subscription-level-wrapper'}>
-                    <div className={`basic-header-subscription-level ${ subscriptionLevel === 'Pro' ? 'subscription-pro-level' : ''}`}>{ subscriptionLevel.toUpperCase() }</div>
+                    <div className={`basic-header-subscription-level ${ subscriptionLevel === 'Professional' ? 'subscription-pro-level' : ''}`}>{ subscriptionLevel.toUpperCase() }</div>
                 </div>
             </div>
             <div className={'basic-header-info-buttons'}>
