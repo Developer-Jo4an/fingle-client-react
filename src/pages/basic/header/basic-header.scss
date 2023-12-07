@@ -1,0 +1,144 @@
+@import '../../../styles/zeroing/global';
+// header
+header {
+    width: 100vw;
+    height: 95px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 10px 20px;
+
+    overflow: hidden;
+
+    position: sticky;
+    top: 0; left: 0;
+
+    transition: .3s;
+}
+
+// info fraction
+.basic-header-info-fraction {
+    display: grid;
+    grid-template-columns: 70px auto;
+    grid-template-rows: repeat(2, 35px);
+    column-gap: 10px;
+}
+
+// img
+.basic-header-img-wrapper {
+    grid-row: span 2;
+
+    width: 70px;
+    height: 70px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    border-radius: 50%;
+
+    border: 2px solid $main-green-color;
+
+    overflow: hidden;
+
+    img { width: 100%; height: 100% }
+}
+
+// nickname
+.basic-header-nickname-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    overflow: hidden;
+}
+
+.basic-header-nickname {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    font-size: 20px;
+    font-family: custom-bold, Manrope, sans-serif;
+}
+
+// subscription level
+.basic-header-subscription-level-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.basic-header-subscription-level {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 6px 12px;
+
+    border-radius: 20px;
+
+    background-image: linear-gradient(150deg, $main-green-color 60%, $main-green-dark-color);
+
+    color: #fff;
+
+    font-family: custom-bold, Manrope, sans-serif;
+
+    transition: .3s;
+}
+
+// pro level
+.subscription-pro-level {
+    background: linear-gradient(150deg, gold 60%, green);
+    background-size: 200% 100%;
+    animation: 4s subscription-pro-level-animation infinite;
+}
+
+@keyframes subscription-pro-level-animation {
+    0% { background-position: 100% 0 }
+    33% { background-position: 0 0 }
+    66% { background-position: 100% 200% }
+    100% { background-position: 100% 0 }
+}
+
+// buttons fraction
+.basic-header-info-buttons {
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    gap: 20px;
+}
+
+.basic-header-info-button-wrapper {
+    width: 30px;
+
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+        width: 25px;
+        height: 25px;
+    }
+}
+
+@media (max-width: 374px) {
+    header {
+        padding: 10px;
+    }
+    .basic-header-info-fraction {
+        max-width: 200px;
+        grid-template-columns: 60px auto;
+        grid-template-rows: repeat(2, 30px);
+    }
+
+    .basic-header-img-wrapper {
+        width: 60px;
+        height: 60px;
+    }
+}

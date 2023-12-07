@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react'
 
 import axios from 'axios'
-import {errorUser, formattedPeriod, userId} from '../my-functions/my-functions'
+import { errorUser, formattedPeriod, userId } from '../my-functions/my-functions'
 
 const AppContext = React.createContext()
 export const useAppContext = () => useContext(AppContext)

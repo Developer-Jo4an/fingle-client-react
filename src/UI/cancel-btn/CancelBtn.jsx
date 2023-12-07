@@ -2,7 +2,7 @@ import React from 'react'
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 
-import './cancek-btn.css'
+import './cancel-btn.css'
 
 const CancelBtn = ({ click }) => {
     return (

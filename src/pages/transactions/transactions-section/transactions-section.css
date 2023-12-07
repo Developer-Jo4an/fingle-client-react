@@ -1,0 +1,24 @@
+.transactions-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex-grow: 1;
+  padding-bottom: 10px;
+  position: relative;
+}
+
+.no-transactions {
+  font-family: custom-bold, Manrope, sans-serif;
+  text-align: center;
+  margin: auto;
+  padding: 0 20px;
+}
+
+.transactions-chunk-date {
+  font-family: custom-bold, Manrope, sans-serif;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/*# sourceMappingURL=transactions-section.css.map */

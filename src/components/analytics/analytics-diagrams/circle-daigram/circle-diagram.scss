@@ -1,12 +1,10 @@
 @import '../../../../styles/zeroing/global';
 
 // diagram
-.analytics-circle-diagram-section {
+.analytics-circle-diagram {
     display: flex;
     flex-direction: column;
     gap: 20px;
-
-    padding: 0 20px;
 }
 
 .circle-diagram {
@@ -25,6 +23,8 @@
     justify-content: center;
 
     position: relative;
+
+    transition: .3s;
 }
 
 .circle-diagram-total-wrapper {
@@ -75,6 +75,13 @@
 
     opacity: 1;
 }
+
+@media (max-width: 350px) {
+    .circle-diagram-wrapper { width: 120px; height: 120px }
+    .circle-diagram-total-active { font-size: 12px }
+    .circle-diagram { font-size: 10px }
+}
+
 
 // info
 

@@ -1,0 +1,12 @@
+.money-stream-section {
+  width: calc(100vw - 40px);
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  gap: 10px;
+  border-radius: 20px;
+  box-shadow: 0 0 15px lightgray;
+  padding: 20px;
+}
+
+/*# sourceMappingURL=money-stream-info.css.map */
