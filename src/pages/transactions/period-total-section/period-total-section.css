@@ -12,6 +12,7 @@
   border-radius: 20px;
   padding: 20px;
   background-color: rgba(36, 229, 151, 0.1);
+  box-shadow: 0 0 15px lightgray;
 }
 
 .period-total-header {

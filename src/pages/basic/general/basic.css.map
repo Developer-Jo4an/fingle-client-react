@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":["basic.scss"],"names":[],"mappings":"AAEA;EACI;EACA;EAEA","file":"basic.css"}
+{"version":3,"sourceRoot":"","sources":["../../../styles/zeroing/global.scss","basic.scss"],"names":[],"mappings":"AAiBA;EAEI;EACA;;AAFA;EAAuB;;;AAK3B;EACI;EACA;EACA;EACA;EAEA;EAEA;EAEA;;;AC/BJ;EAA6D","file":"basic.css"}

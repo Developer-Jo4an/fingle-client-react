@@ -10,8 +10,8 @@
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  gap: 20px;
   padding: 20px 0;
-  gap: 10px;
   position: relative;
   overflow-x: hidden;
 }

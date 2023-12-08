@@ -1,30 +1,28 @@
 @import '../../../styles/zeroing/global';
 
 .date-interval {
+    flex-shrink: 1;
     display: flex;
     align-items: center;
     gap: 10px;
+
+    padding: 10px;
+
+    overflow: hidden;
 
     svg {
         width: 20px;
         height: 20px;
     }
 
-    padding: 10px;
+    transition: .1s;
 
     border-radius: 20px;
 
-    transition: .1s;
-
-    &:active {
-        background-color: $main-gray-active-color;
-    }
+    &:active { background-color: $main-gray-active-color }
 }
 
 .date-interval-label {
-    min-width: 60px;
-    max-width: 120px;
-
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

@@ -19,8 +19,8 @@ const Transactions = () => {
             <section className={'transactions-page'}>
                 <Head>Transactions</Head>
                 <Filter/>
-                <PeriodTotalSection/>
                 <FilterSection/>
+                <PeriodTotalSection/>
                 <TransactionSection/>
                 <AddTransaction/>
                 <ModalWindow position={'bottom'} nav={'addMWS'} context={useTransactionsContext}><AddTransactionModalWindow/></ModalWindow>

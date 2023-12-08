@@ -29,10 +29,10 @@ const TransactionSection = () => {
 
         return (
             <>
-                <div className={'transaction-info-value info-expense-value'}><FontAwesomeIcon icon='fa-solid fa-arrow-down'/>{expense}</div>
-                <div className={'transaction-info-value info-income-value'}><FontAwesomeIcon icon='fa-solid fa-arrow-up'/>{income}</div>
-                <div style={{'--info-total-color': total < 0 ? '#ee3a3a' : '#24e597'}} className={'transaction-info-value info-total-value'}>
-                    <div className={'transaction-info-value-sigma-sign'}>Σ</div>{total}
+                <div className={'transactions-info-value info-expense-value'}><FontAwesomeIcon icon='fa-solid fa-arrow-down'/>{expense}</div>
+                <div className={'transactions-info-value info-income-value'}><FontAwesomeIcon icon='fa-solid fa-arrow-up'/>{income}</div>
+                <div style={{'--info-total-color': total < 0 ? '#ee3a3a' : '#24e597'}} className={'transactions-info-value info-total-value'}>
+                    <div className={'transactions-info-value-sigma-sign'}>Σ</div>{total}
                 </div>
             </>
         )
@@ -40,31 +40,32 @@ const TransactionSection = () => {
 
     const showHideInfoValues = i => {
         const values = infoValuesRefs.current[i]
-        if (values.classList.contains('transaction-info-values-show')) values.classList.remove('transaction-info-values-show')
+        if (values.classList.contains('transactions-info-values-show')) values.classList.remove('transactions-info-values-show')
         else {
             values.style.setProperty('--info-values-show', `${values.scrollWidth}px`)
-            values.classList.add('transaction-info-values-show')
+            values.classList.add('transactions-info-values-show')
         }
     }
+
 
     const arrayChunks = Object.entries(chunkTransactions(transactions[0]))
 
     return (
-        <section className={'transaction-section'}>
+        <section className={'transactions-section'}>
             { arrayChunks.length ?
             arrayChunks.map((chunk, i) =>
             chunk.length &&
-            <div key={chunk[0]} className={'transaction-chunk'}>
-                <div className={'transaction-chunk-header'}>
-                    <div className={'transaction-chunk-date'}>{chunk[0]}</div>
-                    <div className={'transaction-chunk-info-wrapper'}>
+            <div key={chunk[0]} className={'transactions-chunk'}>
+                <div className={'transactions-chunk-header'}>
+                    <div className={'transactions-chunk-date'}>{chunk[0]}</div>
+                    <div className={'transactions-chunk-info-wrapper'}>
                         <div
-                            className={'transaction-chunk-info-button'}
+                            className={'transactions-chunk-info-button'}
                             onClick={() => showHideInfoValues(i)}
                         ><FontAwesomeIcon icon='fa-solid fa-info'/></div>
                         <div
                             ref={el => infoValuesRefs.current[i] = el}
-                            className={'transaction-info-values-wrapper'}
+                            className={'transactions-info-values-wrapper'}
                             onClick={() => showHideInfoValues(i)}
                         >{getInfoValues(chunk)}</div>
                     </div>

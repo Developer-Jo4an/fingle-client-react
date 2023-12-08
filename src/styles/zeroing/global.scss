@@ -21,3 +21,16 @@ $main-gray-light-background: #f5f5f5;
     -ms-overflow-style: none;
 }
 
+%general-page {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 20px;
+
+    padding: 20px 0;
+
+    position: relative;
+
+    overflow-x: hidden;
+}
+

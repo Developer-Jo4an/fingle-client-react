@@ -1,14 +1,20 @@
 @import '../../../styles/zeroing/global';
 
-.transaction-chunk {
+.transactions-chunk {
+    width: calc(100vw - 40px);
+
     display: flex;
     flex-direction: column;
     gap: 10px;
 
-    padding: 0 10px;
+    padding: 20px 10px 10px;
+
+    border-radius: 20px;
+
+    box-shadow: 0 0 15px lightgray;
 }
 
-.transaction-chunk-header {
+.transactions-chunk-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -20,13 +26,12 @@
     padding: 0 10px 0;
 }
 
-.transaction-chunk-info-wrapper {
+.transactions-chunk-info-wrapper {
     display: flex;
     align-items: center;
-    gap: 10px;
 }
 
-.transaction-info-values-wrapper {
+.transactions-info-values-wrapper {
     width: 0;
 
     display: flex;
@@ -40,9 +45,9 @@
     transition: .3s;
 }
 
-.transaction-info-values-show { width: var(--info-values-show) }
+.transactions-info-values-show { width: var(--info-values-show); margin-left: 10px}
 
-.transaction-info-value {
+.transactions-info-value {
     display: flex;
     align-items: center;
     gap: 2px;
@@ -51,9 +56,9 @@
 .info-expense-value { color: $main-red-color }
 .info-income-value { color: $main-green-color }
 .info-total-value { color: var(--info-total-color) }
-.transaction-info-value-sigma-sign { font-size: 16px }
+.transactions-info-value-sigma-sign { font-size: 16px }
 
-.transaction-chunk-info-button {
+.transactions-chunk-info-button {
     width: 20px;
     height: 20px;
 

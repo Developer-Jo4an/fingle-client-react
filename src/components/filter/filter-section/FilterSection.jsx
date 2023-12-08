@@ -19,7 +19,7 @@ const FilterSection = () => {
     }
 
     return (
-        <div className={'transaction-filters-section'}>
+        <div className={`transaction-filters-section ${filterEls[0].length ? '' : 'transaction-filters-section-hide'}`}>
             <div className={'filter-elements-wrapper'}>
                 {filterEls[0].map(el => (
                     <div

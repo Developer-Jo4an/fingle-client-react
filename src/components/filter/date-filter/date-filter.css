@@ -1,10 +1,12 @@
 .date-interval {
+  flex-shrink: 1;
   display: flex;
   align-items: center;
   gap: 10px;
   padding: 10px;
-  border-radius: 20px;
+  overflow: hidden;
   transition: 0.1s;
+  border-radius: 20px;
 }
 .date-interval svg {
   width: 20px;
@@ -15,8 +17,6 @@
 }
 
 .date-interval-label {
-  min-width: 60px;
-  max-width: 120px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

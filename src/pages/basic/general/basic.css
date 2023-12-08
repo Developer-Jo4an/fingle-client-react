@@ -1,7 +1,23 @@
 .basic-page {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.basic-page::-webkit-scrollbar {
+  display: none;
+}
+
+.basic-page {
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
+  gap: 20px;
+  padding: 20px 0;
   position: relative;
+  overflow-x: hidden;
+}
+
+.basic-page {
+  padding-top: 0;
 }
 
 /*# sourceMappingURL=basic.css.map */

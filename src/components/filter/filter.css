@@ -1,14 +1,17 @@
 .transactions-filter {
+  width: calc(100vw - 40px);
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 10px;
+  flex-direction: column;
+  align-self: center;
+  padding: 10px;
+  box-shadow: 0 0 15px lightgray;
+  border-radius: 20px;
 }
 
 .date-filter-wrapper {
-  flex-grow: 1;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 /*# sourceMappingURL=filter.css.map */
