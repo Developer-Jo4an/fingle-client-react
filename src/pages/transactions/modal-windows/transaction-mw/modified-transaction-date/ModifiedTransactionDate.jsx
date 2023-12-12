@@ -12,9 +12,9 @@ import './modified-transaction-date.css'
 
 const ModifiedTransactionDate = () => {
 
-    const {modifiedTransaction} = useTransactionsContext()
+    const { modifiedTransaction } = useTransactionsContext()
     const [modified, dispatch] = modifiedTransaction
-    const {modifiedMode} = useModifiedTransactionContext()
+    const { modifiedMode } = useModifiedTransactionContext()
 
     const getValue = () => ({
         date: dateRefactor(modified.date),

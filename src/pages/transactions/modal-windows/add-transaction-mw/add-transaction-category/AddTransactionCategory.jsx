@@ -1,14 +1,13 @@
 import React from 'react'
-
-
 import SwiperEl from '../../../../../components/swiper/SwiperEl'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useAppContext } from '../../../../../application/AppProvider'
 import { useAddTransactionContext } from '../AddTransactionProvider'
 
 import './add-transaction-category.css'
 
-const AddTransactionCategory = ({Ref}) => {
+const AddTransactionCategory = ({ Ref }) => {
 
     const { user } = useAppContext()
     const { transactionCategories } = user[0]

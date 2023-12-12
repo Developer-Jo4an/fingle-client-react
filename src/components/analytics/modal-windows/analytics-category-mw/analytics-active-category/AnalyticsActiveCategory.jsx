@@ -1,23 +1,23 @@
 import React from 'react'
 
-import {useAnalyticsContext} from '../../../AnalyticsProvider'
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {useAppContext} from '../../../../../application/AppProvider'
-import {dateObj, dateRefactor} from '../../../../../my-functions/my-functions'
+import { useAnalyticsContext } from '../../../AnalyticsProvider'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useAppContext } from '../../../../../application/AppProvider'
+import { dateObj, dateRefactor } from '../../../../../my-functions/my-functions'
 
 import './analytics-active-category.css'
 
 const AnalyticsActiveCategory = () => {
 
-    const {activeCategory, activeTotal} = useAnalyticsContext()
-    const {total, period} = useAppContext()
-    const {categoryName, obj} = activeCategory[0]
+    const { activeCategory, activeTotal } = useAnalyticsContext()
+    const { total, period } = useAppContext()
+    const { categoryName, obj } = activeCategory[0]
 
     if (!Object.keys(activeCategory[0]).length) return null
 
     const categoryPercent = () => obj.count.getPercent(total[0][activeTotal[0]])
-    const barSettings = () => ({width: `${categoryPercent()}%`, backgroundColor: obj.color})
-    const categoryCountColor = () => ({color: activeTotal[0] === 'expense' ? '#ee3a3a' : '#24e597'})
+    const barSettings = () => ({ width: `${categoryPercent()}%`, backgroundColor: obj.color })
+    const categoryCountColor = () => ({ color: activeTotal[0] === 'expense' ? '#ee3a3a' : '#24e597' })
     const categoryPeriod = () => {
         const [interval] = period
 
@@ -46,14 +46,14 @@ const AnalyticsActiveCategory = () => {
 
     return (
         <div className={'analytics-active-category-info'}>
-            <div style={{'--active-category-color': obj.color}} className={'analytics-active-category-info__sign'}><div>{<FontAwesomeIcon icon={obj.sign}/>}</div></div>
-            <div className={'analytics-active-category-info__name'}><div>{categoryName}</div></div>
-            <div className={'analytics-active-category-info__period'}><div>{categoryPeriod()}</div></div>
-            <div className={'analytics-active-category-info__count'} style={categoryCountColor()}>{obj.count} $</div>
+            <div style={{ '--active-category-color': obj.color }} className={'analytics-active-category-info__sign'}><div>{<FontAwesomeIcon icon={obj.sign}/>}</div></div>
+            <div className={'analytics-active-category-info__name'}><div>{ categoryName }</div></div>
+            <div className={'analytics-active-category-info__period'}><div>{ categoryPeriod() }</div></div>
+            <div className={'analytics-active-category-info__count'} style={ categoryCountColor() }>{ obj.count } $</div>
             <div className={'analytics-active-category-info__bar'}>
-                <div className={'analytics-active-category-info__progress-bar'}><div style={barSettings()}></div></div>
+                <div className={'analytics-active-category-info__progress-bar'}><div style={ barSettings() }></div></div>
             </div>
-            <div className={'analytics-active-category-info__percent'}>{categoryPercent()} %</div>
+            <div className={'analytics-active-category-info__percent'}>{ categoryPercent() } %</div>
         </div>
     )
 }

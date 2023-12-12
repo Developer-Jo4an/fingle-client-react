@@ -1,12 +1,11 @@
-import React, {useEffect, useRef} from 'react'
-
-import {reloadSlider} from '../../../../../my-functions/my-functions'
-
-import './add-transaction-sub-more-info.css'
+import React, { useEffect, useRef } from 'react'
 import SwiperEl from '../../../../../components/swiper/SwiperEl'
+
+import { reloadSlider } from '../../../../../my-functions/my-functions'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useAddTransactionContext } from '../AddTransactionProvider'
 
+import './add-transaction-sub-more-info.css'
 
 const AddTransactionSubMoreInfo = () => {
 
@@ -15,7 +14,7 @@ const AddTransactionSubMoreInfo = () => {
     const { newTransaction } = useAddTransactionContext()
     const [futureTransaction, dispatch] = newTransaction
 
-    const selectCategory = category => dispatch({type: 'sub-category', category})
+    const selectCategory = category => dispatch({ type: 'sub-category', category })
 
     useEffect(() => {if (transferRef.current) reloadSlider(transferRef)}, [futureTransaction])
 
@@ -26,12 +25,12 @@ const AddTransactionSubMoreInfo = () => {
             <SwiperEl Ref={transferRef}>
                 {Object.values(futureTransaction.category.subCategories).map(category => (
                     <swiper-slide
-                        key={category._id}
+                        key={ category._id }
                         class={`add-transaction-sub-more-info-slide ${futureTransaction.subCategory ? futureTransaction.subCategory._id === category._id ?
                             'add-transaction-sub-more-info-slide-active' : '' : ''}`}
-                        style={{'--category-color': category.color}}
+                        style={{ '--category-color': category.color }}
                         onClick={() => selectCategory(category)}
-                    ><div className={'add-transaction-sub-more-info__sign'}><FontAwesomeIcon icon={ category.sign }/></div>
+                    ><div className={'add-transaction-sub-more-info__sign'}><FontAwesomeIcon icon={category.sign}/></div>
                         <div className={'add-transaction-sub-more-info__name'}>{ category.name }</div>
                     </swiper-slide>
                 ))}

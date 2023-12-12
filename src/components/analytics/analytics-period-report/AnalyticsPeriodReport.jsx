@@ -1,8 +1,8 @@
 import React from 'react'
 import ReportDiagram from '../analytics-diagrams/report-diagram/ReportDiagram'
 
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {useAnalyticsContext} from '../AnalyticsProvider'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useAnalyticsContext } from '../AnalyticsProvider'
 
 import './analytics-period-report.css'
 
@@ -19,7 +19,7 @@ const AnalyticsPeriodReport = () => {
     }
     const typeToggle = () => diagramType[1](prev => prev === 'expense' ? 'income' : 'expense')
     const formattedType = () => diagramType[0].slice(0, 1).toUpperCase() + diagramType[0].slice(1)
-    const toggleClass = () => ({color: diagramType[0] === 'expense' ? '#ee3a3a' : '#24e597', transform: `rotate(${diagramType[0] === 'expense' ? '180deg' : '0'})`})
+    const toggleClass = () => ({ color: diagramType[0] === 'expense' ? '#ee3a3a' : '#24e597', transform: `rotate(${diagramType[0] === 'expense' ? '180deg' : '0'})` })
 
     const totalCount = () => {
         const { obj } = histograms[0]
@@ -33,30 +33,30 @@ const AnalyticsPeriodReport = () => {
             <div className={'analytics-period-report-wrapper'}>
                 <div className={'analytics-period-report-header'}>
                     <div className={'analytics-period-report-header__up-level'}>
-                        <div style={countColor()} className={'analytics-period-report-header-count'}>{totalCount()} $</div>
+                        <div style={ countColor() } className={'analytics-period-report-header-count'}>{ totalCount() } $</div>
                         <div className={'analytics-period-report-header-intervals'}>
                             <div
                                 onClick={() => diagramInterval[1]('W')}
-                                style={activePeriod('W')}
+                                style={ activePeriod('W') }
                                 className={'analytics-period-report-header-btn'}
                             >W</div>
                             <div
                                 onClick={() => diagramInterval[1]('M')}
-                                style={activePeriod('M')}
+                                style={ activePeriod('M') }
                                 className={'analytics-period-report-header-btn'}
                             >M</div>
                             <div
                                 onClick={() => diagramInterval[1]('Y')}
-                                style={activePeriod('Y')}
+                                style={ activePeriod('Y') }
                                 className={'analytics-period-report-header-btn'}
                             >Y</div>
                         </div>
                     </div>
                     <div className={'analytics-period-report-header__down-level'}>
                         <div className={'analytics-period-report-header-type-toggle'}>
-                            <div className={'analytics-period-report-header-type-toggle-wrapper'} onClick={typeToggle}>
-                                <div className={'analytics-period-report-header-type'}>{formattedType()}</div>
-                                {<FontAwesomeIcon style={toggleClass()} className={'toggle-icon'} icon='fa-solid fa-angle-up'/>}
+                            <div className={'analytics-period-report-header-type-toggle-wrapper'} onClick={ typeToggle }>
+                                <div className={'analytics-period-report-header-type'}>{ formattedType() }</div>
+                                {<FontAwesomeIcon style={ toggleClass() } className={'toggle-icon'} icon='fa-solid fa-angle-up'/>}
                             </div>
                         </div>
                     </div>

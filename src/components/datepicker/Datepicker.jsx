@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 
 import './datepicker.css'
 
-const Datepicker = ({datepicker, Ref, datepickerClasses, ...props}) => {
+const Datepicker = ({ datepicker, Ref, datepickerClasses, ...props }) => {
 
     useEffect(() => {
         const newDatepicker = datepicker()
@@ -14,11 +14,11 @@ const Datepicker = ({datepicker, Ref, datepickerClasses, ...props}) => {
             htmlFor={datepickerClasses.input}
             className={datepickerClasses.label}
             onClick={e => e.stopPropagation()}
-        >{props.children}
+        >{ props.children }
             <input
                 className={datepickerClasses.input}
                 id={datepickerClasses.input}
-                ref={Ref}/>
+                ref={ Ref }/>
         </label>
     )
 }

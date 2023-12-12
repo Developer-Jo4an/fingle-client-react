@@ -1,7 +1,7 @@
 import React from 'react'
 
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {useAnalyticsContext} from '../AnalyticsProvider'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useAnalyticsContext } from '../AnalyticsProvider'
 
 import './analytics-budget.css'
 

@@ -1,46 +1,36 @@
-@import '../../../../../styles/zeroing/global';
+@import '../../../../../styles/zeroing/global', '../modified-transaction-modal-window-settings';
 
-.modified-transaction-transfer-card {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-
-    padding: 10px 20px;
-
-    border-radius: 20px;
-
-    background-color: #eaeaea;
-
-    transition: 0.3s;
+.modified-transaction-account {
+    @extend %visible-info;
 }
 
-.always-visible-transfer-card-section {
+.always-visible-account-section {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 20px;
 }
 
-.modified-option-transfer-card-name {
+.modified-option-account-name {
     font-size: 18px;
 
     font-family: custom-bold, Manrope, sans-serif;
 }
 
-.modified-option-transfer-card-value {
+.modified-option-account-value {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
 
-.invisible-transfer-card-section {
+.invisible-account-section {
     display: flex;
     flex-direction: column;
 
     overflow: hidden;
 }
 
-.modified-transaction-transfer-card-slide {
+.modified-transaction-account-slide {
     width: auto;
 
     display: flex;
@@ -52,16 +42,16 @@
     border-radius: 20px;
     border: 2px solid $main-green-color;
 
-    background-color: #fff;
-
     color: $main-green-color;
 
     font-family: custom-bold, Manrope, sans-serif;
 
+    background-color: #fff;
+
     transition: .3s;
 }
 
-.modified-transfer-card-active {
+.modified-account-active {
     background-color: $main-green-color;
     color: #fff;
 }

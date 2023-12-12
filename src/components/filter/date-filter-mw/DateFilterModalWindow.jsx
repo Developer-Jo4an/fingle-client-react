@@ -1,17 +1,17 @@
-import React, {useCallback, useRef} from 'react'
+import React, { useCallback, useRef } from 'react'
 import Datepicker from '../../datepicker/Datepicker'
 
 import AirDatepicker from 'air-datepicker'
-import {useAppContext} from '../../../application/AppProvider'
+import { useAppContext } from '../../../application/AppProvider'
 
 import 'air-datepicker/air-datepicker.css'
 import './date-filter-modal-window.css'
 
 const DateFilterModalWindow = () => {
 
-    const dateFilterBtns = [{id: 'Today'}, {id: 'Week'}, {id: 'Month'}, {id: 'Year'}, {id: 'All time'}]
+    const dateFilterBtns = [{ id: 'Today' }, { id: 'Week' }, { id: 'Month' }, { id: 'Year' }, { id: 'All time' }]
 
-    const {period, periodMWS} = useAppContext()
+    const { period, periodMWS } = useAppContext()
 
     const inputRef = useRef()
     const datepickerClasses = {

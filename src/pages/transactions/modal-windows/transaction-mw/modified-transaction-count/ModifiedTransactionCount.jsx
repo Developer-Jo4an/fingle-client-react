@@ -35,7 +35,7 @@ const ModifiedTransactionCount = () => {
                     className={'invisible-count-wrapper'}
                     onClick={() => modifiedCountMWS[1](true)}
                 >
-                    <div className={'modified-current-currency'} style={{color: getColor()}}>USD</div>
+                    <div className={'modified-current-currency'} style={{ color: getColor() }}>USD</div>
                     <div className={'modified-count'} style={{ color: getColor() }}>{ modified.count }</div>
                 </div>
             </div>

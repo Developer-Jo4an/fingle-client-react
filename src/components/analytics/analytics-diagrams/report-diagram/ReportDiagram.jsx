@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import SwiperEl from '../../../swiper/SwiperEl'
 
-import {useAppContext} from '../../../../application/AppProvider'
-import {useAnalyticsContext} from '../../AnalyticsProvider'
-import {dateObj, reloadSlider} from '../../../../my-functions/my-functions'
+import { useAppContext } from '../../../../application/AppProvider'
+import { useAnalyticsContext } from '../../AnalyticsProvider'
+import { dateObj, reloadSlider } from '../../../../my-functions/my-functions'
 import moment from 'moment'
 
 import './report-diagram.css'
@@ -91,7 +91,7 @@ const ReportDiagram = () => {
         })
         filter[1]({
             transactionType: [diagramType[0]],
-            card: [],
+            account: [],
             category: [],
         })
         filterEls[1]([{
@@ -106,34 +106,34 @@ const ReportDiagram = () => {
     return (
         <div className={'report-diagram-wrapper'}>
             <div className={'report-diagram-max-count-info'}>
-                <div className={'report-diagram-count-part'}>{maxCount} $</div>
-                <div className={'report-diagram-count-part'}>{maxCountFunc(0.8)} $</div>
-                <div className={'report-diagram-count-part'}>{maxCountFunc(0.6)} $</div>
-                <div className={'report-diagram-count-part'}>{maxCountFunc(0.4)} $</div>
-                <div className={'report-diagram-count-part'}>{maxCountFunc(0.2)} $</div>
-                <div style={{height: '20px'}} className={'report-diagram-count-part'}>0 $</div>
+                <div className={'report-diagram-count-part'}>{ maxCount } $</div>
+                <div className={'report-diagram-count-part'}>{ maxCountFunc(0.8) } $</div>
+                <div className={'report-diagram-count-part'}>{ maxCountFunc(0.6) } $</div>
+                <div className={'report-diagram-count-part'}>{ maxCountFunc(0.4) } $</div>
+                <div className={'report-diagram-count-part'}>{ maxCountFunc(0.2) } $</div>
+                <div style={{ height: '20px' }} className={'report-diagram-count-part'}>0 $</div>
             </div>
             <div className={'report-diagram-histograms-wrapper'}>
-                <SwiperEl Ref={refs.histograms}>
-                    {histograms[0].arr.map(({label, key}) => {
+                <SwiperEl Ref={ refs.histograms }>
+                    {histograms[0].arr.map(({ label, key }) => {
                         if (histograms[0].obj.hasOwnProperty(key)) {
                             return <swiper-slide
                                 class={'report-diagram-histogram'}
-                                key={key}
+                                key={ key }
                                 onClick={() => histogramClick(key)}
                             >
                                 <div
                                     style={histogramVisibleStyles(key)}
                                     className={'report-diagram-histogram__visible'}
                                 ></div>
-                                <div className={'report-diagram-histogram__date'}>{label}</div>
+                                <div className={'report-diagram-histogram__date'}>{ label }</div>
                             </swiper-slide>
                         } else {
                             return <swiper-slide
                                 class={'report-diagram-histogram'}
-                                key={key}
+                                key={ key }
                             >   <div className={'report-diagram-histogram__hidden'}></div>
-                                <div className={'report-diagram-histogram__date'}>{label}</div>
+                                <div className={'report-diagram-histogram__date'}>{ label }</div>
                             </swiper-slide>
                         }
                     })}

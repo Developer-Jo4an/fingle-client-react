@@ -1,14 +1,14 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 
-import {useModifiedTransactionContext} from '../../ModifiedTransactionProvider'
-import {useTransactionsContext} from '../../../../general/TransactionsProvider'
+import { useModifiedTransactionContext } from '../../ModifiedTransactionProvider'
+import { useTransactionsContext } from '../../../../general/TransactionsProvider'
 
 import './modified-message-modal-window.css'
 
 const ModifiedMessageModalWindow = () => {
 
-    const {modifiedMessageMWS} = useModifiedTransactionContext()
-    const {modifiedTransaction} = useTransactionsContext()
+    const { modifiedMessageMWS } = useModifiedTransactionContext()
+    const { modifiedTransaction } = useTransactionsContext()
     const [modified, dispatch] = modifiedTransaction
     const [message, setMessage] = useState(modified.message ? modified.message : '')
 
@@ -33,7 +33,7 @@ const ModifiedMessageModalWindow = () => {
         >
             <div className={'modified-message-input-wrapper'}>
                 <input
-                    value={message}
+                    value={ message }
                     type="text"
                     className={'message-input'}
                     placeholder={'message'}
@@ -42,8 +42,8 @@ const ModifiedMessageModalWindow = () => {
             </div>
             <div className={'modified-message-action-buttons'}>
                 <button className={'modified-message-action-btn'} onClick={() => modifiedMessageMWS[1](false)}>Cancel</button>
-                <button className={'modified-message-action-btn'} onClick={removeMessage}>Remove</button>
-                <button className={'modified-message-action-btn'} onClick={saveMessage}>Save</button>
+                <button className={'modified-message-action-btn'} onClick={ removeMessage }>Remove</button>
+                <button className={'modified-message-action-btn'} onClick={ saveMessage }>Save</button>
             </div>
         </div>
     )

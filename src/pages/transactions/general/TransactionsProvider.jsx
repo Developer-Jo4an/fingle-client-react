@@ -1,4 +1,4 @@
-import React, {useContext, useReducer, useState} from 'react'
+import React, { useContext, useReducer, useState } from 'react'
 
 const TransactionsContext = React.createContext()
 export const useTransactionsContext = () => useContext(TransactionsContext)
@@ -8,10 +8,10 @@ export const modifiedTransactionReducer = (state, action) => {
         case 'set' : return action.transaction
         case 'date' : return {...state, date: action.date}
         case 'date-arrow': return {...state, date: action.callback(state)}
-        case 'card' : {
+        case 'account' : {
             const futureObject = {}
-            for (const key in state) if (key !== 'transferCard') futureObject[key] = state[key]
-            return {...futureObject, card: action.card}
+            for (const key in state) if (key !== 'transferAccount') futureObject[key] = state[key]
+            return {...futureObject, account: action.account}
         }
         case 'count' : return {...state, count: action.count}
         case 'add-message' : return {...state, message: action.message}
@@ -31,7 +31,7 @@ export const modifiedTransactionReducer = (state, action) => {
             return futureObject
         }
         case 'add-sub-category' : return {...state, subCategory: action.subCategory}
-        case 'transfer-card' : return  {...state, transferCard: action.transferCard}
+        case 'transfer-account' : return  {...state, transferAccount: action.transferAccount}
         default: return state
     }
 }

@@ -1,18 +1,17 @@
-import React, {useEffect, useState} from 'react'
-import {ArcElement, Chart as ChartJS} from 'chart.js'
+import React, { useEffect, useState } from 'react'
+import { ArcElement, Chart as ChartJS } from 'chart.js'
 
-import {Doughnut} from 'react-chartjs-2'
-import {useAppContext} from '../../../../application/AppProvider'
-import {useAnalyticsContext} from '../../AnalyticsProvider'
+import { Doughnut } from 'react-chartjs-2'
+import { useAppContext } from '../../../../application/AppProvider'
+import { useAnalyticsContext } from '../../AnalyticsProvider'
 
 import './circle-diagram.css'
-import Head from '../../../../UI/head/Head';
 
 ChartJS.register(ArcElement)
 
 const CircleDiagram = () => {
-    const {activeTotal, statistic} = useAnalyticsContext()
-    const {total} = useAppContext()
+    const { activeTotal, statistic } = useAnalyticsContext()
+    const { total } = useAppContext()
     const [statisticArray, setStatisticArray] = useState([])
 
     useEffect(() => {
@@ -40,18 +39,18 @@ const CircleDiagram = () => {
     return (
         <div className={'circle-diagram'}>
             <div className={'circle-diagram-wrapper'}>
-                <Doughnut data={doughnutChartData}/>
+                <Doughnut data={ doughnutChartData }/>
                 <div className={'circle-diagram-total-wrapper'}>
                     <div
-                        onClick={totalToggle}
+                        onClick={ totalToggle }
                         className={`circle-diagram-total ${activeTotal[0] === 'expense' ? 'circle-diagram-total-active' : ''}`}
-                        style={{'--total-color': '#ee3a3a'}}
-                    >{total[0].expense} USD</div>
+                        style={{ '--total-color': '#ee3a3a' }}
+                    >{ total[0].expense } USD</div>
                     <div
-                        onClick={totalToggle}
+                        onClick={ totalToggle }
                         className={`circle-diagram-total ${activeTotal[0] === 'income' ? 'circle-diagram-total-active' : ''}`}
-                        style={{'--total-color': '#24e597'}}
-                    >{total[0].income} USD</div>
+                        style={{ '--total-color': '#24e597' }}
+                    >{ total[0].income } USD</div>
                 </div>
             </div>
             <div className={'circle-diagram-info-wrapper'}>
@@ -59,7 +58,7 @@ const CircleDiagram = () => {
                         (
                             <div key={name} className={'circle-diagram-info'}>
                                 <div style={{'--square-color': obj.color}} className={'circle-diagram-info-square'}></div>
-                                <div className={'circle-diagram-info-name'}>{name}</div>
+                                <div className={'circle-diagram-info-name'}>{ name }</div>
                             </div>
                         ))
                     :

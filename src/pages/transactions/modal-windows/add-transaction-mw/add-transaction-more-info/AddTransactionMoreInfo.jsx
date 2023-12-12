@@ -1,6 +1,6 @@
 import React from 'react'
 import AddTransactionCategory from '../add-transaction-category/AddTransactionCategory'
-import AddTransactionTransferCard from '../add-transaction-transfer-card/AddTransactionTransferCard'
+import AddTransactionTransferAccount from '../add-transaction-transfer-account/AddTransactionTransferAccount'
 import AddTransactionIncomeCategory from '../add-transaction-income/AddTransactionIncomeCategory'
 import AddTransactionSubMoreInfo from '../add-transaction-more-sub-more-info/AddTransactionSubMoreInfo'
 
@@ -19,7 +19,7 @@ const AddTransactionMoreInfo = () => {
                     'start' : futureTransaction.transactionType === 'income' ? 'middle' : 'end'}`}>
                 <AddTransactionCategory Ref={ refs.expense }/>
                 <AddTransactionIncomeCategory Ref={ refs.income }/>
-                <AddTransactionTransferCard Ref={ refs.transfer }/>
+                <AddTransactionTransferAccount Ref={ refs.transfer }/>
             </div>
             <AddTransactionSubMoreInfo/>
         </div>

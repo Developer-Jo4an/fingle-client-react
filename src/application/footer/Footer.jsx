@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useAppContext } from '../AppProvider'
@@ -6,7 +6,7 @@ import { useAppContext } from '../AppProvider'
 import './footer.css'
 
 const Footer = () => {
-    const {page} = useAppContext()
+    const { page } = useAppContext()
 
     const homeRef = useRef()
     const analyticsRef = useRef()
@@ -20,9 +20,9 @@ const Footer = () => {
 
     useEffect(() => {
         const footerBtnsLogic = {
-            home: () => setWidth({home: `${homeRef.current.scrollWidth}px`, analytics: '0px', transactions: '0px'}),
-            analytics: () => setWidth({analytics: `${analyticsRef.current.scrollWidth}px`, home: '0px', transactions: '0px'}),
-            transactions: () => setWidth({transactions: `${transactionsRef.current.scrollWidth}px`, home: '0px', analytics: '0px'}),
+            home: () => setWidth({ home: `${homeRef.current.scrollWidth}px`, analytics: '0px', transactions: '0px' }),
+            analytics: () => setWidth({ analytics: `${analyticsRef.current.scrollWidth}px`, home: '0px', transactions: '0px' }),
+            transactions: () => setWidth({ transactions: `${transactionsRef.current.scrollWidth}px`, home: '0px', analytics: '0px' }),
         }
         footerBtnsLogic[page[0]]()
     }, [page[0]])
@@ -37,8 +37,8 @@ const Footer = () => {
                     onClick={() => page[1]('home')}
                 ><FontAwesomeIcon icon='fa-solid fa-home'/>
                     <div
-                        ref={homeRef}
-                        style={{width: width.home}}
+                        ref={ homeRef }
+                        style={{ width: width.home }}
                         className={'footer-btn-label'}
                     >Home</div>
                 </div>
@@ -48,8 +48,8 @@ const Footer = () => {
                     onClick={() => page[1]('analytics')}
                 ><FontAwesomeIcon icon='fa-solid fa-chart-simple'/>
                     <div
-                        ref={analyticsRef}
-                        style={{width: width.analytics}}
+                        ref={ analyticsRef }
+                        style={{ width: width.analytics }}
                         className={'footer-btn-label'}
                     >Analytics</div>
                 </div>
@@ -60,7 +60,7 @@ const Footer = () => {
                 ><FontAwesomeIcon icon='fa-solid fa-bars-staggered'/>
                     <div
                         ref={transactionsRef}
-                        style={{width: width.transactions}}
+                        style={{ width: width.transactions }}
                         className={'footer-btn-label'}
                     >Transactions</div>
                 </div>

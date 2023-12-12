@@ -1,4 +1,4 @@
-.modified-transaction-card {
+.modified-transaction-account {
   display: flex;
   flex-direction: column;
   gap: 0;
@@ -8,31 +8,31 @@
   transition: 0.3s;
 }
 
-.always-visible-card-section {
+.always-visible-account-section {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 20px;
 }
 
-.modified-option-card-name {
+.modified-option-account-name {
   font-size: 18px;
   font-family: custom-bold, Manrope, sans-serif;
 }
 
-.modified-option-card-value {
+.modified-option-account-value {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
 
-.invisible-card-section {
+.invisible-account-section {
   display: flex;
   flex-direction: column;
   overflow: hidden;
 }
 
-.modified-transaction-card-slide {
+.modified-transaction-account-slide {
   width: auto;
   display: flex;
   align-items: center;
@@ -46,9 +46,9 @@
   transition: 0.3s;
 }
 
-.modified-card-active {
+.modified-account-active {
   background-color: #24e597;
   color: #fff;
 }
 
-/*# sourceMappingURL=modified-transaction-card.css.map */
+/*# sourceMappingURL=modified-transaction-account.css.map */

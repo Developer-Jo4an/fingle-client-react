@@ -1,7 +1,7 @@
 import React from 'react'
 
-import {useModifiedTransactionContext} from '../ModifiedTransactionProvider'
-import {useTransactionsContext} from '../../../general/TransactionsProvider'
+import { useModifiedTransactionContext } from '../ModifiedTransactionProvider'
+import { useTransactionsContext } from '../../../general/TransactionsProvider'
 
 import './modified-transaction-message.css'
 
@@ -20,7 +20,7 @@ const ModifiedTransactionMessage = () => {
             </div>
             <div
                 className={`invisible-message-section`}
-                style={{height: modifiedMode[0] ? 'auto' : '0px'}}
+                style={{ height: modifiedMode[0] ? 'auto' : '0px' }}
             ><div
                 className={'modified-message-btn'}
                 onClick={() => modifiedMessageMWS[1](true)}

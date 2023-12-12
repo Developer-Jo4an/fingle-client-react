@@ -1,13 +1,13 @@
 import React from 'react'
 
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {useAppContext} from '../../../application/AppProvider'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useAppContext } from '../../../application/AppProvider'
 
 import './filter-section.css'
 
 const FilterSection = () => {
 
-    const {filterEls, filter} = useAppContext()
+    const { filterEls, filter } = useAppContext()
 
     const deleteProperty = el => {
         filterEls[1](prev => prev.filter(item => item.id !== el.id))

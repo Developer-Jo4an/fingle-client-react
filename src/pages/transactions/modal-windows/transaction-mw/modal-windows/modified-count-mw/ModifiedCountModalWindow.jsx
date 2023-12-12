@@ -1,20 +1,16 @@
-import React, {useEffect, useState} from 'react'
+import React, { useState } from 'react'
 
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {useModifiedTransactionContext} from '../../ModifiedTransactionProvider'
-import {useTransactionsContext} from '../../../../general/TransactionsProvider'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useModifiedTransactionContext } from '../../ModifiedTransactionProvider'
+import { useTransactionsContext } from '../../../../general/TransactionsProvider'
 
 import './modified-count-modal-window.css'
 
 const ModifiedCountModalWindow = () => {
 
-    const {modifiedTransaction} = useTransactionsContext()
+    const { modifiedTransaction } = useTransactionsContext()
     const [modified, dispatch] = modifiedTransaction
-    const {modifiedCountMWS, refs} = useModifiedTransactionContext()
-
-    useEffect(() => {
-        console.log(modified);
-    }, [modified])
+    const { modifiedCountMWS, refs } = useModifiedTransactionContext()
 
     const getColor = () => {
         const colorLogic = {
@@ -62,10 +58,10 @@ const ModifiedCountModalWindow = () => {
                 const result = eval(res)
                 if (result <= 0) handleError()
                 else {
-                    if (result.toString().includes('.')) {setResult(result.toFixed(2).toString())}
+                    if (result.toString().includes('.')) { setResult(result.toFixed(2).toString()) }
                     else setResult(result.toString())
                 }
-            } catch (e) {handleError()}
+            } catch (e) { handleError() }
         }
 
         const apply = res => {
@@ -73,12 +69,12 @@ const ModifiedCountModalWindow = () => {
                 const result = eval(res)
                 if (result <= 0) handleError()
                 else {
-                    if (result.toString().includes('.')) dispatch({type: 'count', count: +result.toFixed(2)})
-                    else dispatch({type: 'count', count: +result})
+                    if (result.toString().includes('.')) dispatch({ type: 'count', count: +result.toFixed(2) })
+                    else dispatch({ type: 'count', count: +result })
                     setResult('0')
                     modifiedCountMWS[1](false)
                 }
-            } catch (e) {handleError()}
+            } catch (e) { handleError() }
         }
 
         const {type, value, sign} = item
@@ -102,20 +98,20 @@ const ModifiedCountModalWindow = () => {
     return (
         <div className={'modified-count-modal-window'}>
             <input
-                ref={refs.modifiedCountRef}
-                value={result}
-                type="text"
+                ref={ refs.modifiedCountRef }
+                value={ result }
+                type='text'
                 className={'modified-count-input'}
-                style={{color: getColor()}}
+                style={{ color: getColor() }}
                 onChange={() => {}}
             />
             <div className={'modified-count-calculator'}>
                 {calculatorArr.map(item => (
                     <div
-                        key={item.value}
+                        key={ item.value }
                         className={'modified-calculator-btn'}
                         onClick={() => calculatorChange(item)}
-                    >{item.label}</div>
+                    >{ item.label }</div>
                 ))}
             </div>
         </div>

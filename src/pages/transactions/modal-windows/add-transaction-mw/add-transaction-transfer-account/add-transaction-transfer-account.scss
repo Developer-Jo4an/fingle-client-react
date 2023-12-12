@@ -1,15 +1,17 @@
 @import '../../../../../styles/zeroing/global';
 
-.slider-wrapper {
-    padding: 10px 20px;
+.add-transaction-transfer-account-wrapper {
+    width: 33.3333%;
 
-    overflow: visible;
+    overflow: hidden;
+
+    padding: 10px 20px;
 }
 
-.add-transaction-card { width: auto !important }
+.add-transaction-transfer-account { width: auto !important }
 
-.add-transaction-card-info {
-    min-width: 140px;
+.add-transaction-transfer-account-info {
+    min-width: 120px;
     max-width: 200px;
 
     display: grid;
@@ -31,7 +33,7 @@
     font-family: custom-bold, Manrope, sans-serif;
 }
 
-.add-transaction-card-info__sign {
+.add-transaction-transfer-account-info__sign {
     grid-row: span 2;
 
     display: flex;
@@ -39,7 +41,7 @@
     justify-content: center;
 }
 
-.add-transaction-card-info__sign-wrapper {
+.add-transaction-transfer-account-info__sign-wrapper {
     width: 30px;
     height: 30px;
 
@@ -59,8 +61,8 @@
 }
 
 
-.add-transaction-card-info__name,
-.add-transaction-card-info__count {
+.add-transaction-transfer-account-info__name,
+.add-transaction-transfer-account-info__count {
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -72,12 +74,12 @@
     font-size: 14px;
 }
 
-.add-transaction-card-active {
-    .add-transaction-card-info {
+.add-transaction-transfer-account-active {
+    .add-transaction-transfer-account-info {
         background-color: $main-green-color;
         color: #fff
     }
-    .add-transaction-card-info__sign-wrapper {
+    .add-transaction-transfer-account-info__sign-wrapper {
         background-color: #fff;
         svg { color: $main-green-color }
     }

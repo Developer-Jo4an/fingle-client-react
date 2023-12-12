@@ -1,13 +1,13 @@
 import React from 'react'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {useAppContext} from '../../../application/AppProvider'
+import { useAppContext } from '../../../application/AppProvider'
 
 import './options-filter-btn.css'
 
 const OptionsFilterBtn = () => {
 
-    const {filterMWS} = useAppContext()
+    const { filterMWS } = useAppContext()
 
     return (
         <div className={'options-filter'}>

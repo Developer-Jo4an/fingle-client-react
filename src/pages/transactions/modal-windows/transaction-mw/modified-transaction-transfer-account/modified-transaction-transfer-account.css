@@ -1,4 +1,4 @@
-.modified-transaction-transfer-card {
+.modified-transaction-transfer-account {
   display: flex;
   flex-direction: column;
   gap: 0;
@@ -8,31 +8,31 @@
   transition: 0.3s;
 }
 
-.always-visible-transfer-card-section {
+.always-visible-transfer-account-section {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 20px;
 }
 
-.modified-option-transfer-card-name {
+.modified-option-transfer-account-name {
   font-size: 18px;
   font-family: custom-bold, Manrope, sans-serif;
 }
 
-.modified-option-transfer-card-value {
+.modified-option-transfer-account-value {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
 
-.invisible-transfer-card-section {
+.invisible-transfer-account-section {
   display: flex;
   flex-direction: column;
   overflow: hidden;
 }
 
-.modified-transaction-transfer-card-slide {
+.modified-transaction-transfer-account-slide {
   width: auto;
   display: flex;
   align-items: center;
@@ -46,9 +46,9 @@
   transition: 0.3s;
 }
 
-.modified-transfer-card-active {
+.modified-transfer-account-active {
   background-color: #24e597;
   color: #fff;
 }
 
-/*# sourceMappingURL=modified-transaction-transfer-card.css.map */
+/*# sourceMappingURL=modified-transaction-transfer-account.css.map */

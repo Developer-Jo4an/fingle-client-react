@@ -1,14 +1,14 @@
 import React from 'react'
 
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {useAppContext} from '../../../application/AppProvider'
-import {roundUp} from '../../../my-functions/my-functions'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useAppContext } from '../../../application/AppProvider'
+import { roundUp } from '../../../my-functions/my-functions'
 
 import './period-total-section.css'
 
 const PeriodTotalSection = () => {
 
-    const {total} = useAppContext()
+    const { total } = useAppContext()
 
     return (
         <div className={'period-total-section'}>

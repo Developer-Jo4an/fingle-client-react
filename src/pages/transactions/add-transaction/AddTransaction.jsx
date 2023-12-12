@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {useTransactionsContext} from '../general/TransactionsProvider'
+import { useTransactionsContext } from '../general/TransactionsProvider'
 
 import './add-transaction.css'
 

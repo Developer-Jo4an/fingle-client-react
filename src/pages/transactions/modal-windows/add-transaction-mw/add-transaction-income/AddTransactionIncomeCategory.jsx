@@ -1,10 +1,11 @@
 import React from 'react'
-
-import './add-transaction-income-category.css'
 import SwiperEl from '../../../../../components/swiper/SwiperEl'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useAppContext } from '../../../../../application/AppProvider'
 import { useAddTransactionContext } from '../AddTransactionProvider'
+
+import './add-transaction-income-category.css'
 
 const AddTransactionIncomeCategory = ({ Ref }) => {
 
@@ -13,7 +14,7 @@ const AddTransactionIncomeCategory = ({ Ref }) => {
     const { newTransaction } = useAddTransactionContext()
     const [futureTransaction, dispatch] = newTransaction
 
-    const selectCategory = category => dispatch({type: 'category', category})
+    const selectCategory = category => dispatch({ type: 'category', category })
 
     return (
         <div className={'slider-wrapper add-transaction-income-category-wrapper'}>

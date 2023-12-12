@@ -1,15 +1,15 @@
-import React, {useEffect} from 'react'
+import React, { useEffect } from 'react'
 import CategoryStatistic from './CategoryStatistic'
 
-import {useAppContext} from '../../../application/AppProvider'
-import {useAnalyticsContext} from '../AnalyticsProvider'
+import { useAppContext } from '../../../application/AppProvider'
+import { useAnalyticsContext } from '../AnalyticsProvider'
 
 import './analytics-category-statistic.css'
 
 const AnalyticsCategoryStatistic = () => {
 
-    const {transactions} = useAppContext()
-    const {activeTotal, statistic} = useAnalyticsContext()
+    const { transactions } = useAppContext()
+    const { activeTotal, statistic } = useAnalyticsContext()
 
     useEffect(() => {
         const statisticObject = {
@@ -34,8 +34,8 @@ const AnalyticsCategoryStatistic = () => {
     return (
         <div className={'analytics-statistic'}>
             {Object.entries(statistic[0][activeTotal[0]]).map(([categoryName, obj]) =>
-                <div key={categoryName} className={'category-statistic-wrapper'}>
-                    <CategoryStatistic object={{categoryName, obj}}/>
+                <div key={ categoryName } className={'category-statistic-wrapper'}>
+                    <CategoryStatistic object={{ categoryName, obj }}/>
                 </div>
             )}
         </div>

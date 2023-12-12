@@ -1,5 +1,5 @@
 import React from 'react'
-import AnalyticsProvider, {useAnalyticsContext} from './AnalyticsProvider'
+import AnalyticsProvider, { useAnalyticsContext } from './AnalyticsProvider'
 import Head from '../../UI/head/Head'
 import Filter from '../filter/Filter'
 import FilterSection from '../filter/filter-section/FilterSection'

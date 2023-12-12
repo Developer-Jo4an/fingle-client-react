@@ -5,3 +5,16 @@
 
     align-self: center;
 }
+
+.story {
+    width: 100px;
+    height: 100px;
+
+    display: flex;
+    flex-direction: column;
+
+    border-radius: 20px;
+    border: 2px solid $main-green-color;
+
+    overflow: hidden;
+}

@@ -4,7 +4,7 @@ import AnalyticsActiveCategoryButtons from './analytics-active-category/Analytic
 import ActiveSubCategories from './analytics-active-category/ActiveSubCategories'
 import CloseModalWindowBtn from '../../../../UI/close-modal-window-btn/CloseModalWindowBtn'
 
-import {useAnalyticsContext} from '../../AnalyticsProvider'
+import { useAnalyticsContext } from '../../AnalyticsProvider'
 
 import './analytics-category-modal-window.css'
 

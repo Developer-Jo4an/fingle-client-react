@@ -1,4 +1,4 @@
-import React, {useRef} from 'react'
+import React, { useRef } from 'react'
 import Transaction from '../transaction/Transaction'
 
 import { useAppContext } from '../../../application/AppProvider'
@@ -18,8 +18,8 @@ const TransactionSection = () => {
 
         const counterObj = arr.reduce((acc, item) => {
             const logic = {
-                expense: sum => ({...acc, expense: acc.expense += sum, total: acc.total -= sum}),
-                income: sum => ({...acc, income: acc.income += sum, total: acc.total += sum}),
+                expense: sum => ({ ...acc, expense: acc.expense += sum, total: acc.total -= sum }),
+                income: sum => ({ ...acc, income: acc.income += sum, total: acc.total += sum }),
                 transfer: () => acc
             }
             return logic[item.transactionType](item.count)
@@ -47,7 +47,6 @@ const TransactionSection = () => {
         }
     }
 
-
     const arrayChunks = Object.entries(chunkTransactions(transactions[0]))
 
     return (
@@ -55,9 +54,9 @@ const TransactionSection = () => {
             { arrayChunks.length ?
             arrayChunks.map((chunk, i) =>
             chunk.length &&
-            <div key={chunk[0]} className={'transactions-chunk'}>
+            <div key={ chunk[0] } className={'transactions-chunk'}>
                 <div className={'transactions-chunk-header'}>
-                    <div className={'transactions-chunk-date'}>{chunk[0]}</div>
+                    <div className={'transactions-chunk-date'}>{ chunk[0] }</div>
                     <div className={'transactions-chunk-info-wrapper'}>
                         <div
                             className={'transactions-chunk-info-button'}

@@ -13,7 +13,7 @@ const AppProvider = ({ children }) => {
     const [period, setPeriod] = useState('Week') // transactions period
     const [filter, setFilter] = useState({ // transactions filter
         transactionType: [],
-        card: [],
+        account: [],
         category: [],
     })
     const [transactions, setTransactions] = useState([]) // all transactions from server
@@ -45,11 +45,11 @@ const AppProvider = ({ children }) => {
                         for (const key in filter) {
                             const value = filter[key]
                             if (value.length) {
-                                const {transactionType, card, category} = transaction
+                                const { transactionType, account, category } = transaction
 
                                 const filterLogic = {
                                     transactionType: () => result.push(value.includes(transactionType)),
-                                    card: () => result.push(value.includes(card._id)),
+                                    account: () => result.push(value.includes(account._id)),
                                     category: () => {
                                         if (transactionType === 'transfer') result.push(false)
                                         else result.push(value.includes(category.name))

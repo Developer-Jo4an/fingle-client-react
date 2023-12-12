@@ -1,7 +1,7 @@
-import React, {useCallback, useRef} from 'react'
+import React, { useCallback, useRef } from 'react'
 import Datepicker from '../../../../../components/datepicker/Datepicker'
 
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import AirDatepicker from 'air-datepicker'
 import moment from 'moment/moment';
 import { useAddTransactionContext } from '../AddTransactionProvider'

@@ -1,13 +1,13 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import Loader from '../../../../../components/loader/Loader'
 import ApplyBtn from '../../../../../UI/apply-btn/ApplyBtn'
 import CancelBtn from '../../../../../UI/cancel-btn/CancelBtn'
 
+import axios from 'axios'
 import { useTransactionsContext } from '../../../general/TransactionsProvider'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useModifiedTransactionContext } from '../ModifiedTransactionProvider'
 import { useAppContext } from '../../../../../application/AppProvider'
-import axios from 'axios'
 import { userId } from '../../../../../my-functions/my-functions'
 
 import './modified-transaction-buttons.css'
@@ -25,20 +25,20 @@ const ModifiedTransactionButtons = () => {
 
     const successRequest = data => {
         if (data.status) {
-            const { transactions, allCards } = data
-            user[1](prev => ({...prev, transactions, allCards}))
+            const { transactions, accounts } = data
+            user[1](prev => ({ ...prev, transactions, accounts }))
         } else return new Error(data.message)
     }
 
     const repeatTransaction = async () => {
         let repeatedTransaction = {}
         for (const key in prevTransaction[0]) if (key !== '_id') repeatedTransaction[key] = prevTransaction[0][key]
-        repeatedTransaction = {...repeatedTransaction, date: new Date()}
+        repeatedTransaction = { ...repeatedTransaction, date: new Date() }
 
         try {
             setLoader(true)
 
-            const transactionsRequest = await axios.post(`${userId}/add-transaction`, {transaction: repeatedTransaction})
+            const transactionsRequest = await axios.post(`${userId}/add-transaction`, { transaction: repeatedTransaction })
 
             const answer = successRequest(transactionsRequest.data)
             if (answer instanceof Error) throw answer
@@ -64,14 +64,14 @@ const ModifiedTransactionButtons = () => {
 
         const checkerHelper = () => (
             typeof modified.transactionType === 'string' &&
-            typeof modified.card === 'object' &&
+            typeof modified.account === 'object' &&
             typeof modified.date === 'object' &&
             typeof modified.count === 'number')
 
         const checkerLogic = {
             expense: () => (typeof modified.category === 'object'),
             income: () => (typeof modified.category === 'object'),
-            transfer: () => (modified.transferCard && typeof modified.transferCard === 'object' && modified.transferCard._id !== modified.card._id),
+            transfer: () => (modified.transferAccount && typeof modified.transferAccount === 'object' && modified.transferAccount._id !== modified.account._id),
         }
 
         if (checkerHelper() && checkerLogic[modified.transactionType]()) {
@@ -86,15 +86,14 @@ const ModifiedTransactionButtons = () => {
             catch (e) { alert(e.message) }
             finally { endOperation() }
         } else {
-            console.log(typeof modified.count)
-            dispatch({type: 'set', transaction: prevTransaction[0]})
+            dispatch({ type: 'set', transaction: prevTransaction[0] })
             alert('Transaction change error, please try this later!')
         }
     }
 
-    const cancelChanges = () => dispatch({type: 'set', transaction: prevTransaction[0]})
+    const cancelChanges = () => dispatch({ type: 'set', transaction: prevTransaction[0] })
 
-    const modifiedBtnDisplay = ({display: `${modifiedMode[0] ? 'flex' : 'none'}`})
+    const modifiedBtnDisplay = ({ display: `${modifiedMode[0] ? 'flex' : 'none'}` })
 
     return (
         <div className={'modified-transaction-buttons'}>
@@ -114,8 +113,8 @@ const ModifiedTransactionButtons = () => {
             ><FontAwesomeIcon icon='fa-solid fa-trash'/>Delete</button>
 
             {/*modified-buttons*/}
-            <div style={modifiedBtnDisplay}><ApplyBtn click={saveChanges}/></div>
-            <div style={modifiedBtnDisplay}><CancelBtn click={cancelChanges}/></div>
+            <div style={modifiedBtnDisplay}><ApplyBtn click={ saveChanges }/></div>
+            <div style={modifiedBtnDisplay}><CancelBtn click={ cancelChanges }/></div>
             {/*modified-buttons*/}
 
             <Loader visible={[loader, setLoader]}></Loader>

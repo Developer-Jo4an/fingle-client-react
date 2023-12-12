@@ -1,19 +1,19 @@
 import React, {useRef} from 'react'
-
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import SwiperEl from '../../swiper/SwiperEl'
-import {useAppContext} from '../../../application/AppProvider'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useAppContext } from '../../../application/AppProvider'
 
 import './options-filter-modal-window.css'
 
 const OptionsFilterModalWindow = () => {
-    const {user} = useAppContext()
-    const {allCards, transactionCategories} = user[0]
-    const {filter, filterEls} = useAppContext()
+    const { user } = useAppContext()
+    const { accounts, transactionCategories } = user[0]
+    const { filter, filterEls } = useAppContext()
 
     const refs = {
         type: useRef(),
-        card: useRef(),
+        account: useRef(),
         expense: useRef(),
         income: useRef(),
     }
@@ -30,19 +30,24 @@ const OptionsFilterModalWindow = () => {
             let futureFilterArr = []
             if (filterArr.includes(value)) futureFilterArr = filterArr.filter(item => item !== value)
             else futureFilterArr = [...filterArr, value]
-            return {...prev, [key]: futureFilterArr}
+            return { ...prev, [key]: futureFilterArr }
         })
         filterEls[1](prev => {
+            const getAccountSign = ({ accountType }) => accountType === 'cash' ? 'fa-solid fa-money-bill' : 'fa-solid fa-credit-card'
+
             const filterElLogic = {
                 type: () => ({...el, id: el._id}),
-                category: () => ({id: el.name, label: el.name, icon: el.sign, color: el.color}),
-                card: () => ({id: el._id, label: el.cardName, icon: 'fa-solid fa-credit-card', color: '#24e597'}),
+                category: () => ({ id: el.name, label: el.name, icon: el.sign, color: el.color }),
+                account: () => ({ id: el._id, label: el.accountName, icon: getAccountSign(el), color: '#24e597' }),
             }
-            const newEl = el.cardName ? filterElLogic.card() : el.label ? filterElLogic.type() : filterElLogic.category()
+            console.log(el)
+            const newEl = el.accountName ? filterElLogic.account() : el.label ? filterElLogic.type() : filterElLogic.category()
             if (prev.find(el => el.id === newEl.id)) return prev.filter(el => el.id !== newEl.id)
             else return [...prev, newEl]
         })
     }
+
+    const getAccountSign = ({ accountType }) => accountType === 'cash' ? 'fa-solid fa-money-bill' : 'fa-solid fa-credit-card'
 
     return (
         <div className={'options-transactions-filter-modal-window'}>
@@ -52,29 +57,29 @@ const OptionsFilterModalWindow = () => {
                     <SwiperEl Ref={refs.type}>
                         {typeArray.map(type => (
                             <swiper-slide
-                                key={type._id}
+                                key={ type._id }
                                 class={`transaction-chunk-element ${filter[0].transactionType.includes(type._id) && 'transaction-chunk-element-active'} `}
                                 style={{'--filter-color': type.color}}
                                 onClick={() => elementActive('transactionType', type._id, type)}
                             ><div className={'transaction-chunk-element__sign'}><FontAwesomeIcon icon={type.icon}/></div>
-                                <div className={'transaction-chunk-element__name'}>{type.label}</div>
+                                <div className={'transaction-chunk-element__name'}>{ type.label }</div>
                             </swiper-slide>
                         ))}
                     </SwiperEl>
                 </div>
             </div>
             <div className={'filter-chunk'}>
-                <div className={'filter-chunk-header'}>Cards</div>
+                <div className={'filter-chunk-header'}>Accounts</div>
                 <div className={'filter-chunk-options'}>
-                    <SwiperEl Ref={refs.card}>
-                        {allCards.map(card => (
+                    <SwiperEl Ref={ refs.account }>
+                        {accounts.map(account => (
                             <swiper-slide
-                                key={card._id}
-                                class={`transaction-chunk-element ${filter[0].card.includes(card._id) && 'transaction-chunk-element-active'}`}
-                                style={{'--filter-color': '#24e597'}}
-                                onClick={() => elementActive('card', card._id, card)}
-                            ><div className={'transaction-chunk-element__sign'}><FontAwesomeIcon icon='fa-solid fa-credit-card'/></div>
-                                <div className={'transaction-chunk-element__name'}>{card.cardName}</div>
+                                key={ account._id }
+                                class={`transaction-chunk-element ${filter[0].account.includes(account._id) && 'transaction-chunk-element-active'}`}
+                                style={{ '--filter-color': '#24e597' }}
+                                onClick={() => elementActive('account', account._id, account)}
+                            ><div className={'transaction-chunk-element__sign'}><FontAwesomeIcon icon={ getAccountSign(account) }/></div>
+                                <div className={'transaction-chunk-element__name'}>{ account.accountName }</div>
                             </swiper-slide>
                         ))}
                     </SwiperEl>
@@ -83,15 +88,15 @@ const OptionsFilterModalWindow = () => {
             <div className={'filter-chunk'}>
                 <div className={'filter-chunk-header'}>Expense</div>
                 <div className={'filter-chunk-options'}>
-                    <SwiperEl Ref={refs.expense}>
+                    <SwiperEl Ref={ refs.expense }>
                         {Object.values(transactionCategories.expense).map(category => (
                             <swiper-slide
-                                key={category.name}
+                                key={ category.name }
                                 class={`transaction-chunk-element ${filter[0].category.includes(category.name) && 'transaction-chunk-element-active'}`}
-                                style={{'--filter-color': category.color}}
+                                style={{ '--filter-color': category.color }}
                                 onClick={() => elementActive('category', category.name, category)}
                             ><div className={'transaction-chunk-element__sign'}><FontAwesomeIcon icon={category.sign}/></div>
-                                <div className={'transaction-chunk-element__name'}>{category.name}</div>
+                                <div className={'transaction-chunk-element__name'}>{ category.name }</div>
                             </swiper-slide>
                         ))}
                     </SwiperEl>
@@ -100,7 +105,7 @@ const OptionsFilterModalWindow = () => {
             <div className={'filter-chunk'}>
                 <div className={'filter-chunk-header'}>Income</div>
                 <div className={'filter-chunk-options'}>
-                    <SwiperEl Ref={refs.income}>
+                    <SwiperEl Ref={ refs.income }>
                         {Object.values(transactionCategories.income).map(category => (
                             <swiper-slide
                                 key={category.name}
@@ -109,7 +114,7 @@ const OptionsFilterModalWindow = () => {
                                 onClick={() => elementActive('category', category.name, category)}
                             >
                                 <div className={'transaction-chunk-element__sign'}><FontAwesomeIcon icon={category.sign}/></div>
-                                <div className={'transaction-chunk-element__name'}>{category.name}</div>
+                                <div className={'transaction-chunk-element__name'}>{ category.name }</div>
                             </swiper-slide>
                         ))}
                     </SwiperEl>

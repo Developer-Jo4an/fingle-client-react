@@ -1,15 +1,14 @@
 header {
-  width: calc(100vw - 20px);
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-  border-radius: 20px;
   padding: 10px;
+  border-radius: 0 0 20px 20px;
   overflow: hidden;
   position: sticky;
-  top: 10px;
-  left: 10px;
+  top: 0;
+  left: 0;
   z-index: 90;
   transition: 0.3s;
   box-shadow: 0 0 15px lightgray;

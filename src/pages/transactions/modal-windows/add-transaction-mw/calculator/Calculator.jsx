@@ -12,16 +12,16 @@ import './calculator.css'
 
 const Calculator = () => {
 
-    const {user} = useAppContext()
-    const {addMWS} = useTransactionsContext()
-    const {newTransaction, refs, messageMWS, loader, result} = useAddTransactionContext()
+    const { user} = useAppContext()
+    const { addMWS } = useTransactionsContext()
+    const { newTransaction, refs, messageMWS, loader, result } = useAddTransactionContext()
     const [futureTransaction, dispatch] = newTransaction
     const [apply, setApply] = useState(false)
 
     const successRequest = data => {
         if (data.status) {
-            const { transactions, allCards } = data
-            user[1](prev => ({...prev, transactions, allCards}))
+            const { transactions, accounts } = data
+            user[1](prev => ({ ...prev, transactions, accounts }))
         } else return new Error(data.message)
     }
 
@@ -57,15 +57,15 @@ const Calculator = () => {
         }
 
         const checker = () => {
-            if (!futureTransaction.transactionType) {alert('No type'); return false}
-            if (!futureTransaction.date) {alert('No date'); return false}
-            if (!futureTransaction.card) {handleError(refs.card); return false}
-            if (!futureTransaction.count) {handleError(refs.count); return false}
+            if (!futureTransaction.transactionType) { alert('No type'); return false }
+            if (!futureTransaction.date) { alert('No date'); return false }
+            if (!futureTransaction.account) { handleError(refs.account); return false }
+            if (!futureTransaction.count) { handleError(refs.count); return false }
 
             const checkerLogic = {
-                expense: () => {if (!futureTransaction.category) {handleError(refs.expense); return false} else return true},
-                income: () => {if (!futureTransaction.category) {handleError(refs.income); return false} else return true},
-                transfer: () => {if (!futureTransaction.transferCard) {handleError(refs.transfer); return false} else return true},
+                expense: () => { if (!futureTransaction.category) { handleError(refs.expense); return false } else return true },
+                income: () => { if (!futureTransaction.category) { handleError(refs.income); return false } else return true },
+                transfer: () => { if (!futureTransaction.transferAccount) { handleError(refs.transfer); return false } else return true },
             }
             return checkerLogic[futureTransaction.transactionType]()
         }
@@ -88,11 +88,11 @@ const Calculator = () => {
                 else {
                     if (checker()) {
                         if (count.toString().includes('.')) {
-                            dispatch({type: 'count', count: count.toFixed(2)})
+                            dispatch({ type: 'count', count: count.toFixed(2) })
                             result[1](count.toFixed(2).toString())
                         }
                         else {
-                            dispatch({type: 'count', count: count})
+                            dispatch({ type: 'count', count: count })
                             result[1](count.toString())
                             setApply(true)
                         }
@@ -148,10 +148,10 @@ const Calculator = () => {
         <div className={'calculator'}>
             {calculatorArr.map(item => (
                 <div
-                    key={item.value}
+                    key={ item.value }
                     className={'calculator-btn'}
                     onClick={() => calculatorChange(item)}
-                >{item.label}</div>
+                >{ item.label }</div>
             ))}
             <Loader visible={loader}/>
         </div>
