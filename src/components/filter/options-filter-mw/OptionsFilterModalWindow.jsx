@@ -55,16 +55,20 @@ const OptionsFilterModalWindow = () => {
                 <div className={'filter-chunk-header'}>Type</div>
                 <div className={'filter-chunk-options'}>
                     <SwiperEl Ref={refs.type}>
+                        <swiper-slide class={'swiper-split'}></swiper-slide>
                         {typeArray.map(type => (
                             <swiper-slide
-                                key={ type._id }
+                                key={type._id}
                                 class={`transaction-chunk-element ${filter[0].transactionType.includes(type._id) && 'transaction-chunk-element-active'} `}
                                 style={{'--filter-color': type.color}}
                                 onClick={() => elementActive('transactionType', type._id, type)}
-                            ><div className={'transaction-chunk-element__sign'}><FontAwesomeIcon icon={type.icon}/></div>
-                                <div className={'transaction-chunk-element__name'}>{ type.label }</div>
+                            >
+                                <div className={'transaction-chunk-element__sign'}><FontAwesomeIcon icon={type.icon}/>
+                                </div>
+                                <div className={'transaction-chunk-element__name'}>{type.label}</div>
                             </swiper-slide>
                         ))}
+                        <swiper-slide class={'swiper-split'}></swiper-slide>
                     </SwiperEl>
                 </div>
             </div>
@@ -72,6 +76,7 @@ const OptionsFilterModalWindow = () => {
                 <div className={'filter-chunk-header'}>Accounts</div>
                 <div className={'filter-chunk-options'}>
                     <SwiperEl Ref={ refs.account }>
+                        <swiper-slide class={'swiper-split'}></swiper-slide>
                         {accounts.map(account => (
                             <swiper-slide
                                 key={ account._id }
@@ -82,6 +87,7 @@ const OptionsFilterModalWindow = () => {
                                 <div className={'transaction-chunk-element__name'}>{ account.accountName }</div>
                             </swiper-slide>
                         ))}
+                        <swiper-slide class={'swiper-split'}></swiper-slide>
                     </SwiperEl>
                 </div>
             </div>
@@ -89,6 +95,7 @@ const OptionsFilterModalWindow = () => {
                 <div className={'filter-chunk-header'}>Expense</div>
                 <div className={'filter-chunk-options'}>
                     <SwiperEl Ref={ refs.expense }>
+                        <swiper-slide class={'swiper-split'}></swiper-slide>
                         {Object.values(transactionCategories.expense).map(category => (
                             <swiper-slide
                                 key={ category.name }
@@ -99,6 +106,7 @@ const OptionsFilterModalWindow = () => {
                                 <div className={'transaction-chunk-element__name'}>{ category.name }</div>
                             </swiper-slide>
                         ))}
+                        <swiper-slide class={'swiper-split'}></swiper-slide>
                     </SwiperEl>
                 </div>
             </div>
@@ -106,6 +114,7 @@ const OptionsFilterModalWindow = () => {
                 <div className={'filter-chunk-header'}>Income</div>
                 <div className={'filter-chunk-options'}>
                     <SwiperEl Ref={ refs.income }>
+                        <swiper-slide class={'swiper-split'}></swiper-slide>
                         {Object.values(transactionCategories.income).map(category => (
                             <swiper-slide
                                 key={category.name}
@@ -117,6 +126,7 @@ const OptionsFilterModalWindow = () => {
                                 <div className={'transaction-chunk-element__name'}>{ category.name }</div>
                             </swiper-slide>
                         ))}
+                        <swiper-slide class={'swiper-split'}></swiper-slide>
                     </SwiperEl>
                 </div>
             </div>

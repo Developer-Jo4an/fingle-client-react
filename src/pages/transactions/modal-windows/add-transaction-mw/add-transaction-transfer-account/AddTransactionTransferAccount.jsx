@@ -23,22 +23,28 @@ const AddTransactionTransferAccount = ({ Ref }) => {
 
     return (
         <div className={'slider-wrapper add-transaction-transfer-account-wrapper'}>
-            <SwiperEl Ref={ Ref }>
-                { accounts.map((transferAccount, i) => (
+            <SwiperEl Ref={Ref}>
+                <swiper-slide class={'swiper-split'}></swiper-slide>
+                {accounts.map((transferAccount, i) => (
                     <swiper-slide
                         key={transferAccount._id}
                         class={`add-transaction-transfer-account ${futureTransaction.transferAccount && futureTransaction.transferAccount._id === transferAccount._id ? 'add-transaction-transfer-account-active' : ''}`}
                         ref={el => transferAccountsRefs.current[i] = el}
                         onClick={() => selectTransferAccount(transferAccount, i)}
-                    ><div className={'add-transaction-transfer-account-info'}>
-                        <div className={'add-transaction-transfer-account-info__sign'}>
-                            <div className={'add-transaction-transfer-account-info__sign-wrapper'}>
-                                <FontAwesomeIcon icon={ getAccountSign(transferAccount) }/>
+                    >
+                        <div className={'add-transaction-transfer-account-info'}>
+                            <div className={'add-transaction-transfer-account-info__sign'}>
+                                <div className={'add-transaction-transfer-account-info__sign-wrapper'}>
+                                    <FontAwesomeIcon icon={getAccountSign(transferAccount)}/>
+                                </div>
                             </div>
+                            <div
+                                className={'add-transaction-transfer-account-info__name'}>{transferAccount.accountName}</div>
+                            <div
+                                className={'add-transaction-transfer-account-info__count'}>{roundUp(transferAccount.count)}</div>
                         </div>
-                        <div className={'add-transaction-transfer-account-info__name'}>{ transferAccount.accountName }</div>
-                        <div className={'add-transaction-transfer-account-info__count'}>{ roundUp(transferAccount.count) }</div>
-                    </div></swiper-slide>))}
+                    </swiper-slide>))}
+                <swiper-slide class={'swiper-split'}></swiper-slide>
             </SwiperEl>
         </div>
     )

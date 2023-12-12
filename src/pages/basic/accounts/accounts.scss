@@ -1,5 +1,85 @@
 @import '../../../styles/zeroing/global';
 
 .accounts-section {
-    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: inset 0 0 15px lightgray;
+
+    position: relative;
+
+    padding: 20px 0;
+}
+
+.account {
+    width: 90%;
+
+    align-self: center;
+    display: grid;
+    grid-template-columns: 64px 1fr 1fr;
+    grid-template-rows: repeat(2, 32px);
+    column-gap: 10px;
+
+    border-radius: 20px;
+
+    background-image: linear-gradient(60deg, $main-green-color 40%, $main-green-dark-color);
+
+    padding: 10px;
+
+    div {
+        display: flex;
+        align-items: center;
+
+        color: #fff;
+    }
+}
+
+.account-type-sign {
+    grid-row: span 2;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+.account-name-wrapper {
+    font-size: 18px;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.account-count {
+    justify-content: flex-end;
+
+    padding-right: 10px;
+}
+
+.account-count-wrapper {
+    font-family: custom-bold, Manrope, sans-serif;
+
+    font-size: 24px;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.account-to-total {
+    justify-content: flex-end;
+
+    font-size: 18px;
+
+    gap: 10px;
+
+    padding-right: 10px;
+}
+
+.account-keeper-name {
+    font-size: 18px;
 }

@@ -23,17 +23,21 @@ const AddTransactionSubMoreInfo = () => {
             className={'add-transaction-sub-more-info'}
         >{futureTransaction.category && futureTransaction.category.subCategories && (
             <SwiperEl Ref={transferRef}>
+                <swiper-slide class={'swiper-split'}></swiper-slide>
                 {Object.values(futureTransaction.category.subCategories).map(category => (
                     <swiper-slide
-                        key={ category._id }
+                        key={category._id}
                         class={`add-transaction-sub-more-info-slide ${futureTransaction.subCategory ? futureTransaction.subCategory._id === category._id ?
                             'add-transaction-sub-more-info-slide-active' : '' : ''}`}
-                        style={{ '--category-color': category.color }}
+                        style={{'--category-color': category.color}}
                         onClick={() => selectCategory(category)}
-                    ><div className={'add-transaction-sub-more-info__sign'}><FontAwesomeIcon icon={category.sign}/></div>
-                        <div className={'add-transaction-sub-more-info__name'}>{ category.name }</div>
+                    >
+                        <div className={'add-transaction-sub-more-info__sign'}><FontAwesomeIcon icon={category.sign}/>
+                        </div>
+                        <div className={'add-transaction-sub-more-info__name'}>{category.name}</div>
                     </swiper-slide>
                 ))}
+                <swiper-slide class={'swiper-split'}></swiper-slide>
             </SwiperEl>
         )}
         </div>

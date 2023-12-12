@@ -20,22 +20,25 @@ const AddTransactionAccount = () => {
 
     return (
         <div className={'slider-wrapper'}>
-            <SwiperEl Ref={ refs.account }>
-            {accounts.map(account => (
-                <swiper-slide
-                    key={ account._id }
-                    class={`add-transaction-account ${futureTransaction.account && futureTransaction.account._id === account._id ? 'add-transaction-account-active' : ''}`}
-                    onClick={() => selectAccount(account)}
-                ><div className={'add-transaction-account-info'}>
-                        <div className={'add-transaction-account-info__sign'}>
-                            <div className={'add-transaction-account-info__sign-wrapper'}>
-                                <FontAwesomeIcon icon={ getAccountSign(account) }/>
+            <SwiperEl Ref={refs.account}>
+                <swiper-slide class={'swiper-split'}></swiper-slide>
+                { accounts.map(account => (
+                    <swiper-slide
+                        key={account._id}
+                        class={`add-transaction-account ${futureTransaction.account && futureTransaction.account._id === account._id ? 'add-transaction-account-active' : ''}`}
+                        onClick={() => selectAccount(account)}
+                    >
+                        <div className={'add-transaction-account-info'}>
+                            <div className={'add-transaction-account-info__sign'}>
+                                <div className={'add-transaction-account-info__sign-wrapper'}>
+                                    <FontAwesomeIcon icon={getAccountSign(account)}/>
+                                </div>
                             </div>
+                            <div className={'add-transaction-account-info__name'}>{account.accountName}</div>
+                            <div className={'add-transaction-account-info__count'}>{roundUp(account.count)} $</div>
                         </div>
-                        <div className={'add-transaction-account-info__name'}>{ account.accountName }</div>
-                        <div className={'add-transaction-account-info__count'}>{ roundUp(account.count) } $</div>
-                    </div>
-                </swiper-slide>))}
+                    </swiper-slide>)) }
+                <swiper-slide class={'swiper-split'}></swiper-slide>
             </SwiperEl>
         </div>
     )

@@ -1,12 +1,17 @@
-import React, {useContext} from 'react'
+import React, { useContext, useRef } from 'react'
 
 const BasicContext = React.createContext()
-const useBasicContext = () => useContext(BasicContext)
+export const useBasicContext = () => useContext(BasicContext)
 
 const BasicProvider = ({ children }) => {
+
+    const refs = {
+        accounts: useRef()
+    }
+
     return (
         <BasicContext.Provider value={{
-            a: 1
+            refs,
         }}>{ children }</BasicContext.Provider>
     )
 }
