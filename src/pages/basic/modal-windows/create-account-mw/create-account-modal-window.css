@@ -1,0 +1,170 @@
+.create-account-modal-window {
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+h4 {
+  font-size: 24px;
+}
+
+.create-card-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.create-account-name-input {
+  width: 280px;
+  height: 50px;
+  border-radius: 20px;
+  border: 2px solid #24e597;
+  padding: 0 10px;
+  font-size: 16px;
+}
+.create-account-name-input::placeholder {
+  font-size: 14px;
+  color: lightgray;
+}
+
+.create-account-type-toggle-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.create-account-type-label {
+  font-size: 18px;
+}
+
+.create-account-type-toggle {
+  width: 70px;
+  padding: 6px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  box-shadow: 0 0 15px #a6a6a6;
+  background-color: #24e597;
+}
+
+.create-account-type-toggle-value {
+  font-size: 18px;
+  font-family: custom-bold, manrope, sans-serif;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.create-account-type-toggle-value-hide {
+  opacity: 0;
+}
+
+.create-account-preview {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 45px 1fr auto;
+  grid-template-rows: 45px;
+  column-gap: 10px;
+  padding: 10px;
+  border-radius: 20px;
+  box-shadow: 0 0 15px lightgray;
+}
+
+.create-account-sign-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.create-account-card-sign {
+  width: 40px;
+  height: 26px;
+  position: relative;
+  border-radius: 5px;
+  background-image: linear-gradient(60deg, #24e597 50%, #05bc19);
+}
+
+.create-account-sign-card__number {
+  width: 10px;
+  height: 5px;
+  border-radius: 4px;
+  background-color: #fff;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
+
+.create-account-sign-card__type {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #fff;
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+}
+
+.create-account-cash-sign {
+  width: 40px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: custom-bold, Manrope, sans-serif;
+  border-radius: 5px;
+  background-image: linear-gradient(60deg, #24e597 50%, #05bc19);
+}
+
+.create-account-name-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+}
+
+.create-account-name-value {
+  font-size: 18px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.create-account-count-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+
+.create-account-count-value {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.create-account-btns {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.apply-btn, .cancel-btn {
+  box-shadow: 0 0 15px lightgray;
+}
+
+@media (max-width: 320px) {
+  .create-account-modal-window {
+    width: 300px;
+  }
+  .create-account-name-input {
+    width: 260px;
+  }
+}
+
+/*# sourceMappingURL=create-account-modal-window.css.map */

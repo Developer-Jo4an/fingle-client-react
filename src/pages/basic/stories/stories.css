@@ -1,6 +1,16 @@
 .stories-section {
   width: calc(100vw - 40px);
   align-self: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px 0;
+  border-radius: 20px;
+  box-shadow: 0 0 15px lightgray;
+}
+
+.stories-header-wrapper {
+  padding-left: 20px;
 }
 
 .story {

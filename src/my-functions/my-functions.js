@@ -1,4 +1,5 @@
 import moment from 'moment'
+import React from 'react';
 
 export const userId = new URL(window.location.href).pathname !== '/' ? new URL(window.location.href).pathname : '/64df628be6b9b3d99d542be5'
 
@@ -77,6 +78,21 @@ export function formattedPeriod(period) {
 }
 
 export const roundUp = sum => sum.toString().includes('.') ? sum.toFixed(2) : sum
+
+export const getAccountSign = type => {
+    const typeLogic = {
+        card: () => (
+            <div className={'account-sign-card'}>
+                <div className={'account-sign-card__number'}></div>
+                <div className={'account-sign-card__type'}></div>
+            </div>
+        ),
+        cash: () => <div className={'account-sign-cash'}><div className={'account-sign-cash__sign-wrapper'}>$</div></div>
+    }
+    return typeLogic[type]()
+}
+
+export const getCountStyle = count => +count === 0 ? { color: '#f5d544' } : +count > 0 ? { color: '#24e597' } : { color: '#ee3a3a' }
 
 // proto
 

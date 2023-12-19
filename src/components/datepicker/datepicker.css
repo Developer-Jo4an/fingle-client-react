@@ -54,6 +54,12 @@ body {
   background-color: transparent;
 }
 
+.swiper-split-vertical {
+  height: 10px !important;
+  width: 100%;
+  background-color: transparent;
+}
+
 @media (max-width: 320px) {
   body {
     min-width: 320px;

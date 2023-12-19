@@ -6,9 +6,9 @@ import FilterSection from '../filter/filter-section/FilterSection'
 import ModalWindow from '../modal-window/ModalWindow'
 import AnalyticsCategoryModalWindow from './modal-windows/analytics-category-mw/AnalyticsCategoryModalWindow'
 import AnalyticsPeriodReport from './analytics-period-report/AnalyticsPeriodReport'
+import MoneyStreamInfo from './money-stream-info/MoneyStreamInfo'
 
 import './analytics.css'
-import MoneyStreamInfo from './money-stream-info/MoneyStreamInfo';
 
 const Analytics = () => {
     return (
@@ -19,7 +19,7 @@ const Analytics = () => {
                 <FilterSection/>
                 <MoneyStreamInfo/>
                 <AnalyticsPeriodReport/>
-                <ModalWindow position={'bottom'} nav={'categoryMWS'} context={useAnalyticsContext}><AnalyticsCategoryModalWindow/></ModalWindow>
+                <ModalWindow position={'bottom'} nav={'categoryMWS'} context={ useAnalyticsContext }><AnalyticsCategoryModalWindow/></ModalWindow>
             </section>
         </AnalyticsProvider>
     )

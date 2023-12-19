@@ -1,18 +1,6 @@
-@import '../../../../../styles/zeroing/global';
+@import '../../../../../styles/zeroing/global', '../modified-transaction-modal-window-settings';
 
-.modified-transaction-transfer-account {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-
-    padding: 10px 20px;
-
-    border-radius: 20px;
-
-    background-color: #eaeaea;
-
-    transition: 0.3s;
-}
+.modified-transaction-transfer-account { @extend %visible-info }
 
 .always-visible-transfer-account-section {
     display: flex;
@@ -24,13 +12,19 @@
 .modified-option-transfer-account-name {
     font-size: 18px;
 
+    padding-left: 20px;
+
     font-family: custom-bold, Manrope, sans-serif;
+
+    white-space: nowrap;
 }
 
 .modified-option-transfer-account-value {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+
+    padding-right: 20px;
 }
 
 .invisible-transfer-account-section {

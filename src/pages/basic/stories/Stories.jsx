@@ -10,29 +10,34 @@ const Stories = () => {
             header: 'Иван Золо сдал егэ на 100 баллов'
         },
         {
-            header: 'Алексей Шевцов выебал Карину стримершу, естественно, на стриме'
+            header: 'Иван Золо сдал егэ на 100 баллов'
         },
         {
-            header: 'Матвей cмог победить Артема Лобова стал чемпионом DragonCombat'
+            header: 'Иван Золо сдал егэ на 100 баллов'
         },
         {
-            header: 'Банан обдрочил и оставил струганину на камере из-зп поста выше'
+            header: 'Иван Золо сдал егэ на 100 баллов'
         },
         {
-            header: 'Илон Маск сказал, что его настоящее имя сукадрюкин, что в переводе означает: Я родился от женщины и я дрочу'
+            header: 'Иван Золо сдал егэ на 100 баллов'
         }
     ]
 
 
     return (
         <section className={'stories-section'}>
+            <div className={'stories-header-wrapper'}>
+                <h2>Actual</h2>
+            </div>
             <SwiperEl>
+                <swiper-slide class={'swiper-split'}></swiper-slide>
                 {storiesArray.map(({ header }, i) => (
                     <swiper-slide
                         class={'story'}
                         key={i}
                     >{ header }</swiper-slide>
                 ))}
+                <swiper-slide class={'swiper-split'}></swiper-slide>
             </SwiperEl>
         </section>
     )

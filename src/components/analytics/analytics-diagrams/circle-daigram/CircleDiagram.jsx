@@ -45,12 +45,12 @@ const CircleDiagram = () => {
                         onClick={ totalToggle }
                         className={`circle-diagram-total ${activeTotal[0] === 'expense' ? 'circle-diagram-total-active' : ''}`}
                         style={{ '--total-color': '#ee3a3a' }}
-                    >{ total[0].expense } USD</div>
+                    >{ total[0].expense } $</div>
                     <div
                         onClick={ totalToggle }
                         className={`circle-diagram-total ${activeTotal[0] === 'income' ? 'circle-diagram-total-active' : ''}`}
                         style={{ '--total-color': '#24e597' }}
-                    >{ total[0].income } USD</div>
+                    >{ total[0].income } $</div>
                 </div>
             </div>
             <div className={'circle-diagram-info-wrapper'}>

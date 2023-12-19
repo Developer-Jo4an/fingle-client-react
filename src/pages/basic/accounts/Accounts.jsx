@@ -1,45 +1,45 @@
 import React from 'react'
-import SwiperEl from '../../../components/swiper/SwiperEl'
+import SwiperVerticalEl from '../../../components/swiper/SwiperVerticalEl'
 
 import { useAppContext } from '../../../application/AppProvider'
 import { useBasicContext } from '../general/BasicProvider'
-import { roundUp } from '../../../my-functions/my-functions'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { getAccountSign, getCountStyle, roundUp } from '../../../my-functions/my-functions'
 
 import './accounts.css'
 
 const Accounts = () => {
 
     const { user } = useAppContext()
-    const { refs } = useBasicContext()
+    const { refs, accountsMWS } = useBasicContext()
     const { accounts } = user[0]
 
-    const [cash, card] = accounts
-
-    const getTotalSign = bool => bool ? <FontAwesomeIcon icon='fa-solid fa-check'/> : <FontAwesomeIcon icon='fa-solid fa-xmark'/>
-
-    const getAccountTypeSign = type => type === 'cash' ? 'fa-solid fa-money-bill' : 'fa-solid fa-credit-card'
+    const getToTotalInfo = toTotal => toTotal ? 'Yes' : 'No'
 
     return (
         <section className={'accounts-section'}>
-            <SwiperEl Ref={refs.accounts}>
-                <swiper-slide class={'swiper-split'}></swiper-slide>
-                {accounts.map(account => (
-                    <swiper-slide class={'account'}>
-                        <div className={'account-type-sign'}><FontAwesomeIcon
-                            icon={ getAccountTypeSign(account.accountType) }/></div>
-                        <div className={'account-name'}>
-                            <div className={'account-name-wrapper'}>{account.accountName}</div>
-                        </div>
-                        <div className={'account-count'}>
-                            <div className={'account-count-wrapper'}>{roundUp(account.count)} $</div>
-                        </div>
-                        <div className={'account-keeper-name'}>{account.keeperName}</div>
-                        <div className={'account-to-total'}>Total: {getTotalSign(account.toTotal)}</div>
-                    </swiper-slide>
-                ))}
-                <swiper-slide class={'swiper-split'}></swiper-slide>
-            </SwiperEl>
+            <div className={'accounts-section-header'}>
+                <h2>Accounts</h2>
+                <div
+                    className={'accounts-section-settings'}
+                    onClick={() => accountsMWS[1](true)}
+                >
+                    <FontAwesomeIcon icon='fa-solid fa-gear'/>
+                </div>
+            </div>
+            <div className={'accounts-wrapper'}>
+                <SwiperVerticalEl Ref={ refs.accounts }>
+                    <swiper-slide class={'swiper-split-vertical'}></swiper-slide>
+                    { accounts.map(account => (
+                        <swiper-slide key={ account._id } class={'account-tile'}>
+                            <div className={'account-sign-wrapper'}>{ getAccountSign(account.accountType) }</div>
+                            <div className={'account-name-wrapper'}><div className={'account-name-value'}>{ account.accountName }</div></div>
+                            <div className={'account-count-wrapper'}><div style={ getCountStyle(account.count) } className={'account-count-value'}>{ roundUp(account.count) } $</div></div>
+                        </swiper-slide>
+                    ))}
+                    <swiper-slide class={'swiper-split-vertical'}></swiper-slide>
+                </SwiperVerticalEl>
+            </div>
         </section>
     )
 }

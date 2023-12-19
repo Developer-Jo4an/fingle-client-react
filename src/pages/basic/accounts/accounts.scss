@@ -1,85 +1,152 @@
 @import '../../../styles/zeroing/global';
-
-.accounts-section {
+// main wrappers
+.accounts-section { @extend %tile-settings;
     display: flex;
     flex-direction: column;
-    box-shadow: inset 0 0 15px lightgray;
-
-    position: relative;
-
-    padding: 20px 0;
+    gap: 10px;
 }
 
-.account {
-    width: 90%;
+.accounts-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-    align-self: center;
-    display: grid;
-    grid-template-columns: 64px 1fr 1fr;
-    grid-template-rows: repeat(2, 32px);
-    column-gap: 10px;
+.accounts-section-settings {
+    padding: 10px;
+
+    svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    transition: .3s;
+
+    &:active { transform: rotate(180deg) }
+}
+
+.accounts-wrapper {
+    height: 250px;
+
+    padding: 0 10px;
 
     border-radius: 20px;
 
-    background-image: linear-gradient(60deg, $main-green-color 40%, $main-green-dark-color);
+    background-color: $main-gray-background;
+
+    swiper-container { height: 100% !important }
+}
+
+// tile
+.account-tile {
+    height: auto !important;
+
+    display: grid;
+    grid-template-columns: 45px 1fr auto;
+    grid-template-rows: 40px;
+    column-gap: 10px;
+
+    background-color: #fff;
+
+    border-radius: 20px;
 
     padding: 10px;
 
-    div {
-        display: flex;
-        align-items: center;
+    transition: .3s;
 
-        color: #fff;
+    &:active { background-color: $main-gray-background }
+}
+// sign
+
+.account-sign-wrapper {
+    grid-row: span 2;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+// sign card
+.account-sign-card {
+    width: 40px;
+    height: 26px;
+
+    position: relative;
+
+    border-radius: 5px;
+
+    background-image: linear-gradient(60deg, $main-green-color 50%, $main-green-dark-color);
+
+    .account-sign-card__number {
+        width: 10px;
+        height: 5px;
+
+        border-radius: 4px;
+
+        background-color: #fff;
+
+        position: absolute;
+        top: 5px;
+        left: 5px;
+    }
+
+    .account-sign-card__type {
+        width: 6px;
+        height: 6px;
+
+        border-radius: 50%;
+
+        background-color: #fff;
+
+        position: absolute;
+        bottom: 5px;
+        right: 5px;
     }
 }
 
-.account-type-sign {
+// sign cash
+.account-sign-cash {
+    width: 40px;
+    height: 26px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #fff;
+
+    font-family: custom-bold, Manrope, sans-serif;
+
+    border-radius: 5px;
+
+    background-image: linear-gradient(60deg, $main-green-color 50%, $main-green-dark-color);
+}
+
+// name
+.account-name-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    div {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}
+
+// count
+.account-count-wrapper {
     grid-row: span 2;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    svg {
-        width: 30px;
-        height: 30px;
+    div {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 }
 
-.account-name-wrapper {
-    font-size: 18px;
-
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-.account-count {
-    justify-content: flex-end;
-
-    padding-right: 10px;
-}
-
-.account-count-wrapper {
-    font-family: custom-bold, Manrope, sans-serif;
-
-    font-size: 24px;
-
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-.account-to-total {
-    justify-content: flex-end;
-
-    font-size: 18px;
-
-    gap: 10px;
-
-    padding-right: 10px;
-}
-
-.account-keeper-name {
-    font-size: 18px;
-}
+.swiper-split-vertical { height: 0 !important }

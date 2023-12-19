@@ -23,4 +23,19 @@
   transition: 0.1s;
 }
 
+.close-modal-window-center-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px;
+}
+.close-modal-window-center-btn:active svg {
+  color: lightgray;
+}
+.close-modal-window-center-btn svg {
+  width: 20px;
+  height: 20px;
+  transition: 0.1s;
+}
+
 /*# sourceMappingURL=close-modal-window-btn.css.map */

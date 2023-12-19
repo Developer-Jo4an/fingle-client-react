@@ -1,0 +1,28 @@
+.total-section {
+  width: calc(100vw - 40px);
+  align-self: center;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 15px lightgray;
+}
+
+.total-info-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.total-value {
+  font-size: 24px;
+  align-self: flex-end;
+}
+
+.total-info-label {
+  color: #a6a6a6;
+  font-size: 14px;
+}
+
+/*# sourceMappingURL=total.css.map */

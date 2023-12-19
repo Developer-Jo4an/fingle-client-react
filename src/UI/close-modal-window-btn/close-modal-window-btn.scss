@@ -30,3 +30,20 @@
 
     transition: .1s;
 }
+
+.close-modal-window-center-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    padding: 10px;
+
+    &:active { svg { color: lightgray } }
+
+    svg {
+        width: 20px;
+        height: 20px;
+
+        transition: .1s;
+    }
+}

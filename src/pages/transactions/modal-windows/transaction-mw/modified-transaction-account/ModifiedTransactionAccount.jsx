@@ -30,6 +30,7 @@ const ModifiedTransactionAccount = () => {
                 className={'invisible-account-section'}
                 style={{height: modifiedMode[0] ? 'auto' : '0px'}}
             ><SwiperEl Ref={ sliderRef }>
+                <swiper-slide class={'swiper-split'}></swiper-slide>
                 { user[0].accounts.map(account => (
                     <swiper-slide
                         key={ account._id }
@@ -38,6 +39,7 @@ const ModifiedTransactionAccount = () => {
                     ><FontAwesomeIcon icon={ getAccountSign(account) }/>{ account.accountName }
                     </swiper-slide>
                 )) }
+                <swiper-slide class={'swiper-split'}></swiper-slide>
             </SwiperEl>
             </div>
         </div>

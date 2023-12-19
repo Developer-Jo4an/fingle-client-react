@@ -1,6 +1,6 @@
-@import '../../../styles/zeroing/global';
+@import '../../styles/zeroing/global';
 
-.add-transaction-btn {
+.add-btn {
     width: 50px;
     height: 50px;
 
@@ -14,7 +14,7 @@
 
     position: fixed;
     right: 25px;
-    bottom: 95px;
+    bottom: var(--bottom-px);
     z-index: 91;
 
     transition: 2s;

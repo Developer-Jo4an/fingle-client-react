@@ -14,6 +14,8 @@
 .modified-option-date-name {
     font-size: 18px;
 
+    padding-left: 20px;
+
     font-family: custom-bold, Manrope, sans-serif;
 }
 
@@ -21,6 +23,8 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+
+    padding-right: 20px;
 }
 
 .modified-option-date-value {

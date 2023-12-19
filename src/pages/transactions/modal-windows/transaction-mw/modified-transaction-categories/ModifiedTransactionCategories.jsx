@@ -46,6 +46,7 @@ const ModifiedTransactionCategories = () => {
                 className={`invisible-category-section ${modified.category.subCategories ? 'get-gap' : ''}`}
                 style={{height: modifiedMode[0] ? 'auto' : '0px'}}
             ><SwiperEl Ref={sliderRef}>
+                <swiper-slide class={'swiper-split'}></swiper-slide>
                 {Object.values(user[0].transactionCategories[nav]).map(category => (
                     <swiper-slide
                         key={category.name}
@@ -55,9 +56,11 @@ const ModifiedTransactionCategories = () => {
                     ><FontAwesomeIcon icon={category.sign}/>{category.name}
                     </swiper-slide>
                 ))}
+                <swiper-slide class={'swiper-split'}></swiper-slide>
             </SwiperEl>
-                {modified.category.subCategories &&
+                { modified.category.subCategories &&
                 <SwiperEl Ref={subSliderRef}>
+                    <swiper-slide class={'swiper-split'}></swiper-slide>
                     {Object.values(modified.category.subCategories).map(subCategory => (
                         <swiper-slide
                             key={subCategory.name}
@@ -66,7 +69,8 @@ const ModifiedTransactionCategories = () => {
                             onClick={() => changeSubCategory(subCategory)}
                         ><FontAwesomeIcon icon={subCategory.sign}/>{subCategory.name}
                         </swiper-slide>
-                    ))}
+                    )) }
+                <swiper-slide class={'swiper-split'}></swiper-slide>
                 </SwiperEl>
                 }
             </div>
