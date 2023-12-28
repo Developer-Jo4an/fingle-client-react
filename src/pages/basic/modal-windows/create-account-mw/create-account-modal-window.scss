@@ -49,39 +49,60 @@ h4 { font-size: 24px }
 .create-account-type-toggle-wrapper {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
 }
 
-.create-account-type-label {
-    font-size: 18px;
+.create-account-type-toggle {
+    display: flex;
+
+    background-color: lightgray;
+
+    border-radius: 20px;
+
+    position: relative;
+
+    overflow: hidden;
+
 }
 
-.create-account-type-toggle {
+.create-account-type-toggle-btn {
     width: 70px;
-
-    padding: 6px 0;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    border-radius: 10px;
+    padding: 10px 0;
 
-    box-shadow: 0 0 15px $main-gray-color;
-
-    background-color: $main-green-color;
-}
-
-.create-account-type-toggle-value {
-    font-size: 18px;
-    font-family: custom-bold, manrope, sans-serif;
-
-    color: #fff;
+    font-family: custom-bold, Manrope, sans-serif;
 
     transition: .3s;
+
+    z-index: 1;
 }
 
-.create-account-type-toggle-value-hide { opacity: 0 }
+.create-account-type-focus {
+    width: 50%;
+    height: 100%;
+
+    background-color: $main-green-color;
+
+    transition: .3s;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    border-radius: 20px 0 0 20px;
+}
+
+.create-account-active-type { color: #fff }
+
+.create-account-card-focus {
+    left: 50%;
+    border-radius: 0 20px 20px 0;
+}
 
 // preview
 // tile
@@ -198,8 +219,11 @@ h4 { font-size: 24px }
     justify-content: space-between;
 }
 
-.apply-btn, .cancel-btn { box-shadow: 0 0 15px lightgray }
+.apply-btn, .cancel-btn, .delete-btn { box-shadow: 0 0 15px lightgray }
 
+@media (max-width: 400px) {
+    .apply-btn, .cancel-btn, .delete-btn { width: 75px !important; height: 50px !important;  }
+}
 @media (max-width: 320px) {
     .create-account-modal-window { width: 300px }
     .create-account-name-input { width: 260px }

@@ -4,9 +4,9 @@ import BasicHeader from '../header/BasicHeader'
 import Stories from '../stories/Stories'
 import Accounts from '../accounts/Accounts'
 import ModalWindow from '../../../components/modal-window/ModalWindow'
-import AccountsModalWindow from '../modal-windows/accounts-mw/AccountsModalWindow'
 import Total from '../total/Total'
 import CreateAccountModalWindow from '../modal-windows/create-account-mw/CreateAccountModalWindow'
+import AccountModalWindow from '../modal-windows/account-mw/AccountModalWindow'
 
 import './basic.css'
 
@@ -18,8 +18,8 @@ const Basic = () => {
                 <Stories/>
                 <Total/>
                 <Accounts/>
-                <ModalWindow position={'bottom'} nav={'accountsMWS'} context={ useBasicContext }><AccountsModalWindow/></ModalWindow>
                 <ModalWindow position={'center'} nav={'createAccountMWS'} context={ useBasicContext }><CreateAccountModalWindow/></ModalWindow>
+                <ModalWindow position={'center'} nav={'accountMWS'} context={ useBasicContext }><AccountModalWindow/></ModalWindow>
             </section>
         </BasicProvider>
     )

@@ -1,4 +1,4 @@
-.apply-btn {
+.delete-btn {
   width: 85px;
   height: 55px;
   display: flex;
@@ -8,17 +8,17 @@
   background-color: #fff;
   transition: 0.3s;
 }
-.apply-btn svg {
+.delete-btn svg {
   width: 18px;
   height: 18px;
-  color: #24e597;
+  color: #ee3a3a;
   transition: 0.3s;
 }
-.apply-btn:active {
-  background-color: #24e597;
+.delete-btn:active {
+  background-color: #ee3a3a;
 }
-.apply-btn:active svg {
+.delete-btn:active svg {
   color: #fff;
 }
 
-/*# sourceMappingURL=apply-btn.css.map */
+/*# sourceMappingURL=delete-btn.css.map */

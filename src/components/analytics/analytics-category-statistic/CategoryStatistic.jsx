@@ -11,7 +11,7 @@ const CategoryStatistic = ({ object }) => {
     const { total } = useAppContext()
     const { activeTotal, categoryMWS, activeCategory } = useAnalyticsContext()
 
-    const {categoryName, obj} = object
+    const { categoryName, obj } = object
 
     const getProgressBarStyle = ({ color, count }) => ({ backgroundColor: color, width: `${count.getPercent(total[0][activeTotal[0]])}%` })
     const getTypeColorStyle = () => ({ color: activeTotal[0] === 'expense' ? '#ee3a3a' : '#24e597' })

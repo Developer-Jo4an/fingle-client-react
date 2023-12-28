@@ -1,0 +1,6 @@
+.disable-delete-account-btn {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/*# sourceMappingURL=account-modal-window.css.map */

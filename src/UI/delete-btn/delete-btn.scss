@@ -1,6 +1,6 @@
 @import '../../styles/zeroing/global';
 
-.apply-btn {
+.delete-btn {
     width: 85px;
     height: 55px;
 
@@ -17,11 +17,11 @@
     svg {
         width: 18px;
         height: 18px;
-        
-        color: $main-green-color;
+
+        color: $main-red-color;
 
         transition: .3s
     }
 
-    &:active { background-color: $main-green-color; svg { color: #fff } }
+    &:active { background-color: $main-red-color; svg { color: #fff } }
 }

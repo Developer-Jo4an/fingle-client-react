@@ -1,4 +1,4 @@
-import React, { useRef, useState} from 'react'
+import React, { useRef, useState } from 'react'
 import CloseCenterModalWindowXmark from '../../../../UI/close-modal-window-btn/CloseCenterModalWindowXmark'
 import ApplyBtn from '../../../../UI/apply-btn/ApplyBtn'
 import CancelBtn from '../../../../UI/cancel-btn/CancelBtn'
@@ -7,7 +7,7 @@ import Loader from '../../../../components/loader/Loader'
 import axios from 'axios'
 import { useAppContext } from '../../../../application/AppProvider'
 import { useBasicContext } from '../../general/BasicProvider'
-import { getCountStyle, userId } from '../../../../my-functions/my-functions'
+import { getCountStyle, roundUp, userId } from '../../../../my-functions/my-functions'
 
 import './create-account-modal-window.css'
 
@@ -24,14 +24,7 @@ const CreateAccountModalWindow = () => {
     const inputNameRef = useRef()
     const inputCountRef = useRef()
 
-    const switchNewAccountType = () => {
-        const el = typeRef.current
-        el.classList.add('create-account-type-toggle-value-hide')
-        setTimeout(() => {
-            dispatch({ type: 'type', accountType: newAccountState.accountType === 'card' ? 'cash' : 'card'})
-            el.classList.remove('create-account-type-toggle-value-hide')
-        }, 300)
-    }
+    const switchNewAccountType = type => dispatch({ type: 'type', accountType: type })
 
     const newAccountPreviewSign = () => {
         const signLogic = {
@@ -57,7 +50,7 @@ const CreateAccountModalWindow = () => {
             && newAccountState.accountName.length >= 1 && newAccountState.accountName.length <= 30
             && typeof newAccountState.count === 'number'
             && newAccountState.count !== 'NaN'
-            && (newAccountState.accountType === 'card' || newAccountState.accountType === 'card')
+            && (newAccountState.accountType === 'card' || newAccountState.accountType === 'cash')
         ) {
             try {
                 loader[1](true)
@@ -66,8 +59,12 @@ const CreateAccountModalWindow = () => {
 
                 if (data.status) user[1](prev => ({ ...prev, accounts: data.accounts }))
                 else throw new Error(data.message)
-            } catch (e) { alert(e) }
-            finally { loader[1](false); resetCreateAccount() }
+            } catch (e) { alert(e.message) }
+            finally {
+                loader[1](false);
+                createAccountMWS[1](false)
+                resetCreateAccount()
+            }
         } else alert('Incorrect data!')
     }
 
@@ -101,18 +98,22 @@ const CreateAccountModalWindow = () => {
                     />
                 </label>
                 <div className={'create-account-type-toggle-wrapper'}>
-                    <div className={'create-account-type-label'}>Account type</div>
-                    :
-                    <div
-                        className={'create-account-type-toggle'}
-                        onClick={ switchNewAccountType }
-                    ><div ref={ typeRef } className={'create-account-type-toggle-value'}>{ newAccountState.accountType.toUpperCase() }</div>
+                    <div ref={ typeRef } className={'create-account-type-toggle'}>
+                        <div
+                            className={`create-account-type-toggle-btn ${newAccountState.accountType === 'card' ? 'create-account-active-type' : ''}`}
+                            onClick={() => switchNewAccountType('card')}
+                        >CARD</div>
+                        <div
+                            className={`create-account-type-toggle-btn ${ newAccountState.accountType === 'cash' ? 'create-account-active-type' : '' }`}
+                            onClick={() => switchNewAccountType('cash')}
+                        >CASH</div>
+                        <div className={`create-account-type-focus ${ newAccountState.accountType === 'card' ? '' : 'create-account-card-focus' }`}></div>
                     </div>
                 </div>
                 <div className={'create-account-preview'}>
                     <div className={'create-account-sign-wrapper'}>{ newAccountPreviewSign() }</div>
                     <div className={'create-account-name-wrapper'}><div className={'create-account-name-value'}>{ newAccountState.accountName ? newAccountState.accountName : 'empty' }</div></div>
-                    <div style={ getCountStyle(newAccountState.count) } className={'create-account-count-wrapper'}><div className={'create-account-count-value'}>{ newAccountState.count } $</div></div>
+                    <div style={ getCountStyle(newAccountState.count) } className={'create-account-count-wrapper'}><div className={'create-account-count-value'}>{ roundUp(newAccountState.count) } $</div></div>
                 </div>
             </div>
             <div className={'create-account-btns'}>

@@ -12,17 +12,29 @@
     align-items: center;
 }
 
-.accounts-section-settings {
+.add-account-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    border-radius: 20px;
+
+    background-color: $main-green-color;
+
+    color: #fff;
+
     padding: 10px;
 
+    font-size: 18px;
+
     svg {
-        width: 20px;
-        height: 20px;
+        width: 14px;
+        height: 14px;
     }
 
     transition: .3s;
 
-    &:active { transform: rotate(180deg) }
+    &:active { opacity: 0.5 }
 }
 
 .accounts-wrapper {

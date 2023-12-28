@@ -14,18 +14,23 @@ const AnalyticsActiveCategoryButtons = () => {
 
     const { categoryName, obj } = activeCategory[0]
 
-    const setPage = () => page[1]('transactions')
-    const setFilter = () => filter[1]({ transactionType: [], card: [], category: [categoryName] })
-    const setFilterEls = () => filterEls[1]([{ id: categoryName, label: categoryName, icon: obj.sign, color: obj.color }])
+    const filterBtnClick = () => {
+        page[1]('transactions')
+        filter[1]({ transactionType: [], account: [], category: [categoryName] })
+        filterEls[1]([{ id: categoryName, label: categoryName, icon: obj.sign, color: obj.color }])
+    }
+
+    const addTransactionClick = () => alert('See you soooooon, boy! (Youel Romero)')
 
     return (
         <div className={'active-category-buttons'}>
             <div
                 className={'active-category-btn'}
-                onClick={() => { setPage(); setFilter(); setFilterEls() }}
+                onClick={filterBtnClick}
             ><FontAwesomeIcon icon='fa-solid fa-filter'/></div>
             <div
                 className={'active-category-btn'}
+                onClick={addTransactionClick}
             ><FontAwesomeIcon icon='fa-solid fa-plus'/></div>
         </div>
     )
